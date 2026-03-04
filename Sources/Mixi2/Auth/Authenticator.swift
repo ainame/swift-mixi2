@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 /// Provides OAuth2 access tokens for mixi2 API authentication.
 public protocol Authenticator: Sendable {
