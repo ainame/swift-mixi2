@@ -23,28 +23,13 @@ A command-line app that connects to the mixi2 API and prints incoming events to 
 
 ## Run
 
-```sh
-cd Demo
-
-export MIXI2_API_HOST=api.mixi2.com
-export MIXI2_CLIENT_ID=your-client-id
-export MIXI2_CLIENT_SECRET=your-client-secret
-export MIXI2_TOKEN_URL=https://auth.mixi2.com/oauth/token
-
-swift run
-```
-
-Or inline:
+Edit `run.sh` and fill in your credentials, then:
 
 ```sh
-MIXI2_API_HOST=api.mixi2.com \
-MIXI2_CLIENT_ID=your-client-id \
-MIXI2_CLIENT_SECRET=your-client-secret \
-MIXI2_TOKEN_URL=https://auth.mixi2.com/oauth/token \
-swift run
+./Demo/run.sh
 ```
 
-Press **Ctrl-C** to stop.
+The script validates that all required variables are set before building and running. Press **Ctrl-C** to stop.
 
 ## What it does
 
