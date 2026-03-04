@@ -10,7 +10,7 @@ router.on(ChatMessageReceivedEvent.self) { context, event in
         print("[chat] skipping echo — no text (image-only message)")
         return
     }
-    var reply = Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest()
+    var reply = SendChatMessageRequest()
     reply.roomID = event.message.roomID
     reply.text = event.message.text
     _ = try await context.applicationService.sendChatMessage(reply)
