@@ -23,13 +23,25 @@ Two SPM library products:
 - **`Mixi2GRPC`** (`Sources/Mixi2GRPC/Generated/`) — committed generated code, no toolchain needed by consumers. Generated from `../../mixigroup/mixi2-api/proto` using `buf` + `protoc-gen-swift` + `protoc-gen-grpc-swift-2`. Files use `PathToUnderscores` naming (e.g. `social_mixi_application_service_application_api_v1_service.pb.swift`) to avoid SPM build system collisions from same-named files.
 
 - **`Mixi2`** (`Sources/Mixi2/`) — handwritten SDK with four subsystems:
+  - **Export** — `Sources/Mixi2/export.swift` re-exports `Mixi2GRPC` via `@_exported import Mixi2GRPC`. Consumers only need `import Mixi2`.
   - **Auth** — `Authenticator` protocol + `ClientCredentialsAuthenticator` actor (OAuth2 Client Credentials flow via `URLSession`, 60-second expiry buffer, actor-isolated token cache). `AuthClientInterceptor` is a grpc-swift v2 `ClientInterceptor` that injects `Authorization: Bearer <token>` and optional `x-auth-key` into every RPC's metadata.
   - **Client** — `Mixi2Client` wraps `HTTP2ClientTransport.Posix` + `GRPCClient` wired with the auth interceptor. Exposes `apiClient` (`ApplicationService` API — unary RPCs) and `streamClient` (`ApplicationService` Stream — server-streaming). `Configuration.fromEnvironment()` reads `MIXI2_API_HOST`, `MIXI2_CLIENT_ID`, `MIXI2_CLIENT_SECRET`, `MIXI2_TOKEN_URL`, optionally `MIXI2_AUTH_KEY` / `MIXI2_API_PORT`.
-  - **Event** — `EventStream` wraps `subscribeEvents` via a `run(_:)` method backed by `withThrowingTaskGroup` (structured concurrency — producer is a child task, auto-cancelled). Filters `.ping` events. Reconnects with exponential backoff (1 s / 2 s / 4 s, max 3 retries) via `withReconnect`.
+  - **Event** — `EventStream` wraps `subscribeEvents` via a `run(_:)` method backed by `withThrowingTaskGroup` (structured concurrency — producer is a child task, auto-cancelled). Filters `.ping` events. Reconnects with exponential backoff (1 s / 2 s / 4 s, max 3 retries) via `withReconnect`. Type is named `EventStream` and method `run` — intentionally Swift-idiomatic, not `EventWatcher`/`watch`.
   - **Bot** — `Bot` facade owns a `Mixi2Client` + `EventRouter`. `run()` drives gRPC transport and `EventStream.run` as parallel structured child tasks.
   - **EventRouter** — dispatches events via generic `on<T: Mixi2EventMessage>(_:handler:)`. Handlers stored in `Mutex<[EventHandler]>` from `Synchronization`.
   - **EventMessage** — `Mixi2EventMessage` protocol (`Sources/Mixi2/Bot/EventMessage.swift`). Conformances in `Sources/Mixi2/Generated/EventMessageExtensions.swift` — generated, do not edit by hand.
   - **Webhook** — `WebhookHandler` verifies Ed25519 signatures (swift-crypto `Curve25519.Signing`) over `body + timestamp`, validates ±300 s timestamp window, deserializes `Social_Mixi_Application_Service_ClientEndpoint_V1_SendEventRequest`, and returns non-ping events.
+
+## Demo apps
+
+Two standalone SPM executables under `Demo/`, each with its own `Package.swift` referencing the root package via `path: "../../"`:
+
+- **`Demo/StreamApp/`** — gRPC event stream bot (echo chat, print posts). Run via `Demo/StreamApp/run.sh`.
+- **`Demo/WebHookApp/`** — Hummingbird HTTP server receiving webhook events (`POST /events`, `GET /healthz`). Run via `Demo/WebHookApp/run.sh`. Requires `MIXI2_PUBLIC_KEY` as a **base64-encoded** Ed25519 public key.
+
+Both use `@main` struct with `static func main() async throws`. Entry file is `App.swift` — `@main` is incompatible with `main.swift` (Swift reserves that filename for top-level code).
+
+`Demo/.gitignore` excludes `.build/` — never commit build artifacts from Demo apps.
 
 ## grpc-swift v2 API notes
 
