@@ -1,11 +1,11 @@
 /// Routes incoming mixi2 events to typed handlers.
 ///
 /// Register handlers with ``on(_:handler:)`` by passing any type that conforms
-/// to ``Mixi2EventPayload``. Multiple handlers for the same or different types
+/// to ``Mixi2EventMessage``. Multiple handlers for the same or different types
 /// can be registered — all matching handlers are called in registration order.
 ///
 /// ```swift
-/// let router = Router()
+/// let router = EventRouter()
 /// router.on(PostCreatedEvent.self) { event in
 ///     print("new post:", event.post.content)
 /// }
@@ -14,17 +14,17 @@
 /// }
 /// ```
 ///
-/// To support a new event type without modifying `Router`, simply conform it to
-/// ``Mixi2EventPayload`` and pass it to ``on(_:handler:)``.
+/// To support a new event type without modifying `EventRouter`, simply conform it to
+/// ``Mixi2EventMessage`` and pass it to ``on(_:handler:)``.
 @available(macOS 15.0, iOS 18.0, *)
-public final class Router: @unchecked Sendable {
+public final class EventRouter: @unchecked Sendable {
     private typealias EventHandler = @Sendable (Mixi2Event) async throws -> Void
 
     private var handlers: [EventHandler] = []
 
     public init() {}
 
-    /// Registers a handler for events whose payload matches `T`.
+    /// Registers a handler for events whose message type matches `T`.
     ///
     /// The handler is invoked only when an incoming event can be extracted as `T`;
     /// all other events are silently skipped.
@@ -33,8 +33,8 @@ public final class Router: @unchecked Sendable {
         handler: @Sendable @escaping (T) async throws -> Void
     ) {
         handlers.append { event in
-            guard let payload = T.extract(from: event) else { return }
-            try await handler(payload)
+            guard let message = T.extract(from: event) else { return }
+            try await handler(message)
         }
     }
 

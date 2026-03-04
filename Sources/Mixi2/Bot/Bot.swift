@@ -1,13 +1,13 @@
 /// A high-level facade for building a mixi2 bot.
 ///
 /// `Bot` owns a ``Mixi2Client``, connects to the event stream, and dispatches
-/// each incoming event to the registered ``Router`` handlers.
+/// each incoming event to the registered ``EventRouter`` handlers.
 ///
 /// ```swift
-/// let router = Router()
-///     .onPostCreated { event in
-///         print("new post:", event.post.content)
-///     }
+/// let router = EventRouter()
+/// router.on(PostCreatedEvent.self) { event in
+///     print("new post:", event.post.content)
+/// }
 ///
 /// let bot = try Bot(configuration: .fromEnvironment(), router: router)
 /// try await bot.run()
@@ -15,9 +15,9 @@
 @available(macOS 15.0, iOS 18.0, *)
 public final class Bot: Sendable {
     private let client: Mixi2Client
-    private let router: Router
+    private let router: EventRouter
 
-    public init(configuration: Mixi2Client.Configuration, router: Router) throws {
+    public init(configuration: Mixi2Client.Configuration, router: EventRouter) throws {
         self.client = try Mixi2Client(configuration: configuration)
         self.router = router
     }
