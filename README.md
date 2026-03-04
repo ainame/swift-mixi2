@@ -5,7 +5,7 @@ A Swift gRPC client library for the [mixi2](https://mixi2.com) Application API. 
 ## Requirements
 
 - Swift 6.0+
-- macOS 15+ / iOS 18+
+- macOS 15+, iOS 18+, or Linux
 
 ## Installation
 
@@ -49,6 +49,8 @@ Or load configuration from environment variables (`MIXI2_API_HOST`, `MIXI2_CLIEN
 let config = try await Mixi2Client.Configuration.fromEnvironment()
 let client = try Mixi2Client(configuration: config)
 ```
+
+The gRPC connection is built on [grpc-swift](https://github.com/grpc/grpc-swift) v2 with a SwiftNIO HTTP/2 transport (`HTTP2ClientTransport.Posix`). Network I/O does not go through `URLSession` — the only use of `URLSession` is the OAuth2 token fetch inside `ClientCredentialsAuthenticator`.
 
 The client's underlying gRPC transport must be running in a concurrent task:
 
