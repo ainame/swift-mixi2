@@ -1,5 +1,6 @@
 import Configuration
 import Mixi2
+import Mixi2GRPC
 
 // Build a ConfigReader from the process environment.
 // You can add more providers (e.g. FileProvider<JSONSnapshot>, InMemoryProvider)
@@ -22,14 +23,29 @@ let runTask = Task {
     try await client.run()
 }
 
-print("Connected to \(configuration.host):\(configuration.port)")
+print("Connected to api=\(configuration.apiHost) stream=\(configuration.streamHost) port=\(configuration.port)")
 print("Listening for events (Ctrl-C to stop)…")
 
 let events = EventStream(client: client.streamClient)
 
 do {
     for try await event in events {
-        print("[event] type=\(event.eventType)  id=\(event.eventID)")
+        switch event.body {
+        case .chatMessageReceivedEvent(let e):
+            print("[chat] from=\(e.issuer.userID)  room=\(e.message.roomID)  \(e.message.text)")
+            guard !e.message.text.isEmpty else {
+                print("[chat] skipping echo — no text (image-only message)")
+                break
+            }
+            var reply = Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest()
+            reply.roomID = e.message.roomID
+            reply.text = e.message.text
+            _ = try await client.apiClient.sendChatMessage(reply)
+        case .postCreatedEvent(let e):
+            print("[post] from=\(e.issuer.userID)  \(e.post.text)")
+        default:
+            print("[event] type=\(event.eventType)  id=\(event.eventID)")
+        }
     }
 } catch {
     print("Stream error: \(error)")

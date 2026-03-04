@@ -15,6 +15,7 @@ let package = Package(
             name: "Demo",
             dependencies: [
                 .product(name: "Mixi2", package: "swift-mixi2"),
+                .product(name: "Mixi2GRPC", package: "swift-mixi2"),
                 .product(name: "Configuration", package: "swift-configuration"),
             ],
             path: "Sources/Demo"
