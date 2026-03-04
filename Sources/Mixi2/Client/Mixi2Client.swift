@@ -1,4 +1,3 @@
-import Configuration
 import Foundation
 import GRPCCore
 import GRPCNIOTransportHTTP2
@@ -30,41 +29,6 @@ public final class Mixi2Client: Sendable {
             self.authenticator = authenticator
             self.authKey = authKey
             self.useTLS = useTLS
-        }
-
-        /// Reads configuration using the provided `ConfigReader`.
-        ///
-        /// Keys (mapped to env vars by default): `mixi2.api.host` → `MIXI2_API_HOST`,
-        /// `mixi2.stream.host` → `MIXI2_STREAM_HOST`,
-        /// `mixi2.client.id` → `MIXI2_CLIENT_ID`, `mixi2.client.secret` → `MIXI2_CLIENT_SECRET`,
-        /// `mixi2.token.url` → `MIXI2_TOKEN_URL`, and optionally `mixi2.auth.key` → `MIXI2_AUTH_KEY`,
-        /// `mixi2.api.port` → `MIXI2_API_PORT`.
-        public static func fromEnvironment(
-            using config: ConfigReader = ConfigReader(provider: EnvironmentVariablesProvider())
-        ) throws -> Configuration {
-            guard let apiHost = config.string(forKey: "mixi2.api.host") else {
-                throw ConfigurationError.missingKey("mixi2.api.host")
-            }
-            guard let streamHost = config.string(forKey: "mixi2.stream.host") else {
-                throw ConfigurationError.missingKey("mixi2.stream.host")
-            }
-            guard let clientID = config.string(forKey: "mixi2.client.id") else {
-                throw ConfigurationError.missingKey("mixi2.client.id")
-            }
-            guard let clientSecret = config.string(forKey: "mixi2.client.secret") else {
-                throw ConfigurationError.missingKey("mixi2.client.secret")
-            }
-            guard let tokenURL = config.string(forKey: "mixi2.token.url", as: URL.self) else {
-                throw ConfigurationError.missingKey("mixi2.token.url")
-            }
-            let port = config.int(forKey: "mixi2.api.port", default: 443)
-            let authKey = config.string(forKey: "mixi2.auth.key")
-            let authenticator = ClientCredentialsAuthenticator(
-                clientID: clientID,
-                clientSecret: clientSecret,
-                tokenURL: tokenURL
-            )
-            return Configuration(apiHost: apiHost, streamHost: streamHost, port: port, authenticator: authenticator, authKey: authKey)
         }
     }
 
@@ -120,8 +84,4 @@ public final class Mixi2Client: Sendable {
         apiGRPCClient.beginGracefulShutdown()
         streamGRPCClient.beginGracefulShutdown()
     }
-}
-
-public enum ConfigurationError: Error, Sendable {
-    case missingKey(String)
 }

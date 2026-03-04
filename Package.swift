@@ -18,7 +18,6 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-protobuf", from: "1.28.0"),
         .package(url: "https://github.com/apple/swift-crypto", from: "3.0.0"),
         .package(url: "https://github.com/swiftlang/swift-testing", from: "6.0.0"),
-        .package(url: "https://github.com/apple/swift-configuration", from: "1.1.0"),
     ],
     targets: [
         .target(
@@ -36,7 +35,6 @@ let package = Package(
                 .product(name: "GRPCCore", package: "grpc-swift-2"),
                 .product(name: "GRPCNIOTransportHTTP2", package: "grpc-swift-nio-transport"),
                 .product(name: "Crypto", package: "swift-crypto"),
-                .product(name: "Configuration", package: "swift-configuration"),
             ],
             path: "Sources/Mixi2",
             swiftSettings: [
