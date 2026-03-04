@@ -1,6 +1,7 @@
 .PHONY: generate build test clean
 
 generate:
+	git submodule update --init --recursive
 	rm -rf Sources/Mixi2GRPC/Generated
 	mkdir -p Sources/Mixi2GRPC/Generated
 	bash scripts/patch_swift_prefix.sh
