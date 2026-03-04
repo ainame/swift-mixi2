@@ -6,13 +6,19 @@ import Synchronization
 /// to ``Mixi2EventMessage``. Multiple handlers for the same or different types
 /// can be registered — all matching handlers are called in registration order.
 ///
+/// Each handler receives a ``Bot/Context`` giving access to the API client,
+/// and the strongly-typed event message.
+///
 /// ```swift
 /// let router = EventRouter()
-/// router.on(PostCreatedEvent.self) { event in
+/// router.on(PostCreatedEvent.self) { context, event in
 ///     print("new post:", event.post.content)
 /// }
-/// router.on(ChatMessageReceivedEvent.self) { event in
-///     print("chat:", event.message.content)
+/// router.on(ChatMessageReceivedEvent.self) { context, event in
+///     var reply = Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest()
+///     reply.roomID = event.message.roomID
+///     reply.text = event.message.text
+///     _ = try await context.apiClient.sendChatMessage(reply)
 /// }
 /// ```
 ///
@@ -20,7 +26,7 @@ import Synchronization
 /// ``Mixi2EventMessage`` and pass it to ``on(_:handler:)``.
 @available(macOS 15.0, iOS 18.0, *)
 public final class EventRouter: Sendable {
-    private typealias EventHandler = @Sendable (Mixi2Event) async throws -> Void
+    private typealias EventHandler = @Sendable (Bot.Context, Mixi2Event) async throws -> Void
 
     private let handlers: Mutex<[EventHandler]> = .init([])
 
@@ -32,21 +38,21 @@ public final class EventRouter: Sendable {
     /// all other events are silently skipped.
     public func on<T: Mixi2EventMessage>(
         _: T.Type,
-        handler: @Sendable @escaping (T) async throws -> Void
+        handler: @Sendable @escaping (Bot.Context, T) async throws -> Void
     ) {
         handlers.withLock {
-            $0.append { event in
+            $0.append { context, event in
                 guard let message = T.extract(from: event) else { return }
-                try await handler(message)
+                try await handler(context, message)
             }
         }
     }
 
     /// Dispatches a single event to all registered handlers whose type matches.
-    func handle(_ event: Mixi2Event) async throws {
+    func handle(_ context: Bot.Context, _ event: Mixi2Event) async throws {
         let snapshot = handlers.withLock { $0 }
         for handler in snapshot {
-            try await handler(event)
+            try await handler(context, event)
         }
     }
 }
