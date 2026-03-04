@@ -1,3 +1,4 @@
+import Configuration
 import Foundation
 import GRPCCore
 import GRPCNIOTransportHTTP2
@@ -28,27 +29,29 @@ public final class Mixi2Client: Sendable {
             self.useTLS = useTLS
         }
 
-        /// Reads configuration from environment variables.
+        /// Reads configuration using the provided `ConfigReader`.
         ///
-        /// Expected variables: `MIXI2_API_HOST`, `MIXI2_CLIENT_ID`, `MIXI2_CLIENT_SECRET`,
-        /// `MIXI2_TOKEN_URL`, and optionally `MIXI2_AUTH_KEY`, `MIXI2_API_PORT`.
-        public static func fromEnvironment() async throws -> Configuration {
-            let env = ProcessInfo.processInfo.environment
-            guard let host = env["MIXI2_API_HOST"] else {
-                throw ConfigurationError.missingEnvironmentVariable("MIXI2_API_HOST")
+        /// Keys (mapped to env vars by default): `mixi2.api.host` → `MIXI2_API_HOST`,
+        /// `mixi2.client.id` → `MIXI2_CLIENT_ID`, `mixi2.client.secret` → `MIXI2_CLIENT_SECRET`,
+        /// `mixi2.token.url` → `MIXI2_TOKEN_URL`, and optionally `mixi2.auth.key` → `MIXI2_AUTH_KEY`,
+        /// `mixi2.api.port` → `MIXI2_API_PORT`.
+        public static func fromEnvironment(
+            using config: ConfigReader = ConfigReader(provider: EnvironmentVariablesProvider())
+        ) throws -> Configuration {
+            guard let host = config.string(forKey: "mixi2.api.host") else {
+                throw ConfigurationError.missingKey("mixi2.api.host")
             }
-            guard let clientID = env["MIXI2_CLIENT_ID"] else {
-                throw ConfigurationError.missingEnvironmentVariable("MIXI2_CLIENT_ID")
+            guard let clientID = config.string(forKey: "mixi2.client.id") else {
+                throw ConfigurationError.missingKey("mixi2.client.id")
             }
-            guard let clientSecret = env["MIXI2_CLIENT_SECRET"] else {
-                throw ConfigurationError.missingEnvironmentVariable("MIXI2_CLIENT_SECRET")
+            guard let clientSecret = config.string(forKey: "mixi2.client.secret") else {
+                throw ConfigurationError.missingKey("mixi2.client.secret")
             }
-            guard let tokenURLString = env["MIXI2_TOKEN_URL"],
-                  let tokenURL = URL(string: tokenURLString) else {
-                throw ConfigurationError.missingEnvironmentVariable("MIXI2_TOKEN_URL")
+            guard let tokenURL = config.string(forKey: "mixi2.token.url", as: URL.self) else {
+                throw ConfigurationError.missingKey("mixi2.token.url")
             }
-            let port = env["MIXI2_API_PORT"].flatMap(Int.init) ?? 443
-            let authKey = env["MIXI2_AUTH_KEY"]
+            let port = config.int(forKey: "mixi2.api.port", default: 443)
+            let authKey = config.string(forKey: "mixi2.auth.key")
             let authenticator = ClientCredentialsAuthenticator(
                 clientID: clientID,
                 clientSecret: clientSecret,
@@ -97,5 +100,5 @@ public final class Mixi2Client: Sendable {
 }
 
 public enum ConfigurationError: Error, Sendable {
-    case missingEnvironmentVariable(String)
+    case missingKey(String)
 }
