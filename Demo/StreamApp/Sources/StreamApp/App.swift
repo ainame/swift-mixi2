@@ -9,19 +9,17 @@ struct StreamApp {
             environmentFilePath: ".env", allowMissing: true)
         let config = ConfigReader(providers: [EnvironmentVariablesProvider(), dotEnvProvider])
 
-        let apiHost = try config.requiredString(forKey: "mixi2.api.host")
-        let streamHost = try config.requiredString(forKey: "mixi2.stream.host")
-        let clientID = try config.requiredString(forKey: "mixi2.client.id")
-        let clientSecret = try config.requiredString(forKey: "mixi2.client.secret", isSecret: true)
-        let tokenURL = try config.requiredString(forKey: "mixi2.token.url", as: URL.self)
-        let port = config.int(forKey: "mixi2.api.port", default: 443)
-        let authKey = config.string(forKey: "mixi2.auth.key", isSecret: true)
-
-        let authenticator = ClientCredentialsAuthenticator(
-            clientID: clientID, clientSecret: clientSecret, tokenURL: tokenURL)
-        let configuration = Mixi2Client.Configuration(
-            apiHost: apiHost, streamHost: streamHost, port: port,
-            authenticator: authenticator, authKey: authKey)
+        let configuration = try Mixi2Client.Configuration(
+            apiHost: config.requiredString(forKey: "mixi2.api.host"),
+            streamHost: config.requiredString(forKey: "mixi2.stream.host"),
+            port: config.int(forKey: "mixi2.api.port", default: 443),
+            authenticator: ClientCredentialsAuthenticator(
+                clientID: config.requiredString(forKey: "mixi2.client.id"),
+                clientSecret: config.requiredString(forKey: "mixi2.client.secret", isSecret: true),
+                tokenURL: config.requiredString(forKey: "mixi2.token.url", as: URL.self)
+            ),
+            authKey: config.string(forKey: "mixi2.auth.key", isSecret: true)
+        )
 
         let router = EventRouter()
 
