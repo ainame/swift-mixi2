@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// ポストを閲覧できるかどうかを示す列挙型
-public enum Social_Mixi_Application_Const_V1_PostVisibility: SwiftProtobuf.Enum, Swift.CaseIterable {
+public enum Mixi2PostVisibility: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
 
   /// 未指定
@@ -57,7 +57,7 @@ public enum Social_Mixi_Application_Const_V1_PostVisibility: SwiftProtobuf.Enum,
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static let allCases: [Social_Mixi_Application_Const_V1_PostVisibility] = [
+  public static let allCases: [Mixi2PostVisibility] = [
     .unspecified,
     .visible,
     .invisible,
@@ -67,6 +67,6 @@ public enum Social_Mixi_Application_Const_V1_PostVisibility: SwiftProtobuf.Enum,
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-extension Social_Mixi_Application_Const_V1_PostVisibility: SwiftProtobuf._ProtoNameProviding {
+extension Mixi2PostVisibility: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0POST_VISIBILITY_UNSPECIFIED\0\u{1}POST_VISIBILITY_VISIBLE\0\u{1}POST_VISIBILITY_INVISIBLE\0")
 }

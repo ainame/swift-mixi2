@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// イベント購読リクエストです。
-public struct Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest: Sendable {
+public struct Mixi2StreamSubscribeEventsRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -32,13 +32,13 @@ public struct Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEven
 }
 
 /// イベント購読レスポンスです。
-public struct Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse: Sendable {
+public struct Mixi2StreamSubscribeEventsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// 受信したイベントの情報です。
-  public var events: [Social_Mixi_Application_Model_V1_Event] = []
+  public var events: [Mixi2Event] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -49,7 +49,7 @@ public struct Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEven
 
 fileprivate let _protobuf_package = "social.mixi.application.service.application_stream.v1"
 
-extension Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Mixi2StreamSubscribeEventsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SubscribeEventsRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -62,13 +62,13 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRe
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest, rhs: Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest) -> Bool {
+  public static func ==(lhs: Mixi2StreamSubscribeEventsRequest, rhs: Mixi2StreamSubscribeEventsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Mixi2StreamSubscribeEventsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SubscribeEventsResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}events\0")
 
@@ -91,7 +91,7 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRe
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse, rhs: Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse) -> Bool {
+  public static func ==(lhs: Mixi2StreamSubscribeEventsResponse, rhs: Mixi2StreamSubscribeEventsResponse) -> Bool {
     if lhs.events != rhs.events {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// チャットメッセージを表します。
-public struct Social_Mixi_Application_Model_V1_ChatMessage: Sendable {
+public struct Mixi2ChatMessage: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -49,7 +49,7 @@ public struct Social_Mixi_Application_Model_V1_ChatMessage: Sendable {
   public mutating func clearCreatedAt() {self._createdAt = nil}
 
   /// メッセージに添付されたメディア一覧です。
-  public var mediaList: [Social_Mixi_Application_Model_V1_Media] = []
+  public var mediaList: [Mixi2Media] = []
 
   /// メッセージに引用されているポストIDです。
   public var postID: String {
@@ -73,7 +73,7 @@ public struct Social_Mixi_Application_Model_V1_ChatMessage: Sendable {
 
 fileprivate let _protobuf_package = "social.mixi.application.model.v1"
 
-extension Social_Mixi_Application_Model_V1_ChatMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Mixi2ChatMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ChatMessage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}room_id\0\u{3}message_id\0\u{3}creator_id\0\u{1}text\0\u{3}created_at\0\u{3}media_list\0\u{3}post_id\0")
 
@@ -124,7 +124,7 @@ extension Social_Mixi_Application_Model_V1_ChatMessage: SwiftProtobuf.Message, S
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Social_Mixi_Application_Model_V1_ChatMessage, rhs: Social_Mixi_Application_Model_V1_ChatMessage) -> Bool {
+  public static func ==(lhs: Mixi2ChatMessage, rhs: Mixi2ChatMessage) -> Bool {
     if lhs.roomID != rhs.roomID {return false}
     if lhs.messageID != rhs.messageID {return false}
     if lhs.creatorID != rhs.creatorID {return false}

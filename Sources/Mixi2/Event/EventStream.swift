@@ -1,9 +1,6 @@
 import GRPCCore
 import Mixi2GRPC
 
-/// Typealias for the mixi2 event model.
-public typealias Mixi2Event = Social_Mixi_Application_Model_V1_Event
-
 /// Connects to the mixi2 event stream and dispatches non-ping events to a handler.
 ///
 /// PING events are automatically filtered. On connection failure the stream retries
@@ -14,9 +11,9 @@ public typealias Mixi2Event = Social_Mixi_Application_Model_V1_Event
 /// task with no manual wiring required.
 @available(macOS 15.0, iOS 18.0, *)
 public struct EventStream: Sendable {
-    private let client: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.ClientProtocol
+    private let client: Mixi2StreamApplicationService.ClientProtocol
 
-    public init(client: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.ClientProtocol) {
+    public init(client: Mixi2StreamApplicationService.ClientProtocol) {
         self.client = client
     }
 
@@ -46,7 +43,7 @@ public struct EventStream: Sendable {
 @available(macOS 15.0, iOS 18.0, *)
 @concurrent
 private func withReconnect(
-    client: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.ClientProtocol,
+    client: Mixi2StreamApplicationService.ClientProtocol,
     continuation: AsyncThrowingStream<Mixi2Event, Error>.Continuation
 ) async {
     let maxRetries = 3
@@ -55,7 +52,7 @@ private func withReconnect(
     while attempt <= maxRetries {
         do {
             try await client.subscribeEvents(
-                Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest()
+                Mixi2StreamSubscribeEventsRequest()
             ) { response in
                 for try await message in response.messages {
                     for event in message.events {

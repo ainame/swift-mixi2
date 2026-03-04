@@ -22,15 +22,15 @@ struct WebhookHandlerTests {
         return Data(signature).base64EncodedString()
     }
 
-    private func makeBody(events: [Social_Mixi_Application_Model_V1_Event]) throws -> Data {
-        var req = Social_Mixi_Application_Service_ClientEndpoint_V1_SendEventRequest()
+    private func makeBody(events: [Mixi2Event]) throws -> Data {
+        var req = Mixi2SendEventRequest()
         req.events = events
         return try req.serializedData()
     }
 
     @Test("Accepts valid signature and returns non-ping events")
     func acceptsValidSignature() throws {
-        let event = Social_Mixi_Application_Model_V1_Event.with {
+        let event = Mixi2Event.with {
             $0.eventID = "evt-1"
             $0.eventType = .postCreated
         }
@@ -46,8 +46,8 @@ struct WebhookHandlerTests {
 
     @Test("Filters out PING events")
     func filtersPingEvents() throws {
-        let pingEvent = Social_Mixi_Application_Model_V1_Event.with { $0.eventType = .ping }
-        let realEvent = Social_Mixi_Application_Model_V1_Event.with {
+        let pingEvent = Mixi2Event.with { $0.eventType = .ping }
+        let realEvent = Mixi2Event.with {
             $0.eventID = "evt-2"
             $0.eventType = .chatMessageReceived
         }
@@ -120,7 +120,7 @@ struct WebhookHandlerTests {
 
     @Test("Accepts timestamp within tolerance boundary (±300s)")
     func acceptsBoundaryTimestamp() throws {
-        let event = Social_Mixi_Application_Model_V1_Event.with { $0.eventType = .postCreated }
+        let event = Mixi2Event.with { $0.eventType = .postCreated }
         let body = try makeBody(events: [event])
 
         // 299 seconds old — still valid

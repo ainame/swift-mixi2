@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// ポストの投稿先設定を示す列挙型
-public enum Social_Mixi_Application_Const_V1_PostPublishingType: SwiftProtobuf.Enum, Swift.CaseIterable {
+public enum Mixi2PostPublishingType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
 
   /// 未指定（自分のフォロワーのタイムラインに公開）
@@ -52,7 +52,7 @@ public enum Social_Mixi_Application_Const_V1_PostPublishingType: SwiftProtobuf.E
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static let allCases: [Social_Mixi_Application_Const_V1_PostPublishingType] = [
+  public static let allCases: [Mixi2PostPublishingType] = [
     .unspecified,
     .notPublishing,
   ]
@@ -61,6 +61,6 @@ public enum Social_Mixi_Application_Const_V1_PostPublishingType: SwiftProtobuf.E
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-extension Social_Mixi_Application_Const_V1_PostPublishingType: SwiftProtobuf._ProtoNameProviding {
+extension Mixi2PostPublishingType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0POST_PUBLISHING_TYPE_UNSPECIFIED\0\u{1}POST_PUBLISHING_TYPE_NOT_PUBLISHING\0")
 }

@@ -15,7 +15,7 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-public enum Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService: Sendable {
+public enum Mixi2ApplicationService: Sendable {
     /// Service descriptor for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
     public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService")
     /// Namespace for method metadata.
@@ -23,9 +23,9 @@ public enum Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService
         /// Namespace for "GetUsers" metadata.
         public enum GetUsers: Sendable {
             /// Request type for "GetUsers".
-            public typealias Input = Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest
+            public typealias Input = Mixi2GetUsersRequest
             /// Response type for "GetUsers".
-            public typealias Output = Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse
+            public typealias Output = Mixi2GetUsersResponse
             /// Descriptor for "GetUsers".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -35,9 +35,9 @@ public enum Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService
         /// Namespace for "GetPosts" metadata.
         public enum GetPosts: Sendable {
             /// Request type for "GetPosts".
-            public typealias Input = Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest
+            public typealias Input = Mixi2GetPostsRequest
             /// Response type for "GetPosts".
-            public typealias Output = Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse
+            public typealias Output = Mixi2GetPostsResponse
             /// Descriptor for "GetPosts".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -47,9 +47,9 @@ public enum Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService
         /// Namespace for "CreatePost" metadata.
         public enum CreatePost: Sendable {
             /// Request type for "CreatePost".
-            public typealias Input = Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest
+            public typealias Input = Mixi2CreatePostRequest
             /// Response type for "CreatePost".
-            public typealias Output = Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse
+            public typealias Output = Mixi2CreatePostResponse
             /// Descriptor for "CreatePost".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -59,9 +59,9 @@ public enum Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService
         /// Namespace for "InitiatePostMediaUpload" metadata.
         public enum InitiatePostMediaUpload: Sendable {
             /// Request type for "InitiatePostMediaUpload".
-            public typealias Input = Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest
+            public typealias Input = Mixi2InitiatePostMediaUploadRequest
             /// Response type for "InitiatePostMediaUpload".
-            public typealias Output = Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse
+            public typealias Output = Mixi2InitiatePostMediaUploadResponse
             /// Descriptor for "InitiatePostMediaUpload".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -71,9 +71,9 @@ public enum Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService
         /// Namespace for "GetPostMediaStatus" metadata.
         public enum GetPostMediaStatus: Sendable {
             /// Request type for "GetPostMediaStatus".
-            public typealias Input = Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest
+            public typealias Input = Mixi2GetPostMediaStatusRequest
             /// Response type for "GetPostMediaStatus".
-            public typealias Output = Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse
+            public typealias Output = Mixi2GetPostMediaStatusResponse
             /// Descriptor for "GetPostMediaStatus".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -83,9 +83,9 @@ public enum Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService
         /// Namespace for "SendChatMessage" metadata.
         public enum SendChatMessage: Sendable {
             /// Request type for "SendChatMessage".
-            public typealias Input = Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest
+            public typealias Input = Mixi2SendChatMessageRequest
             /// Response type for "SendChatMessage".
-            public typealias Output = Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse
+            public typealias Output = Mixi2SendChatMessageResponse
             /// Descriptor for "SendChatMessage".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -95,9 +95,9 @@ public enum Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService
         /// Namespace for "GetStamps" metadata.
         public enum GetStamps: Sendable {
             /// Request type for "GetStamps".
-            public typealias Input = Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest
+            public typealias Input = Mixi2GetStampsRequest
             /// Response type for "GetStamps".
-            public typealias Output = Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse
+            public typealias Output = Mixi2GetStampsResponse
             /// Descriptor for "GetStamps".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -107,9 +107,9 @@ public enum Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService
         /// Namespace for "AddStampToPost" metadata.
         public enum AddStampToPost: Sendable {
             /// Request type for "AddStampToPost".
-            public typealias Input = Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest
+            public typealias Input = Mixi2AddStampToPostRequest
             /// Response type for "AddStampToPost".
-            public typealias Output = Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse
+            public typealias Output = Mixi2AddStampToPostResponse
             /// Descriptor for "AddStampToPost".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -133,13 +133,13 @@ public enum Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
-    public static let social_mixi_application_service_applicationApi_v1_ApplicationService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService")
+    public static let mixi2ApplicationService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService")
 }
 
 // MARK: social.mixi.application.service.application_api.v1.ApplicationService (server)
 
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
+extension Mixi2ApplicationService {
     /// Streaming variant of the service protocol for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
     ///
     /// This protocol is the lowest-level of the service protocols generated for this service
@@ -162,16 +162,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したユーザーIDリストに対応するユーザー情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest` messages.
+        ///   - request: A streaming request of `Mixi2GetUsersRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse` messages.
+        /// - Returns: A streaming response of `Mixi2GetUsersResponse` messages.
         func getUsers(
-            request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest>,
+            request: GRPCCore.StreamingServerRequest<Mixi2GetUsersRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetUsersResponse>
 
         /// Handle the "GetPosts" method.
         ///
@@ -180,16 +180,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したポストIDリストに対応するポスト情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest` messages.
+        ///   - request: A streaming request of `Mixi2GetPostsRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse` messages.
+        /// - Returns: A streaming response of `Mixi2GetPostsResponse` messages.
         func getPosts(
-            request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest>,
+            request: GRPCCore.StreamingServerRequest<Mixi2GetPostsRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetPostsResponse>
 
         /// Handle the "CreatePost" method.
         ///
@@ -198,16 +198,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > ポストを作成します（返信/引用/メディア添付等に対応）。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest` messages.
+        ///   - request: A streaming request of `Mixi2CreatePostRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse` messages.
+        /// - Returns: A streaming response of `Mixi2CreatePostResponse` messages.
         func createPost(
-            request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest>,
+            request: GRPCCore.StreamingServerRequest<Mixi2CreatePostRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2CreatePostResponse>
 
         /// Handle the "InitiatePostMediaUpload" method.
         ///
@@ -216,16 +216,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest` messages.
+        ///   - request: A streaming request of `Mixi2InitiatePostMediaUploadRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse` messages.
+        /// - Returns: A streaming response of `Mixi2InitiatePostMediaUploadResponse` messages.
         func initiatePostMediaUpload(
-            request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest>,
+            request: GRPCCore.StreamingServerRequest<Mixi2InitiatePostMediaUploadRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2InitiatePostMediaUploadResponse>
 
         /// Handle the "GetPostMediaStatus" method.
         ///
@@ -234,16 +234,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したメディアIDのアップロード/処理状況を取得します。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest` messages.
+        ///   - request: A streaming request of `Mixi2GetPostMediaStatusRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse` messages.
+        /// - Returns: A streaming response of `Mixi2GetPostMediaStatusResponse` messages.
         func getPostMediaStatus(
-            request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest>,
+            request: GRPCCore.StreamingServerRequest<Mixi2GetPostMediaStatusRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetPostMediaStatusResponse>
 
         /// Handle the "SendChatMessage" method.
         ///
@@ -252,16 +252,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest` messages.
+        ///   - request: A streaming request of `Mixi2SendChatMessageRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse` messages.
+        /// - Returns: A streaming response of `Mixi2SendChatMessageResponse` messages.
         func sendChatMessage(
-            request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest>,
+            request: GRPCCore.StreamingServerRequest<Mixi2SendChatMessageRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2SendChatMessageResponse>
 
         /// Handle the "GetStamps" method.
         ///
@@ -270,16 +270,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > スタンプ一覧を取得します。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest` messages.
+        ///   - request: A streaming request of `Mixi2GetStampsRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse` messages.
+        /// - Returns: A streaming response of `Mixi2GetStampsResponse` messages.
         func getStamps(
-            request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest>,
+            request: GRPCCore.StreamingServerRequest<Mixi2GetStampsRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetStampsResponse>
 
         /// Handle the "AddStampToPost" method.
         ///
@@ -288,16 +288,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したポストにスタンプを付与します。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest` messages.
+        ///   - request: A streaming request of `Mixi2AddStampToPostRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse` messages.
+        /// - Returns: A streaming response of `Mixi2AddStampToPostResponse` messages.
         func addStampToPost(
-            request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest>,
+            request: GRPCCore.StreamingServerRequest<Mixi2AddStampToPostRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2AddStampToPostResponse>
     }
 
     /// Service protocol for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
@@ -311,7 +311,7 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
     /// > Source IDL Documentation:
     /// >
     /// > mixi2 アプリケーションサービスです。
-    public protocol ServiceProtocol: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.StreamingServiceProtocol {
+    public protocol ServiceProtocol: Mixi2ApplicationService.StreamingServiceProtocol {
         /// Handle the "GetUsers" method.
         ///
         /// > Source IDL Documentation:
@@ -319,16 +319,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したユーザーIDリストに対応するユーザー情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest` message.
+        ///   - request: A request containing a single `Mixi2GetUsersRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse` message.
+        /// - Returns: A response containing a single `Mixi2GetUsersResponse` message.
         func getUsers(
-            request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest>,
+            request: GRPCCore.ServerRequest<Mixi2GetUsersRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse>
+        ) async throws -> GRPCCore.ServerResponse<Mixi2GetUsersResponse>
 
         /// Handle the "GetPosts" method.
         ///
@@ -337,16 +337,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したポストIDリストに対応するポスト情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest` message.
+        ///   - request: A request containing a single `Mixi2GetPostsRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse` message.
+        /// - Returns: A response containing a single `Mixi2GetPostsResponse` message.
         func getPosts(
-            request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest>,
+            request: GRPCCore.ServerRequest<Mixi2GetPostsRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse>
+        ) async throws -> GRPCCore.ServerResponse<Mixi2GetPostsResponse>
 
         /// Handle the "CreatePost" method.
         ///
@@ -355,16 +355,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > ポストを作成します（返信/引用/メディア添付等に対応）。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest` message.
+        ///   - request: A request containing a single `Mixi2CreatePostRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse` message.
+        /// - Returns: A response containing a single `Mixi2CreatePostResponse` message.
         func createPost(
-            request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest>,
+            request: GRPCCore.ServerRequest<Mixi2CreatePostRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse>
+        ) async throws -> GRPCCore.ServerResponse<Mixi2CreatePostResponse>
 
         /// Handle the "InitiatePostMediaUpload" method.
         ///
@@ -373,16 +373,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest` message.
+        ///   - request: A request containing a single `Mixi2InitiatePostMediaUploadRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse` message.
+        /// - Returns: A response containing a single `Mixi2InitiatePostMediaUploadResponse` message.
         func initiatePostMediaUpload(
-            request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest>,
+            request: GRPCCore.ServerRequest<Mixi2InitiatePostMediaUploadRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse>
+        ) async throws -> GRPCCore.ServerResponse<Mixi2InitiatePostMediaUploadResponse>
 
         /// Handle the "GetPostMediaStatus" method.
         ///
@@ -391,16 +391,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したメディアIDのアップロード/処理状況を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest` message.
+        ///   - request: A request containing a single `Mixi2GetPostMediaStatusRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse` message.
+        /// - Returns: A response containing a single `Mixi2GetPostMediaStatusResponse` message.
         func getPostMediaStatus(
-            request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest>,
+            request: GRPCCore.ServerRequest<Mixi2GetPostMediaStatusRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse>
+        ) async throws -> GRPCCore.ServerResponse<Mixi2GetPostMediaStatusResponse>
 
         /// Handle the "SendChatMessage" method.
         ///
@@ -409,16 +409,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest` message.
+        ///   - request: A request containing a single `Mixi2SendChatMessageRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse` message.
+        /// - Returns: A response containing a single `Mixi2SendChatMessageResponse` message.
         func sendChatMessage(
-            request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest>,
+            request: GRPCCore.ServerRequest<Mixi2SendChatMessageRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse>
+        ) async throws -> GRPCCore.ServerResponse<Mixi2SendChatMessageResponse>
 
         /// Handle the "GetStamps" method.
         ///
@@ -427,16 +427,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > スタンプ一覧を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest` message.
+        ///   - request: A request containing a single `Mixi2GetStampsRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse` message.
+        /// - Returns: A response containing a single `Mixi2GetStampsResponse` message.
         func getStamps(
-            request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest>,
+            request: GRPCCore.ServerRequest<Mixi2GetStampsRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse>
+        ) async throws -> GRPCCore.ServerResponse<Mixi2GetStampsResponse>
 
         /// Handle the "AddStampToPost" method.
         ///
@@ -445,16 +445,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したポストにスタンプを付与します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest` message.
+        ///   - request: A request containing a single `Mixi2AddStampToPostRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse` message.
+        /// - Returns: A response containing a single `Mixi2AddStampToPostResponse` message.
         func addStampToPost(
-            request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest>,
+            request: GRPCCore.ServerRequest<Mixi2AddStampToPostRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse>
+        ) async throws -> GRPCCore.ServerResponse<Mixi2AddStampToPostResponse>
     }
 
     /// Simple service protocol for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
@@ -466,7 +466,7 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
     /// > Source IDL Documentation:
     /// >
     /// > mixi2 アプリケーションサービスです。
-    public protocol SimpleServiceProtocol: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.ServiceProtocol {
+    public protocol SimpleServiceProtocol: Mixi2ApplicationService.ServiceProtocol {
         /// Handle the "GetUsers" method.
         ///
         /// > Source IDL Documentation:
@@ -474,16 +474,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したユーザーIDリストに対応するユーザー情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A `Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest` message.
+        ///   - request: A `Mixi2GetUsersRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse` to respond with.
+        /// - Returns: A `Mixi2GetUsersResponse` to respond with.
         func getUsers(
-            request: Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest,
+            request: Mixi2GetUsersRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse
+        ) async throws -> Mixi2GetUsersResponse
 
         /// Handle the "GetPosts" method.
         ///
@@ -492,16 +492,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したポストIDリストに対応するポスト情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest` message.
+        ///   - request: A `Mixi2GetPostsRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse` to respond with.
+        /// - Returns: A `Mixi2GetPostsResponse` to respond with.
         func getPosts(
-            request: Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest,
+            request: Mixi2GetPostsRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse
+        ) async throws -> Mixi2GetPostsResponse
 
         /// Handle the "CreatePost" method.
         ///
@@ -510,16 +510,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > ポストを作成します（返信/引用/メディア添付等に対応）。
         ///
         /// - Parameters:
-        ///   - request: A `Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest` message.
+        ///   - request: A `Mixi2CreatePostRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse` to respond with.
+        /// - Returns: A `Mixi2CreatePostResponse` to respond with.
         func createPost(
-            request: Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest,
+            request: Mixi2CreatePostRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse
+        ) async throws -> Mixi2CreatePostResponse
 
         /// Handle the "InitiatePostMediaUpload" method.
         ///
@@ -528,16 +528,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
         ///
         /// - Parameters:
-        ///   - request: A `Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest` message.
+        ///   - request: A `Mixi2InitiatePostMediaUploadRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse` to respond with.
+        /// - Returns: A `Mixi2InitiatePostMediaUploadResponse` to respond with.
         func initiatePostMediaUpload(
-            request: Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest,
+            request: Mixi2InitiatePostMediaUploadRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse
+        ) async throws -> Mixi2InitiatePostMediaUploadResponse
 
         /// Handle the "GetPostMediaStatus" method.
         ///
@@ -546,16 +546,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したメディアIDのアップロード/処理状況を取得します。
         ///
         /// - Parameters:
-        ///   - request: A `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest` message.
+        ///   - request: A `Mixi2GetPostMediaStatusRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse` to respond with.
+        /// - Returns: A `Mixi2GetPostMediaStatusResponse` to respond with.
         func getPostMediaStatus(
-            request: Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest,
+            request: Mixi2GetPostMediaStatusRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse
+        ) async throws -> Mixi2GetPostMediaStatusResponse
 
         /// Handle the "SendChatMessage" method.
         ///
@@ -564,16 +564,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
         ///
         /// - Parameters:
-        ///   - request: A `Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest` message.
+        ///   - request: A `Mixi2SendChatMessageRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse` to respond with.
+        /// - Returns: A `Mixi2SendChatMessageResponse` to respond with.
         func sendChatMessage(
-            request: Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest,
+            request: Mixi2SendChatMessageRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse
+        ) async throws -> Mixi2SendChatMessageResponse
 
         /// Handle the "GetStamps" method.
         ///
@@ -582,16 +582,16 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > スタンプ一覧を取得します。
         ///
         /// - Parameters:
-        ///   - request: A `Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest` message.
+        ///   - request: A `Mixi2GetStampsRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse` to respond with.
+        /// - Returns: A `Mixi2GetStampsResponse` to respond with.
         func getStamps(
-            request: Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest,
+            request: Mixi2GetStampsRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse
+        ) async throws -> Mixi2GetStampsResponse
 
         /// Handle the "AddStampToPost" method.
         ///
@@ -600,27 +600,27 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したポストにスタンプを付与します。
         ///
         /// - Parameters:
-        ///   - request: A `Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest` message.
+        ///   - request: A `Mixi2AddStampToPostRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse` to respond with.
+        /// - Returns: A `Mixi2AddStampToPostResponse` to respond with.
         func addStampToPost(
-            request: Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest,
+            request: Mixi2AddStampToPostRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse
+        ) async throws -> Mixi2AddStampToPostResponse
     }
 }
 
 // Default implementation of 'registerMethods(with:)'.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.StreamingServiceProtocol {
+extension Mixi2ApplicationService.StreamingServiceProtocol {
     public func registerMethods<Transport>(with router: inout GRPCCore.RPCRouter<Transport>) where Transport: GRPCCore.ServerTransport {
         router.registerHandler(
-            forMethod: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.GetUsers.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse>(),
+            forMethod: Mixi2ApplicationService.Method.GetUsers.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetUsersRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetUsersResponse>(),
             handler: { request, context in
                 try await self.getUsers(
                     request: request,
@@ -629,9 +629,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
             }
         )
         router.registerHandler(
-            forMethod: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.GetPosts.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse>(),
+            forMethod: Mixi2ApplicationService.Method.GetPosts.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetPostsRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetPostsResponse>(),
             handler: { request, context in
                 try await self.getPosts(
                     request: request,
@@ -640,9 +640,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
             }
         )
         router.registerHandler(
-            forMethod: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.CreatePost.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse>(),
+            forMethod: Mixi2ApplicationService.Method.CreatePost.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2CreatePostRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2CreatePostResponse>(),
             handler: { request, context in
                 try await self.createPost(
                     request: request,
@@ -651,9 +651,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
             }
         )
         router.registerHandler(
-            forMethod: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.InitiatePostMediaUpload.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse>(),
+            forMethod: Mixi2ApplicationService.Method.InitiatePostMediaUpload.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2InitiatePostMediaUploadRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2InitiatePostMediaUploadResponse>(),
             handler: { request, context in
                 try await self.initiatePostMediaUpload(
                     request: request,
@@ -662,9 +662,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
             }
         )
         router.registerHandler(
-            forMethod: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.GetPostMediaStatus.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse>(),
+            forMethod: Mixi2ApplicationService.Method.GetPostMediaStatus.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetPostMediaStatusRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetPostMediaStatusResponse>(),
             handler: { request, context in
                 try await self.getPostMediaStatus(
                     request: request,
@@ -673,9 +673,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
             }
         )
         router.registerHandler(
-            forMethod: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.SendChatMessage.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse>(),
+            forMethod: Mixi2ApplicationService.Method.SendChatMessage.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2SendChatMessageRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2SendChatMessageResponse>(),
             handler: { request, context in
                 try await self.sendChatMessage(
                     request: request,
@@ -684,9 +684,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
             }
         )
         router.registerHandler(
-            forMethod: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.GetStamps.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse>(),
+            forMethod: Mixi2ApplicationService.Method.GetStamps.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetStampsRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetStampsResponse>(),
             handler: { request, context in
                 try await self.getStamps(
                     request: request,
@@ -695,9 +695,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
             }
         )
         router.registerHandler(
-            forMethod: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.AddStampToPost.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse>(),
+            forMethod: Mixi2ApplicationService.Method.AddStampToPost.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2AddStampToPostRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2AddStampToPostResponse>(),
             handler: { request, context in
                 try await self.addStampToPost(
                     request: request,
@@ -710,11 +710,11 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
 
 // Default implementation of streaming methods from 'StreamingServiceProtocol'.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.ServiceProtocol {
+extension Mixi2ApplicationService.ServiceProtocol {
     public func getUsers(
-        request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest>,
+        request: GRPCCore.StreamingServerRequest<Mixi2GetUsersRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetUsersResponse> {
         let response = try await self.getUsers(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -723,9 +723,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func getPosts(
-        request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest>,
+        request: GRPCCore.StreamingServerRequest<Mixi2GetPostsRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetPostsResponse> {
         let response = try await self.getPosts(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -734,9 +734,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func createPost(
-        request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest>,
+        request: GRPCCore.StreamingServerRequest<Mixi2CreatePostRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2CreatePostResponse> {
         let response = try await self.createPost(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -745,9 +745,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func initiatePostMediaUpload(
-        request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest>,
+        request: GRPCCore.StreamingServerRequest<Mixi2InitiatePostMediaUploadRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2InitiatePostMediaUploadResponse> {
         let response = try await self.initiatePostMediaUpload(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -756,9 +756,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func getPostMediaStatus(
-        request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest>,
+        request: GRPCCore.StreamingServerRequest<Mixi2GetPostMediaStatusRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetPostMediaStatusResponse> {
         let response = try await self.getPostMediaStatus(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -767,9 +767,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func sendChatMessage(
-        request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest>,
+        request: GRPCCore.StreamingServerRequest<Mixi2SendChatMessageRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2SendChatMessageResponse> {
         let response = try await self.sendChatMessage(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -778,9 +778,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func getStamps(
-        request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest>,
+        request: GRPCCore.StreamingServerRequest<Mixi2GetStampsRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetStampsResponse> {
         let response = try await self.getStamps(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -789,9 +789,9 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func addStampToPost(
-        request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest>,
+        request: GRPCCore.StreamingServerRequest<Mixi2AddStampToPostRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2AddStampToPostResponse> {
         let response = try await self.addStampToPost(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -802,12 +802,12 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
 
 // Default implementation of methods from 'ServiceProtocol'.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.SimpleServiceProtocol {
+extension Mixi2ApplicationService.SimpleServiceProtocol {
     public func getUsers(
-        request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest>,
+        request: GRPCCore.ServerRequest<Mixi2GetUsersRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse> {
-        return GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse>(
+    ) async throws -> GRPCCore.ServerResponse<Mixi2GetUsersResponse> {
+        return GRPCCore.ServerResponse<Mixi2GetUsersResponse>(
             message: try await self.getUsers(
                 request: request.message,
                 context: context
@@ -817,10 +817,10 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func getPosts(
-        request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest>,
+        request: GRPCCore.ServerRequest<Mixi2GetPostsRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse> {
-        return GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse>(
+    ) async throws -> GRPCCore.ServerResponse<Mixi2GetPostsResponse> {
+        return GRPCCore.ServerResponse<Mixi2GetPostsResponse>(
             message: try await self.getPosts(
                 request: request.message,
                 context: context
@@ -830,10 +830,10 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func createPost(
-        request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest>,
+        request: GRPCCore.ServerRequest<Mixi2CreatePostRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse> {
-        return GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse>(
+    ) async throws -> GRPCCore.ServerResponse<Mixi2CreatePostResponse> {
+        return GRPCCore.ServerResponse<Mixi2CreatePostResponse>(
             message: try await self.createPost(
                 request: request.message,
                 context: context
@@ -843,10 +843,10 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func initiatePostMediaUpload(
-        request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest>,
+        request: GRPCCore.ServerRequest<Mixi2InitiatePostMediaUploadRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse> {
-        return GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse>(
+    ) async throws -> GRPCCore.ServerResponse<Mixi2InitiatePostMediaUploadResponse> {
+        return GRPCCore.ServerResponse<Mixi2InitiatePostMediaUploadResponse>(
             message: try await self.initiatePostMediaUpload(
                 request: request.message,
                 context: context
@@ -856,10 +856,10 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func getPostMediaStatus(
-        request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest>,
+        request: GRPCCore.ServerRequest<Mixi2GetPostMediaStatusRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse> {
-        return GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse>(
+    ) async throws -> GRPCCore.ServerResponse<Mixi2GetPostMediaStatusResponse> {
+        return GRPCCore.ServerResponse<Mixi2GetPostMediaStatusResponse>(
             message: try await self.getPostMediaStatus(
                 request: request.message,
                 context: context
@@ -869,10 +869,10 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func sendChatMessage(
-        request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest>,
+        request: GRPCCore.ServerRequest<Mixi2SendChatMessageRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse> {
-        return GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse>(
+    ) async throws -> GRPCCore.ServerResponse<Mixi2SendChatMessageResponse> {
+        return GRPCCore.ServerResponse<Mixi2SendChatMessageResponse>(
             message: try await self.sendChatMessage(
                 request: request.message,
                 context: context
@@ -882,10 +882,10 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func getStamps(
-        request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest>,
+        request: GRPCCore.ServerRequest<Mixi2GetStampsRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse> {
-        return GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse>(
+    ) async throws -> GRPCCore.ServerResponse<Mixi2GetStampsResponse> {
+        return GRPCCore.ServerResponse<Mixi2GetStampsResponse>(
             message: try await self.getStamps(
                 request: request.message,
                 context: context
@@ -895,10 +895,10 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
     }
 
     public func addStampToPost(
-        request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest>,
+        request: GRPCCore.ServerRequest<Mixi2AddStampToPostRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse> {
-        return GRPCCore.ServerResponse<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse>(
+    ) async throws -> GRPCCore.ServerResponse<Mixi2AddStampToPostResponse> {
+        return GRPCCore.ServerResponse<Mixi2AddStampToPostResponse>(
             message: try await self.addStampToPost(
                 request: request.message,
                 context: context
@@ -911,7 +911,7 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.S
 // MARK: social.mixi.application.service.application_api.v1.ApplicationService (client)
 
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
+extension Mixi2ApplicationService {
     /// Generated client protocol for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
     ///
     /// You don't need to implement this protocol directly, use the generated
@@ -928,20 +928,20 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したユーザーIDリストに対応するユーザー情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse` messages.
+        ///   - request: A request containing a single `Mixi2GetUsersRequest` message.
+        ///   - serializer: A serializer for `Mixi2GetUsersRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2GetUsersResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func getUsers<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse>,
+            request: GRPCCore.ClientRequest<Mixi2GetUsersRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2GetUsersRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetUsersResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetUsersResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "GetPosts" method.
@@ -951,20 +951,20 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したポストIDリストに対応するポスト情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse` messages.
+        ///   - request: A request containing a single `Mixi2GetPostsRequest` message.
+        ///   - serializer: A serializer for `Mixi2GetPostsRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2GetPostsResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func getPosts<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse>,
+            request: GRPCCore.ClientRequest<Mixi2GetPostsRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2GetPostsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetPostsResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostsResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "CreatePost" method.
@@ -974,20 +974,20 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > ポストを作成します（返信/引用/メディア添付等に対応）。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse` messages.
+        ///   - request: A request containing a single `Mixi2CreatePostRequest` message.
+        ///   - serializer: A serializer for `Mixi2CreatePostRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2CreatePostResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func createPost<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse>,
+            request: GRPCCore.ClientRequest<Mixi2CreatePostRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2CreatePostRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2CreatePostResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2CreatePostResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "InitiatePostMediaUpload" method.
@@ -997,20 +997,20 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse` messages.
+        ///   - request: A request containing a single `Mixi2InitiatePostMediaUploadRequest` message.
+        ///   - serializer: A serializer for `Mixi2InitiatePostMediaUploadRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2InitiatePostMediaUploadResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func initiatePostMediaUpload<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse>,
+            request: GRPCCore.ClientRequest<Mixi2InitiatePostMediaUploadRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2InitiatePostMediaUploadRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2InitiatePostMediaUploadResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2InitiatePostMediaUploadResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "GetPostMediaStatus" method.
@@ -1020,20 +1020,20 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したメディアIDのアップロード/処理状況を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse` messages.
+        ///   - request: A request containing a single `Mixi2GetPostMediaStatusRequest` message.
+        ///   - serializer: A serializer for `Mixi2GetPostMediaStatusRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2GetPostMediaStatusResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func getPostMediaStatus<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse>,
+            request: GRPCCore.ClientRequest<Mixi2GetPostMediaStatusRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2GetPostMediaStatusRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetPostMediaStatusResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostMediaStatusResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "SendChatMessage" method.
@@ -1043,20 +1043,20 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse` messages.
+        ///   - request: A request containing a single `Mixi2SendChatMessageRequest` message.
+        ///   - serializer: A serializer for `Mixi2SendChatMessageRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2SendChatMessageResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func sendChatMessage<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse>,
+            request: GRPCCore.ClientRequest<Mixi2SendChatMessageRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2SendChatMessageRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2SendChatMessageResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2SendChatMessageResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "GetStamps" method.
@@ -1066,20 +1066,20 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > スタンプ一覧を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse` messages.
+        ///   - request: A request containing a single `Mixi2GetStampsRequest` message.
+        ///   - serializer: A serializer for `Mixi2GetStampsRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2GetStampsResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func getStamps<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse>,
+            request: GRPCCore.ClientRequest<Mixi2GetStampsRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2GetStampsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetStampsResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetStampsResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "AddStampToPost" method.
@@ -1089,20 +1089,20 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したポストにスタンプを付与します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse` messages.
+        ///   - request: A request containing a single `Mixi2AddStampToPostRequest` message.
+        ///   - serializer: A serializer for `Mixi2AddStampToPostRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2AddStampToPostResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func addStampToPost<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse>,
+            request: GRPCCore.ClientRequest<Mixi2AddStampToPostRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2AddStampToPostRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2AddStampToPostResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2AddStampToPostResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
     }
 
@@ -1133,26 +1133,26 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したユーザーIDリストに対応するユーザー情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse` messages.
+        ///   - request: A request containing a single `Mixi2GetUsersRequest` message.
+        ///   - serializer: A serializer for `Mixi2GetUsersRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2GetUsersResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func getUsers<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse>,
+            request: GRPCCore.ClientRequest<Mixi2GetUsersRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2GetUsersRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetUsersResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetUsersResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.GetUsers.descriptor,
+                descriptor: Mixi2ApplicationService.Method.GetUsers.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1167,26 +1167,26 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したポストIDリストに対応するポスト情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse` messages.
+        ///   - request: A request containing a single `Mixi2GetPostsRequest` message.
+        ///   - serializer: A serializer for `Mixi2GetPostsRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2GetPostsResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func getPosts<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse>,
+            request: GRPCCore.ClientRequest<Mixi2GetPostsRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2GetPostsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetPostsResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostsResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.GetPosts.descriptor,
+                descriptor: Mixi2ApplicationService.Method.GetPosts.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1201,26 +1201,26 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > ポストを作成します（返信/引用/メディア添付等に対応）。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse` messages.
+        ///   - request: A request containing a single `Mixi2CreatePostRequest` message.
+        ///   - serializer: A serializer for `Mixi2CreatePostRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2CreatePostResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func createPost<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse>,
+            request: GRPCCore.ClientRequest<Mixi2CreatePostRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2CreatePostRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2CreatePostResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2CreatePostResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.CreatePost.descriptor,
+                descriptor: Mixi2ApplicationService.Method.CreatePost.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1235,26 +1235,26 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse` messages.
+        ///   - request: A request containing a single `Mixi2InitiatePostMediaUploadRequest` message.
+        ///   - serializer: A serializer for `Mixi2InitiatePostMediaUploadRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2InitiatePostMediaUploadResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func initiatePostMediaUpload<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse>,
+            request: GRPCCore.ClientRequest<Mixi2InitiatePostMediaUploadRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2InitiatePostMediaUploadRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2InitiatePostMediaUploadResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2InitiatePostMediaUploadResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.InitiatePostMediaUpload.descriptor,
+                descriptor: Mixi2ApplicationService.Method.InitiatePostMediaUpload.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1269,26 +1269,26 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したメディアIDのアップロード/処理状況を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse` messages.
+        ///   - request: A request containing a single `Mixi2GetPostMediaStatusRequest` message.
+        ///   - serializer: A serializer for `Mixi2GetPostMediaStatusRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2GetPostMediaStatusResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func getPostMediaStatus<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse>,
+            request: GRPCCore.ClientRequest<Mixi2GetPostMediaStatusRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2GetPostMediaStatusRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetPostMediaStatusResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostMediaStatusResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.GetPostMediaStatus.descriptor,
+                descriptor: Mixi2ApplicationService.Method.GetPostMediaStatus.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1303,26 +1303,26 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse` messages.
+        ///   - request: A request containing a single `Mixi2SendChatMessageRequest` message.
+        ///   - serializer: A serializer for `Mixi2SendChatMessageRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2SendChatMessageResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func sendChatMessage<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse>,
+            request: GRPCCore.ClientRequest<Mixi2SendChatMessageRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2SendChatMessageRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2SendChatMessageResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2SendChatMessageResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.SendChatMessage.descriptor,
+                descriptor: Mixi2ApplicationService.Method.SendChatMessage.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1337,26 +1337,26 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > スタンプ一覧を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse` messages.
+        ///   - request: A request containing a single `Mixi2GetStampsRequest` message.
+        ///   - serializer: A serializer for `Mixi2GetStampsRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2GetStampsResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func getStamps<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse>,
+            request: GRPCCore.ClientRequest<Mixi2GetStampsRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2GetStampsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetStampsResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetStampsResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.GetStamps.descriptor,
+                descriptor: Mixi2ApplicationService.Method.GetStamps.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1371,26 +1371,26 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
         /// > 指定したポストにスタンプを付与します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse` messages.
+        ///   - request: A request containing a single `Mixi2AddStampToPostRequest` message.
+        ///   - serializer: A serializer for `Mixi2AddStampToPostRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2AddStampToPostResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func addStampToPost<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse>,
+            request: GRPCCore.ClientRequest<Mixi2AddStampToPostRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2AddStampToPostRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2AddStampToPostResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2AddStampToPostResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Method.AddStampToPost.descriptor,
+                descriptor: Mixi2ApplicationService.Method.AddStampToPost.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1402,7 +1402,7 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService {
 
 // Helpers providing default arguments to 'ClientProtocol' methods.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.ClientProtocol {
+extension Mixi2ApplicationService.ClientProtocol {
     /// Call the "GetUsers" method.
     ///
     /// > Source IDL Documentation:
@@ -1410,23 +1410,23 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     /// > 指定したユーザーIDリストに対応するユーザー情報を取得します。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest` message.
+    ///   - request: A request containing a single `Mixi2GetUsersRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getUsers<Result>(
-        request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest>,
+        request: GRPCCore.ClientRequest<Mixi2GetUsersRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetUsersResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.getUsers(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetUsersRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetUsersResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1439,23 +1439,23 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     /// > 指定したポストIDリストに対応するポスト情報を取得します。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest` message.
+    ///   - request: A request containing a single `Mixi2GetPostsRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getPosts<Result>(
-        request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest>,
+        request: GRPCCore.ClientRequest<Mixi2GetPostsRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostsResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.getPosts(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetPostsRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetPostsResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1468,23 +1468,23 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     /// > ポストを作成します（返信/引用/メディア添付等に対応）。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest` message.
+    ///   - request: A request containing a single `Mixi2CreatePostRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func createPost<Result>(
-        request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest>,
+        request: GRPCCore.ClientRequest<Mixi2CreatePostRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2CreatePostResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.createPost(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2CreatePostRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2CreatePostResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1497,23 +1497,23 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     /// > ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest` message.
+    ///   - request: A request containing a single `Mixi2InitiatePostMediaUploadRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func initiatePostMediaUpload<Result>(
-        request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest>,
+        request: GRPCCore.ClientRequest<Mixi2InitiatePostMediaUploadRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2InitiatePostMediaUploadResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.initiatePostMediaUpload(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2InitiatePostMediaUploadRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2InitiatePostMediaUploadResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1526,23 +1526,23 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     /// > 指定したメディアIDのアップロード/処理状況を取得します。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest` message.
+    ///   - request: A request containing a single `Mixi2GetPostMediaStatusRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getPostMediaStatus<Result>(
-        request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest>,
+        request: GRPCCore.ClientRequest<Mixi2GetPostMediaStatusRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostMediaStatusResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.getPostMediaStatus(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetPostMediaStatusRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetPostMediaStatusResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1555,23 +1555,23 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     /// > 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest` message.
+    ///   - request: A request containing a single `Mixi2SendChatMessageRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func sendChatMessage<Result>(
-        request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest>,
+        request: GRPCCore.ClientRequest<Mixi2SendChatMessageRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2SendChatMessageResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.sendChatMessage(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2SendChatMessageRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2SendChatMessageResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1584,23 +1584,23 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     /// > スタンプ一覧を取得します。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest` message.
+    ///   - request: A request containing a single `Mixi2GetStampsRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getStamps<Result>(
-        request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest>,
+        request: GRPCCore.ClientRequest<Mixi2GetStampsRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetStampsResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.getStamps(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetStampsRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetStampsResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1613,23 +1613,23 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     /// > 指定したポストにスタンプを付与します。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest` message.
+    ///   - request: A request containing a single `Mixi2AddStampToPostRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func addStampToPost<Result>(
-        request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest>,
+        request: GRPCCore.ClientRequest<Mixi2AddStampToPostRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2AddStampToPostResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.addStampToPost(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2AddStampToPostRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2AddStampToPostResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1638,7 +1638,7 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
 
 // Helpers providing sugared APIs for 'ClientProtocol' methods.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.ClientProtocol {
+extension Mixi2ApplicationService.ClientProtocol {
     /// Call the "GetUsers" method.
     ///
     /// > Source IDL Documentation:
@@ -1654,14 +1654,14 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getUsers<Result>(
-        _ message: Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest,
+        _ message: Mixi2GetUsersRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetUsersResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetUsersRequest>(
+        let request = GRPCCore.ClientRequest<Mixi2GetUsersRequest>(
             message: message,
             metadata: metadata
         )
@@ -1687,14 +1687,14 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getPosts<Result>(
-        _ message: Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest,
+        _ message: Mixi2GetPostsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostsResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest>(
+        let request = GRPCCore.ClientRequest<Mixi2GetPostsRequest>(
             message: message,
             metadata: metadata
         )
@@ -1720,14 +1720,14 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func createPost<Result>(
-        _ message: Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest,
+        _ message: Mixi2CreatePostRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2CreatePostResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_CreatePostRequest>(
+        let request = GRPCCore.ClientRequest<Mixi2CreatePostRequest>(
             message: message,
             metadata: metadata
         )
@@ -1753,14 +1753,14 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func initiatePostMediaUpload<Result>(
-        _ message: Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest,
+        _ message: Mixi2InitiatePostMediaUploadRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2InitiatePostMediaUploadResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_InitiatePostMediaUploadRequest>(
+        let request = GRPCCore.ClientRequest<Mixi2InitiatePostMediaUploadRequest>(
             message: message,
             metadata: metadata
         )
@@ -1786,14 +1786,14 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getPostMediaStatus<Result>(
-        _ message: Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest,
+        _ message: Mixi2GetPostMediaStatusRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostMediaStatusResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetPostMediaStatusRequest>(
+        let request = GRPCCore.ClientRequest<Mixi2GetPostMediaStatusRequest>(
             message: message,
             metadata: metadata
         )
@@ -1819,14 +1819,14 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func sendChatMessage<Result>(
-        _ message: Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest,
+        _ message: Mixi2SendChatMessageRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2SendChatMessageResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest>(
+        let request = GRPCCore.ClientRequest<Mixi2SendChatMessageRequest>(
             message: message,
             metadata: metadata
         )
@@ -1852,14 +1852,14 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getStamps<Result>(
-        _ message: Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest,
+        _ message: Mixi2GetStampsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetStampsResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_GetStampsRequest>(
+        let request = GRPCCore.ClientRequest<Mixi2GetStampsRequest>(
             message: message,
             metadata: metadata
         )
@@ -1885,14 +1885,14 @@ extension Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.C
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func addStampToPost<Result>(
-        _ message: Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest,
+        _ message: Mixi2AddStampToPostRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2AddStampToPostResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationApi_V1_AddStampToPostRequest>(
+        let request = GRPCCore.ClientRequest<Mixi2AddStampToPostRequest>(
             message: message,
             metadata: metadata
         )

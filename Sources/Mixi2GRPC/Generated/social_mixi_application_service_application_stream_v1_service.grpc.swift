@@ -15,7 +15,7 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "social.mixi.application.service.application_stream.v1.ApplicationService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-public enum Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService: Sendable {
+public enum Mixi2StreamApplicationService: Sendable {
     /// Service descriptor for the "social.mixi.application.service.application_stream.v1.ApplicationService" service.
     public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_stream.v1.ApplicationService")
     /// Namespace for method metadata.
@@ -23,9 +23,9 @@ public enum Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServ
         /// Namespace for "SubscribeEvents" metadata.
         public enum SubscribeEvents: Sendable {
             /// Request type for "SubscribeEvents".
-            public typealias Input = Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest
+            public typealias Input = Mixi2StreamSubscribeEventsRequest
             /// Response type for "SubscribeEvents".
-            public typealias Output = Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse
+            public typealias Output = Mixi2StreamSubscribeEventsResponse
             /// Descriptor for "SubscribeEvents".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_stream.v1.ApplicationService"),
@@ -42,13 +42,13 @@ public enum Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServ
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "social.mixi.application.service.application_stream.v1.ApplicationService" service.
-    public static let social_mixi_application_service_applicationStream_v1_ApplicationService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_stream.v1.ApplicationService")
+    public static let mixi2StreamApplicationService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_stream.v1.ApplicationService")
 }
 
 // MARK: social.mixi.application.service.application_stream.v1.ApplicationService (server)
 
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService {
+extension Mixi2StreamApplicationService {
     /// Streaming variant of the service protocol for the "social.mixi.application.service.application_stream.v1.ApplicationService" service.
     ///
     /// This protocol is the lowest-level of the service protocols generated for this service
@@ -71,16 +71,16 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
         /// > イベントをストリーミングで購読します。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest` messages.
+        ///   - request: A streaming request of `Mixi2StreamSubscribeEventsRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse` messages.
+        /// - Returns: A streaming response of `Mixi2StreamSubscribeEventsResponse` messages.
         func subscribeEvents(
-            request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest>,
+            request: GRPCCore.StreamingServerRequest<Mixi2StreamSubscribeEventsRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2StreamSubscribeEventsResponse>
     }
 
     /// Service protocol for the "social.mixi.application.service.application_stream.v1.ApplicationService" service.
@@ -94,7 +94,7 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
     /// > Source IDL Documentation:
     /// >
     /// > mixi2 アプリケーションサービスです。
-    public protocol ServiceProtocol: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.StreamingServiceProtocol {
+    public protocol ServiceProtocol: Mixi2StreamApplicationService.StreamingServiceProtocol {
         /// Handle the "SubscribeEvents" method.
         ///
         /// > Source IDL Documentation:
@@ -102,16 +102,16 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
         /// > イベントをストリーミングで購読します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest` message.
+        ///   - request: A request containing a single `Mixi2StreamSubscribeEventsRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse` messages.
+        /// - Returns: A streaming response of `Mixi2StreamSubscribeEventsResponse` messages.
         func subscribeEvents(
-            request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest>,
+            request: GRPCCore.ServerRequest<Mixi2StreamSubscribeEventsRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2StreamSubscribeEventsResponse>
     }
 
     /// Simple service protocol for the "social.mixi.application.service.application_stream.v1.ApplicationService" service.
@@ -123,7 +123,7 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
     /// > Source IDL Documentation:
     /// >
     /// > mixi2 アプリケーションサービスです。
-    public protocol SimpleServiceProtocol: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.ServiceProtocol {
+    public protocol SimpleServiceProtocol: Mixi2StreamApplicationService.ServiceProtocol {
         /// Handle the "SubscribeEvents" method.
         ///
         /// > Source IDL Documentation:
@@ -131,15 +131,15 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
         /// > イベントをストリーミングで購読します。
         ///
         /// - Parameters:
-        ///   - request: A `Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest` message.
-        ///   - response: A response stream of `Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse` messages.
+        ///   - request: A `Mixi2StreamSubscribeEventsRequest` message.
+        ///   - response: A response stream of `Mixi2StreamSubscribeEventsResponse` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
         func subscribeEvents(
-            request: Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest,
-            response: GRPCCore.RPCWriter<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse>,
+            request: Mixi2StreamSubscribeEventsRequest,
+            response: GRPCCore.RPCWriter<Mixi2StreamSubscribeEventsResponse>,
             context: GRPCCore.ServerContext
         ) async throws
     }
@@ -147,12 +147,12 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
 
 // Default implementation of 'registerMethods(with:)'.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.StreamingServiceProtocol {
+extension Mixi2StreamApplicationService.StreamingServiceProtocol {
     public func registerMethods<Transport>(with router: inout GRPCCore.RPCRouter<Transport>) where Transport: GRPCCore.ServerTransport {
         router.registerHandler(
-            forMethod: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.Method.SubscribeEvents.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse>(),
+            forMethod: Mixi2StreamApplicationService.Method.SubscribeEvents.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2StreamSubscribeEventsRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2StreamSubscribeEventsResponse>(),
             handler: { request, context in
                 try await self.subscribeEvents(
                     request: request,
@@ -165,11 +165,11 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
 
 // Default implementation of streaming methods from 'StreamingServiceProtocol'.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.ServiceProtocol {
+extension Mixi2StreamApplicationService.ServiceProtocol {
     public func subscribeEvents(
-        request: GRPCCore.StreamingServerRequest<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest>,
+        request: GRPCCore.StreamingServerRequest<Mixi2StreamSubscribeEventsRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2StreamSubscribeEventsResponse> {
         let response = try await self.subscribeEvents(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -180,12 +180,12 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
 
 // Default implementation of methods from 'ServiceProtocol'.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.SimpleServiceProtocol {
+extension Mixi2StreamApplicationService.SimpleServiceProtocol {
     public func subscribeEvents(
-        request: GRPCCore.ServerRequest<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest>,
+        request: GRPCCore.ServerRequest<Mixi2StreamSubscribeEventsRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse> {
-        return GRPCCore.StreamingServerResponse<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse>(
+    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2StreamSubscribeEventsResponse> {
+        return GRPCCore.StreamingServerResponse<Mixi2StreamSubscribeEventsResponse>(
             metadata: [:],
             producer: { writer in
                 try await self.subscribeEvents(
@@ -202,7 +202,7 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
 // MARK: social.mixi.application.service.application_stream.v1.ApplicationService (client)
 
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService {
+extension Mixi2StreamApplicationService {
     /// Generated client protocol for the "social.mixi.application.service.application_stream.v1.ApplicationService" service.
     ///
     /// You don't need to implement this protocol directly, use the generated
@@ -219,20 +219,20 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
         /// > イベントをストリーミングで購読します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse` messages.
+        ///   - request: A request containing a single `Mixi2StreamSubscribeEventsRequest` message.
+        ///   - serializer: A serializer for `Mixi2StreamSubscribeEventsRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2StreamSubscribeEventsResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func subscribeEvents<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse>,
+            request: GRPCCore.ClientRequest<Mixi2StreamSubscribeEventsRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2StreamSubscribeEventsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2StreamSubscribeEventsResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.StreamingClientResponse<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.StreamingClientResponse<Mixi2StreamSubscribeEventsResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
     }
 
@@ -263,24 +263,24 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
         /// > イベントをストリーミングで購読します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest` message.
-        ///   - serializer: A serializer for `Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest` messages.
-        ///   - deserializer: A deserializer for `Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse` messages.
+        ///   - request: A request containing a single `Mixi2StreamSubscribeEventsRequest` message.
+        ///   - serializer: A serializer for `Mixi2StreamSubscribeEventsRequest` messages.
+        ///   - deserializer: A deserializer for `Mixi2StreamSubscribeEventsResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func subscribeEvents<Result>(
-            request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest>,
-            serializer: some GRPCCore.MessageSerializer<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse>,
+            request: GRPCCore.ClientRequest<Mixi2StreamSubscribeEventsRequest>,
+            serializer: some GRPCCore.MessageSerializer<Mixi2StreamSubscribeEventsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Mixi2StreamSubscribeEventsResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.StreamingClientResponse<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.StreamingClientResponse<Mixi2StreamSubscribeEventsResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable {
             try await self.client.serverStreaming(
                 request: request,
-                descriptor: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.Method.SubscribeEvents.descriptor,
+                descriptor: Mixi2StreamApplicationService.Method.SubscribeEvents.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -292,7 +292,7 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
 
 // Helpers providing default arguments to 'ClientProtocol' methods.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.ClientProtocol {
+extension Mixi2StreamApplicationService.ClientProtocol {
     /// Call the "SubscribeEvents" method.
     ///
     /// > Source IDL Documentation:
@@ -300,21 +300,21 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
     /// > イベントをストリーミングで購読します。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest` message.
+    ///   - request: A request containing a single `Mixi2StreamSubscribeEventsRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func subscribeEvents<Result>(
-        request: GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest>,
+        request: GRPCCore.ClientRequest<Mixi2StreamSubscribeEventsRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.StreamingClientResponse<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse>) async throws -> Result
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.StreamingClientResponse<Mixi2StreamSubscribeEventsResponse>) async throws -> Result
     ) async throws -> Result where Result: Sendable {
         try await self.subscribeEvents(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2StreamSubscribeEventsRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2StreamSubscribeEventsResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -323,7 +323,7 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
 
 // Helpers providing sugared APIs for 'ClientProtocol' methods.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.ClientProtocol {
+extension Mixi2StreamApplicationService.ClientProtocol {
     /// Call the "SubscribeEvents" method.
     ///
     /// > Source IDL Documentation:
@@ -339,12 +339,12 @@ extension Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationServic
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func subscribeEvents<Result>(
-        _ message: Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest,
+        _ message: Mixi2StreamSubscribeEventsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.StreamingClientResponse<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsResponse>) async throws -> Result
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.StreamingClientResponse<Mixi2StreamSubscribeEventsResponse>) async throws -> Result
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Social_Mixi_Application_Service_ApplicationStream_V1_SubscribeEventsRequest>(
+        let request = GRPCCore.ClientRequest<Mixi2StreamSubscribeEventsRequest>(
             message: message,
             metadata: metadata
         )

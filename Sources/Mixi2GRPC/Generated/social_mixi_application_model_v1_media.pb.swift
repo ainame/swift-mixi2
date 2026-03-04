@@ -21,31 +21,31 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// メディアを表します。
-public struct Social_Mixi_Application_Model_V1_Media: Sendable {
+public struct Mixi2Media: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// メディアの種別です。
-  public var mediaType: Social_Mixi_Application_Const_V1_MediaType = .unspecified
+  public var mediaType: Mixi2MediaType = .unspecified
 
   /// メディアの種別に応じた詳細情報です。
-  public var content: Social_Mixi_Application_Model_V1_Media.OneOf_Content? = nil
+  public var content: Mixi2Media.OneOf_Content? = nil
 
   /// media_type が MEDIA_TYPE_IMAGE の場合に設定されます。
-  public var image: Social_Mixi_Application_Model_V1_MediaImage {
+  public var image: Mixi2MediaImage {
     get {
       if case .image(let v)? = content {return v}
-      return Social_Mixi_Application_Model_V1_MediaImage()
+      return Mixi2MediaImage()
     }
     set {content = .image(newValue)}
   }
 
   /// media_type が MEDIA_TYPE_VIDEO の場合に設定されます。
-  public var video: Social_Mixi_Application_Model_V1_MediaVideo {
+  public var video: Mixi2MediaVideo {
     get {
       if case .video(let v)? = content {return v}
-      return Social_Mixi_Application_Model_V1_MediaVideo()
+      return Mixi2MediaVideo()
     }
     set {content = .video(newValue)}
   }
@@ -55,9 +55,9 @@ public struct Social_Mixi_Application_Model_V1_Media: Sendable {
   /// メディアの種別に応じた詳細情報です。
   public enum OneOf_Content: Equatable, Sendable {
     /// media_type が MEDIA_TYPE_IMAGE の場合に設定されます。
-    case image(Social_Mixi_Application_Model_V1_MediaImage)
+    case image(Mixi2MediaImage)
     /// media_type が MEDIA_TYPE_VIDEO の場合に設定されます。
-    case video(Social_Mixi_Application_Model_V1_MediaVideo)
+    case video(Mixi2MediaVideo)
 
   }
 
@@ -65,7 +65,7 @@ public struct Social_Mixi_Application_Model_V1_Media: Sendable {
 }
 
 /// 画像の情報を表します。
-public struct Social_Mixi_Application_Model_V1_MediaImage: Sendable {
+public struct Mixi2MediaImage: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -100,7 +100,7 @@ public struct Social_Mixi_Application_Model_V1_MediaImage: Sendable {
 }
 
 /// 動画の情報を表します。
-public struct Social_Mixi_Application_Model_V1_MediaVideo: Sendable {
+public struct Mixi2MediaVideo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -138,7 +138,7 @@ public struct Social_Mixi_Application_Model_V1_MediaVideo: Sendable {
 }
 
 /// スタンプ画像の情報を表します。
-public struct Social_Mixi_Application_Model_V1_MediaStamp: Sendable {
+public struct Mixi2MediaStamp: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -164,7 +164,7 @@ public struct Social_Mixi_Application_Model_V1_MediaStamp: Sendable {
 
 fileprivate let _protobuf_package = "social.mixi.application.model.v1"
 
-extension Social_Mixi_Application_Model_V1_Media: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Mixi2Media: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Media"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}media_type\0\u{1}image\0\u{1}video\0")
 
@@ -176,7 +176,7 @@ extension Social_Mixi_Application_Model_V1_Media: SwiftProtobuf.Message, SwiftPr
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularEnumField(value: &self.mediaType) }()
       case 2: try {
-        var v: Social_Mixi_Application_Model_V1_MediaImage?
+        var v: Mixi2MediaImage?
         var hadOneofValue = false
         if let current = self.content {
           hadOneofValue = true
@@ -189,7 +189,7 @@ extension Social_Mixi_Application_Model_V1_Media: SwiftProtobuf.Message, SwiftPr
         }
       }()
       case 3: try {
-        var v: Social_Mixi_Application_Model_V1_MediaVideo?
+        var v: Mixi2MediaVideo?
         var hadOneofValue = false
         if let current = self.content {
           hadOneofValue = true
@@ -228,7 +228,7 @@ extension Social_Mixi_Application_Model_V1_Media: SwiftProtobuf.Message, SwiftPr
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Social_Mixi_Application_Model_V1_Media, rhs: Social_Mixi_Application_Model_V1_Media) -> Bool {
+  public static func ==(lhs: Mixi2Media, rhs: Mixi2Media) -> Bool {
     if lhs.mediaType != rhs.mediaType {return false}
     if lhs.content != rhs.content {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -236,7 +236,7 @@ extension Social_Mixi_Application_Model_V1_Media: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Social_Mixi_Application_Model_V1_MediaImage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Mixi2MediaImage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MediaImage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}large_image_url\0\u{3}large_image_mime_type\0\u{3}large_image_height\0\u{3}large_image_width\0\u{3}small_image_url\0\u{3}small_image_mime_type\0\u{3}small_image_height\0\u{3}small_image_width\0")
 
@@ -287,7 +287,7 @@ extension Social_Mixi_Application_Model_V1_MediaImage: SwiftProtobuf.Message, Sw
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Social_Mixi_Application_Model_V1_MediaImage, rhs: Social_Mixi_Application_Model_V1_MediaImage) -> Bool {
+  public static func ==(lhs: Mixi2MediaImage, rhs: Mixi2MediaImage) -> Bool {
     if lhs.largeImageURL != rhs.largeImageURL {return false}
     if lhs.largeImageMimeType != rhs.largeImageMimeType {return false}
     if lhs.largeImageHeight != rhs.largeImageHeight {return false}
@@ -301,7 +301,7 @@ extension Social_Mixi_Application_Model_V1_MediaImage: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Social_Mixi_Application_Model_V1_MediaVideo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Mixi2MediaVideo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MediaVideo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}video_url\0\u{3}video_mime_type\0\u{3}video_height\0\u{3}video_width\0\u{3}preview_image_url\0\u{3}preview_image_mime_type\0\u{3}preview_image_height\0\u{3}preview_image_width\0\u{1}duration\0")
 
@@ -356,7 +356,7 @@ extension Social_Mixi_Application_Model_V1_MediaVideo: SwiftProtobuf.Message, Sw
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Social_Mixi_Application_Model_V1_MediaVideo, rhs: Social_Mixi_Application_Model_V1_MediaVideo) -> Bool {
+  public static func ==(lhs: Mixi2MediaVideo, rhs: Mixi2MediaVideo) -> Bool {
     if lhs.videoURL != rhs.videoURL {return false}
     if lhs.videoMimeType != rhs.videoMimeType {return false}
     if lhs.videoHeight != rhs.videoHeight {return false}
@@ -371,7 +371,7 @@ extension Social_Mixi_Application_Model_V1_MediaVideo: SwiftProtobuf.Message, Sw
   }
 }
 
-extension Social_Mixi_Application_Model_V1_MediaStamp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Mixi2MediaStamp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".MediaStamp"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}url\0\u{3}mime_type\0\u{1}height\0\u{1}width\0")
 
@@ -406,7 +406,7 @@ extension Social_Mixi_Application_Model_V1_MediaStamp: SwiftProtobuf.Message, Sw
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Social_Mixi_Application_Model_V1_MediaStamp, rhs: Social_Mixi_Application_Model_V1_MediaStamp) -> Bool {
+  public static func ==(lhs: Mixi2MediaStamp, rhs: Mixi2MediaStamp) -> Bool {
     if lhs.url != rhs.url {return false}
     if lhs.mimeType != rhs.mimeType {return false}
     if lhs.height != rhs.height {return false}

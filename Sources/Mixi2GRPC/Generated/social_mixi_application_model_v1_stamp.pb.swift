@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// 公式スタンプセットを表します。
-public struct Social_Mixi_Application_Model_V1_OfficialStampSet: Sendable {
+public struct Mixi2OfficialStampSet: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -33,7 +33,7 @@ public struct Social_Mixi_Application_Model_V1_OfficialStampSet: Sendable {
   public var spriteURL: String = String()
 
   /// スタンプセットに含まれるスタンプ一覧です。
-  public var stamps: [Social_Mixi_Application_Model_V1_OfficialStamp] = []
+  public var stamps: [Mixi2OfficialStamp] = []
 
   /// スタンプセットIDです。
   public var stampSetID: String = String()
@@ -59,7 +59,7 @@ public struct Social_Mixi_Application_Model_V1_OfficialStampSet: Sendable {
   public mutating func clearEndAt() {self._endAt = nil}
 
   /// スタンプセットのタイプです。
-  public var stampSetType: Social_Mixi_Application_Const_V1_StampSetType = .unspecified
+  public var stampSetType: Mixi2StampSetType = .unspecified
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -70,7 +70,7 @@ public struct Social_Mixi_Application_Model_V1_OfficialStampSet: Sendable {
 }
 
 /// 公式スタンプを表します。
-public struct Social_Mixi_Application_Model_V1_OfficialStamp: Sendable {
+public struct Mixi2OfficialStamp: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -96,7 +96,7 @@ public struct Social_Mixi_Application_Model_V1_OfficialStamp: Sendable {
 
 fileprivate let _protobuf_package = "social.mixi.application.model.v1"
 
-extension Social_Mixi_Application_Model_V1_OfficialStampSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Mixi2OfficialStampSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".OfficialStampSet"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}name\0\u{3}sprite_url\0\u{1}stamps\0\u{3}stamp_set_id\0\u{3}start_at\0\u{3}end_at\0\u{3}stamp_set_type\0")
 
@@ -147,7 +147,7 @@ extension Social_Mixi_Application_Model_V1_OfficialStampSet: SwiftProtobuf.Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Social_Mixi_Application_Model_V1_OfficialStampSet, rhs: Social_Mixi_Application_Model_V1_OfficialStampSet) -> Bool {
+  public static func ==(lhs: Mixi2OfficialStampSet, rhs: Mixi2OfficialStampSet) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs.spriteURL != rhs.spriteURL {return false}
     if lhs.stamps != rhs.stamps {return false}
@@ -160,7 +160,7 @@ extension Social_Mixi_Application_Model_V1_OfficialStampSet: SwiftProtobuf.Messa
   }
 }
 
-extension Social_Mixi_Application_Model_V1_OfficialStamp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Mixi2OfficialStamp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".OfficialStamp"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}stamp_id\0\u{1}index\0\u{3}search_tags\0\u{1}url\0")
 
@@ -195,7 +195,7 @@ extension Social_Mixi_Application_Model_V1_OfficialStamp: SwiftProtobuf.Message,
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Social_Mixi_Application_Model_V1_OfficialStamp, rhs: Social_Mixi_Application_Model_V1_OfficialStamp) -> Bool {
+  public static func ==(lhs: Mixi2OfficialStamp, rhs: Mixi2OfficialStamp) -> Bool {
     if lhs.stampID != rhs.stampID {return false}
     if lhs.index != rhs.index {return false}
     if lhs.searchTags != rhs.searchTags {return false}

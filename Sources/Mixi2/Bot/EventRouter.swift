@@ -1,3 +1,4 @@
+import Mixi2GRPC
 import Synchronization
 
 /// Routes incoming mixi2 events to typed handlers.
@@ -15,7 +16,7 @@ import Synchronization
 ///     print("new post:", event.post.content)
 /// }
 /// router.on(ChatMessageReceivedEvent.self) { context, event in
-///     var reply = Social_Mixi_Application_Service_ApplicationApi_V1_SendChatMessageRequest()
+///     var reply = Mixi2SendChatMessageRequest()
 ///     reply.roomID = event.message.roomID
 ///     reply.text = event.message.text
 ///     _ = try await context.applicationService.sendChatMessage(reply)

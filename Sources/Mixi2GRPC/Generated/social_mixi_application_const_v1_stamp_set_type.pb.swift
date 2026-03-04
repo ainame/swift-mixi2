@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// 公式スタンプセットの種別を示す列挙型
-public enum Social_Mixi_Application_Const_V1_StampSetType: SwiftProtobuf.Enum, Swift.CaseIterable {
+public enum Mixi2StampSetType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
 
   /// 未指定
@@ -57,7 +57,7 @@ public enum Social_Mixi_Application_Const_V1_StampSetType: SwiftProtobuf.Enum, S
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static let allCases: [Social_Mixi_Application_Const_V1_StampSetType] = [
+  public static let allCases: [Mixi2StampSetType] = [
     .unspecified,
     .default,
     .seasonal,
@@ -67,6 +67,6 @@ public enum Social_Mixi_Application_Const_V1_StampSetType: SwiftProtobuf.Enum, S
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-extension Social_Mixi_Application_Const_V1_StampSetType: SwiftProtobuf._ProtoNameProviding {
+extension Mixi2StampSetType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STAMP_SET_TYPE_UNSPECIFIED\0\u{1}STAMP_SET_TYPE_DEFAULT\0\u{1}STAMP_SET_TYPE_SEASONAL\0")
 }

@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// ポストの公開設定を示す列挙型
-public enum Social_Mixi_Application_Const_V1_PostAccessLevel: SwiftProtobuf.Enum, Swift.CaseIterable {
+public enum Mixi2PostAccessLevel: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
 
   /// 未指定
@@ -57,7 +57,7 @@ public enum Social_Mixi_Application_Const_V1_PostAccessLevel: SwiftProtobuf.Enum
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static let allCases: [Social_Mixi_Application_Const_V1_PostAccessLevel] = [
+  public static let allCases: [Mixi2PostAccessLevel] = [
     .unspecified,
     .public,
     .private,
@@ -67,6 +67,6 @@ public enum Social_Mixi_Application_Const_V1_PostAccessLevel: SwiftProtobuf.Enum
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-extension Social_Mixi_Application_Const_V1_PostAccessLevel: SwiftProtobuf._ProtoNameProviding {
+extension Mixi2PostAccessLevel: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0POST_ACCESS_LEVEL_UNSPECIFIED\0\u{1}POST_ACCESS_LEVEL_PUBLIC\0\u{1}POST_ACCESS_LEVEL_PRIVATE\0")
 }

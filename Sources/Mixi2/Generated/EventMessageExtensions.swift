@@ -3,20 +3,16 @@
 
 import Mixi2GRPC
 
-public typealias PostCreatedEvent = Social_Mixi_Application_Model_V1_PostCreatedEvent
-
 @available(macOS 15.0, iOS 18.0, *)
-extension PostCreatedEvent: Mixi2EventMessage {
+extension Mixi2PostCreatedEvent: Mixi2EventMessage {
     public static func extract(from event: Mixi2Event) -> Self? {
         guard case .postCreatedEvent(let e) = event.body else { return nil }
         return e
     }
 }
 
-public typealias ChatMessageReceivedEvent = Social_Mixi_Application_Model_V1_ChatMessageReceivedEvent
-
 @available(macOS 15.0, iOS 18.0, *)
-extension ChatMessageReceivedEvent: Mixi2EventMessage {
+extension Mixi2ChatMessageReceivedEvent: Mixi2EventMessage {
     public static func extract(from event: Mixi2Event) -> Self? {
         guard case .chatMessageReceivedEvent(let e) = event.body else { return nil }
         return e

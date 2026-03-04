@@ -21,13 +21,13 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// Webhook によるイベント送信リクエストです。
-public struct Social_Mixi_Application_Service_ClientEndpoint_V1_SendEventRequest: Sendable {
+public struct Mixi2SendEventRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// 送信するイベントの一覧です。
-  public var events: [Social_Mixi_Application_Model_V1_Event] = []
+  public var events: [Mixi2Event] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -38,7 +38,7 @@ public struct Social_Mixi_Application_Service_ClientEndpoint_V1_SendEventRequest
 
 fileprivate let _protobuf_package = "social.mixi.application.service.client_endpoint.v1"
 
-extension Social_Mixi_Application_Service_ClientEndpoint_V1_SendEventRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Mixi2SendEventRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SendEventRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}events\0")
 
@@ -61,7 +61,7 @@ extension Social_Mixi_Application_Service_ClientEndpoint_V1_SendEventRequest: Sw
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Social_Mixi_Application_Service_ClientEndpoint_V1_SendEventRequest, rhs: Social_Mixi_Application_Service_ClientEndpoint_V1_SendEventRequest) -> Bool {
+  public static func ==(lhs: Mixi2SendEventRequest, rhs: Mixi2SendEventRequest) -> Bool {
     if lhs.events != rhs.events {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

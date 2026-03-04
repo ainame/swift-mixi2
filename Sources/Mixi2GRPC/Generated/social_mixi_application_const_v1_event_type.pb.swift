@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// イベントの発生理由を示す列挙型
-public enum Social_Mixi_Application_Const_V1_EventReason: SwiftProtobuf.Enum, Swift.CaseIterable {
+public enum Mixi2EventReason: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
 
   /// 未指定
@@ -72,7 +72,7 @@ public enum Social_Mixi_Application_Const_V1_EventReason: SwiftProtobuf.Enum, Sw
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static let allCases: [Social_Mixi_Application_Const_V1_EventReason] = [
+  public static let allCases: [Mixi2EventReason] = [
     .unspecified,
     .ping,
     .postReply,
@@ -84,7 +84,7 @@ public enum Social_Mixi_Application_Const_V1_EventReason: SwiftProtobuf.Enum, Sw
 }
 
 /// イベントの種別を示す列挙型
-public enum Social_Mixi_Application_Const_V1_EventType: SwiftProtobuf.Enum, Swift.CaseIterable {
+public enum Mixi2EventType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
 
   /// 未指定
@@ -125,7 +125,7 @@ public enum Social_Mixi_Application_Const_V1_EventType: SwiftProtobuf.Enum, Swif
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static let allCases: [Social_Mixi_Application_Const_V1_EventType] = [
+  public static let allCases: [Mixi2EventType] = [
     .unspecified,
     .ping,
     .postCreated,
@@ -136,10 +136,10 @@ public enum Social_Mixi_Application_Const_V1_EventType: SwiftProtobuf.Enum, Swif
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-extension Social_Mixi_Application_Const_V1_EventReason: SwiftProtobuf._ProtoNameProviding {
+extension Mixi2EventReason: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EVENT_REASON_UNSPECIFIED\0\u{1}EVENT_REASON_PING\0\u{1}EVENT_REASON_POST_REPLY\0\u{1}EVENT_REASON_POST_MENTIONED\0\u{1}EVENT_REASON_POST_QUOTED\0\u{2}\u{4}EVENT_REASON_DIRECT_MESSAGE_RECEIVED\0")
 }
 
-extension Social_Mixi_Application_Const_V1_EventType: SwiftProtobuf._ProtoNameProviding {
+extension Mixi2EventType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EVENT_TYPE_UNSPECIFIED\0\u{1}EVENT_TYPE_PING\0\u{1}EVENT_TYPE_POST_CREATED\0\u{2}\u{2}EVENT_TYPE_CHAT_MESSAGE_RECEIVED\0")
 }
