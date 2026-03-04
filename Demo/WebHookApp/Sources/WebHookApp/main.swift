@@ -1,3 +1,4 @@
+import Crypto
 import Foundation
 import HTTPTypes
 import Hummingbird
@@ -9,13 +10,29 @@ guard let publicKeyHex = ProcessInfo.processInfo.environment["MIXI2_PUBLIC_KEY"]
     fputs("Error: MIXI2_PUBLIC_KEY is not set\n", stderr)
     exit(1)
 }
-guard let publicKeyBytes = Data(hexEncoded: publicKeyHex) else {
-    fputs("Error: MIXI2_PUBLIC_KEY is not valid hex\n", stderr)
+
+let publicKey: Curve25519.Signing.PublicKey
+do {
+    guard publicKeyHex.count.isMultiple(of: 2) else { throw CryptoKitError.incorrectKeySize }
+    var bytes = [UInt8]()
+    bytes.reserveCapacity(publicKeyHex.count / 2)
+    var index = publicKeyHex.startIndex
+    while index < publicKeyHex.endIndex {
+        let next = publicKeyHex.index(index, offsetBy: 2)
+        guard let byte = UInt8(publicKeyHex[index..<next], radix: 16) else {
+            throw CryptoKitError.incorrectKeySize
+        }
+        bytes.append(byte)
+        index = next
+    }
+    publicKey = try Curve25519.Signing.PublicKey(rawRepresentation: bytes)
+} catch {
+    fputs("Error: MIXI2_PUBLIC_KEY is not a valid Ed25519 public key: \(error)\n", stderr)
     exit(1)
 }
 
 let clientConfiguration = try Mixi2Client.Configuration.fromEnvironment()
-let webhookHandler = try WebhookHandler(publicKeyBytes: publicKeyBytes)
+let webhookHandler = WebhookHandler(publicKey: publicKey)
 let mixi2Client = try Mixi2Client(configuration: clientConfiguration)
 
 let port = Int(ProcessInfo.processInfo.environment["MIXI2_WEBHOOK_PORT"] ?? "8080") ?? 8080
@@ -77,21 +94,4 @@ try await withThrowingTaskGroup(of: Void.self) { group in
         try await app.runService()
     }
     try await group.waitForAll()
-}
-
-// MARK: - Helpers
-
-extension Data {
-    init?(hexEncoded hex: String) {
-        guard hex.count.isMultiple(of: 2) else { return nil }
-        var data = Data(capacity: hex.count / 2)
-        var index = hex.startIndex
-        while index < hex.endIndex {
-            let next = hex.index(index, offsetBy: 2)
-            guard let byte = UInt8(hex[index..<next], radix: 16) else { return nil }
-            data.append(byte)
-            index = next
-        }
-        self = data
-    }
 }
