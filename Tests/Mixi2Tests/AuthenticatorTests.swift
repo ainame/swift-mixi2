@@ -23,7 +23,7 @@ struct AuthenticatorTests {
 
     @Test("Throws configured error")
     func throwsError() async throws {
-        let auth = MockAuthenticator(token: "", error: AuthError.tokenFetchFailed(statusCode: 401))
+        let auth = MockAuthenticator(token: "", error: AuthError.tokenFetchFailed(statusCode: 401, body: ""))
         await #expect(throws: AuthError.self) {
             _ = try await auth.accessToken()
         }

@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.2
 import PackageDescription
 
 let package = Package(
@@ -35,7 +35,10 @@ let package = Package(
                 .product(name: "Crypto", package: "swift-crypto"),
                 .product(name: "Configuration", package: "swift-configuration"),
             ],
-            path: "Sources/Mixi2"
+            path: "Sources/Mixi2",
+            swiftSettings: [
+                .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+            ]
         ),
         .testTarget(
             name: "Mixi2Tests",

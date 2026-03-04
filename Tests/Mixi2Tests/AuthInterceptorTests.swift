@@ -71,7 +71,7 @@ struct AuthInterceptorTests {
 
     @Test("Propagates authentication error")
     func propagatesAuthError() async throws {
-        let auth = MockAuthenticator(token: "", error: AuthError.tokenFetchFailed(statusCode: 401))
+        let auth = MockAuthenticator(token: "", error: AuthError.tokenFetchFailed(statusCode: 401, body: ""))
         let interceptor = AuthClientInterceptor(authenticator: auth)
         let request = StreamingClientRequest<DummyMessage>(metadata: [:]) { _ in }
         let context = makeContext()

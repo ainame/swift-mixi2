@@ -11,10 +11,11 @@ public struct AuthClientInterceptor: ClientInterceptor {
         self.authKey = authKey
     }
 
+    @concurrent
     public func intercept<Input: Sendable, Output: Sendable>(
         request: StreamingClientRequest<Input>,
         context: ClientContext,
-        next: (
+        next: @concurrent (
             _ request: StreamingClientRequest<Input>,
             _ context: ClientContext
         ) async throws -> StreamingClientResponse<Output>

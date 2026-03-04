@@ -22,11 +22,14 @@ public struct EventStream: AsyncSequence {
         AsyncIterator(client: client)
     }
 
-    public struct AsyncIterator: AsyncIteratorProtocol {
+    /// - Note: Implemented as a `final class` (rather than a `struct`) so that `@concurrent`
+    ///   can be applied to `next()`: the method must run on the global cooperative executor to
+    ///   match `AsyncThrowingStream.AsyncIterator.next()` under `NonisolatedNonsendingByDefault`.
+    ///   `@unchecked Sendable` is safe here because `AsyncIteratorProtocol` guarantees that
+    ///   `next()` is never called concurrently — all state mutations are therefore serial.
+    public final class AsyncIterator: AsyncIteratorProtocol, @unchecked Sendable {
         private let client: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.ClientProtocol
-        private var buffer: [Mixi2Event] = []
-        private var finished = false
-        private var streamTask: Task<Void, Error>?
+        private var streamTask: Task<Void, Never>?
         private var continuation: AsyncThrowingStream<Mixi2Event, Error>.Continuation?
         private var inner: AsyncThrowingStream<Mixi2Event, Error>.AsyncIterator?
 
@@ -34,16 +37,20 @@ public struct EventStream: AsyncSequence {
             self.client = client
         }
 
-        public mutating func next() async throws -> Mixi2Event? {
+        @concurrent
+        public func next() async throws -> Mixi2Event? {
             if inner == nil {
                 let (stream, continuation) = AsyncThrowingStream<Mixi2Event, Error>.makeStream()
                 self.continuation = continuation
                 self.inner = stream.makeAsyncIterator()
                 let c = client
                 let cont = continuation
-                Task {
+                let task = Task {
                     await withReconnect(client: c, continuation: cont)
                 }
+                // Cancel the reconnect task when the stream is terminated (e.g. caller cancels iteration).
+                continuation.onTermination = { _ in task.cancel() }
+                self.streamTask = task
             }
             return try await inner?.next()
         }
@@ -51,6 +58,7 @@ public struct EventStream: AsyncSequence {
 }
 
 @available(macOS 15.0, iOS 18.0, *)
+@concurrent
 private func withReconnect(
     client: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.ClientProtocol,
     continuation: AsyncThrowingStream<Mixi2Event, Error>.Continuation
@@ -82,7 +90,13 @@ private func withReconnect(
             }
             attempt += 1
             let delay = UInt64(1 << (attempt - 1)) * 1_000_000_000  // 1s, 2s, 4s
-            try? await Task.sleep(nanoseconds: delay)
+            do {
+                try await Task.sleep(nanoseconds: delay)
+            } catch {
+                // Cancelled during backoff — stop retrying cleanly.
+                continuation.finish()
+                return
+            }
         }
     }
 }
