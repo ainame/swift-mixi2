@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// ユーザーを閲覧できるか示す列挙型
-public enum Mixi2UserVisibility: SwiftProtobuf.Enum, Swift.CaseIterable {
+public enum UserVisibility: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
 
   /// 未指定
@@ -57,7 +57,7 @@ public enum Mixi2UserVisibility: SwiftProtobuf.Enum, Swift.CaseIterable {
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static let allCases: [Mixi2UserVisibility] = [
+  public static let allCases: [UserVisibility] = [
     .unspecified,
     .visible,
     .invisible,
@@ -67,6 +67,6 @@ public enum Mixi2UserVisibility: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-extension Mixi2UserVisibility: SwiftProtobuf._ProtoNameProviding {
+extension UserVisibility: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0USER_VISIBILITY_UNSPECIFIED\0\u{1}USER_VISIBILITY_VISIBLE\0\u{1}USER_VISIBILITY_INVISIBLE\0")
 }

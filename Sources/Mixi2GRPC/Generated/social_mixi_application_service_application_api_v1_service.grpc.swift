@@ -15,7 +15,7 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-public enum Mixi2ApplicationService: Sendable {
+public enum ApplicationService: Sendable {
     /// Service descriptor for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
     public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService")
     /// Namespace for method metadata.
@@ -23,9 +23,9 @@ public enum Mixi2ApplicationService: Sendable {
         /// Namespace for "GetUsers" metadata.
         public enum GetUsers: Sendable {
             /// Request type for "GetUsers".
-            public typealias Input = Mixi2GetUsersRequest
+            public typealias Input = GetUsersRequest
             /// Response type for "GetUsers".
-            public typealias Output = Mixi2GetUsersResponse
+            public typealias Output = GetUsersResponse
             /// Descriptor for "GetUsers".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -35,9 +35,9 @@ public enum Mixi2ApplicationService: Sendable {
         /// Namespace for "GetPosts" metadata.
         public enum GetPosts: Sendable {
             /// Request type for "GetPosts".
-            public typealias Input = Mixi2GetPostsRequest
+            public typealias Input = GetPostsRequest
             /// Response type for "GetPosts".
-            public typealias Output = Mixi2GetPostsResponse
+            public typealias Output = GetPostsResponse
             /// Descriptor for "GetPosts".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -47,9 +47,9 @@ public enum Mixi2ApplicationService: Sendable {
         /// Namespace for "CreatePost" metadata.
         public enum CreatePost: Sendable {
             /// Request type for "CreatePost".
-            public typealias Input = Mixi2CreatePostRequest
+            public typealias Input = CreatePostRequest
             /// Response type for "CreatePost".
-            public typealias Output = Mixi2CreatePostResponse
+            public typealias Output = CreatePostResponse
             /// Descriptor for "CreatePost".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -59,9 +59,9 @@ public enum Mixi2ApplicationService: Sendable {
         /// Namespace for "InitiatePostMediaUpload" metadata.
         public enum InitiatePostMediaUpload: Sendable {
             /// Request type for "InitiatePostMediaUpload".
-            public typealias Input = Mixi2InitiatePostMediaUploadRequest
+            public typealias Input = InitiatePostMediaUploadRequest
             /// Response type for "InitiatePostMediaUpload".
-            public typealias Output = Mixi2InitiatePostMediaUploadResponse
+            public typealias Output = InitiatePostMediaUploadResponse
             /// Descriptor for "InitiatePostMediaUpload".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -71,9 +71,9 @@ public enum Mixi2ApplicationService: Sendable {
         /// Namespace for "GetPostMediaStatus" metadata.
         public enum GetPostMediaStatus: Sendable {
             /// Request type for "GetPostMediaStatus".
-            public typealias Input = Mixi2GetPostMediaStatusRequest
+            public typealias Input = GetPostMediaStatusRequest
             /// Response type for "GetPostMediaStatus".
-            public typealias Output = Mixi2GetPostMediaStatusResponse
+            public typealias Output = GetPostMediaStatusResponse
             /// Descriptor for "GetPostMediaStatus".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -83,9 +83,9 @@ public enum Mixi2ApplicationService: Sendable {
         /// Namespace for "SendChatMessage" metadata.
         public enum SendChatMessage: Sendable {
             /// Request type for "SendChatMessage".
-            public typealias Input = Mixi2SendChatMessageRequest
+            public typealias Input = SendChatMessageRequest
             /// Response type for "SendChatMessage".
-            public typealias Output = Mixi2SendChatMessageResponse
+            public typealias Output = SendChatMessageResponse
             /// Descriptor for "SendChatMessage".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -95,9 +95,9 @@ public enum Mixi2ApplicationService: Sendable {
         /// Namespace for "GetStamps" metadata.
         public enum GetStamps: Sendable {
             /// Request type for "GetStamps".
-            public typealias Input = Mixi2GetStampsRequest
+            public typealias Input = GetStampsRequest
             /// Response type for "GetStamps".
-            public typealias Output = Mixi2GetStampsResponse
+            public typealias Output = GetStampsResponse
             /// Descriptor for "GetStamps".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -107,9 +107,9 @@ public enum Mixi2ApplicationService: Sendable {
         /// Namespace for "AddStampToPost" metadata.
         public enum AddStampToPost: Sendable {
             /// Request type for "AddStampToPost".
-            public typealias Input = Mixi2AddStampToPostRequest
+            public typealias Input = AddStampToPostRequest
             /// Response type for "AddStampToPost".
-            public typealias Output = Mixi2AddStampToPostResponse
+            public typealias Output = AddStampToPostResponse
             /// Descriptor for "AddStampToPost".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
@@ -133,13 +133,13 @@ public enum Mixi2ApplicationService: Sendable {
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
-    public static let mixi2ApplicationService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService")
+    public static let ApplicationService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService")
 }
 
 // MARK: social.mixi.application.service.application_api.v1.ApplicationService (server)
 
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Mixi2ApplicationService {
+extension ApplicationService {
     /// Streaming variant of the service protocol for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
     ///
     /// This protocol is the lowest-level of the service protocols generated for this service
@@ -162,16 +162,16 @@ extension Mixi2ApplicationService {
         /// > 指定したユーザーIDリストに対応するユーザー情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Mixi2GetUsersRequest` messages.
+        ///   - request: A streaming request of `GetUsersRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Mixi2GetUsersResponse` messages.
+        /// - Returns: A streaming response of `GetUsersResponse` messages.
         func getUsers(
-            request: GRPCCore.StreamingServerRequest<Mixi2GetUsersRequest>,
+            request: GRPCCore.StreamingServerRequest<GetUsersRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetUsersResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<GetUsersResponse>
 
         /// Handle the "GetPosts" method.
         ///
@@ -180,16 +180,16 @@ extension Mixi2ApplicationService {
         /// > 指定したポストIDリストに対応するポスト情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Mixi2GetPostsRequest` messages.
+        ///   - request: A streaming request of `GetPostsRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Mixi2GetPostsResponse` messages.
+        /// - Returns: A streaming response of `GetPostsResponse` messages.
         func getPosts(
-            request: GRPCCore.StreamingServerRequest<Mixi2GetPostsRequest>,
+            request: GRPCCore.StreamingServerRequest<GetPostsRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetPostsResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<GetPostsResponse>
 
         /// Handle the "CreatePost" method.
         ///
@@ -198,16 +198,16 @@ extension Mixi2ApplicationService {
         /// > ポストを作成します（返信/引用/メディア添付等に対応）。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Mixi2CreatePostRequest` messages.
+        ///   - request: A streaming request of `CreatePostRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Mixi2CreatePostResponse` messages.
+        /// - Returns: A streaming response of `CreatePostResponse` messages.
         func createPost(
-            request: GRPCCore.StreamingServerRequest<Mixi2CreatePostRequest>,
+            request: GRPCCore.StreamingServerRequest<CreatePostRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2CreatePostResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<CreatePostResponse>
 
         /// Handle the "InitiatePostMediaUpload" method.
         ///
@@ -216,16 +216,16 @@ extension Mixi2ApplicationService {
         /// > ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Mixi2InitiatePostMediaUploadRequest` messages.
+        ///   - request: A streaming request of `InitiatePostMediaUploadRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Mixi2InitiatePostMediaUploadResponse` messages.
+        /// - Returns: A streaming response of `InitiatePostMediaUploadResponse` messages.
         func initiatePostMediaUpload(
-            request: GRPCCore.StreamingServerRequest<Mixi2InitiatePostMediaUploadRequest>,
+            request: GRPCCore.StreamingServerRequest<InitiatePostMediaUploadRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2InitiatePostMediaUploadResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<InitiatePostMediaUploadResponse>
 
         /// Handle the "GetPostMediaStatus" method.
         ///
@@ -234,16 +234,16 @@ extension Mixi2ApplicationService {
         /// > 指定したメディアIDのアップロード/処理状況を取得します。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Mixi2GetPostMediaStatusRequest` messages.
+        ///   - request: A streaming request of `GetPostMediaStatusRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Mixi2GetPostMediaStatusResponse` messages.
+        /// - Returns: A streaming response of `GetPostMediaStatusResponse` messages.
         func getPostMediaStatus(
-            request: GRPCCore.StreamingServerRequest<Mixi2GetPostMediaStatusRequest>,
+            request: GRPCCore.StreamingServerRequest<GetPostMediaStatusRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetPostMediaStatusResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<GetPostMediaStatusResponse>
 
         /// Handle the "SendChatMessage" method.
         ///
@@ -252,16 +252,16 @@ extension Mixi2ApplicationService {
         /// > 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Mixi2SendChatMessageRequest` messages.
+        ///   - request: A streaming request of `SendChatMessageRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Mixi2SendChatMessageResponse` messages.
+        /// - Returns: A streaming response of `SendChatMessageResponse` messages.
         func sendChatMessage(
-            request: GRPCCore.StreamingServerRequest<Mixi2SendChatMessageRequest>,
+            request: GRPCCore.StreamingServerRequest<SendChatMessageRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2SendChatMessageResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<SendChatMessageResponse>
 
         /// Handle the "GetStamps" method.
         ///
@@ -270,16 +270,16 @@ extension Mixi2ApplicationService {
         /// > スタンプ一覧を取得します。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Mixi2GetStampsRequest` messages.
+        ///   - request: A streaming request of `GetStampsRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Mixi2GetStampsResponse` messages.
+        /// - Returns: A streaming response of `GetStampsResponse` messages.
         func getStamps(
-            request: GRPCCore.StreamingServerRequest<Mixi2GetStampsRequest>,
+            request: GRPCCore.StreamingServerRequest<GetStampsRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetStampsResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<GetStampsResponse>
 
         /// Handle the "AddStampToPost" method.
         ///
@@ -288,16 +288,16 @@ extension Mixi2ApplicationService {
         /// > 指定したポストにスタンプを付与します。
         ///
         /// - Parameters:
-        ///   - request: A streaming request of `Mixi2AddStampToPostRequest` messages.
+        ///   - request: A streaming request of `AddStampToPostRequest` messages.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Mixi2AddStampToPostResponse` messages.
+        /// - Returns: A streaming response of `AddStampToPostResponse` messages.
         func addStampToPost(
-            request: GRPCCore.StreamingServerRequest<Mixi2AddStampToPostRequest>,
+            request: GRPCCore.StreamingServerRequest<AddStampToPostRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Mixi2AddStampToPostResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<AddStampToPostResponse>
     }
 
     /// Service protocol for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
@@ -311,7 +311,7 @@ extension Mixi2ApplicationService {
     /// > Source IDL Documentation:
     /// >
     /// > mixi2 アプリケーションサービスです。
-    public protocol ServiceProtocol: Mixi2ApplicationService.StreamingServiceProtocol {
+    public protocol ServiceProtocol: ApplicationService.StreamingServiceProtocol {
         /// Handle the "GetUsers" method.
         ///
         /// > Source IDL Documentation:
@@ -319,16 +319,16 @@ extension Mixi2ApplicationService {
         /// > 指定したユーザーIDリストに対応するユーザー情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2GetUsersRequest` message.
+        ///   - request: A request containing a single `GetUsersRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Mixi2GetUsersResponse` message.
+        /// - Returns: A response containing a single `GetUsersResponse` message.
         func getUsers(
-            request: GRPCCore.ServerRequest<Mixi2GetUsersRequest>,
+            request: GRPCCore.ServerRequest<GetUsersRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Mixi2GetUsersResponse>
+        ) async throws -> GRPCCore.ServerResponse<GetUsersResponse>
 
         /// Handle the "GetPosts" method.
         ///
@@ -337,16 +337,16 @@ extension Mixi2ApplicationService {
         /// > 指定したポストIDリストに対応するポスト情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2GetPostsRequest` message.
+        ///   - request: A request containing a single `GetPostsRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Mixi2GetPostsResponse` message.
+        /// - Returns: A response containing a single `GetPostsResponse` message.
         func getPosts(
-            request: GRPCCore.ServerRequest<Mixi2GetPostsRequest>,
+            request: GRPCCore.ServerRequest<GetPostsRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Mixi2GetPostsResponse>
+        ) async throws -> GRPCCore.ServerResponse<GetPostsResponse>
 
         /// Handle the "CreatePost" method.
         ///
@@ -355,16 +355,16 @@ extension Mixi2ApplicationService {
         /// > ポストを作成します（返信/引用/メディア添付等に対応）。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2CreatePostRequest` message.
+        ///   - request: A request containing a single `CreatePostRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Mixi2CreatePostResponse` message.
+        /// - Returns: A response containing a single `CreatePostResponse` message.
         func createPost(
-            request: GRPCCore.ServerRequest<Mixi2CreatePostRequest>,
+            request: GRPCCore.ServerRequest<CreatePostRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Mixi2CreatePostResponse>
+        ) async throws -> GRPCCore.ServerResponse<CreatePostResponse>
 
         /// Handle the "InitiatePostMediaUpload" method.
         ///
@@ -373,16 +373,16 @@ extension Mixi2ApplicationService {
         /// > ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2InitiatePostMediaUploadRequest` message.
+        ///   - request: A request containing a single `InitiatePostMediaUploadRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Mixi2InitiatePostMediaUploadResponse` message.
+        /// - Returns: A response containing a single `InitiatePostMediaUploadResponse` message.
         func initiatePostMediaUpload(
-            request: GRPCCore.ServerRequest<Mixi2InitiatePostMediaUploadRequest>,
+            request: GRPCCore.ServerRequest<InitiatePostMediaUploadRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Mixi2InitiatePostMediaUploadResponse>
+        ) async throws -> GRPCCore.ServerResponse<InitiatePostMediaUploadResponse>
 
         /// Handle the "GetPostMediaStatus" method.
         ///
@@ -391,16 +391,16 @@ extension Mixi2ApplicationService {
         /// > 指定したメディアIDのアップロード/処理状況を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2GetPostMediaStatusRequest` message.
+        ///   - request: A request containing a single `GetPostMediaStatusRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Mixi2GetPostMediaStatusResponse` message.
+        /// - Returns: A response containing a single `GetPostMediaStatusResponse` message.
         func getPostMediaStatus(
-            request: GRPCCore.ServerRequest<Mixi2GetPostMediaStatusRequest>,
+            request: GRPCCore.ServerRequest<GetPostMediaStatusRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Mixi2GetPostMediaStatusResponse>
+        ) async throws -> GRPCCore.ServerResponse<GetPostMediaStatusResponse>
 
         /// Handle the "SendChatMessage" method.
         ///
@@ -409,16 +409,16 @@ extension Mixi2ApplicationService {
         /// > 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2SendChatMessageRequest` message.
+        ///   - request: A request containing a single `SendChatMessageRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Mixi2SendChatMessageResponse` message.
+        /// - Returns: A response containing a single `SendChatMessageResponse` message.
         func sendChatMessage(
-            request: GRPCCore.ServerRequest<Mixi2SendChatMessageRequest>,
+            request: GRPCCore.ServerRequest<SendChatMessageRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Mixi2SendChatMessageResponse>
+        ) async throws -> GRPCCore.ServerResponse<SendChatMessageResponse>
 
         /// Handle the "GetStamps" method.
         ///
@@ -427,16 +427,16 @@ extension Mixi2ApplicationService {
         /// > スタンプ一覧を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2GetStampsRequest` message.
+        ///   - request: A request containing a single `GetStampsRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Mixi2GetStampsResponse` message.
+        /// - Returns: A response containing a single `GetStampsResponse` message.
         func getStamps(
-            request: GRPCCore.ServerRequest<Mixi2GetStampsRequest>,
+            request: GRPCCore.ServerRequest<GetStampsRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Mixi2GetStampsResponse>
+        ) async throws -> GRPCCore.ServerResponse<GetStampsResponse>
 
         /// Handle the "AddStampToPost" method.
         ///
@@ -445,16 +445,16 @@ extension Mixi2ApplicationService {
         /// > 指定したポストにスタンプを付与します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2AddStampToPostRequest` message.
+        ///   - request: A request containing a single `AddStampToPostRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Mixi2AddStampToPostResponse` message.
+        /// - Returns: A response containing a single `AddStampToPostResponse` message.
         func addStampToPost(
-            request: GRPCCore.ServerRequest<Mixi2AddStampToPostRequest>,
+            request: GRPCCore.ServerRequest<AddStampToPostRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Mixi2AddStampToPostResponse>
+        ) async throws -> GRPCCore.ServerResponse<AddStampToPostResponse>
     }
 
     /// Simple service protocol for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
@@ -466,7 +466,7 @@ extension Mixi2ApplicationService {
     /// > Source IDL Documentation:
     /// >
     /// > mixi2 アプリケーションサービスです。
-    public protocol SimpleServiceProtocol: Mixi2ApplicationService.ServiceProtocol {
+    public protocol SimpleServiceProtocol: ApplicationService.ServiceProtocol {
         /// Handle the "GetUsers" method.
         ///
         /// > Source IDL Documentation:
@@ -474,16 +474,16 @@ extension Mixi2ApplicationService {
         /// > 指定したユーザーIDリストに対応するユーザー情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A `Mixi2GetUsersRequest` message.
+        ///   - request: A `GetUsersRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Mixi2GetUsersResponse` to respond with.
+        /// - Returns: A `GetUsersResponse` to respond with.
         func getUsers(
-            request: Mixi2GetUsersRequest,
+            request: GetUsersRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Mixi2GetUsersResponse
+        ) async throws -> GetUsersResponse
 
         /// Handle the "GetPosts" method.
         ///
@@ -492,16 +492,16 @@ extension Mixi2ApplicationService {
         /// > 指定したポストIDリストに対応するポスト情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A `Mixi2GetPostsRequest` message.
+        ///   - request: A `GetPostsRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Mixi2GetPostsResponse` to respond with.
+        /// - Returns: A `GetPostsResponse` to respond with.
         func getPosts(
-            request: Mixi2GetPostsRequest,
+            request: GetPostsRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Mixi2GetPostsResponse
+        ) async throws -> GetPostsResponse
 
         /// Handle the "CreatePost" method.
         ///
@@ -510,16 +510,16 @@ extension Mixi2ApplicationService {
         /// > ポストを作成します（返信/引用/メディア添付等に対応）。
         ///
         /// - Parameters:
-        ///   - request: A `Mixi2CreatePostRequest` message.
+        ///   - request: A `CreatePostRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Mixi2CreatePostResponse` to respond with.
+        /// - Returns: A `CreatePostResponse` to respond with.
         func createPost(
-            request: Mixi2CreatePostRequest,
+            request: CreatePostRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Mixi2CreatePostResponse
+        ) async throws -> CreatePostResponse
 
         /// Handle the "InitiatePostMediaUpload" method.
         ///
@@ -528,16 +528,16 @@ extension Mixi2ApplicationService {
         /// > ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
         ///
         /// - Parameters:
-        ///   - request: A `Mixi2InitiatePostMediaUploadRequest` message.
+        ///   - request: A `InitiatePostMediaUploadRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Mixi2InitiatePostMediaUploadResponse` to respond with.
+        /// - Returns: A `InitiatePostMediaUploadResponse` to respond with.
         func initiatePostMediaUpload(
-            request: Mixi2InitiatePostMediaUploadRequest,
+            request: InitiatePostMediaUploadRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Mixi2InitiatePostMediaUploadResponse
+        ) async throws -> InitiatePostMediaUploadResponse
 
         /// Handle the "GetPostMediaStatus" method.
         ///
@@ -546,16 +546,16 @@ extension Mixi2ApplicationService {
         /// > 指定したメディアIDのアップロード/処理状況を取得します。
         ///
         /// - Parameters:
-        ///   - request: A `Mixi2GetPostMediaStatusRequest` message.
+        ///   - request: A `GetPostMediaStatusRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Mixi2GetPostMediaStatusResponse` to respond with.
+        /// - Returns: A `GetPostMediaStatusResponse` to respond with.
         func getPostMediaStatus(
-            request: Mixi2GetPostMediaStatusRequest,
+            request: GetPostMediaStatusRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Mixi2GetPostMediaStatusResponse
+        ) async throws -> GetPostMediaStatusResponse
 
         /// Handle the "SendChatMessage" method.
         ///
@@ -564,16 +564,16 @@ extension Mixi2ApplicationService {
         /// > 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
         ///
         /// - Parameters:
-        ///   - request: A `Mixi2SendChatMessageRequest` message.
+        ///   - request: A `SendChatMessageRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Mixi2SendChatMessageResponse` to respond with.
+        /// - Returns: A `SendChatMessageResponse` to respond with.
         func sendChatMessage(
-            request: Mixi2SendChatMessageRequest,
+            request: SendChatMessageRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Mixi2SendChatMessageResponse
+        ) async throws -> SendChatMessageResponse
 
         /// Handle the "GetStamps" method.
         ///
@@ -582,16 +582,16 @@ extension Mixi2ApplicationService {
         /// > スタンプ一覧を取得します。
         ///
         /// - Parameters:
-        ///   - request: A `Mixi2GetStampsRequest` message.
+        ///   - request: A `GetStampsRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Mixi2GetStampsResponse` to respond with.
+        /// - Returns: A `GetStampsResponse` to respond with.
         func getStamps(
-            request: Mixi2GetStampsRequest,
+            request: GetStampsRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Mixi2GetStampsResponse
+        ) async throws -> GetStampsResponse
 
         /// Handle the "AddStampToPost" method.
         ///
@@ -600,27 +600,27 @@ extension Mixi2ApplicationService {
         /// > 指定したポストにスタンプを付与します。
         ///
         /// - Parameters:
-        ///   - request: A `Mixi2AddStampToPostRequest` message.
+        ///   - request: A `AddStampToPostRequest` message.
         ///   - context: Context providing information about the RPC.
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Mixi2AddStampToPostResponse` to respond with.
+        /// - Returns: A `AddStampToPostResponse` to respond with.
         func addStampToPost(
-            request: Mixi2AddStampToPostRequest,
+            request: AddStampToPostRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Mixi2AddStampToPostResponse
+        ) async throws -> AddStampToPostResponse
     }
 }
 
 // Default implementation of 'registerMethods(with:)'.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Mixi2ApplicationService.StreamingServiceProtocol {
+extension ApplicationService.StreamingServiceProtocol {
     public func registerMethods<Transport>(with router: inout GRPCCore.RPCRouter<Transport>) where Transport: GRPCCore.ServerTransport {
         router.registerHandler(
-            forMethod: Mixi2ApplicationService.Method.GetUsers.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetUsersRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetUsersResponse>(),
+            forMethod: ApplicationService.Method.GetUsers.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetUsersRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<GetUsersResponse>(),
             handler: { request, context in
                 try await self.getUsers(
                     request: request,
@@ -629,9 +629,9 @@ extension Mixi2ApplicationService.StreamingServiceProtocol {
             }
         )
         router.registerHandler(
-            forMethod: Mixi2ApplicationService.Method.GetPosts.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetPostsRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetPostsResponse>(),
+            forMethod: ApplicationService.Method.GetPosts.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetPostsRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<GetPostsResponse>(),
             handler: { request, context in
                 try await self.getPosts(
                     request: request,
@@ -640,9 +640,9 @@ extension Mixi2ApplicationService.StreamingServiceProtocol {
             }
         )
         router.registerHandler(
-            forMethod: Mixi2ApplicationService.Method.CreatePost.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2CreatePostRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2CreatePostResponse>(),
+            forMethod: ApplicationService.Method.CreatePost.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<CreatePostRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<CreatePostResponse>(),
             handler: { request, context in
                 try await self.createPost(
                     request: request,
@@ -651,9 +651,9 @@ extension Mixi2ApplicationService.StreamingServiceProtocol {
             }
         )
         router.registerHandler(
-            forMethod: Mixi2ApplicationService.Method.InitiatePostMediaUpload.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2InitiatePostMediaUploadRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2InitiatePostMediaUploadResponse>(),
+            forMethod: ApplicationService.Method.InitiatePostMediaUpload.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<InitiatePostMediaUploadRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<InitiatePostMediaUploadResponse>(),
             handler: { request, context in
                 try await self.initiatePostMediaUpload(
                     request: request,
@@ -662,9 +662,9 @@ extension Mixi2ApplicationService.StreamingServiceProtocol {
             }
         )
         router.registerHandler(
-            forMethod: Mixi2ApplicationService.Method.GetPostMediaStatus.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetPostMediaStatusRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetPostMediaStatusResponse>(),
+            forMethod: ApplicationService.Method.GetPostMediaStatus.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetPostMediaStatusRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<GetPostMediaStatusResponse>(),
             handler: { request, context in
                 try await self.getPostMediaStatus(
                     request: request,
@@ -673,9 +673,9 @@ extension Mixi2ApplicationService.StreamingServiceProtocol {
             }
         )
         router.registerHandler(
-            forMethod: Mixi2ApplicationService.Method.SendChatMessage.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2SendChatMessageRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2SendChatMessageResponse>(),
+            forMethod: ApplicationService.Method.SendChatMessage.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<SendChatMessageRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<SendChatMessageResponse>(),
             handler: { request, context in
                 try await self.sendChatMessage(
                     request: request,
@@ -684,9 +684,9 @@ extension Mixi2ApplicationService.StreamingServiceProtocol {
             }
         )
         router.registerHandler(
-            forMethod: Mixi2ApplicationService.Method.GetStamps.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetStampsRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetStampsResponse>(),
+            forMethod: ApplicationService.Method.GetStamps.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetStampsRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<GetStampsResponse>(),
             handler: { request, context in
                 try await self.getStamps(
                     request: request,
@@ -695,9 +695,9 @@ extension Mixi2ApplicationService.StreamingServiceProtocol {
             }
         )
         router.registerHandler(
-            forMethod: Mixi2ApplicationService.Method.AddStampToPost.descriptor,
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2AddStampToPostRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2AddStampToPostResponse>(),
+            forMethod: ApplicationService.Method.AddStampToPost.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<AddStampToPostRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<AddStampToPostResponse>(),
             handler: { request, context in
                 try await self.addStampToPost(
                     request: request,
@@ -710,11 +710,11 @@ extension Mixi2ApplicationService.StreamingServiceProtocol {
 
 // Default implementation of streaming methods from 'StreamingServiceProtocol'.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Mixi2ApplicationService.ServiceProtocol {
+extension ApplicationService.ServiceProtocol {
     public func getUsers(
-        request: GRPCCore.StreamingServerRequest<Mixi2GetUsersRequest>,
+        request: GRPCCore.StreamingServerRequest<GetUsersRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetUsersResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<GetUsersResponse> {
         let response = try await self.getUsers(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -723,9 +723,9 @@ extension Mixi2ApplicationService.ServiceProtocol {
     }
 
     public func getPosts(
-        request: GRPCCore.StreamingServerRequest<Mixi2GetPostsRequest>,
+        request: GRPCCore.StreamingServerRequest<GetPostsRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetPostsResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<GetPostsResponse> {
         let response = try await self.getPosts(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -734,9 +734,9 @@ extension Mixi2ApplicationService.ServiceProtocol {
     }
 
     public func createPost(
-        request: GRPCCore.StreamingServerRequest<Mixi2CreatePostRequest>,
+        request: GRPCCore.StreamingServerRequest<CreatePostRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2CreatePostResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<CreatePostResponse> {
         let response = try await self.createPost(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -745,9 +745,9 @@ extension Mixi2ApplicationService.ServiceProtocol {
     }
 
     public func initiatePostMediaUpload(
-        request: GRPCCore.StreamingServerRequest<Mixi2InitiatePostMediaUploadRequest>,
+        request: GRPCCore.StreamingServerRequest<InitiatePostMediaUploadRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2InitiatePostMediaUploadResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<InitiatePostMediaUploadResponse> {
         let response = try await self.initiatePostMediaUpload(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -756,9 +756,9 @@ extension Mixi2ApplicationService.ServiceProtocol {
     }
 
     public func getPostMediaStatus(
-        request: GRPCCore.StreamingServerRequest<Mixi2GetPostMediaStatusRequest>,
+        request: GRPCCore.StreamingServerRequest<GetPostMediaStatusRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetPostMediaStatusResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<GetPostMediaStatusResponse> {
         let response = try await self.getPostMediaStatus(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -767,9 +767,9 @@ extension Mixi2ApplicationService.ServiceProtocol {
     }
 
     public func sendChatMessage(
-        request: GRPCCore.StreamingServerRequest<Mixi2SendChatMessageRequest>,
+        request: GRPCCore.StreamingServerRequest<SendChatMessageRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2SendChatMessageResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<SendChatMessageResponse> {
         let response = try await self.sendChatMessage(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -778,9 +778,9 @@ extension Mixi2ApplicationService.ServiceProtocol {
     }
 
     public func getStamps(
-        request: GRPCCore.StreamingServerRequest<Mixi2GetStampsRequest>,
+        request: GRPCCore.StreamingServerRequest<GetStampsRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2GetStampsResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<GetStampsResponse> {
         let response = try await self.getStamps(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -789,9 +789,9 @@ extension Mixi2ApplicationService.ServiceProtocol {
     }
 
     public func addStampToPost(
-        request: GRPCCore.StreamingServerRequest<Mixi2AddStampToPostRequest>,
+        request: GRPCCore.StreamingServerRequest<AddStampToPostRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Mixi2AddStampToPostResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<AddStampToPostResponse> {
         let response = try await self.addStampToPost(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
@@ -802,12 +802,12 @@ extension Mixi2ApplicationService.ServiceProtocol {
 
 // Default implementation of methods from 'ServiceProtocol'.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Mixi2ApplicationService.SimpleServiceProtocol {
+extension ApplicationService.SimpleServiceProtocol {
     public func getUsers(
-        request: GRPCCore.ServerRequest<Mixi2GetUsersRequest>,
+        request: GRPCCore.ServerRequest<GetUsersRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Mixi2GetUsersResponse> {
-        return GRPCCore.ServerResponse<Mixi2GetUsersResponse>(
+    ) async throws -> GRPCCore.ServerResponse<GetUsersResponse> {
+        return GRPCCore.ServerResponse<GetUsersResponse>(
             message: try await self.getUsers(
                 request: request.message,
                 context: context
@@ -817,10 +817,10 @@ extension Mixi2ApplicationService.SimpleServiceProtocol {
     }
 
     public func getPosts(
-        request: GRPCCore.ServerRequest<Mixi2GetPostsRequest>,
+        request: GRPCCore.ServerRequest<GetPostsRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Mixi2GetPostsResponse> {
-        return GRPCCore.ServerResponse<Mixi2GetPostsResponse>(
+    ) async throws -> GRPCCore.ServerResponse<GetPostsResponse> {
+        return GRPCCore.ServerResponse<GetPostsResponse>(
             message: try await self.getPosts(
                 request: request.message,
                 context: context
@@ -830,10 +830,10 @@ extension Mixi2ApplicationService.SimpleServiceProtocol {
     }
 
     public func createPost(
-        request: GRPCCore.ServerRequest<Mixi2CreatePostRequest>,
+        request: GRPCCore.ServerRequest<CreatePostRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Mixi2CreatePostResponse> {
-        return GRPCCore.ServerResponse<Mixi2CreatePostResponse>(
+    ) async throws -> GRPCCore.ServerResponse<CreatePostResponse> {
+        return GRPCCore.ServerResponse<CreatePostResponse>(
             message: try await self.createPost(
                 request: request.message,
                 context: context
@@ -843,10 +843,10 @@ extension Mixi2ApplicationService.SimpleServiceProtocol {
     }
 
     public func initiatePostMediaUpload(
-        request: GRPCCore.ServerRequest<Mixi2InitiatePostMediaUploadRequest>,
+        request: GRPCCore.ServerRequest<InitiatePostMediaUploadRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Mixi2InitiatePostMediaUploadResponse> {
-        return GRPCCore.ServerResponse<Mixi2InitiatePostMediaUploadResponse>(
+    ) async throws -> GRPCCore.ServerResponse<InitiatePostMediaUploadResponse> {
+        return GRPCCore.ServerResponse<InitiatePostMediaUploadResponse>(
             message: try await self.initiatePostMediaUpload(
                 request: request.message,
                 context: context
@@ -856,10 +856,10 @@ extension Mixi2ApplicationService.SimpleServiceProtocol {
     }
 
     public func getPostMediaStatus(
-        request: GRPCCore.ServerRequest<Mixi2GetPostMediaStatusRequest>,
+        request: GRPCCore.ServerRequest<GetPostMediaStatusRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Mixi2GetPostMediaStatusResponse> {
-        return GRPCCore.ServerResponse<Mixi2GetPostMediaStatusResponse>(
+    ) async throws -> GRPCCore.ServerResponse<GetPostMediaStatusResponse> {
+        return GRPCCore.ServerResponse<GetPostMediaStatusResponse>(
             message: try await self.getPostMediaStatus(
                 request: request.message,
                 context: context
@@ -869,10 +869,10 @@ extension Mixi2ApplicationService.SimpleServiceProtocol {
     }
 
     public func sendChatMessage(
-        request: GRPCCore.ServerRequest<Mixi2SendChatMessageRequest>,
+        request: GRPCCore.ServerRequest<SendChatMessageRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Mixi2SendChatMessageResponse> {
-        return GRPCCore.ServerResponse<Mixi2SendChatMessageResponse>(
+    ) async throws -> GRPCCore.ServerResponse<SendChatMessageResponse> {
+        return GRPCCore.ServerResponse<SendChatMessageResponse>(
             message: try await self.sendChatMessage(
                 request: request.message,
                 context: context
@@ -882,10 +882,10 @@ extension Mixi2ApplicationService.SimpleServiceProtocol {
     }
 
     public func getStamps(
-        request: GRPCCore.ServerRequest<Mixi2GetStampsRequest>,
+        request: GRPCCore.ServerRequest<GetStampsRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Mixi2GetStampsResponse> {
-        return GRPCCore.ServerResponse<Mixi2GetStampsResponse>(
+    ) async throws -> GRPCCore.ServerResponse<GetStampsResponse> {
+        return GRPCCore.ServerResponse<GetStampsResponse>(
             message: try await self.getStamps(
                 request: request.message,
                 context: context
@@ -895,10 +895,10 @@ extension Mixi2ApplicationService.SimpleServiceProtocol {
     }
 
     public func addStampToPost(
-        request: GRPCCore.ServerRequest<Mixi2AddStampToPostRequest>,
+        request: GRPCCore.ServerRequest<AddStampToPostRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Mixi2AddStampToPostResponse> {
-        return GRPCCore.ServerResponse<Mixi2AddStampToPostResponse>(
+    ) async throws -> GRPCCore.ServerResponse<AddStampToPostResponse> {
+        return GRPCCore.ServerResponse<AddStampToPostResponse>(
             message: try await self.addStampToPost(
                 request: request.message,
                 context: context
@@ -911,7 +911,7 @@ extension Mixi2ApplicationService.SimpleServiceProtocol {
 // MARK: social.mixi.application.service.application_api.v1.ApplicationService (client)
 
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Mixi2ApplicationService {
+extension ApplicationService {
     /// Generated client protocol for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
     ///
     /// You don't need to implement this protocol directly, use the generated
@@ -928,20 +928,20 @@ extension Mixi2ApplicationService {
         /// > 指定したユーザーIDリストに対応するユーザー情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2GetUsersRequest` message.
-        ///   - serializer: A serializer for `Mixi2GetUsersRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2GetUsersResponse` messages.
+        ///   - request: A request containing a single `GetUsersRequest` message.
+        ///   - serializer: A serializer for `GetUsersRequest` messages.
+        ///   - deserializer: A deserializer for `GetUsersResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func getUsers<Result>(
-            request: GRPCCore.ClientRequest<Mixi2GetUsersRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2GetUsersRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetUsersResponse>,
+            request: GRPCCore.ClientRequest<GetUsersRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetUsersRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetUsersResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetUsersResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetUsersResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "GetPosts" method.
@@ -951,20 +951,20 @@ extension Mixi2ApplicationService {
         /// > 指定したポストIDリストに対応するポスト情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2GetPostsRequest` message.
-        ///   - serializer: A serializer for `Mixi2GetPostsRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2GetPostsResponse` messages.
+        ///   - request: A request containing a single `GetPostsRequest` message.
+        ///   - serializer: A serializer for `GetPostsRequest` messages.
+        ///   - deserializer: A deserializer for `GetPostsResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func getPosts<Result>(
-            request: GRPCCore.ClientRequest<Mixi2GetPostsRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2GetPostsRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetPostsResponse>,
+            request: GRPCCore.ClientRequest<GetPostsRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetPostsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetPostsResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostsResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetPostsResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "CreatePost" method.
@@ -974,20 +974,20 @@ extension Mixi2ApplicationService {
         /// > ポストを作成します（返信/引用/メディア添付等に対応）。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2CreatePostRequest` message.
-        ///   - serializer: A serializer for `Mixi2CreatePostRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2CreatePostResponse` messages.
+        ///   - request: A request containing a single `CreatePostRequest` message.
+        ///   - serializer: A serializer for `CreatePostRequest` messages.
+        ///   - deserializer: A deserializer for `CreatePostResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func createPost<Result>(
-            request: GRPCCore.ClientRequest<Mixi2CreatePostRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2CreatePostRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2CreatePostResponse>,
+            request: GRPCCore.ClientRequest<CreatePostRequest>,
+            serializer: some GRPCCore.MessageSerializer<CreatePostRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<CreatePostResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2CreatePostResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<CreatePostResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "InitiatePostMediaUpload" method.
@@ -997,20 +997,20 @@ extension Mixi2ApplicationService {
         /// > ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2InitiatePostMediaUploadRequest` message.
-        ///   - serializer: A serializer for `Mixi2InitiatePostMediaUploadRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2InitiatePostMediaUploadResponse` messages.
+        ///   - request: A request containing a single `InitiatePostMediaUploadRequest` message.
+        ///   - serializer: A serializer for `InitiatePostMediaUploadRequest` messages.
+        ///   - deserializer: A deserializer for `InitiatePostMediaUploadResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func initiatePostMediaUpload<Result>(
-            request: GRPCCore.ClientRequest<Mixi2InitiatePostMediaUploadRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2InitiatePostMediaUploadRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2InitiatePostMediaUploadResponse>,
+            request: GRPCCore.ClientRequest<InitiatePostMediaUploadRequest>,
+            serializer: some GRPCCore.MessageSerializer<InitiatePostMediaUploadRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<InitiatePostMediaUploadResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2InitiatePostMediaUploadResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<InitiatePostMediaUploadResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "GetPostMediaStatus" method.
@@ -1020,20 +1020,20 @@ extension Mixi2ApplicationService {
         /// > 指定したメディアIDのアップロード/処理状況を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2GetPostMediaStatusRequest` message.
-        ///   - serializer: A serializer for `Mixi2GetPostMediaStatusRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2GetPostMediaStatusResponse` messages.
+        ///   - request: A request containing a single `GetPostMediaStatusRequest` message.
+        ///   - serializer: A serializer for `GetPostMediaStatusRequest` messages.
+        ///   - deserializer: A deserializer for `GetPostMediaStatusResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func getPostMediaStatus<Result>(
-            request: GRPCCore.ClientRequest<Mixi2GetPostMediaStatusRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2GetPostMediaStatusRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetPostMediaStatusResponse>,
+            request: GRPCCore.ClientRequest<GetPostMediaStatusRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetPostMediaStatusRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetPostMediaStatusResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostMediaStatusResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetPostMediaStatusResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "SendChatMessage" method.
@@ -1043,20 +1043,20 @@ extension Mixi2ApplicationService {
         /// > 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2SendChatMessageRequest` message.
-        ///   - serializer: A serializer for `Mixi2SendChatMessageRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2SendChatMessageResponse` messages.
+        ///   - request: A request containing a single `SendChatMessageRequest` message.
+        ///   - serializer: A serializer for `SendChatMessageRequest` messages.
+        ///   - deserializer: A deserializer for `SendChatMessageResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func sendChatMessage<Result>(
-            request: GRPCCore.ClientRequest<Mixi2SendChatMessageRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2SendChatMessageRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2SendChatMessageResponse>,
+            request: GRPCCore.ClientRequest<SendChatMessageRequest>,
+            serializer: some GRPCCore.MessageSerializer<SendChatMessageRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<SendChatMessageResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2SendChatMessageResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<SendChatMessageResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "GetStamps" method.
@@ -1066,20 +1066,20 @@ extension Mixi2ApplicationService {
         /// > スタンプ一覧を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2GetStampsRequest` message.
-        ///   - serializer: A serializer for `Mixi2GetStampsRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2GetStampsResponse` messages.
+        ///   - request: A request containing a single `GetStampsRequest` message.
+        ///   - serializer: A serializer for `GetStampsRequest` messages.
+        ///   - deserializer: A deserializer for `GetStampsResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func getStamps<Result>(
-            request: GRPCCore.ClientRequest<Mixi2GetStampsRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2GetStampsRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetStampsResponse>,
+            request: GRPCCore.ClientRequest<GetStampsRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetStampsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetStampsResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetStampsResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetStampsResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "AddStampToPost" method.
@@ -1089,20 +1089,20 @@ extension Mixi2ApplicationService {
         /// > 指定したポストにスタンプを付与します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2AddStampToPostRequest` message.
-        ///   - serializer: A serializer for `Mixi2AddStampToPostRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2AddStampToPostResponse` messages.
+        ///   - request: A request containing a single `AddStampToPostRequest` message.
+        ///   - serializer: A serializer for `AddStampToPostRequest` messages.
+        ///   - deserializer: A deserializer for `AddStampToPostResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         func addStampToPost<Result>(
-            request: GRPCCore.ClientRequest<Mixi2AddStampToPostRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2AddStampToPostRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2AddStampToPostResponse>,
+            request: GRPCCore.ClientRequest<AddStampToPostRequest>,
+            serializer: some GRPCCore.MessageSerializer<AddStampToPostRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<AddStampToPostResponse>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2AddStampToPostResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<AddStampToPostResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
     }
 
@@ -1133,26 +1133,26 @@ extension Mixi2ApplicationService {
         /// > 指定したユーザーIDリストに対応するユーザー情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2GetUsersRequest` message.
-        ///   - serializer: A serializer for `Mixi2GetUsersRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2GetUsersResponse` messages.
+        ///   - request: A request containing a single `GetUsersRequest` message.
+        ///   - serializer: A serializer for `GetUsersRequest` messages.
+        ///   - deserializer: A deserializer for `GetUsersResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func getUsers<Result>(
-            request: GRPCCore.ClientRequest<Mixi2GetUsersRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2GetUsersRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetUsersResponse>,
+            request: GRPCCore.ClientRequest<GetUsersRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetUsersRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetUsersResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetUsersResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetUsersResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Mixi2ApplicationService.Method.GetUsers.descriptor,
+                descriptor: ApplicationService.Method.GetUsers.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1167,26 +1167,26 @@ extension Mixi2ApplicationService {
         /// > 指定したポストIDリストに対応するポスト情報を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2GetPostsRequest` message.
-        ///   - serializer: A serializer for `Mixi2GetPostsRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2GetPostsResponse` messages.
+        ///   - request: A request containing a single `GetPostsRequest` message.
+        ///   - serializer: A serializer for `GetPostsRequest` messages.
+        ///   - deserializer: A deserializer for `GetPostsResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func getPosts<Result>(
-            request: GRPCCore.ClientRequest<Mixi2GetPostsRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2GetPostsRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetPostsResponse>,
+            request: GRPCCore.ClientRequest<GetPostsRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetPostsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetPostsResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostsResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetPostsResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Mixi2ApplicationService.Method.GetPosts.descriptor,
+                descriptor: ApplicationService.Method.GetPosts.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1201,26 +1201,26 @@ extension Mixi2ApplicationService {
         /// > ポストを作成します（返信/引用/メディア添付等に対応）。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2CreatePostRequest` message.
-        ///   - serializer: A serializer for `Mixi2CreatePostRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2CreatePostResponse` messages.
+        ///   - request: A request containing a single `CreatePostRequest` message.
+        ///   - serializer: A serializer for `CreatePostRequest` messages.
+        ///   - deserializer: A deserializer for `CreatePostResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func createPost<Result>(
-            request: GRPCCore.ClientRequest<Mixi2CreatePostRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2CreatePostRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2CreatePostResponse>,
+            request: GRPCCore.ClientRequest<CreatePostRequest>,
+            serializer: some GRPCCore.MessageSerializer<CreatePostRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<CreatePostResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2CreatePostResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<CreatePostResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Mixi2ApplicationService.Method.CreatePost.descriptor,
+                descriptor: ApplicationService.Method.CreatePost.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1235,26 +1235,26 @@ extension Mixi2ApplicationService {
         /// > ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2InitiatePostMediaUploadRequest` message.
-        ///   - serializer: A serializer for `Mixi2InitiatePostMediaUploadRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2InitiatePostMediaUploadResponse` messages.
+        ///   - request: A request containing a single `InitiatePostMediaUploadRequest` message.
+        ///   - serializer: A serializer for `InitiatePostMediaUploadRequest` messages.
+        ///   - deserializer: A deserializer for `InitiatePostMediaUploadResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func initiatePostMediaUpload<Result>(
-            request: GRPCCore.ClientRequest<Mixi2InitiatePostMediaUploadRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2InitiatePostMediaUploadRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2InitiatePostMediaUploadResponse>,
+            request: GRPCCore.ClientRequest<InitiatePostMediaUploadRequest>,
+            serializer: some GRPCCore.MessageSerializer<InitiatePostMediaUploadRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<InitiatePostMediaUploadResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2InitiatePostMediaUploadResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<InitiatePostMediaUploadResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Mixi2ApplicationService.Method.InitiatePostMediaUpload.descriptor,
+                descriptor: ApplicationService.Method.InitiatePostMediaUpload.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1269,26 +1269,26 @@ extension Mixi2ApplicationService {
         /// > 指定したメディアIDのアップロード/処理状況を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2GetPostMediaStatusRequest` message.
-        ///   - serializer: A serializer for `Mixi2GetPostMediaStatusRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2GetPostMediaStatusResponse` messages.
+        ///   - request: A request containing a single `GetPostMediaStatusRequest` message.
+        ///   - serializer: A serializer for `GetPostMediaStatusRequest` messages.
+        ///   - deserializer: A deserializer for `GetPostMediaStatusResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func getPostMediaStatus<Result>(
-            request: GRPCCore.ClientRequest<Mixi2GetPostMediaStatusRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2GetPostMediaStatusRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetPostMediaStatusResponse>,
+            request: GRPCCore.ClientRequest<GetPostMediaStatusRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetPostMediaStatusRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetPostMediaStatusResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostMediaStatusResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetPostMediaStatusResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Mixi2ApplicationService.Method.GetPostMediaStatus.descriptor,
+                descriptor: ApplicationService.Method.GetPostMediaStatus.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1303,26 +1303,26 @@ extension Mixi2ApplicationService {
         /// > 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2SendChatMessageRequest` message.
-        ///   - serializer: A serializer for `Mixi2SendChatMessageRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2SendChatMessageResponse` messages.
+        ///   - request: A request containing a single `SendChatMessageRequest` message.
+        ///   - serializer: A serializer for `SendChatMessageRequest` messages.
+        ///   - deserializer: A deserializer for `SendChatMessageResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func sendChatMessage<Result>(
-            request: GRPCCore.ClientRequest<Mixi2SendChatMessageRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2SendChatMessageRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2SendChatMessageResponse>,
+            request: GRPCCore.ClientRequest<SendChatMessageRequest>,
+            serializer: some GRPCCore.MessageSerializer<SendChatMessageRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<SendChatMessageResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2SendChatMessageResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<SendChatMessageResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Mixi2ApplicationService.Method.SendChatMessage.descriptor,
+                descriptor: ApplicationService.Method.SendChatMessage.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1337,26 +1337,26 @@ extension Mixi2ApplicationService {
         /// > スタンプ一覧を取得します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2GetStampsRequest` message.
-        ///   - serializer: A serializer for `Mixi2GetStampsRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2GetStampsResponse` messages.
+        ///   - request: A request containing a single `GetStampsRequest` message.
+        ///   - serializer: A serializer for `GetStampsRequest` messages.
+        ///   - deserializer: A deserializer for `GetStampsResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func getStamps<Result>(
-            request: GRPCCore.ClientRequest<Mixi2GetStampsRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2GetStampsRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2GetStampsResponse>,
+            request: GRPCCore.ClientRequest<GetStampsRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetStampsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetStampsResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetStampsResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetStampsResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Mixi2ApplicationService.Method.GetStamps.descriptor,
+                descriptor: ApplicationService.Method.GetStamps.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1371,26 +1371,26 @@ extension Mixi2ApplicationService {
         /// > 指定したポストにスタンプを付与します。
         ///
         /// - Parameters:
-        ///   - request: A request containing a single `Mixi2AddStampToPostRequest` message.
-        ///   - serializer: A serializer for `Mixi2AddStampToPostRequest` messages.
-        ///   - deserializer: A deserializer for `Mixi2AddStampToPostResponse` messages.
+        ///   - request: A request containing a single `AddStampToPostRequest` message.
+        ///   - serializer: A serializer for `AddStampToPostRequest` messages.
+        ///   - deserializer: A deserializer for `AddStampToPostResponse` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
         ///       hasn't already finished.
         /// - Returns: The result of `handleResponse`.
         public func addStampToPost<Result>(
-            request: GRPCCore.ClientRequest<Mixi2AddStampToPostRequest>,
-            serializer: some GRPCCore.MessageSerializer<Mixi2AddStampToPostRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Mixi2AddStampToPostResponse>,
+            request: GRPCCore.ClientRequest<AddStampToPostRequest>,
+            serializer: some GRPCCore.MessageSerializer<AddStampToPostRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<AddStampToPostResponse>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2AddStampToPostResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<AddStampToPostResponse>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
-                descriptor: Mixi2ApplicationService.Method.AddStampToPost.descriptor,
+                descriptor: ApplicationService.Method.AddStampToPost.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1402,7 +1402,7 @@ extension Mixi2ApplicationService {
 
 // Helpers providing default arguments to 'ClientProtocol' methods.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Mixi2ApplicationService.ClientProtocol {
+extension ApplicationService.ClientProtocol {
     /// Call the "GetUsers" method.
     ///
     /// > Source IDL Documentation:
@@ -1410,23 +1410,23 @@ extension Mixi2ApplicationService.ClientProtocol {
     /// > 指定したユーザーIDリストに対応するユーザー情報を取得します。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Mixi2GetUsersRequest` message.
+    ///   - request: A request containing a single `GetUsersRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getUsers<Result>(
-        request: GRPCCore.ClientRequest<Mixi2GetUsersRequest>,
+        request: GRPCCore.ClientRequest<GetUsersRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetUsersResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetUsersResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.getUsers(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetUsersRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetUsersResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<GetUsersRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetUsersResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1439,23 +1439,23 @@ extension Mixi2ApplicationService.ClientProtocol {
     /// > 指定したポストIDリストに対応するポスト情報を取得します。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Mixi2GetPostsRequest` message.
+    ///   - request: A request containing a single `GetPostsRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getPosts<Result>(
-        request: GRPCCore.ClientRequest<Mixi2GetPostsRequest>,
+        request: GRPCCore.ClientRequest<GetPostsRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostsResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetPostsResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.getPosts(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetPostsRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetPostsResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<GetPostsRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetPostsResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1468,23 +1468,23 @@ extension Mixi2ApplicationService.ClientProtocol {
     /// > ポストを作成します（返信/引用/メディア添付等に対応）。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Mixi2CreatePostRequest` message.
+    ///   - request: A request containing a single `CreatePostRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func createPost<Result>(
-        request: GRPCCore.ClientRequest<Mixi2CreatePostRequest>,
+        request: GRPCCore.ClientRequest<CreatePostRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2CreatePostResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<CreatePostResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.createPost(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2CreatePostRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2CreatePostResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<CreatePostRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<CreatePostResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1497,23 +1497,23 @@ extension Mixi2ApplicationService.ClientProtocol {
     /// > ポストやメッセージ（ルーム送信/DM）に添付するメディアのアップロードを開始し、アップロード先URLを発行します。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Mixi2InitiatePostMediaUploadRequest` message.
+    ///   - request: A request containing a single `InitiatePostMediaUploadRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func initiatePostMediaUpload<Result>(
-        request: GRPCCore.ClientRequest<Mixi2InitiatePostMediaUploadRequest>,
+        request: GRPCCore.ClientRequest<InitiatePostMediaUploadRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2InitiatePostMediaUploadResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<InitiatePostMediaUploadResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.initiatePostMediaUpload(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2InitiatePostMediaUploadRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2InitiatePostMediaUploadResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<InitiatePostMediaUploadRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<InitiatePostMediaUploadResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1526,23 +1526,23 @@ extension Mixi2ApplicationService.ClientProtocol {
     /// > 指定したメディアIDのアップロード/処理状況を取得します。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Mixi2GetPostMediaStatusRequest` message.
+    ///   - request: A request containing a single `GetPostMediaStatusRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getPostMediaStatus<Result>(
-        request: GRPCCore.ClientRequest<Mixi2GetPostMediaStatusRequest>,
+        request: GRPCCore.ClientRequest<GetPostMediaStatusRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostMediaStatusResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetPostMediaStatusResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.getPostMediaStatus(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetPostMediaStatusRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetPostMediaStatusResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<GetPostMediaStatusRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetPostMediaStatusResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1555,23 +1555,23 @@ extension Mixi2ApplicationService.ClientProtocol {
     /// > 指定したルームにチャットメッセージを送信します（テキスト/メディア添付）。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Mixi2SendChatMessageRequest` message.
+    ///   - request: A request containing a single `SendChatMessageRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func sendChatMessage<Result>(
-        request: GRPCCore.ClientRequest<Mixi2SendChatMessageRequest>,
+        request: GRPCCore.ClientRequest<SendChatMessageRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2SendChatMessageResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<SendChatMessageResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.sendChatMessage(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2SendChatMessageRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2SendChatMessageResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<SendChatMessageRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<SendChatMessageResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1584,23 +1584,23 @@ extension Mixi2ApplicationService.ClientProtocol {
     /// > スタンプ一覧を取得します。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Mixi2GetStampsRequest` message.
+    ///   - request: A request containing a single `GetStampsRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getStamps<Result>(
-        request: GRPCCore.ClientRequest<Mixi2GetStampsRequest>,
+        request: GRPCCore.ClientRequest<GetStampsRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetStampsResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetStampsResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.getStamps(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2GetStampsRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2GetStampsResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<GetStampsRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetStampsResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1613,23 +1613,23 @@ extension Mixi2ApplicationService.ClientProtocol {
     /// > 指定したポストにスタンプを付与します。
     ///
     /// - Parameters:
-    ///   - request: A request containing a single `Mixi2AddStampToPostRequest` message.
+    ///   - request: A request containing a single `AddStampToPostRequest` message.
     ///   - options: Options to apply to this RPC.
     ///   - handleResponse: A closure which handles the response, the result of which is
     ///       returned to the caller. Returning from the closure will cancel the RPC if it
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func addStampToPost<Result>(
-        request: GRPCCore.ClientRequest<Mixi2AddStampToPostRequest>,
+        request: GRPCCore.ClientRequest<AddStampToPostRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2AddStampToPostResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<AddStampToPostResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.addStampToPost(
             request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Mixi2AddStampToPostRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Mixi2AddStampToPostResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<AddStampToPostRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<AddStampToPostResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1638,7 +1638,7 @@ extension Mixi2ApplicationService.ClientProtocol {
 
 // Helpers providing sugared APIs for 'ClientProtocol' methods.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-extension Mixi2ApplicationService.ClientProtocol {
+extension ApplicationService.ClientProtocol {
     /// Call the "GetUsers" method.
     ///
     /// > Source IDL Documentation:
@@ -1654,14 +1654,14 @@ extension Mixi2ApplicationService.ClientProtocol {
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getUsers<Result>(
-        _ message: Mixi2GetUsersRequest,
+        _ message: GetUsersRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetUsersResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetUsersResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Mixi2GetUsersRequest>(
+        let request = GRPCCore.ClientRequest<GetUsersRequest>(
             message: message,
             metadata: metadata
         )
@@ -1687,14 +1687,14 @@ extension Mixi2ApplicationService.ClientProtocol {
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getPosts<Result>(
-        _ message: Mixi2GetPostsRequest,
+        _ message: GetPostsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostsResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetPostsResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Mixi2GetPostsRequest>(
+        let request = GRPCCore.ClientRequest<GetPostsRequest>(
             message: message,
             metadata: metadata
         )
@@ -1720,14 +1720,14 @@ extension Mixi2ApplicationService.ClientProtocol {
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func createPost<Result>(
-        _ message: Mixi2CreatePostRequest,
+        _ message: CreatePostRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2CreatePostResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<CreatePostResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Mixi2CreatePostRequest>(
+        let request = GRPCCore.ClientRequest<CreatePostRequest>(
             message: message,
             metadata: metadata
         )
@@ -1753,14 +1753,14 @@ extension Mixi2ApplicationService.ClientProtocol {
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func initiatePostMediaUpload<Result>(
-        _ message: Mixi2InitiatePostMediaUploadRequest,
+        _ message: InitiatePostMediaUploadRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2InitiatePostMediaUploadResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<InitiatePostMediaUploadResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Mixi2InitiatePostMediaUploadRequest>(
+        let request = GRPCCore.ClientRequest<InitiatePostMediaUploadRequest>(
             message: message,
             metadata: metadata
         )
@@ -1786,14 +1786,14 @@ extension Mixi2ApplicationService.ClientProtocol {
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getPostMediaStatus<Result>(
-        _ message: Mixi2GetPostMediaStatusRequest,
+        _ message: GetPostMediaStatusRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetPostMediaStatusResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetPostMediaStatusResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Mixi2GetPostMediaStatusRequest>(
+        let request = GRPCCore.ClientRequest<GetPostMediaStatusRequest>(
             message: message,
             metadata: metadata
         )
@@ -1819,14 +1819,14 @@ extension Mixi2ApplicationService.ClientProtocol {
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func sendChatMessage<Result>(
-        _ message: Mixi2SendChatMessageRequest,
+        _ message: SendChatMessageRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2SendChatMessageResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<SendChatMessageResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Mixi2SendChatMessageRequest>(
+        let request = GRPCCore.ClientRequest<SendChatMessageRequest>(
             message: message,
             metadata: metadata
         )
@@ -1852,14 +1852,14 @@ extension Mixi2ApplicationService.ClientProtocol {
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func getStamps<Result>(
-        _ message: Mixi2GetStampsRequest,
+        _ message: GetStampsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2GetStampsResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetStampsResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Mixi2GetStampsRequest>(
+        let request = GRPCCore.ClientRequest<GetStampsRequest>(
             message: message,
             metadata: metadata
         )
@@ -1885,14 +1885,14 @@ extension Mixi2ApplicationService.ClientProtocol {
     ///       hasn't already finished.
     /// - Returns: The result of `handleResponse`.
     public func addStampToPost<Result>(
-        _ message: Mixi2AddStampToPostRequest,
+        _ message: AddStampToPostRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Mixi2AddStampToPostResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<AddStampToPostResponse>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Mixi2AddStampToPostRequest>(
+        let request = GRPCCore.ClientRequest<AddStampToPostRequest>(
             message: message,
             metadata: metadata
         )

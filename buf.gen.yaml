@@ -1,14 +1,6 @@
 version: v2
-managed:
-  enabled: true
-  override:
-    - file_option: swift_prefix
-      value: "Mixi2"
-    - file_option: swift_prefix
-      value: "Mixi2Stream"
-      path: "social/mixi/application/service/application_stream/v1/service.proto"
 inputs:
-  - directory: ../../mixigroup/mixi2-api/proto
+  - directory: vendor/mixi2-api/proto
 plugins:
   - local: protoc-gen-swift
     out: Sources/Mixi2GRPC/Generated

@@ -33,7 +33,7 @@ lines << ""
 cases.each do |case_label, type_name|
   lines << "@available(macOS 15.0, iOS 18.0, *)"
   lines << "extension #{type_name}: Mixi2EventMessage {"
-  lines << "    public static func extract(from event: Mixi2Event) -> Self? {"
+  lines << "    public static func extract(from event: Event) -> Self? {"
   lines << "        guard case .#{case_label}(let e) = event.body else { return nil }"
   lines << "        return e"
   lines << "    }"

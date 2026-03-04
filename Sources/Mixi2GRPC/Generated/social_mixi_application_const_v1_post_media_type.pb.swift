@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// ポストに添付されるメディア種別を示す列挙型
-public enum Mixi2PostMediaType: SwiftProtobuf.Enum, Swift.CaseIterable {
+public enum PostMediaType: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
 
   /// 未指定
@@ -57,7 +57,7 @@ public enum Mixi2PostMediaType: SwiftProtobuf.Enum, Swift.CaseIterable {
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static let allCases: [Mixi2PostMediaType] = [
+  public static let allCases: [PostMediaType] = [
     .unspecified,
     .image,
     .video,
@@ -67,6 +67,6 @@ public enum Mixi2PostMediaType: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-extension Mixi2PostMediaType: SwiftProtobuf._ProtoNameProviding {
+extension PostMediaType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0POST_MEDIA_TYPE_UNSPECIFIED\0\u{1}POST_MEDIA_TYPE_IMAGE\0\u{1}POST_MEDIA_TYPE_VIDEO\0")
 }

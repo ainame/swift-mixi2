@@ -11,9 +11,9 @@ import Mixi2GRPC
 /// task with no manual wiring required.
 @available(macOS 15.0, iOS 18.0, *)
 public struct EventStream: Sendable {
-    private let client: Mixi2StreamApplicationService.ClientProtocol
+    private let client: StreamApplicationService.ClientProtocol
 
-    public init(client: Mixi2StreamApplicationService.ClientProtocol) {
+    public init(client: StreamApplicationService.ClientProtocol) {
         self.client = client
     }
 
@@ -22,9 +22,9 @@ public struct EventStream: Sendable {
     /// Returns when the stream ends cleanly, or throws if retries are exhausted or
     /// the parent task is cancelled.
     public func run(
-        _ body: (Mixi2Event) async throws -> Void
+        _ body: (Event) async throws -> Void
     ) async throws {
-        let (stream, continuation) = AsyncThrowingStream<Mixi2Event, Error>.makeStream()
+        let (stream, continuation) = AsyncThrowingStream<Event, Error>.makeStream()
         try await withThrowingTaskGroup(of: Void.self) { group in
             // Producer: structured child task — cancelled automatically when group exits.
             group.addTask {
@@ -43,8 +43,8 @@ public struct EventStream: Sendable {
 @available(macOS 15.0, iOS 18.0, *)
 @concurrent
 private func withReconnect(
-    client: Mixi2StreamApplicationService.ClientProtocol,
-    continuation: AsyncThrowingStream<Mixi2Event, Error>.Continuation
+    client: StreamApplicationService.ClientProtocol,
+    continuation: AsyncThrowingStream<Event, Error>.Continuation
 ) async {
     let maxRetries = 3
     var attempt = 0
@@ -52,7 +52,7 @@ private func withReconnect(
     while attempt <= maxRetries {
         do {
             try await client.subscribeEvents(
-                Mixi2StreamSubscribeEventsRequest()
+                StreamSubscribeEventsRequest()
             ) { response in
                 for try await message in response.messages {
                     for event in message.events {

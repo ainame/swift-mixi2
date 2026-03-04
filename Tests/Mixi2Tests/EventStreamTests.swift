@@ -5,38 +5,38 @@ import Testing
 @testable import Mixi2
 
 /// A mock stream client that yields pre-configured responses.
-final class MockStreamClient: Mixi2StreamApplicationService.ClientProtocol, Sendable {
-    let responses: [Mixi2Event]
+final class MockStreamClient: StreamApplicationService.ClientProtocol, Sendable {
+    let responses: [Event]
     let shouldFail: Bool
 
-    init(events: [Mixi2Event], fail: Bool = false) {
+    init(events: [Event], fail: Bool = false) {
         self.responses = events
         self.shouldFail = fail
     }
 
     func subscribeEvents<Result>(
-        request: GRPCCore.ClientRequest<Mixi2StreamSubscribeEventsRequest>,
-        serializer: some GRPCCore.MessageSerializer<Mixi2StreamSubscribeEventsRequest>,
-        deserializer: some GRPCCore.MessageDeserializer<Mixi2StreamSubscribeEventsResponse>,
+        request: GRPCCore.ClientRequest<StreamSubscribeEventsRequest>,
+        serializer: some GRPCCore.MessageSerializer<StreamSubscribeEventsRequest>,
+        deserializer: some GRPCCore.MessageDeserializer<StreamSubscribeEventsResponse>,
         options: GRPCCore.CallOptions,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.StreamingClientResponse<Mixi2StreamSubscribeEventsResponse>) async throws -> Result
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.StreamingClientResponse<StreamSubscribeEventsResponse>) async throws -> Result
     ) async throws -> Result where Result: Sendable {
         if shouldFail {
             throw RPCError(code: .unavailable, message: "mock failure")
         }
 
-        typealias BodyPart = StreamingClientResponse<Mixi2StreamSubscribeEventsResponse>.Contents.BodyPart
+        typealias BodyPart = StreamingClientResponse<StreamSubscribeEventsResponse>.Contents.BodyPart
         let eventsToSend = self.responses
         let bodyParts = RPCAsyncSequence<BodyPart, any Error>(
             wrapping: AsyncThrowingStream<BodyPart, Error> { continuation in
-                var message = Mixi2StreamSubscribeEventsResponse()
+                var message = StreamSubscribeEventsResponse()
                 message.events = eventsToSend
                 continuation.yield(.message(message))
                 continuation.yield(.trailingMetadata([:]))
                 continuation.finish()
             }
         )
-        let response = StreamingClientResponse<Mixi2StreamSubscribeEventsResponse>(
+        let response = StreamingClientResponse<StreamSubscribeEventsResponse>(
             metadata: [:],
             bodyParts: bodyParts
         )
@@ -49,15 +49,15 @@ struct EventStreamTests {
     @Test("Yields non-ping events from stream")
     func yieldsNonPingEvents() async throws {
         guard #available(macOS 15.0, iOS 18.0, *) else { return }
-        let pingEvent = Mixi2Event.with { $0.eventType = .ping }
-        let realEvent = Mixi2Event.with {
+        let pingEvent = Event.with { $0.eventType = .ping }
+        let realEvent = Event.with {
             $0.eventID = "e1"
             $0.eventType = .postCreated
         }
         let client = MockStreamClient(events: [pingEvent, realEvent])
         let stream = EventStream(client: client)
 
-        var received: [Mixi2Event] = []
+        var received: [Event] = []
         try await stream.run { received.append($0) }
 
         #expect(received.count == 1)
@@ -68,13 +68,13 @@ struct EventStreamTests {
     func filtersAllPingEvents() async throws {
         guard #available(macOS 15.0, iOS 18.0, *) else { return }
         let events = [
-            Mixi2Event.with { $0.eventType = .ping },
-            Mixi2Event.with { $0.eventType = .ping },
+            Event.with { $0.eventType = .ping },
+            Event.with { $0.eventType = .ping },
         ]
         let client = MockStreamClient(events: events)
         let stream = EventStream(client: client)
 
-        var received: [Mixi2Event] = []
+        var received: [Event] = []
         try await stream.run { received.append($0) }
 
         #expect(received.isEmpty)
@@ -84,7 +84,7 @@ struct EventStreamTests {
     func yieldsMultipleEvents() async throws {
         guard #available(macOS 15.0, iOS 18.0, *) else { return }
         let events = (1...3).map { i in
-            Mixi2Event.with {
+            Event.with {
                 $0.eventID = "e\(i)"
                 $0.eventType = .postCreated
             }
@@ -92,7 +92,7 @@ struct EventStreamTests {
         let client = MockStreamClient(events: events)
         let stream = EventStream(client: client)
 
-        var received: [Mixi2Event] = []
+        var received: [Event] = []
         try await stream.run { received.append($0) }
 
         #expect(received.count == 3)

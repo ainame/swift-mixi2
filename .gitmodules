@@ -1,0 +1,3 @@
+[submodule "vendor/mixi2-api"]
+	path = vendor/mixi2-api
+	url = https://github.com/mixigroup/mixi2-api

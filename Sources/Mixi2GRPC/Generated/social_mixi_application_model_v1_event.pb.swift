@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// アプリケーションが受信するイベントを表します。
-public struct Mixi2Event: Sendable {
+public struct Event: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -30,34 +30,34 @@ public struct Mixi2Event: Sendable {
   public var eventID: String = String()
 
   /// イベントの種別です。
-  public var eventType: Mixi2EventType = .unspecified
+  public var eventType: EventType = .unspecified
 
   /// イベントの種別に応じた詳細情報です。
-  public var body: Mixi2Event.OneOf_Body? = nil
+  public var body: Event.OneOf_Body? = nil
 
   /// event_type が EVENT_TYPE_PING の場合に設定されます。
-  public var pingEvent: Mixi2PingEvent {
+  public var pingEvent: PingEvent {
     get {
       if case .pingEvent(let v)? = body {return v}
-      return Mixi2PingEvent()
+      return PingEvent()
     }
     set {body = .pingEvent(newValue)}
   }
 
   /// event_type が EVENT_TYPE_POST_CREATED の場合に設定されます。
-  public var postCreatedEvent: Mixi2PostCreatedEvent {
+  public var postCreatedEvent: PostCreatedEvent {
     get {
       if case .postCreatedEvent(let v)? = body {return v}
-      return Mixi2PostCreatedEvent()
+      return PostCreatedEvent()
     }
     set {body = .postCreatedEvent(newValue)}
   }
 
   /// event_type が EVENT_TYPE_CHAT_MESSAGE_RECEIVED の場合に設定されます。
-  public var chatMessageReceivedEvent: Mixi2ChatMessageReceivedEvent {
+  public var chatMessageReceivedEvent: ChatMessageReceivedEvent {
     get {
       if case .chatMessageReceivedEvent(let v)? = body {return v}
-      return Mixi2ChatMessageReceivedEvent()
+      return ChatMessageReceivedEvent()
     }
     set {body = .chatMessageReceivedEvent(newValue)}
   }
@@ -67,11 +67,11 @@ public struct Mixi2Event: Sendable {
   /// イベントの種別に応じた詳細情報です。
   public enum OneOf_Body: Equatable, Sendable {
     /// event_type が EVENT_TYPE_PING の場合に設定されます。
-    case pingEvent(Mixi2PingEvent)
+    case pingEvent(PingEvent)
     /// event_type が EVENT_TYPE_POST_CREATED の場合に設定されます。
-    case postCreatedEvent(Mixi2PostCreatedEvent)
+    case postCreatedEvent(PostCreatedEvent)
     /// event_type が EVENT_TYPE_CHAT_MESSAGE_RECEIVED の場合に設定されます。
-    case chatMessageReceivedEvent(Mixi2ChatMessageReceivedEvent)
+    case chatMessageReceivedEvent(ChatMessageReceivedEvent)
 
   }
 
@@ -79,7 +79,7 @@ public struct Mixi2Event: Sendable {
 }
 
 /// 疎通確認用のイベントです。
-public struct Mixi2PingEvent: Sendable {
+public struct PingEvent: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -90,20 +90,20 @@ public struct Mixi2PingEvent: Sendable {
 }
 
 /// ポストが作成されたことを通知するイベントです。
-public struct Mixi2PostCreatedEvent: @unchecked Sendable {
+public struct PostCreatedEvent: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// イベントが発生した理由を示します。
-  public var eventReasonList: [Mixi2EventReason] {
+  public var eventReasonList: [EventReason] {
     get {_storage._eventReasonList}
     set {_uniqueStorage()._eventReasonList = newValue}
   }
 
   /// 作成されたポストの情報です。
-  public var post: Mixi2Post {
-    get {_storage._post ?? Mixi2Post()}
+  public var post: Post {
+    get {_storage._post ?? Post()}
     set {_uniqueStorage()._post = newValue}
   }
   /// Returns true if `post` has been explicitly set.
@@ -112,8 +112,8 @@ public struct Mixi2PostCreatedEvent: @unchecked Sendable {
   public mutating func clearPost() {_uniqueStorage()._post = nil}
 
   /// ポストしたユーザーの情報です。
-  public var issuer: Mixi2User {
-    get {_storage._issuer ?? Mixi2User()}
+  public var issuer: User {
+    get {_storage._issuer ?? User()}
     set {_uniqueStorage()._issuer = newValue}
   }
   /// Returns true if `issuer` has been explicitly set.
@@ -129,20 +129,20 @@ public struct Mixi2PostCreatedEvent: @unchecked Sendable {
 }
 
 /// チャットメッセージを受信したことを通知するイベントです。
-public struct Mixi2ChatMessageReceivedEvent: @unchecked Sendable {
+public struct ChatMessageReceivedEvent: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// イベントが発生した理由を示します。
-  public var eventReasonList: [Mixi2EventReason] {
+  public var eventReasonList: [EventReason] {
     get {_storage._eventReasonList}
     set {_uniqueStorage()._eventReasonList = newValue}
   }
 
   /// 受信したメッセージの情報です。
-  public var message: Mixi2ChatMessage {
-    get {_storage._message ?? Mixi2ChatMessage()}
+  public var message: ChatMessage {
+    get {_storage._message ?? ChatMessage()}
     set {_uniqueStorage()._message = newValue}
   }
   /// Returns true if `message` has been explicitly set.
@@ -151,8 +151,8 @@ public struct Mixi2ChatMessageReceivedEvent: @unchecked Sendable {
   public mutating func clearMessage() {_uniqueStorage()._message = nil}
 
   /// メッセージを送信したユーザーです。
-  public var issuer: Mixi2User {
-    get {_storage._issuer ?? Mixi2User()}
+  public var issuer: User {
+    get {_storage._issuer ?? User()}
     set {_uniqueStorage()._issuer = newValue}
   }
   /// Returns true if `issuer` has been explicitly set.
@@ -171,7 +171,7 @@ public struct Mixi2ChatMessageReceivedEvent: @unchecked Sendable {
 
 fileprivate let _protobuf_package = "social.mixi.application.model.v1"
 
-extension Mixi2Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Event"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}event_id\0\u{3}event_type\0\u{3}ping_event\0\u{3}post_created_event\0\u{4}\u{2}chat_message_received_event\0")
 
@@ -184,7 +184,7 @@ extension Mixi2Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
       case 1: try { try decoder.decodeSingularStringField(value: &self.eventID) }()
       case 2: try { try decoder.decodeSingularEnumField(value: &self.eventType) }()
       case 3: try {
-        var v: Mixi2PingEvent?
+        var v: PingEvent?
         var hadOneofValue = false
         if let current = self.body {
           hadOneofValue = true
@@ -197,7 +197,7 @@ extension Mixi2Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
         }
       }()
       case 4: try {
-        var v: Mixi2PostCreatedEvent?
+        var v: PostCreatedEvent?
         var hadOneofValue = false
         if let current = self.body {
           hadOneofValue = true
@@ -210,7 +210,7 @@ extension Mixi2Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
         }
       }()
       case 6: try {
-        var v: Mixi2ChatMessageReceivedEvent?
+        var v: ChatMessageReceivedEvent?
         var hadOneofValue = false
         if let current = self.body {
           hadOneofValue = true
@@ -256,7 +256,7 @@ extension Mixi2Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2Event, rhs: Mixi2Event) -> Bool {
+  public static func ==(lhs: Event, rhs: Event) -> Bool {
     if lhs.eventID != rhs.eventID {return false}
     if lhs.eventType != rhs.eventType {return false}
     if lhs.body != rhs.body {return false}
@@ -265,7 +265,7 @@ extension Mixi2Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
   }
 }
 
-extension Mixi2PingEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension PingEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PingEvent"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -278,20 +278,20 @@ extension Mixi2PingEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2PingEvent, rhs: Mixi2PingEvent) -> Bool {
+  public static func ==(lhs: PingEvent, rhs: PingEvent) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Mixi2PostCreatedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension PostCreatedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PostCreatedEvent"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}event_reason_list\0\u{1}post\0\u{1}issuer\0")
 
   fileprivate class _StorageClass {
-    var _eventReasonList: [Mixi2EventReason] = []
-    var _post: Mixi2Post? = nil
-    var _issuer: Mixi2User? = nil
+    var _eventReasonList: [EventReason] = []
+    var _post: Post? = nil
+    var _issuer: User? = nil
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -351,7 +351,7 @@ extension Mixi2PostCreatedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2PostCreatedEvent, rhs: Mixi2PostCreatedEvent) -> Bool {
+  public static func ==(lhs: PostCreatedEvent, rhs: PostCreatedEvent) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -368,14 +368,14 @@ extension Mixi2PostCreatedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Mixi2ChatMessageReceivedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension ChatMessageReceivedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ChatMessageReceivedEvent"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}event_reason_list\0\u{1}message\0\u{1}issuer\0")
 
   fileprivate class _StorageClass {
-    var _eventReasonList: [Mixi2EventReason] = []
-    var _message: Mixi2ChatMessage? = nil
-    var _issuer: Mixi2User? = nil
+    var _eventReasonList: [EventReason] = []
+    var _message: ChatMessage? = nil
+    var _issuer: User? = nil
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -435,7 +435,7 @@ extension Mixi2ChatMessageReceivedEvent: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2ChatMessageReceivedEvent, rhs: Mixi2ChatMessageReceivedEvent) -> Bool {
+  public static func ==(lhs: ChatMessageReceivedEvent, rhs: ChatMessageReceivedEvent) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0

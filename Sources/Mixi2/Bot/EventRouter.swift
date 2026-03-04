@@ -16,7 +16,7 @@ import Synchronization
 ///     print("new post:", event.post.content)
 /// }
 /// router.on(ChatMessageReceivedEvent.self) { context, event in
-///     var reply = Mixi2SendChatMessageRequest()
+///     var reply = SendChatMessageRequest()
 ///     reply.roomID = event.message.roomID
 ///     reply.text = event.message.text
 ///     _ = try await context.applicationService.sendChatMessage(reply)
@@ -27,7 +27,7 @@ import Synchronization
 /// ``Mixi2EventMessage`` and pass it to ``on(_:handler:)``.
 @available(macOS 15.0, iOS 18.0, *)
 public final class EventRouter: Sendable {
-    private typealias EventHandler = @Sendable (Bot.Context, Mixi2Event) async throws -> Void
+    private typealias EventHandler = @Sendable (Bot.Context, Event) async throws -> Void
 
     private let handlers: Mutex<[EventHandler]> = .init([])
 
@@ -50,7 +50,7 @@ public final class EventRouter: Sendable {
     }
 
     /// Dispatches a single event to all registered handlers whose type matches.
-    func handle(_ context: Bot.Context, _ event: Mixi2Event) async throws {
+    func handle(_ context: Bot.Context, _ event: Event) async throws {
         let snapshot = handlers.withLock { $0 }
         for handler in snapshot {
             try await handler(context, event)

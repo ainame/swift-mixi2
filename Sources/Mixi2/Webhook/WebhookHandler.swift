@@ -37,7 +37,7 @@ public struct WebhookHandler: Sendable {
         body: Data,
         signature signatureHeader: String,
         timestamp timestampHeader: String
-    ) throws -> [Mixi2Event] {
+    ) throws -> [Event] {
         // Decode signature
         guard let signatureBytes = Data(base64Encoded: signatureHeader) else {
             throw WebhookError.invalidSignatureEncoding
@@ -62,7 +62,7 @@ public struct WebhookHandler: Sendable {
         }
 
         // Deserialize protobuf
-        let request = try Mixi2SendEventRequest(
+        let request = try SendEventRequest(
             serializedBytes: body
         )
 

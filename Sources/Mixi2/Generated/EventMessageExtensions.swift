@@ -4,16 +4,16 @@
 import Mixi2GRPC
 
 @available(macOS 15.0, iOS 18.0, *)
-extension Mixi2PostCreatedEvent: Mixi2EventMessage {
-    public static func extract(from event: Mixi2Event) -> Self? {
+extension PostCreatedEvent: Mixi2EventMessage {
+    public static func extract(from event: Event) -> Self? {
         guard case .postCreatedEvent(let e) = event.body else { return nil }
         return e
     }
 }
 
 @available(macOS 15.0, iOS 18.0, *)
-extension Mixi2ChatMessageReceivedEvent: Mixi2EventMessage {
-    public static func extract(from event: Mixi2Event) -> Self? {
+extension ChatMessageReceivedEvent: Mixi2EventMessage {
+    public static func extract(from event: Event) -> Self? {
         guard case .chatMessageReceivedEvent(let e) = event.body else { return nil }
         return e
     }

@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// ポストを表します。
-public struct Mixi2Post: Sendable {
+public struct Post: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -49,7 +49,7 @@ public struct Mixi2Post: Sendable {
   public mutating func clearCreatedAt() {self._createdAt = nil}
 
   /// ポストに添付されたメディア一覧です。
-  public var postMediaList: [Mixi2PostMedia] = []
+  public var postMediaList: [PostMedia] = []
 
   /// 返信先のポストIDです。
   public var inReplyToPostID: String {
@@ -62,8 +62,8 @@ public struct Mixi2Post: Sendable {
   public mutating func clearInReplyToPostID() {self._inReplyToPostID = nil}
 
   /// ポストに適用されるマスク情報です。
-  public var postMask: Mixi2PostMask {
-    get {_postMask ?? Mixi2PostMask()}
+  public var postMask: PostMask {
+    get {_postMask ?? PostMask()}
     set {_postMask = newValue}
   }
   /// Returns true if `postMask` has been explicitly set.
@@ -72,13 +72,13 @@ public struct Mixi2Post: Sendable {
   public mutating func clearPostMask() {self._postMask = nil}
 
   /// ポストを閲覧可能かどうかを示します。
-  public var visibility: Mixi2PostVisibility = .unspecified
+  public var visibility: PostVisibility = .unspecified
 
   /// ポストの公開設定を示します。
-  public var accessLevel: Mixi2PostAccessLevel = .unspecified
+  public var accessLevel: PostAccessLevel = .unspecified
 
   /// ポストに付与されたスタンプの一覧です。
-  public var stamps: [Mixi2PostStamp] = []
+  public var stamps: [PostStamp] = []
 
   /// 現在のアプリケーションがすでにこのポストに付与したスタンプIDです。
   public var readerStampID: String {
@@ -96,36 +96,36 @@ public struct Mixi2Post: Sendable {
 
   fileprivate var _createdAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
   fileprivate var _inReplyToPostID: String? = nil
-  fileprivate var _postMask: Mixi2PostMask? = nil
+  fileprivate var _postMask: PostMask? = nil
   fileprivate var _readerStampID: String? = nil
 }
 
 /// ポストに添付されたメディアを表します。
-public struct Mixi2PostMedia: Sendable {
+public struct PostMedia: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// メディアの種別です。
-  public var mediaType: Mixi2PostMediaType = .unspecified
+  public var mediaType: PostMediaType = .unspecified
 
   /// メディアの種別に応じた詳細情報です。
-  public var content: Mixi2PostMedia.OneOf_Content? = nil
+  public var content: PostMedia.OneOf_Content? = nil
 
   /// media_type が POST_MEDIA_TYPE_IMAGE の場合に設定されます。
-  public var image: Mixi2PostMediaImage {
+  public var image: PostMediaImage {
     get {
       if case .image(let v)? = content {return v}
-      return Mixi2PostMediaImage()
+      return PostMediaImage()
     }
     set {content = .image(newValue)}
   }
 
   /// media_type が POST_MEDIA_TYPE_VIDEO の場合に設定されます。
-  public var video: Mixi2PostMediaVideo {
+  public var video: PostMediaVideo {
     get {
       if case .video(let v)? = content {return v}
-      return Mixi2PostMediaVideo()
+      return PostMediaVideo()
     }
     set {content = .video(newValue)}
   }
@@ -135,9 +135,9 @@ public struct Mixi2PostMedia: Sendable {
   /// メディアの種別に応じた詳細情報です。
   public enum OneOf_Content: Equatable, Sendable {
     /// media_type が POST_MEDIA_TYPE_IMAGE の場合に設定されます。
-    case image(Mixi2PostMediaImage)
+    case image(PostMediaImage)
     /// media_type が POST_MEDIA_TYPE_VIDEO の場合に設定されます。
-    case video(Mixi2PostMediaVideo)
+    case video(PostMediaVideo)
 
   }
 
@@ -145,7 +145,7 @@ public struct Mixi2PostMedia: Sendable {
 }
 
 /// ポストに添付された画像の情報を表します。
-public struct Mixi2PostMediaImage: Sendable {
+public struct PostMediaImage: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -180,7 +180,7 @@ public struct Mixi2PostMediaImage: Sendable {
 }
 
 /// ポストに添付された動画の情報を表します。
-public struct Mixi2PostMediaVideo: Sendable {
+public struct PostMediaVideo: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -218,13 +218,13 @@ public struct Mixi2PostMediaVideo: Sendable {
 }
 
 /// ポストに適用されるマスク情報を表します。
-public struct Mixi2PostMask: Sendable {
+public struct PostMask: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// マスクのタイプです。
-  public var maskType: Mixi2PostMaskType = .unspecified
+  public var maskType: PostMaskType = .unspecified
 
   /// マスクのキャプションです。
   public var caption: String = String()
@@ -235,14 +235,14 @@ public struct Mixi2PostMask: Sendable {
 }
 
 /// ポストに付与されたスタンプを表します。
-public struct Mixi2PostStamp: Sendable {
+public struct PostStamp: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// スタンプの情報です。
-  public var stamp: Mixi2MediaStamp {
-    get {_stamp ?? Mixi2MediaStamp()}
+  public var stamp: MediaStamp {
+    get {_stamp ?? MediaStamp()}
     set {_stamp = newValue}
   }
   /// Returns true if `stamp` has been explicitly set.
@@ -257,14 +257,14 @@ public struct Mixi2PostStamp: Sendable {
 
   public init() {}
 
-  fileprivate var _stamp: Mixi2MediaStamp? = nil
+  fileprivate var _stamp: MediaStamp? = nil
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "social.mixi.application.model.v1"
 
-extension Mixi2Post: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Post: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Post"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}post_id\0\u{3}is_deleted\0\u{3}creator_id\0\u{1}text\0\u{3}created_at\0\u{3}post_media_list\0\u{3}in_reply_to_post_id\0\u{3}post_mask\0\u{2}\u{2}visibility\0\u{3}access_level\0\u{1}stamps\0\u{3}reader_stamp_id\0")
 
@@ -335,7 +335,7 @@ extension Mixi2Post: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2Post, rhs: Mixi2Post) -> Bool {
+  public static func ==(lhs: Post, rhs: Post) -> Bool {
     if lhs.postID != rhs.postID {return false}
     if lhs.isDeleted != rhs.isDeleted {return false}
     if lhs.creatorID != rhs.creatorID {return false}
@@ -353,7 +353,7 @@ extension Mixi2Post: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
   }
 }
 
-extension Mixi2PostMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension PostMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PostMedia"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}media_type\0\u{1}image\0\u{1}video\0")
 
@@ -365,7 +365,7 @@ extension Mixi2PostMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularEnumField(value: &self.mediaType) }()
       case 2: try {
-        var v: Mixi2PostMediaImage?
+        var v: PostMediaImage?
         var hadOneofValue = false
         if let current = self.content {
           hadOneofValue = true
@@ -378,7 +378,7 @@ extension Mixi2PostMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
         }
       }()
       case 3: try {
-        var v: Mixi2PostMediaVideo?
+        var v: PostMediaVideo?
         var hadOneofValue = false
         if let current = self.content {
           hadOneofValue = true
@@ -417,7 +417,7 @@ extension Mixi2PostMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2PostMedia, rhs: Mixi2PostMedia) -> Bool {
+  public static func ==(lhs: PostMedia, rhs: PostMedia) -> Bool {
     if lhs.mediaType != rhs.mediaType {return false}
     if lhs.content != rhs.content {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -425,7 +425,7 @@ extension Mixi2PostMedia: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
   }
 }
 
-extension Mixi2PostMediaImage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension PostMediaImage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PostMediaImage"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}large_image_url\0\u{3}large_image_mime_type\0\u{3}large_image_height\0\u{3}large_image_width\0\u{3}small_image_url\0\u{3}small_image_mime_type\0\u{3}small_image_height\0\u{3}small_image_width\0")
 
@@ -476,7 +476,7 @@ extension Mixi2PostMediaImage: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2PostMediaImage, rhs: Mixi2PostMediaImage) -> Bool {
+  public static func ==(lhs: PostMediaImage, rhs: PostMediaImage) -> Bool {
     if lhs.largeImageURL != rhs.largeImageURL {return false}
     if lhs.largeImageMimeType != rhs.largeImageMimeType {return false}
     if lhs.largeImageHeight != rhs.largeImageHeight {return false}
@@ -490,7 +490,7 @@ extension Mixi2PostMediaImage: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Mixi2PostMediaVideo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension PostMediaVideo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PostMediaVideo"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}video_url\0\u{3}video_mime_type\0\u{3}video_height\0\u{3}video_width\0\u{3}preview_image_url\0\u{3}preview_image_mime_type\0\u{3}preview_image_height\0\u{3}preview_image_width\0\u{1}duration\0")
 
@@ -545,7 +545,7 @@ extension Mixi2PostMediaVideo: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2PostMediaVideo, rhs: Mixi2PostMediaVideo) -> Bool {
+  public static func ==(lhs: PostMediaVideo, rhs: PostMediaVideo) -> Bool {
     if lhs.videoURL != rhs.videoURL {return false}
     if lhs.videoMimeType != rhs.videoMimeType {return false}
     if lhs.videoHeight != rhs.videoHeight {return false}
@@ -560,7 +560,7 @@ extension Mixi2PostMediaVideo: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension Mixi2PostMask: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension PostMask: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PostMask"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}mask_type\0\u{1}caption\0")
 
@@ -587,7 +587,7 @@ extension Mixi2PostMask: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2PostMask, rhs: Mixi2PostMask) -> Bool {
+  public static func ==(lhs: PostMask, rhs: PostMask) -> Bool {
     if lhs.maskType != rhs.maskType {return false}
     if lhs.caption != rhs.caption {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -595,7 +595,7 @@ extension Mixi2PostMask: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   }
 }
 
-extension Mixi2PostStamp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension PostStamp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PostStamp"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}stamp\0\u{1}count\0")
 
@@ -626,7 +626,7 @@ extension Mixi2PostStamp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2PostStamp, rhs: Mixi2PostStamp) -> Bool {
+  public static func ==(lhs: PostStamp, rhs: PostStamp) -> Bool {
     if lhs._stamp != rhs._stamp {return false}
     if lhs.count != rhs.count {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}

@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// ユーザーの公開設定を示す列挙型
-public enum Mixi2UserAccessLevel: SwiftProtobuf.Enum, Swift.CaseIterable {
+public enum UserAccessLevel: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
 
   /// 未指定
@@ -57,7 +57,7 @@ public enum Mixi2UserAccessLevel: SwiftProtobuf.Enum, Swift.CaseIterable {
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static let allCases: [Mixi2UserAccessLevel] = [
+  public static let allCases: [UserAccessLevel] = [
     .unspecified,
     .public,
     .private,
@@ -67,6 +67,6 @@ public enum Mixi2UserAccessLevel: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-extension Mixi2UserAccessLevel: SwiftProtobuf._ProtoNameProviding {
+extension UserAccessLevel: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0USER_ACCESS_LEVEL_UNSPECIFIED\0\u{1}USER_ACCESS_LEVEL_PUBLIC\0\u{1}USER_ACCESS_LEVEL_PRIVATE\0")
 }

@@ -1,6 +1,6 @@
 import Mixi2GRPC
 
-/// A protocol for protobuf message types that can be extracted from a raw ``Mixi2Event``.
+/// A protocol for protobuf message types that can be extracted from a raw ``Event``.
 ///
 /// Conform an event message type to this protocol to use it with
 /// ``Router/on(_:handler:)``. No changes to `Router` are needed when
@@ -8,5 +8,5 @@ import Mixi2GRPC
 @available(macOS 15.0, iOS 18.0, *)
 public protocol Mixi2EventMessage: Sendable {
     /// Extracts this message from a raw event, or returns `nil` for a different type.
-    static func extract(from event: Mixi2Event) -> Self?
+    static func extract(from event: Event) -> Self?
 }

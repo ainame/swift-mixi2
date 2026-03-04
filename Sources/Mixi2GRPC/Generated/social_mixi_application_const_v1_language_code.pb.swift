@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// 言語コードを示す列挙型
-public enum Mixi2LanguageCode: SwiftProtobuf.Enum, Swift.CaseIterable {
+public enum LanguageCode: SwiftProtobuf.Enum, Swift.CaseIterable {
   public typealias RawValue = Int
 
   /// 未指定
@@ -57,7 +57,7 @@ public enum Mixi2LanguageCode: SwiftProtobuf.Enum, Swift.CaseIterable {
   }
 
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static let allCases: [Mixi2LanguageCode] = [
+  public static let allCases: [LanguageCode] = [
     .unspecified,
     .jp,
     .en,
@@ -67,6 +67,6 @@ public enum Mixi2LanguageCode: SwiftProtobuf.Enum, Swift.CaseIterable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-extension Mixi2LanguageCode: SwiftProtobuf._ProtoNameProviding {
+extension LanguageCode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0LANGUAGE_CODE_UNSPECIFIED\0\u{1}LANGUAGE_CODE_JP\0\u{1}LANGUAGE_CODE_EN\0")
 }

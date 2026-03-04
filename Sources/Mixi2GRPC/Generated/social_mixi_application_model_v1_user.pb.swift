@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// ユーザーを表します。
-public struct Mixi2User: Sendable {
+public struct User: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -42,8 +42,8 @@ public struct Mixi2User: Sendable {
   public var profile: String = String()
 
   /// ユーザーのアバター情報です。
-  public var userAvatar: Mixi2UserAvatar {
-    get {_userAvatar ?? Mixi2UserAvatar()}
+  public var userAvatar: UserAvatar {
+    get {_userAvatar ?? UserAvatar()}
     set {_userAvatar = newValue}
   }
   /// Returns true if `userAvatar` has been explicitly set.
@@ -52,20 +52,20 @@ public struct Mixi2User: Sendable {
   public mutating func clearUserAvatar() {self._userAvatar = nil}
 
   /// ユーザーの情報を閲覧可能かどうかを示します。
-  public var visibility: Mixi2UserVisibility = .unspecified
+  public var visibility: UserVisibility = .unspecified
 
   /// ユーザーの公開設定を示します。
-  public var accessLevel: Mixi2UserAccessLevel = .unspecified
+  public var accessLevel: UserAccessLevel = .unspecified
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
-  fileprivate var _userAvatar: Mixi2UserAvatar? = nil
+  fileprivate var _userAvatar: UserAvatar? = nil
 }
 
 /// ユーザーのアバター画像の情報を表します。
-public struct Mixi2UserAvatar: Sendable {
+public struct UserAvatar: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -103,7 +103,7 @@ public struct Mixi2UserAvatar: Sendable {
 
 fileprivate let _protobuf_package = "social.mixi.application.model.v1"
 
-extension Mixi2User: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension User: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".User"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}user_id\0\u{3}is_disabled\0\u{1}name\0\u{3}display_name\0\u{1}profile\0\u{3}user_avatar\0\u{1}visibility\0\u{3}access_level\0")
 
@@ -158,7 +158,7 @@ extension Mixi2User: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2User, rhs: Mixi2User) -> Bool {
+  public static func ==(lhs: User, rhs: User) -> Bool {
     if lhs.userID != rhs.userID {return false}
     if lhs.isDisabled != rhs.isDisabled {return false}
     if lhs.name != rhs.name {return false}
@@ -172,7 +172,7 @@ extension Mixi2User: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
   }
 }
 
-extension Mixi2UserAvatar: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension UserAvatar: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".UserAvatar"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}large_image_url\0\u{3}large_image_mime_type\0\u{3}large_image_height\0\u{3}large_image_width\0\u{3}small_image_url\0\u{3}small_image_mime_type\0\u{3}small_image_height\0\u{3}small_image_width\0")
 
@@ -223,7 +223,7 @@ extension Mixi2UserAvatar: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2UserAvatar, rhs: Mixi2UserAvatar) -> Bool {
+  public static func ==(lhs: UserAvatar, rhs: UserAvatar) -> Bool {
     if lhs.largeImageURL != rhs.largeImageURL {return false}
     if lhs.largeImageMimeType != rhs.largeImageMimeType {return false}
     if lhs.largeImageHeight != rhs.largeImageHeight {return false}

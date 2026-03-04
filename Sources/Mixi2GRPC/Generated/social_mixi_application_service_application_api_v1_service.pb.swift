@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// ユーザー情報取得リクエストです。
-public struct Mixi2GetUsersRequest: Sendable {
+public struct GetUsersRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -35,13 +35,13 @@ public struct Mixi2GetUsersRequest: Sendable {
 }
 
 /// ユーザー情報取得レスポンスです。
-public struct Mixi2GetUsersResponse: Sendable {
+public struct GetUsersResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// ユーザー情報の一覧です。
-  public var users: [Mixi2User] = []
+  public var users: [User] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -49,7 +49,7 @@ public struct Mixi2GetUsersResponse: Sendable {
 }
 
 /// ポスト情報取得リクエストです。
-public struct Mixi2GetPostsRequest: Sendable {
+public struct GetPostsRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -63,13 +63,13 @@ public struct Mixi2GetPostsRequest: Sendable {
 }
 
 /// ポスト情報取得レスポンスです。
-public struct Mixi2GetPostsResponse: Sendable {
+public struct GetPostsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// ポスト情報の一覧です。
-  public var posts: [Mixi2Post] = []
+  public var posts: [Post] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -77,7 +77,7 @@ public struct Mixi2GetPostsResponse: Sendable {
 }
 
 /// メディアアップロード開始リクエストです。
-public struct Mixi2InitiatePostMediaUploadRequest: Sendable {
+public struct InitiatePostMediaUploadRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -89,7 +89,7 @@ public struct Mixi2InitiatePostMediaUploadRequest: Sendable {
   public var dataSize: UInt64 = 0
 
   /// メディア種別を指定してください。
-  public var mediaType: Mixi2InitiatePostMediaUploadRequest.TypeEnum = .unspecified
+  public var mediaType: InitiatePostMediaUploadRequest.TypeEnum = .unspecified
 
   /// メディアの説明を指定してください（任意）。
   public var description_p: String {
@@ -140,7 +140,7 @@ public struct Mixi2InitiatePostMediaUploadRequest: Sendable {
     }
 
     // The compiler won't synthesize support with the UNRECOGNIZED case.
-    public static let allCases: [Mixi2InitiatePostMediaUploadRequest.TypeEnum] = [
+    public static let allCases: [InitiatePostMediaUploadRequest.TypeEnum] = [
       .unspecified,
       .image,
       .video,
@@ -154,7 +154,7 @@ public struct Mixi2InitiatePostMediaUploadRequest: Sendable {
 }
 
 /// メディアアップロード開始レスポンスです。
-public struct Mixi2InitiatePostMediaUploadResponse: Sendable {
+public struct InitiatePostMediaUploadResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -171,7 +171,7 @@ public struct Mixi2InitiatePostMediaUploadResponse: Sendable {
 }
 
 /// メディアアップロード状況取得リクエストです。
-public struct Mixi2GetPostMediaStatusRequest: Sendable {
+public struct GetPostMediaStatusRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -185,13 +185,13 @@ public struct Mixi2GetPostMediaStatusRequest: Sendable {
 }
 
 /// メディアアップロード状況取得レスポンスです。
-public struct Mixi2GetPostMediaStatusResponse: Sendable {
+public struct GetPostMediaStatusResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// メディアのアップロード/処理状況です。
-  public var status: Mixi2GetPostMediaStatusResponse.Status = .unspecified
+  public var status: GetPostMediaStatusResponse.Status = .unspecified
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -242,7 +242,7 @@ public struct Mixi2GetPostMediaStatusResponse: Sendable {
     }
 
     // The compiler won't synthesize support with the UNRECOGNIZED case.
-    public static let allCases: [Mixi2GetPostMediaStatusResponse.Status] = [
+    public static let allCases: [GetPostMediaStatusResponse.Status] = [
       .unspecified,
       .uploadPending,
       .processing,
@@ -256,7 +256,7 @@ public struct Mixi2GetPostMediaStatusResponse: Sendable {
 }
 
 /// in_reply_to_post_id と quoted_post_id は同時に指定できません。
-public struct Mixi2CreatePostRequest: Sendable {
+public struct CreatePostRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -288,8 +288,8 @@ public struct Mixi2CreatePostRequest: Sendable {
   public var mediaIDList: [String] = []
 
   /// ポストに適用するマスクを指定してください（任意）。
-  public var postMask: Mixi2PostMask {
-    get {_postMask ?? Mixi2PostMask()}
+  public var postMask: PostMask {
+    get {_postMask ?? PostMask()}
     set {_postMask = newValue}
   }
   /// Returns true if `postMask` has been explicitly set.
@@ -298,7 +298,7 @@ public struct Mixi2CreatePostRequest: Sendable {
   public mutating func clearPostMask() {self._postMask = nil}
 
   /// ポストの配信設定を指定してください。
-  public var publishingType: Mixi2PostPublishingType {
+  public var publishingType: PostPublishingType {
     get {_publishingType ?? .unspecified}
     set {_publishingType = newValue}
   }
@@ -313,19 +313,19 @@ public struct Mixi2CreatePostRequest: Sendable {
 
   fileprivate var _inReplyToPostID: String? = nil
   fileprivate var _quotedPostID: String? = nil
-  fileprivate var _postMask: Mixi2PostMask? = nil
-  fileprivate var _publishingType: Mixi2PostPublishingType? = nil
+  fileprivate var _postMask: PostMask? = nil
+  fileprivate var _publishingType: PostPublishingType? = nil
 }
 
 /// ポスト作成レスポンスです。
-public struct Mixi2CreatePostResponse: Sendable {
+public struct CreatePostResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// 作成されたポスト情報です。
-  public var post: Mixi2Post {
-    get {_post ?? Mixi2Post()}
+  public var post: Post {
+    get {_post ?? Post()}
     set {_post = newValue}
   }
   /// Returns true if `post` has been explicitly set.
@@ -337,11 +337,11 @@ public struct Mixi2CreatePostResponse: Sendable {
 
   public init() {}
 
-  fileprivate var _post: Mixi2Post? = nil
+  fileprivate var _post: Post? = nil
 }
 
 /// text または media_id のいずれかは必須です。
-public struct Mixi2SendChatMessageRequest: Sendable {
+public struct SendChatMessageRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -378,14 +378,14 @@ public struct Mixi2SendChatMessageRequest: Sendable {
 }
 
 /// チャットメッセージ送信レスポンスです。
-public struct Mixi2SendChatMessageResponse: Sendable {
+public struct SendChatMessageResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// 送信されたメッセージです。
-  public var message: Mixi2ChatMessage {
-    get {_message ?? Mixi2ChatMessage()}
+  public var message: ChatMessage {
+    get {_message ?? ChatMessage()}
     set {_message = newValue}
   }
   /// Returns true if `message` has been explicitly set.
@@ -397,18 +397,18 @@ public struct Mixi2SendChatMessageResponse: Sendable {
 
   public init() {}
 
-  fileprivate var _message: Mixi2ChatMessage? = nil
+  fileprivate var _message: ChatMessage? = nil
 }
 
 /// スタンプ一覧取得リクエストです。
-public struct Mixi2GetStampsRequest: Sendable {
+public struct GetStampsRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// 取得する公式スタンプの言語を指定してください（任意）。
   /// 未指定の場合、公式スタンプ一覧は空で返されます。
-  public var officialStampLanguage: Mixi2LanguageCode {
+  public var officialStampLanguage: LanguageCode {
     get {_officialStampLanguage ?? .unspecified}
     set {_officialStampLanguage = newValue}
   }
@@ -421,17 +421,17 @@ public struct Mixi2GetStampsRequest: Sendable {
 
   public init() {}
 
-  fileprivate var _officialStampLanguage: Mixi2LanguageCode? = nil
+  fileprivate var _officialStampLanguage: LanguageCode? = nil
 }
 
 /// スタンプ一覧取得レスポンスです。
-public struct Mixi2GetStampsResponse: Sendable {
+public struct GetStampsResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// 指定言語の公式スタンプセット一覧です。
-  public var officialStampSets: [Mixi2OfficialStampSet] = []
+  public var officialStampSets: [OfficialStampSet] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -439,7 +439,7 @@ public struct Mixi2GetStampsResponse: Sendable {
 }
 
 /// ポストへのスタンプ付与リクエストです。
-public struct Mixi2AddStampToPostRequest: Sendable {
+public struct AddStampToPostRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -458,14 +458,14 @@ public struct Mixi2AddStampToPostRequest: Sendable {
 }
 
 /// ポストへのスタンプ付与レスポンスです。
-public struct Mixi2AddStampToPostResponse: Sendable {
+public struct AddStampToPostResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// 更新されたポストです。
-  public var post: Mixi2Post {
-    get {_post ?? Mixi2Post()}
+  public var post: Post {
+    get {_post ?? Post()}
     set {_post = newValue}
   }
   /// Returns true if `post` has been explicitly set.
@@ -477,14 +477,14 @@ public struct Mixi2AddStampToPostResponse: Sendable {
 
   public init() {}
 
-  fileprivate var _post: Mixi2Post? = nil
+  fileprivate var _post: Post? = nil
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "social.mixi.application.service.application_api.v1"
 
-extension Mixi2GetUsersRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GetUsersRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetUsersRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}user_id_list\0")
 
@@ -507,14 +507,14 @@ extension Mixi2GetUsersRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2GetUsersRequest, rhs: Mixi2GetUsersRequest) -> Bool {
+  public static func ==(lhs: GetUsersRequest, rhs: GetUsersRequest) -> Bool {
     if lhs.userIDList != rhs.userIDList {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Mixi2GetUsersResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GetUsersResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetUsersResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}users\0")
 
@@ -537,14 +537,14 @@ extension Mixi2GetUsersResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2GetUsersResponse, rhs: Mixi2GetUsersResponse) -> Bool {
+  public static func ==(lhs: GetUsersResponse, rhs: GetUsersResponse) -> Bool {
     if lhs.users != rhs.users {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Mixi2GetPostsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GetPostsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetPostsRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}post_id_list\0")
 
@@ -567,14 +567,14 @@ extension Mixi2GetPostsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2GetPostsRequest, rhs: Mixi2GetPostsRequest) -> Bool {
+  public static func ==(lhs: GetPostsRequest, rhs: GetPostsRequest) -> Bool {
     if lhs.postIDList != rhs.postIDList {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Mixi2GetPostsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GetPostsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetPostsResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}posts\0")
 
@@ -597,14 +597,14 @@ extension Mixi2GetPostsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2GetPostsResponse, rhs: Mixi2GetPostsResponse) -> Bool {
+  public static func ==(lhs: GetPostsResponse, rhs: GetPostsResponse) -> Bool {
     if lhs.posts != rhs.posts {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Mixi2InitiatePostMediaUploadRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension InitiatePostMediaUploadRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".InitiatePostMediaUploadRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}content_type\0\u{3}data_size\0\u{3}media_type\0\u{1}description\0")
 
@@ -643,7 +643,7 @@ extension Mixi2InitiatePostMediaUploadRequest: SwiftProtobuf.Message, SwiftProto
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2InitiatePostMediaUploadRequest, rhs: Mixi2InitiatePostMediaUploadRequest) -> Bool {
+  public static func ==(lhs: InitiatePostMediaUploadRequest, rhs: InitiatePostMediaUploadRequest) -> Bool {
     if lhs.contentType != rhs.contentType {return false}
     if lhs.dataSize != rhs.dataSize {return false}
     if lhs.mediaType != rhs.mediaType {return false}
@@ -653,11 +653,11 @@ extension Mixi2InitiatePostMediaUploadRequest: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension Mixi2InitiatePostMediaUploadRequest.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension InitiatePostMediaUploadRequest.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0TYPE_UNSPECIFIED\0\u{1}TYPE_IMAGE\0\u{1}TYPE_VIDEO\0")
 }
 
-extension Mixi2InitiatePostMediaUploadResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension InitiatePostMediaUploadResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".InitiatePostMediaUploadResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}media_id\0\u{3}upload_url\0")
 
@@ -684,7 +684,7 @@ extension Mixi2InitiatePostMediaUploadResponse: SwiftProtobuf.Message, SwiftProt
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2InitiatePostMediaUploadResponse, rhs: Mixi2InitiatePostMediaUploadResponse) -> Bool {
+  public static func ==(lhs: InitiatePostMediaUploadResponse, rhs: InitiatePostMediaUploadResponse) -> Bool {
     if lhs.mediaID != rhs.mediaID {return false}
     if lhs.uploadURL != rhs.uploadURL {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -692,7 +692,7 @@ extension Mixi2InitiatePostMediaUploadResponse: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Mixi2GetPostMediaStatusRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GetPostMediaStatusRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetPostMediaStatusRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}media_id\0")
 
@@ -715,14 +715,14 @@ extension Mixi2GetPostMediaStatusRequest: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2GetPostMediaStatusRequest, rhs: Mixi2GetPostMediaStatusRequest) -> Bool {
+  public static func ==(lhs: GetPostMediaStatusRequest, rhs: GetPostMediaStatusRequest) -> Bool {
     if lhs.mediaID != rhs.mediaID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Mixi2GetPostMediaStatusResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GetPostMediaStatusResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetPostMediaStatusResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}status\0")
 
@@ -745,18 +745,18 @@ extension Mixi2GetPostMediaStatusResponse: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2GetPostMediaStatusResponse, rhs: Mixi2GetPostMediaStatusResponse) -> Bool {
+  public static func ==(lhs: GetPostMediaStatusResponse, rhs: GetPostMediaStatusResponse) -> Bool {
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Mixi2GetPostMediaStatusResponse.Status: SwiftProtobuf._ProtoNameProviding {
+extension GetPostMediaStatusResponse.Status: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0STATUS_UNSPECIFIED\0\u{1}STATUS_UPLOAD_PENDING\0\u{1}STATUS_PROCESSING\0\u{1}STATUS_COMPLETED\0\u{1}STATUS_FAILED\0")
 }
 
-extension Mixi2CreatePostRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension CreatePostRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CreatePostRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}text\0\u{3}in_reply_to_post_id\0\u{3}quoted_post_id\0\u{4}\u{2}media_id_list\0\u{3}post_mask\0\u{3}publishing_type\0")
 
@@ -803,7 +803,7 @@ extension Mixi2CreatePostRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2CreatePostRequest, rhs: Mixi2CreatePostRequest) -> Bool {
+  public static func ==(lhs: CreatePostRequest, rhs: CreatePostRequest) -> Bool {
     if lhs.text != rhs.text {return false}
     if lhs._inReplyToPostID != rhs._inReplyToPostID {return false}
     if lhs._quotedPostID != rhs._quotedPostID {return false}
@@ -815,7 +815,7 @@ extension Mixi2CreatePostRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension Mixi2CreatePostResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension CreatePostResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CreatePostResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}post\0")
 
@@ -842,14 +842,14 @@ extension Mixi2CreatePostResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2CreatePostResponse, rhs: Mixi2CreatePostResponse) -> Bool {
+  public static func ==(lhs: CreatePostResponse, rhs: CreatePostResponse) -> Bool {
     if lhs._post != rhs._post {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Mixi2SendChatMessageRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension SendChatMessageRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SendChatMessageRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}room_id\0\u{1}text\0\u{3}media_id\0")
 
@@ -884,7 +884,7 @@ extension Mixi2SendChatMessageRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2SendChatMessageRequest, rhs: Mixi2SendChatMessageRequest) -> Bool {
+  public static func ==(lhs: SendChatMessageRequest, rhs: SendChatMessageRequest) -> Bool {
     if lhs.roomID != rhs.roomID {return false}
     if lhs._text != rhs._text {return false}
     if lhs._mediaID != rhs._mediaID {return false}
@@ -893,7 +893,7 @@ extension Mixi2SendChatMessageRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension Mixi2SendChatMessageResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension SendChatMessageResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SendChatMessageResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}message\0")
 
@@ -920,14 +920,14 @@ extension Mixi2SendChatMessageResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2SendChatMessageResponse, rhs: Mixi2SendChatMessageResponse) -> Bool {
+  public static func ==(lhs: SendChatMessageResponse, rhs: SendChatMessageResponse) -> Bool {
     if lhs._message != rhs._message {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Mixi2GetStampsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GetStampsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetStampsRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}official_stamp_language\0")
 
@@ -954,14 +954,14 @@ extension Mixi2GetStampsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2GetStampsRequest, rhs: Mixi2GetStampsRequest) -> Bool {
+  public static func ==(lhs: GetStampsRequest, rhs: GetStampsRequest) -> Bool {
     if lhs._officialStampLanguage != rhs._officialStampLanguage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Mixi2GetStampsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GetStampsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetStampsResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}official_stamp_sets\0")
 
@@ -984,14 +984,14 @@ extension Mixi2GetStampsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2GetStampsResponse, rhs: Mixi2GetStampsResponse) -> Bool {
+  public static func ==(lhs: GetStampsResponse, rhs: GetStampsResponse) -> Bool {
     if lhs.officialStampSets != rhs.officialStampSets {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Mixi2AddStampToPostRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension AddStampToPostRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AddStampToPostRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}post_id\0\u{3}stamp_id\0")
 
@@ -1018,7 +1018,7 @@ extension Mixi2AddStampToPostRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2AddStampToPostRequest, rhs: Mixi2AddStampToPostRequest) -> Bool {
+  public static func ==(lhs: AddStampToPostRequest, rhs: AddStampToPostRequest) -> Bool {
     if lhs.postID != rhs.postID {return false}
     if lhs.stampID != rhs.stampID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -1026,7 +1026,7 @@ extension Mixi2AddStampToPostRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension Mixi2AddStampToPostResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension AddStampToPostResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".AddStampToPostResponse"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}post\0")
 
@@ -1053,7 +1053,7 @@ extension Mixi2AddStampToPostResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Mixi2AddStampToPostResponse, rhs: Mixi2AddStampToPostResponse) -> Bool {
+  public static func ==(lhs: AddStampToPostResponse, rhs: AddStampToPostResponse) -> Bool {
     if lhs._post != rhs._post {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
