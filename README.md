@@ -32,15 +32,15 @@ import Mixi2
 
 let router = EventRouter()
 
-router.on(PostCreatedEvent.self) { event in
+router.on(PostCreatedEvent.self) { _, event in
     print("[post] \(event.issuer.userID): \(event.post.text)")
 }
 
-router.on(ChatMessageReceivedEvent.self) { event in
+router.on(ChatMessageReceivedEvent.self) { _, event in
     print("[chat] \(event.issuer.userID): \(event.message.text)")
 }
 
-let bot = try Bot(configuration: .fromEnvironment(), router: router)
+let bot = try Bot(configuration: config, router: router)
 try await bot.run()
 ```
 
@@ -48,21 +48,20 @@ try await bot.run()
 
 `on(_:handler:)` is generic over any type conforming to `Mixi2EventMessage`, so adding a handler for a new event type requires no changes to `EventRouter` — just pass the type. Multiple handlers for the same type are called in registration order.
 
+Each handler receives a `Bot.Context` as its first argument, which gives access to the API client for making RPCs from within a handler:
+
+```swift
+router.on(ChatMessageReceivedEvent.self) { context, event in
+    var reply = SendChatMessageRequest()
+    reply.roomID = event.message.roomID
+    reply.text = "echo: \(event.message.text)"
+    _ = try await context.applicationService.sendChatMessage(reply)
+}
+```
+
 ### Configuration
 
-`Mixi2Client.Configuration.fromEnvironment()` reads from environment variables:
-
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `MIXI2_API_HOST` | ✓ | Unary API hostname |
-| `MIXI2_STREAM_HOST` | ✓ | Streaming hostname |
-| `MIXI2_CLIENT_ID` | ✓ | OAuth2 client ID |
-| `MIXI2_CLIENT_SECRET` | ✓ | OAuth2 client secret |
-| `MIXI2_TOKEN_URL` | ✓ | OAuth2 token endpoint URL |
-| `MIXI2_AUTH_KEY` | — | Optional `x-auth-key` header value |
-| `MIXI2_API_PORT` | — | Port (default: 443) |
-
-Or build configuration manually:
+Build a `Mixi2Client.Configuration` with your credentials:
 
 ```swift
 let authenticator = ClientCredentialsAuthenticator(
