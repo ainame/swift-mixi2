@@ -66,15 +66,18 @@ private func withReconnect(
             }
             continuation.finish()
             return
+        } catch is CancellationError {
+            // Task was cancelled — stop retrying cleanly without propagating the error.
+            continuation.finish()
+            return
         } catch {
             if attempt >= maxRetries {
                 continuation.finish(throwing: error)
                 return
             }
             attempt += 1
-            let delay = UInt64(1 << (attempt - 1)) * 1_000_000_000  // 1s, 2s, 4s
             do {
-                try await Task.sleep(nanoseconds: delay)
+                try await Task.sleep(for: .seconds(1 << (attempt - 1)))  // 1s, 2s, 4s
             } catch {
                 // Cancelled during backoff — stop retrying cleanly.
                 continuation.finish()
