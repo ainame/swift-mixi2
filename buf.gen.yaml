@@ -1,0 +1,14 @@
+version: v2
+inputs:
+  - directory: ../../mixigroup/mixi2-api/proto
+plugins:
+  - local: protoc-gen-swift
+    out: Sources/Mixi2GRPC/Generated
+    opt:
+      - Visibility=Public
+      - FileNaming=PathToUnderscores
+  - local: protoc-gen-grpc-swift-2
+    out: Sources/Mixi2GRPC/Generated
+    opt:
+      - Visibility=Public
+      - FileNaming=PathToUnderscores
