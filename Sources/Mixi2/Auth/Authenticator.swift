@@ -39,16 +39,16 @@ public actor ClientCredentialsAuthenticator: Authenticator {
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
-        let credentials = "\(clientID):\(clientSecret)"
-        let encoded = Data(credentials.utf8).base64EncodedString()
-        request.setValue("Basic \(encoded)", forHTTPHeaderField: "Authorization")
-
-        let body = "grant_type=client_credentials"
+        let allowed = CharacterSet.alphanumerics.union(.init(charactersIn: "-._~"))
+        let encodedID = clientID.addingPercentEncoding(withAllowedCharacters: allowed) ?? clientID
+        let encodedSecret = clientSecret.addingPercentEncoding(withAllowedCharacters: allowed) ?? clientSecret
+        let body = "grant_type=client_credentials&client_id=\(encodedID)&client_secret=\(encodedSecret)"
         request.httpBody = Data(body.utf8)
 
         let (data, response) = try await URLSession.shared.data(for: request)
         guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
-            throw AuthError.tokenFetchFailed(statusCode: (response as? HTTPURLResponse)?.statusCode ?? -1)
+            let body = String(data: data, encoding: .utf8) ?? "<non-utf8>"
+            throw AuthError.tokenFetchFailed(statusCode: (response as? HTTPURLResponse)?.statusCode ?? -1, body: body)
         }
 
         let tokenResponse = try JSONDecoder().decode(TokenResponse.self, from: data)
@@ -69,5 +69,5 @@ private struct TokenResponse: Decodable {
 }
 
 public enum AuthError: Error, Sendable {
-    case tokenFetchFailed(statusCode: Int)
+    case tokenFetchFailed(statusCode: Int, body: String)
 }
