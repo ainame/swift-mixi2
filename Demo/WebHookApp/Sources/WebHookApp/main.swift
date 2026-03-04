@@ -37,6 +37,9 @@ let mixi2Client = try Mixi2Client(configuration: clientConfiguration)
 
 let port = Int(ProcessInfo.processInfo.environment["MIXI2_WEBHOOK_PORT"] ?? "8080") ?? 8080
 
+let signatureField = HTTPField.Name("x-mixi2-application-event-signature")!
+let timestampField = HTTPField.Name("x-mixi2-application-event-timestamp")!
+
 // MARK: - Routes
 
 let router = Router()
@@ -44,8 +47,6 @@ let router = Router()
 router.get("/healthz") { _, _ in "OK" }
 
 router.post("/events") { request, _ -> Response in
-    let signatureField = HTTPField.Name("x-mixi2-application-event-signature")!
-    let timestampField = HTTPField.Name("x-mixi2-application-event-timestamp")!
     let signature = request.headers[values: signatureField].first ?? ""
     let timestamp = request.headers[values: timestampField].first ?? ""
 
