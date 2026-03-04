@@ -19,18 +19,8 @@ struct WebHookApp {
 
         let publicKey: Curve25519.Signing.PublicKey
         do {
-            guard publicKeyHex.count.isMultiple(of: 2) else { throw CryptoKitError.incorrectKeySize }
-            var bytes = [UInt8]()
-            bytes.reserveCapacity(publicKeyHex.count / 2)
-            var index = publicKeyHex.startIndex
-            while index < publicKeyHex.endIndex {
-                let next = publicKeyHex.index(index, offsetBy: 2)
-                guard let byte = UInt8(publicKeyHex[index..<next], radix: 16) else {
-                    throw CryptoKitError.incorrectKeySize
-                }
-                bytes.append(byte)
-                index = next
-            }
+            let bytes = stride(from: 0, to: publicKeyHex.count, by: 2)
+                .compactMap { UInt8(publicKeyHex.dropFirst($0).prefix(2), radix: 16) }
             publicKey = try Curve25519.Signing.PublicKey(rawRepresentation: bytes)
         } catch {
             fputs("Error: MIXI2_PUBLIC_KEY is not a valid Ed25519 public key: \(error)\n", stderr)
