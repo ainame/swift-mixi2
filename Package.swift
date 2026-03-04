@@ -12,8 +12,8 @@ let package = Package(
         .library(name: "Mixi2GRPC", targets: ["Mixi2GRPC"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/grpc/grpc-swift-protobuf", from: "1.0.0"),
-        .package(url: "https://github.com/grpc/grpc-swift-nio-transport", from: "1.0.0"),
+        .package(url: "https://github.com/grpc/grpc-swift-protobuf", from: "2.2.0"),
+        .package(url: "https://github.com/grpc/grpc-swift-nio-transport", from: "2.4.3"),
         .package(url: "https://github.com/apple/swift-protobuf", from: "1.28.0"),
         .package(url: "https://github.com/apple/swift-crypto", from: "3.0.0"),
         .package(url: "https://github.com/swiftlang/swift-testing", from: "6.0.0"),

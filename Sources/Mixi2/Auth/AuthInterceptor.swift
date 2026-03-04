@@ -1,7 +1,6 @@
 import GRPCCore
 
 /// gRPC client interceptor that injects Bearer token and optional x-auth-key metadata.
-@available(gRPCSwift 2.0, *)
 public struct AuthClientInterceptor: ClientInterceptor {
     private let authenticator: any Authenticator
     private let authKey: String?
