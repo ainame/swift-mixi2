@@ -1,4 +1,4 @@
-.PHONY: generate build test clean
+.PHONY: generate update-proto build test clean
 
 generate:
 	git submodule update --init --recursive
@@ -8,6 +8,9 @@ generate:
 	buf generate
 	git -C vendor/mixi2-api checkout -- .
 	ruby scripts/generate_event_message_extensions.rb
+
+update-proto:
+	git submodule update --init --recursive --remote vendor/mixi2-api
 
 build:
 	swift build
