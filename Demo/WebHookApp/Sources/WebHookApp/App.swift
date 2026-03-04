@@ -16,28 +16,20 @@ struct WebHookApp {
         let dotEnvProvider = try await EnvironmentVariablesProvider(environmentFilePath: ".env", allowMissing: true)
         let config = ConfigReader(providers: [EnvironmentVariablesProvider(), dotEnvProvider])
 
-        guard let publicKeyBase64 = config.string(forKey: "mixi2.public.key", isSecret: true),
-              let keyData = Data(base64Encoded: publicKeyBase64),
+        let publicKeyBase64 = try await config.fetchRequiredString(forKey: "mixi2.public.key", isSecret: true)
+        guard let keyData = Data(base64Encoded: publicKeyBase64),
               let publicKey = try? Curve25519.Signing.PublicKey(rawRepresentation: keyData) else {
-            fputs("Error: MIXI2_PUBLIC_KEY is not set or not a valid base64-encoded Ed25519 public key\n", stderr)
+            fputs("Error: MIXI2_PUBLIC_KEY is not a valid base64-encoded Ed25519 public key\n", stderr)
             exit(1)
         }
 
-        guard let apiHost = config.string(forKey: "mixi2.api.host") else {
-            fputs("Error: MIXI2_API_HOST is not set\n", stderr); exit(1)
-        }
-        guard let clientID = config.string(forKey: "mixi2.client.id") else {
-            fputs("Error: MIXI2_CLIENT_ID is not set\n", stderr); exit(1)
-        }
-        guard let clientSecret = config.string(forKey: "mixi2.client.secret", isSecret: true) else {
-            fputs("Error: MIXI2_CLIENT_SECRET is not set\n", stderr); exit(1)
-        }
-        guard let tokenURL = config.string(forKey: "mixi2.token.url", as: URL.self) else {
-            fputs("Error: MIXI2_TOKEN_URL is not set\n", stderr); exit(1)
-        }
-        let port = config.int(forKey: "mixi2.api.port", default: 443)
-        let authKey = config.string(forKey: "mixi2.auth.key", isSecret: true)
-        let webhookPort = config.int(forKey: "mixi2.webhook.port", default: 8080)
+        let apiHost = try await config.fetchRequiredString(forKey: "mixi2.api.host")
+        let clientID = try await config.fetchRequiredString(forKey: "mixi2.client.id")
+        let clientSecret = try await config.fetchRequiredString(forKey: "mixi2.client.secret", isSecret: true)
+        let tokenURL = try await config.fetchRequiredString(forKey: "mixi2.token.url", as: URL.self)
+        let port = try await config.fetchInt(forKey: "mixi2.api.port", default: 443)
+        let authKey = try await config.fetchString(forKey: "mixi2.auth.key", isSecret: true)
+        let webhookPort = try await config.fetchInt(forKey: "mixi2.webhook.port", default: 8080)
 
         let authenticator = ClientCredentialsAuthenticator(
             clientID: clientID,
