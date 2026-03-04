@@ -68,13 +68,13 @@ public final class Mixi2Client: Sendable {
         }
     }
 
-    public typealias APIClient = Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Client<HTTP2ClientTransport.Posix>
+    public typealias ApplicationServiceClient = Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Client<HTTP2ClientTransport.Posix>
 
     private let apiGRPCClient: GRPCClient<HTTP2ClientTransport.Posix>
     private let streamGRPCClient: GRPCClient<HTTP2ClientTransport.Posix>
 
     /// Client for the ApplicationService API (unary RPCs).
-    public let apiClient: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Client<HTTP2ClientTransport.Posix>
+    public let applicationService: Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Client<HTTP2ClientTransport.Posix>
 
     /// Client for the ApplicationService Stream (server-streaming RPCs).
     public let streamClient: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.Client<HTTP2ClientTransport.Posix>
@@ -93,7 +93,7 @@ public final class Mixi2Client: Sendable {
         )
         let apiGRPCClient = GRPCClient(transport: apiTransport, interceptors: [interceptor])
         self.apiGRPCClient = apiGRPCClient
-        self.apiClient = .init(wrapping: apiGRPCClient)
+        self.applicationService = .init(wrapping: apiGRPCClient)
 
         let streamTransport = try HTTP2ClientTransport.Posix(
             target: .dns(host: configuration.streamHost, port: configuration.port),

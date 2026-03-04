@@ -18,7 +18,7 @@ public final class Bot: Sendable {
     /// for making calls (e.g. sending a reply) from within a handler.
     public struct Context: Sendable {
         /// Client for making unary API calls from within an event handler.
-        public let apiClient: Mixi2Client.APIClient
+        public let applicationService: Mixi2Client.ApplicationServiceClient
     }
 
     private let client: Mixi2Client
@@ -34,7 +34,7 @@ public final class Bot: Sendable {
     /// This method blocks until all work is complete. The underlying gRPC connections are shut down
     /// automatically when the event stream finishes.
     public func run() async throws {
-        let context = Context(apiClient: client.apiClient)
+        let context = Context(applicationService: client.applicationService)
         try await withThrowingTaskGroup(of: Void.self) { group in
             group.addTask { try await self.client.run() }
             group.addTask {

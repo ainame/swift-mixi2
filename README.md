@@ -89,7 +89,7 @@ let client = try Mixi2Client(configuration: config)
 try await withThrowingDiscardingTaskGroup { group in
     group.addTask { try await client.run() }
 
-    let response = try await client.apiClient.getUsers(.with {
+    let response = try await client.applicationService.getUsers(.with {
         $0.userIDList = ["user-123"]
     })
     print(response.users)
@@ -98,7 +98,7 @@ try await withThrowingDiscardingTaskGroup { group in
 }
 ```
 
-`client.apiClient` exposes all unary RPCs from the ApplicationService:
+`client.applicationService` exposes all unary RPCs from the ApplicationService:
 
 | Method | Description |
 |--------|-------------|
