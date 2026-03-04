@@ -58,9 +58,7 @@ struct EventStreamTests {
         let stream = EventStream(client: client)
 
         var received: [Mixi2Event] = []
-        for try await event in stream {
-            received.append(event)
-        }
+        try await stream.run { received.append($0) }
 
         #expect(received.count == 1)
         #expect(received[0].eventID == "e1")
@@ -77,9 +75,7 @@ struct EventStreamTests {
         let stream = EventStream(client: client)
 
         var received: [Mixi2Event] = []
-        for try await event in stream {
-            received.append(event)
-        }
+        try await stream.run { received.append($0) }
 
         #expect(received.isEmpty)
     }
@@ -97,9 +93,7 @@ struct EventStreamTests {
         let stream = EventStream(client: client)
 
         var received: [Mixi2Event] = []
-        for try await event in stream {
-            received.append(event)
-        }
+        try await stream.run { received.append($0) }
 
         #expect(received.count == 3)
         #expect(received.map(\.eventID) == ["e1", "e2", "e3"])

@@ -31,8 +31,7 @@ public final class Bot: Sendable {
             group.addTask { try await self.client.run() }
             group.addTask {
                 defer { self.client.shutdown() }
-                let stream = EventStream(client: self.client.streamClient)
-                for try await event in stream {
+                try await EventStream(client: self.client.streamClient).run { event in
                     try await self.router.handle(event)
                 }
             }

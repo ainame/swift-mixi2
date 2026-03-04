@@ -4,55 +4,41 @@ import Mixi2GRPC
 /// Typealias for the mixi2 event model.
 public typealias Mixi2Event = Social_Mixi_Application_Model_V1_Event
 
-/// An `AsyncSequence` of mixi2 events from a gRPC server-streaming subscription.
+/// Connects to the mixi2 event stream and dispatches non-ping events to a handler.
 ///
 /// PING events are automatically filtered. On connection failure the stream retries
 /// up to 3 times with 1s/2s/4s exponential backoff before propagating the error.
+///
+/// The reconnect producer and the event consumer run as structured child tasks inside
+/// a `withThrowingTaskGroup` — cancellation propagates automatically from the parent
+/// task with no manual wiring required.
 @available(macOS 15.0, iOS 18.0, *)
-public struct EventStream: AsyncSequence {
-    public typealias Element = Mixi2Event
-
+public struct EventStream: Sendable {
     private let client: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.ClientProtocol
 
     public init(client: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.ClientProtocol) {
         self.client = client
     }
 
-    public func makeAsyncIterator() -> AsyncIterator {
-        AsyncIterator(client: client)
-    }
-
-    /// - Note: Implemented as a `final class` (rather than a `struct`) so that `@concurrent`
-    ///   can be applied to `next()`: the method must run on the global cooperative executor to
-    ///   match `AsyncThrowingStream.AsyncIterator.next()` under `NonisolatedNonsendingByDefault`.
-    ///   `@unchecked Sendable` is safe here because `AsyncIteratorProtocol` guarantees that
-    ///   `next()` is never called concurrently — all state mutations are therefore serial.
-    public final class AsyncIterator: AsyncIteratorProtocol, @unchecked Sendable {
-        private let client: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.ClientProtocol
-        private var streamTask: Task<Void, Never>?
-        private var continuation: AsyncThrowingStream<Mixi2Event, Error>.Continuation?
-        private var inner: AsyncThrowingStream<Mixi2Event, Error>.AsyncIterator?
-
-        init(client: Social_Mixi_Application_Service_ApplicationStream_V1_ApplicationService.ClientProtocol) {
-            self.client = client
-        }
-
-        @concurrent
-        public func next() async throws -> Mixi2Event? {
-            if inner == nil {
-                let (stream, continuation) = AsyncThrowingStream<Mixi2Event, Error>.makeStream()
-                self.continuation = continuation
-                self.inner = stream.makeAsyncIterator()
-                let c = client
-                let cont = continuation
-                let task = Task {
-                    await withReconnect(client: c, continuation: cont)
-                }
-                // Cancel the reconnect task when the stream is terminated (e.g. caller cancels iteration).
-                continuation.onTermination = { _ in task.cancel() }
-                self.streamTask = task
+    /// Subscribes to the event stream and calls `body` for each incoming event.
+    ///
+    /// Returns when the stream ends cleanly, or throws if retries are exhausted or
+    /// the parent task is cancelled.
+    public func run(
+        _ body: (Mixi2Event) async throws -> Void
+    ) async throws {
+        let (stream, continuation) = AsyncThrowingStream<Mixi2Event, Error>.makeStream()
+        try await withThrowingTaskGroup(of: Void.self) { group in
+            // Producer: structured child task — cancelled automatically when group exits.
+            group.addTask {
+                await withReconnect(client: self.client, continuation: continuation)
             }
-            return try await inner?.next()
+            // Consumer: runs in the group body on the same structured scope.
+            for try await event in stream {
+                try await body(event)
+            }
+            // Stream ended cleanly — cancel the producer child task.
+            group.cancelAll()
         }
     }
 }
@@ -73,14 +59,11 @@ private func withReconnect(
             ) { response in
                 for try await message in response.messages {
                     for event in message.events {
-                        if event.eventType == .ping {
-                            continue
-                        }
+                        if event.eventType == .ping { continue }
                         continuation.yield(event)
                     }
                 }
             }
-            // Stream completed cleanly
             continuation.finish()
             return
         } catch {
