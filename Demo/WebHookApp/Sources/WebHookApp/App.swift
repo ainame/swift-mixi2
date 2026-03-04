@@ -16,7 +16,7 @@ struct WebHookApp {
         let dotEnvProvider = try await EnvironmentVariablesProvider(environmentFilePath: ".env", allowMissing: true)
         let config = ConfigReader(providers: [EnvironmentVariablesProvider(), dotEnvProvider])
 
-        guard let publicKeyBase64 = config.string(forKey: "mixi2.public.key"),
+        guard let publicKeyBase64 = config.string(forKey: "mixi2.public.key", isSecret: true),
               let keyData = Data(base64Encoded: publicKeyBase64),
               let publicKey = try? Curve25519.Signing.PublicKey(rawRepresentation: keyData) else {
             fputs("Error: MIXI2_PUBLIC_KEY is not set or not a valid base64-encoded Ed25519 public key\n", stderr)
@@ -29,21 +29,28 @@ struct WebHookApp {
         guard let clientID = config.string(forKey: "mixi2.client.id") else {
             fputs("Error: MIXI2_CLIENT_ID is not set\n", stderr); exit(1)
         }
-        guard let clientSecret = config.string(forKey: "mixi2.client.secret") else {
+        guard let clientSecret = config.string(forKey: "mixi2.client.secret", isSecret: true) else {
             fputs("Error: MIXI2_CLIENT_SECRET is not set\n", stderr); exit(1)
         }
         guard let tokenURL = config.string(forKey: "mixi2.token.url", as: URL.self) else {
             fputs("Error: MIXI2_TOKEN_URL is not set\n", stderr); exit(1)
         }
         let port = config.int(forKey: "mixi2.api.port", default: 443)
-        let authKey = config.string(forKey: "mixi2.auth.key")
+        let authKey = config.string(forKey: "mixi2.auth.key", isSecret: true)
         let webhookPort = config.int(forKey: "mixi2.webhook.port", default: 8080)
 
         let authenticator = ClientCredentialsAuthenticator(
-            clientID: clientID, clientSecret: clientSecret, tokenURL: tokenURL)
+            clientID: clientID,
+            clientSecret: clientSecret,
+            tokenURL: tokenURL
+        )
         let clientConfiguration = Mixi2Client.Configuration(
-            apiHost: apiHost, streamHost: apiHost, port: port,
-            authenticator: authenticator, authKey: authKey)
+            apiHost: apiHost,
+            streamHost: apiHost,
+            port: port,
+            authenticator: authenticator,
+            authKey: authKey
+        )
         let webhookHandler = WebhookHandler(publicKey: publicKey)
         let mixi2Client = try Mixi2Client(configuration: clientConfiguration)
 

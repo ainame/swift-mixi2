@@ -21,7 +21,7 @@ struct StreamApp {
             fputs("Error: MIXI2_CLIENT_ID is not set\n", stderr)
             exit(1)
         }
-        guard let clientSecret = config.string(forKey: "mixi2.client.secret") else {
+        guard let clientSecret = config.string(forKey: "mixi2.client.secret", isSecret: true) else {
             fputs("Error: MIXI2_CLIENT_SECRET is not set\n", stderr)
             exit(1)
         }
@@ -30,7 +30,7 @@ struct StreamApp {
             exit(1)
         }
         let port = config.int(forKey: "mixi2.api.port", default: 443)
-        let authKey = config.string(forKey: "mixi2.auth.key")
+        let authKey = config.string(forKey: "mixi2.auth.key", isSecret: true)
 
         let authenticator = ClientCredentialsAuthenticator(
             clientID: clientID, clientSecret: clientSecret, tokenURL: tokenURL)
