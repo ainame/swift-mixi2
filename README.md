@@ -32,11 +32,11 @@ import Mixi2
 
 let router = EventRouter()
 
-router.on(PostCreatedEvent.self) { _, event in
+router.on(PostCreatedEvent.self) { context, event in
     print("[post] \(event.issuer.userID): \(event.post.text)")
 }
 
-router.on(ChatMessageReceivedEvent.self) { _, event in
+router.on(ChatMessageReceivedEvent.self) { context, event in
     print("[chat] \(event.issuer.userID): \(event.message.text)")
 }
 
