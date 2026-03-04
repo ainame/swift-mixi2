@@ -27,7 +27,7 @@ struct WebHookApp {
         let webhookPort = config.int(forKey: "mixi2.webhook.port", default: 8080)
 
         let webhookHandler = WebhookHandler(publicKey: publicKey)
-        let mixi2Client = try Mixi2(configuration: .init(
+        let mixi2 = try Mixi2(configuration: .init(
             apiHost: apiHost,
             streamHost: apiHost,
             port: config.int(forKey: "mixi2.api.port", default: 443),
@@ -72,7 +72,7 @@ struct WebHookApp {
                     var reply = SendChatMessageRequest()
                     reply.roomID = msg.message.roomID
                     reply.text = msg.message.text
-                    _ = try await mixi2Client.apiClient.sendChatMessage(reply)
+                    _ = try await mixi2.apiClient.sendChatMessage(reply)
                 } else if let post = PostCreatedEvent.extract(from: event) {
                     print("[post] from=\(post.issuer.userID)  \(post.post.text)")
                 }
@@ -91,9 +91,9 @@ struct WebHookApp {
         print("Listening on port \(webhookPort) (Ctrl-C to stop)…")
 
         try await withThrowingTaskGroup(of: Void.self) { group in
-            group.addTask { try await mixi2Client.run() }
+            group.addTask { try await mixi2.run() }
             group.addTask {
-                defer { mixi2Client.shutdown() }
+                defer { mixi2.shutdown() }
                 try await app.runService()
             }
             try await group.waitForAll()

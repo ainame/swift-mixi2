@@ -83,21 +83,21 @@ let config = Mixi2.Configuration(
 For unary RPCs without event streaming, use `Mixi2` directly:
 
 ```swift
-let client = try Mixi2(configuration: config)
+let mixi2 = try Mixi2(configuration: config)
 
 try await withThrowingDiscardingTaskGroup { group in
-    group.addTask { try await client.run() }
+    group.addTask { try await mixi2.run() }
 
-    let response = try await client.apiClient.getUsers(.with {
+    let response = try await mixi2.apiClient.getUsers(.with {
         $0.userIDList = ["user-123"]
     })
     print(response.users)
 
-    client.shutdown()
+    mixi2.shutdown()
 }
 ```
 
-`client.apiClient` exposes all unary RPCs from the ApplicationService:
+`mixi2.apiClient` exposes all unary RPCs from the ApplicationService:
 
 | Method | Description |
 |--------|-------------|
@@ -115,7 +115,7 @@ try await withThrowingDiscardingTaskGroup { group in
 `EventStream` can be used directly when you don't need `Bot`:
 
 ```swift
-let stream = EventStream(client: client.streamClient)
+let stream = EventStream(client: mixi2.streamClient)
 
 try await stream.run { event in
     switch event.eventType {
