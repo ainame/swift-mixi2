@@ -9,7 +9,7 @@ struct StreamApp {
             environmentFilePath: ".env", allowMissing: true)
         let config = ConfigReader(providers: [EnvironmentVariablesProvider(), dotEnvProvider])
 
-        let configuration = try Mixi2Client.Configuration(
+        let configuration = try Mixi2.Configuration(
             apiHost: config.requiredString(forKey: "mixi2.api.host"),
             streamHost: config.requiredString(forKey: "mixi2.stream.host"),
             port: config.int(forKey: "mixi2.api.port", default: 443),
@@ -34,10 +34,10 @@ struct StreamApp {
             var reply = SendChatMessageRequest()
             reply.roomID = event.message.roomID
             reply.text = event.message.text
-            _ = try await context.applicationService.sendChatMessage(reply)
+            _ = try await context.apiClient.sendChatMessage(reply)
         }
 
-        router.on(PostCreatedEvent.self) { _, event in
+        router.on(PostCreatedEvent.self) { context, event in
             print("[post] from=\(event.issuer.userID)  \(event.post.text)")
         }
 

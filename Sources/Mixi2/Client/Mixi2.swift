@@ -5,7 +5,7 @@ import Mixi2GRPC
 
 /// A configured mixi2 gRPC client providing access to API and streaming services.
 @available(macOS 15.0, iOS 18.0, *)
-public final class Mixi2Client: Sendable {
+public final class Mixi2: Sendable {
     /// Configuration for connecting to the mixi2 gRPC endpoints.
     public struct Configuration: Sendable {
         public var apiHost: String
@@ -32,13 +32,13 @@ public final class Mixi2Client: Sendable {
         }
     }
 
-    public typealias ApplicationServiceClient = ApplicationService.Client<HTTP2ClientTransport.Posix>
+    public typealias APIClient = ApplicationService.Client<HTTP2ClientTransport.Posix>
 
     private let apiGRPCClient: GRPCClient<HTTP2ClientTransport.Posix>
     private let streamGRPCClient: GRPCClient<HTTP2ClientTransport.Posix>
 
     /// Client for the ApplicationService API (unary RPCs).
-    public let applicationService: ApplicationService.Client<HTTP2ClientTransport.Posix>
+    public let apiClient: ApplicationService.Client<HTTP2ClientTransport.Posix>
 
     /// Client for the ApplicationService Stream (server-streaming RPCs).
     public let streamClient: StreamApplicationService.Client<HTTP2ClientTransport.Posix>
@@ -57,7 +57,7 @@ public final class Mixi2Client: Sendable {
         )
         let apiGRPCClient = GRPCClient(transport: apiTransport, interceptors: [interceptor])
         self.apiGRPCClient = apiGRPCClient
-        self.applicationService = .init(wrapping: apiGRPCClient)
+        self.apiClient = .init(wrapping: apiGRPCClient)
 
         let streamTransport = try HTTP2ClientTransport.Posix(
             target: .dns(host: configuration.streamHost, port: configuration.port),

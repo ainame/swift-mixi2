@@ -27,7 +27,7 @@ struct WebHookApp {
         let webhookPort = config.int(forKey: "mixi2.webhook.port", default: 8080)
 
         let webhookHandler = WebhookHandler(publicKey: publicKey)
-        let mixi2Client = try Mixi2Client(configuration: .init(
+        let mixi2Client = try Mixi2(configuration: .init(
             apiHost: apiHost,
             streamHost: apiHost,
             port: config.int(forKey: "mixi2.api.port", default: 443),
@@ -72,7 +72,7 @@ struct WebHookApp {
                     var reply = SendChatMessageRequest()
                     reply.roomID = msg.message.roomID
                     reply.text = msg.message.text
-                    _ = try await mixi2Client.applicationService.sendChatMessage(reply)
+                    _ = try await mixi2Client.apiClient.sendChatMessage(reply)
                 } else if let post = PostCreatedEvent.extract(from: event) {
                     print("[post] from=\(post.issuer.userID)  \(post.post.text)")
                 }

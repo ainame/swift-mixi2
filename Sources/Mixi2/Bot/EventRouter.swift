@@ -19,7 +19,7 @@ import Synchronization
 ///     var reply = SendChatMessageRequest()
 ///     reply.roomID = event.message.roomID
 ///     reply.text = event.message.text
-///     _ = try await context.applicationService.sendChatMessage(reply)
+///     _ = try await context.apiClient.sendChatMessage(reply)
 /// }
 /// ```
 ///

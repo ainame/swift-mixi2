@@ -55,13 +55,13 @@ router.on(ChatMessageReceivedEvent.self) { context, event in
     var reply = SendChatMessageRequest()
     reply.roomID = event.message.roomID
     reply.text = "echo: \(event.message.text)"
-    _ = try await context.applicationService.sendChatMessage(reply)
+    _ = try await context.apiClient.sendChatMessage(reply)
 }
 ```
 
 ### Configuration
 
-Build a `Mixi2Client.Configuration` with your credentials:
+Build a `Mixi2.Configuration` with your credentials:
 
 ```swift
 let authenticator = ClientCredentialsAuthenticator(
@@ -70,7 +70,7 @@ let authenticator = ClientCredentialsAuthenticator(
     tokenURL: URL(string: "https://auth.mixi2.com/oauth/token")!
 )
 
-let config = Mixi2Client.Configuration(
+let config = Mixi2.Configuration(
     apiHost: "api.mixi2.com",
     streamHost: "stream.mixi2.com",
     authenticator: authenticator,
@@ -80,15 +80,15 @@ let config = Mixi2Client.Configuration(
 
 ### Making API calls
 
-For unary RPCs without event streaming, use `Mixi2Client` directly:
+For unary RPCs without event streaming, use `Mixi2` directly:
 
 ```swift
-let client = try Mixi2Client(configuration: config)
+let client = try Mixi2(configuration: config)
 
 try await withThrowingDiscardingTaskGroup { group in
     group.addTask { try await client.run() }
 
-    let response = try await client.applicationService.getUsers(.with {
+    let response = try await client.apiClient.getUsers(.with {
         $0.userIDList = ["user-123"]
     })
     print(response.users)
@@ -97,7 +97,7 @@ try await withThrowingDiscardingTaskGroup { group in
 }
 ```
 
-`client.applicationService` exposes all unary RPCs from the ApplicationService:
+`client.apiClient` exposes all unary RPCs from the ApplicationService:
 
 | Method | Description |
 |--------|-------------|
