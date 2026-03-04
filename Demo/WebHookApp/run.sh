@@ -2,7 +2,7 @@
 set -e
 
 # ── Required ──────────────────────────────────────────────────────────────────
-export MIXI2_PUBLIC_KEY=""        # Ed25519 public key as hex (from mixi2 developer portal)
+export MIXI2_PUBLIC_KEY=""        # Ed25519 public key as base64 (from mixi2 developer portal)
 export MIXI2_API_HOST=""
 export MIXI2_TOKEN_URL=""
 export MIXI2_CLIENT_ID=""

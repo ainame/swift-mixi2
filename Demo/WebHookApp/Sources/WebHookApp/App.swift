@@ -12,18 +12,10 @@ struct WebHookApp {
     static func main() async throws {
         // MARK: - Configuration
 
-        guard let publicKeyHex = ProcessInfo.processInfo.environment["MIXI2_PUBLIC_KEY"] else {
-            fputs("Error: MIXI2_PUBLIC_KEY is not set\n", stderr)
-            exit(1)
-        }
-
-        let publicKey: Curve25519.Signing.PublicKey
-        do {
-            let bytes = stride(from: 0, to: publicKeyHex.count, by: 2)
-                .compactMap { UInt8(publicKeyHex.dropFirst($0).prefix(2), radix: 16) }
-            publicKey = try Curve25519.Signing.PublicKey(rawRepresentation: bytes)
-        } catch {
-            fputs("Error: MIXI2_PUBLIC_KEY is not a valid Ed25519 public key: \(error)\n", stderr)
+        guard let publicKeyBase64 = ProcessInfo.processInfo.environment["MIXI2_PUBLIC_KEY"],
+              let keyData = Data(base64Encoded: publicKeyBase64),
+              let publicKey = try? Curve25519.Signing.PublicKey(rawRepresentation: keyData) else {
+            fputs("Error: MIXI2_PUBLIC_KEY is not set or not a valid base64-encoded Ed25519 public key\n", stderr)
             exit(1)
         }
 
@@ -48,14 +40,17 @@ struct WebHookApp {
 
             let events: [Event]
             do {
-                events = try webhookHandler.handle(body: body, signature: signature, timestamp: timestamp)
+                events = try webhookHandler.handle(
+                    body: body, signature: signature, timestamp: timestamp)
             } catch let error as WebhookError {
                 throw HTTPError(.badRequest, message: "\(error)")
             }
 
             for event in events {
                 if let msg = ChatMessageReceivedEvent.extract(from: event) {
-                    print("[chat] from=\(msg.issuer.userID)  room=\(msg.message.roomID)  \(msg.message.text)")
+                    print(
+                        "[chat] from=\(msg.issuer.userID)  room=\(msg.message.roomID)  \(msg.message.text)"
+                    )
                     guard !msg.message.text.isEmpty else {
                         print("[chat] skipping echo — no text (image-only message)")
                         continue
