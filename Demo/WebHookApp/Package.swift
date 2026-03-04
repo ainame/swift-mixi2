@@ -16,7 +16,6 @@ let package = Package(
             name: "WebHookApp",
             dependencies: [
                 .product(name: "Mixi2", package: "swift-mixi2"),
-                .product(name: "Mixi2GRPC", package: "swift-mixi2"),
                 .product(name: "Hummingbird", package: "hummingbird"),
                 .product(name: "HTTPTypes", package: "swift-http-types"),
             ],

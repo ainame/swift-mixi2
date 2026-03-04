@@ -2,7 +2,6 @@ import Foundation
 import HTTPTypes
 import Hummingbird
 import Mixi2
-import Mixi2GRPC
 
 // MARK: - Configuration
 

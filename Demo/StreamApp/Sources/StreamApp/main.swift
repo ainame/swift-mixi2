@@ -1,5 +1,4 @@
 import Mixi2
-import Mixi2GRPC
 
 let configuration = try Mixi2Client.Configuration.fromEnvironment()
 let router = EventRouter()
