@@ -4,8 +4,8 @@ A Swift gRPC client library for the [mixi2](https://mixi2.com) Application API. 
 
 ## Requirements
 
-- Swift 6.0+
-- macOS 15+, iOS 18+, or Linux
+- Swift 6.2+
+- macOS 15+, iOS 18+
 
 ## Installation
 
@@ -23,11 +23,48 @@ Then add the `Mixi2` product to your target:
 
 ## Usage
 
-### Creating a client
+### Building a bot
+
+The simplest way to handle events is `Bot` + `EventRouter`. `Bot` manages the gRPC connections and drives the event stream; `EventRouter` routes each event to a typed handler registered with `on(_:handler:)`.
 
 ```swift
 import Mixi2
 
+let router = EventRouter()
+
+router.on(PostCreatedEvent.self) { event in
+    print("[post] \(event.issuer.userID): \(event.post.text)")
+}
+
+router.on(ChatMessageReceivedEvent.self) { event in
+    print("[chat] \(event.issuer.userID): \(event.message.text)")
+}
+
+let bot = try Bot(configuration: .fromEnvironment(), router: router)
+try await bot.run()
+```
+
+`bot.run()` blocks until the stream ends or an error is thrown. The gRPC connections are shut down automatically.
+
+`on(_:handler:)` is generic over any type conforming to `Mixi2EventMessage`, so adding a handler for a new event type requires no changes to `EventRouter` — just pass the type. Multiple handlers for the same type are called in registration order.
+
+### Configuration
+
+`Mixi2Client.Configuration.fromEnvironment()` reads from environment variables:
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `MIXI2_API_HOST` | ✓ | Unary API hostname |
+| `MIXI2_STREAM_HOST` | ✓ | Streaming hostname |
+| `MIXI2_CLIENT_ID` | ✓ | OAuth2 client ID |
+| `MIXI2_CLIENT_SECRET` | ✓ | OAuth2 client secret |
+| `MIXI2_TOKEN_URL` | ✓ | OAuth2 token endpoint URL |
+| `MIXI2_AUTH_KEY` | — | Optional `x-auth-key` header value |
+| `MIXI2_API_PORT` | — | Port (default: 443) |
+
+Or build configuration manually:
+
+```swift
 let authenticator = ClientCredentialsAuthenticator(
     clientID: "your-client-id",
     clientSecret: "your-client-secret",
@@ -35,30 +72,23 @@ let authenticator = ClientCredentialsAuthenticator(
 )
 
 let config = Mixi2Client.Configuration(
-    host: "api.mixi2.com",
+    apiHost: "api.mixi2.com",
+    streamHost: "stream.mixi2.com",
     authenticator: authenticator,
     authKey: "your-auth-key"   // optional
 )
-
-let client = try Mixi2Client(configuration: config)
 ```
 
-Or load configuration from environment variables (`MIXI2_API_HOST`, `MIXI2_CLIENT_ID`, `MIXI2_CLIENT_SECRET`, `MIXI2_TOKEN_URL`, and optionally `MIXI2_AUTH_KEY`, `MIXI2_API_PORT`):
+### Making API calls
+
+For unary RPCs without event streaming, use `Mixi2Client` directly:
 
 ```swift
-let config = try await Mixi2Client.Configuration.fromEnvironment()
 let client = try Mixi2Client(configuration: config)
-```
 
-The gRPC connection is built on [grpc-swift](https://github.com/grpc/grpc-swift) v2 with a SwiftNIO HTTP/2 transport (`HTTP2ClientTransport.Posix`). Network I/O does not go through `URLSession` — the only use of `URLSession` is the OAuth2 token fetch inside `ClientCredentialsAuthenticator`.
-
-The client's underlying gRPC transport must be running in a concurrent task:
-
-```swift
 try await withThrowingDiscardingTaskGroup { group in
     group.addTask { try await client.run() }
 
-    // Make API calls here
     let response = try await client.apiClient.getUsers(.with {
         $0.userIDList = ["user-123"]
     })
@@ -67,8 +97,6 @@ try await withThrowingDiscardingTaskGroup { group in
     client.shutdown()
 }
 ```
-
-### Available API methods
 
 `client.apiClient` exposes all unary RPCs from the ApplicationService:
 
@@ -83,26 +111,26 @@ try await withThrowingDiscardingTaskGroup { group in
 | `getStamps(_:)` | List available stamps |
 | `addStampToPost(_:)` | Add a stamp to a post |
 
-### Event streaming
+### Low-level event streaming
 
-Subscribe to real-time events using `EventStream`, which wraps the server-streaming `SubscribeEvents` RPC as an `AsyncSequence`. PING events are filtered automatically and the stream reconnects on failure with exponential backoff (1 s / 2 s / 4 s, up to 3 retries).
+`EventStream` can be used directly when you don't need `Bot`:
 
 ```swift
 let stream = EventStream(client: client.streamClient)
 
-for try await event in stream {
+try await stream.run { event in
     switch event.eventType {
     case .postCreated:
-        let post = event.postCreatedEvent.post
-        print("New post: \(post.text)")
+        print("New post: \(event.postCreatedEvent.post.text)")
     case .chatMessageReceived:
-        let message = event.chatMessageReceivedEvent.message
-        print("New message: \(message.text)")
+        print("New message: \(event.chatMessageReceivedEvent.message.text)")
     default:
         break
     }
 }
 ```
+
+PING events are filtered automatically. The stream reconnects on failure with exponential backoff (1 s / 2 s / 4 s, up to 3 retries).
 
 ### Webhook handling
 

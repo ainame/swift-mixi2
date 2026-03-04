@@ -25,7 +25,10 @@ Two SPM library products:
 - **`Mixi2`** (`Sources/Mixi2/`) — handwritten SDK with four subsystems:
   - **Auth** — `Authenticator` protocol + `ClientCredentialsAuthenticator` actor (OAuth2 Client Credentials flow via `URLSession`, 60-second expiry buffer, actor-isolated token cache). `AuthClientInterceptor` is a grpc-swift v2 `ClientInterceptor` that injects `Authorization: Bearer <token>` and optional `x-auth-key` into every RPC's metadata.
   - **Client** — `Mixi2Client` wraps `HTTP2ClientTransport.Posix` + `GRPCClient` wired with the auth interceptor. Exposes `apiClient` (`ApplicationService` API — unary RPCs) and `streamClient` (`ApplicationService` Stream — server-streaming). `Configuration.fromEnvironment()` reads `MIXI2_API_HOST`, `MIXI2_CLIENT_ID`, `MIXI2_CLIENT_SECRET`, `MIXI2_TOKEN_URL`, optionally `MIXI2_AUTH_KEY` / `MIXI2_API_PORT`.
-  - **Event** — `EventStream: AsyncSequence<Mixi2Event>` wraps `subscribeEvents` server-streaming RPC. Filters `.ping` events. Reconnects with exponential backoff (1 s / 2 s / 4 s, max 3 retries) via `withReconnect`.
+  - **Event** — `EventStream` wraps `subscribeEvents` via a `run(_:)` method backed by `withThrowingTaskGroup` (structured concurrency — producer is a child task, auto-cancelled). Filters `.ping` events. Reconnects with exponential backoff (1 s / 2 s / 4 s, max 3 retries) via `withReconnect`.
+  - **Bot** — `Bot` facade owns a `Mixi2Client` + `EventRouter`. `run()` drives gRPC transport and `EventStream.run` as parallel structured child tasks.
+  - **EventRouter** — dispatches events via generic `on<T: Mixi2EventMessage>(_:handler:)`. Handlers stored in `Mutex<[EventHandler]>` from `Synchronization`.
+  - **EventMessage** — `Mixi2EventMessage` protocol (`Sources/Mixi2/Bot/EventMessage.swift`). Conformances in `Sources/Mixi2/Generated/EventMessageExtensions.swift` — generated, do not edit by hand.
   - **Webhook** — `WebhookHandler` verifies Ed25519 signatures (swift-crypto `Curve25519.Signing`) over `body + timestamp`, validates ±300 s timestamp window, deserializes `Social_Mixi_Application_Service_ClientEndpoint_V1_SendEventRequest`, and returns non-ping events.
 
 ## grpc-swift v2 API notes
@@ -43,4 +46,8 @@ Prerequisites (install via brew): `buf`, `swift-protobuf` (provides `protoc-gen-
 
 Proto source lives at `../../mixigroup/mixi2-api/proto` relative to this repo (i.e. `github.com/mixigroup/mixi2-api`).
 
-`make generate` clears `Sources/Mixi2GRPC/Generated/` and re-runs `buf generate`.
+`make generate` clears `Sources/Mixi2GRPC/Generated/`, re-runs `buf generate`, then runs `ruby scripts/generate_event_message_extensions.rb` to regenerate `Sources/Mixi2/Generated/EventMessageExtensions.swift`.
+
+## Concurrency
+
+Built with swift-tools-version 6.2. Follow structured concurrency practices and modern concurrency APIs (`withThrowingTaskGroup`, `Mutex`, `@concurrent`) throughout.
