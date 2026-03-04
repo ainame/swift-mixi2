@@ -17,6 +17,9 @@ public final class Bot: Sendable {
     private let client: Mixi2Client
     private let router: EventRouter
 
+    /// Client for making unary API calls (e.g. sending messages) from within event handlers.
+    public var apiClient: Mixi2Client.APIClient { client.apiClient }
+
     public init(configuration: Mixi2Client.Configuration, router: EventRouter) throws {
         self.client = try Mixi2Client(configuration: configuration)
         self.router = router

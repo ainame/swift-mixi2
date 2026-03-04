@@ -68,6 +68,8 @@ public final class Mixi2Client: Sendable {
         }
     }
 
+    public typealias APIClient = Social_Mixi_Application_Service_ApplicationApi_V1_ApplicationService.Client<HTTP2ClientTransport.Posix>
+
     private let apiGRPCClient: GRPCClient<HTTP2ClientTransport.Posix>
     private let streamGRPCClient: GRPCClient<HTTP2ClientTransport.Posix>
 
