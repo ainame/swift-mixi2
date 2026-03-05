@@ -53,10 +53,14 @@ let config = Mixi2.Configuration(
 
 ### Building a bot
 
-The simplest way to handle events is `Bot` + `EventRouter`. `Bot` manages the gRPC connections and drives the event stream; `EventRouter` routes each event to a typed handler registered with `on(_:handler:)`.
+`Bot` + `EventRouter` is the recommended way to handle events. `Bot` manages the gRPC connections and drives the event loop; `EventRouter` routes each event to a typed handler registered with `on(_:handler:)`.
+
+`Bot` conforms to `ServiceLifecycle.Service` — wrap it in a `ServiceGroup` to get graceful SIGTERM/SIGINT shutdown:
 
 ```swift
+import Logging
 import Mixi2
+import ServiceLifecycle
 
 let router = EventRouter()
 
@@ -69,10 +73,9 @@ router.on(ChatMessageReceivedEvent.self) { context, event in
 }
 
 let bot = try Bot(configuration: config, router: router)
-try await bot.run()
+let serviceGroup = ServiceGroup(services: [bot], logger: Logger(label: "MyBot"))
+try await serviceGroup.run()
 ```
-
-`bot.run()` blocks until the stream ends or an error is thrown. The gRPC connections are shut down automatically.
 
 `on(_:handler:)` is generic over any type conforming to `Mixi2EventMessage`, so adding a handler for a new event type requires no changes to `EventRouter` — just pass the type. Multiple handlers for the same type are called in registration order.
 
@@ -89,10 +92,12 @@ router.on(ChatMessageReceivedEvent.self) { context, event in
 
 ### Building a webhook bot
 
-`Bot` also supports receiving events via HTTP webhooks. Enable the `HummingbirdWebhookAdapter` trait (see [Installation](#installation)) and pass a `HummingbirdAdapter` to `run(with:)`:
+`Bot` also supports receiving events via HTTP webhooks. Enable the `HummingbirdWebhookAdapter` trait (see [Installation](#installation)) and set `mode: .webhook(...)` at init time:
 
 ```swift
+import Logging
 import Mixi2
+import ServiceLifecycle
 
 let config = Mixi2.Configuration(
     apiHost: "<api-host>",
@@ -112,30 +117,13 @@ router.on(ChatMessageReceivedEvent.self) { context, event in
 
 let bot = try Bot(configuration: config, router: router,
                   mode: .webhook(HummingbirdAdapter(port: 8080)))
-try await bot.run()
+let serviceGroup = ServiceGroup(services: [bot], logger: Logger(label: "MyBot"))
+try await serviceGroup.run()
 ```
 
 `HummingbirdAdapter` exposes `POST /events` (webhook receiver) and `GET /healthz` (liveness probe).
 
-For custom HTTP frameworks, implement the `WebhookServerAdapter` protocol and pass it to `run(with: .webhook(yourAdapter))`.
-
-### ServiceLifecycle integration
-
-`Bot` conforms to `ServiceLifecycle.Service`. Pass it to a `ServiceGroup` for production-grade SIGTERM/SIGINT handling and graceful shutdown. The `mode:` parameter (default `.stream`) is set at init time so `ServiceGroup` can call `run()` directly:
-
-```swift
-import ServiceLifecycle
-
-// Stream mode
-let bot = try Bot(configuration: config, router: router)
-
-// Webhook mode
-let bot = try Bot(configuration: config, router: router,
-                  mode: .webhook(HummingbirdAdapter(port: 8080)))
-
-let serviceGroup = ServiceGroup(services: [bot], logger: logger)
-try await serviceGroup.run()
-```
+For custom HTTP frameworks, implement the `WebhookServerAdapter` protocol and pass an instance as `mode: .webhook(yourAdapter)`.
 
 ### Making API calls
 
