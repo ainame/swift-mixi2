@@ -11,6 +11,12 @@ let package = Package(
         .library(name: "Mixi2", targets: ["Mixi2"]),
         .library(name: "Mixi2GRPC", targets: ["Mixi2GRPC"]),
     ],
+    traits: [
+        .trait(
+            name: "HummingbirdWebhookAdapter",
+            description: "Enables the built-in Hummingbird-based WebhookServerAdapter"
+        ),
+    ],
     dependencies: [
         .package(url: "https://github.com/grpc/grpc-swift-2", from: "2.2.1"),
         .package(url: "https://github.com/grpc/grpc-swift-protobuf", from: "2.2.0"),
@@ -18,6 +24,9 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-protobuf", from: "1.28.0"),
         .package(url: "https://github.com/apple/swift-crypto", from: "3.0.0"),
         .package(url: "https://github.com/swiftlang/swift-testing", from: "6.0.0"),
+        .package(url: "https://github.com/swift-server/swift-service-lifecycle.git", from: "2.8.0"),
+        .package(url: "https://github.com/hummingbird-project/hummingbird.git", from: "2.0.0"),
+        .package(url: "https://github.com/apple/swift-http-types.git", from: "1.0.0"),
     ],
     targets: [
         .target(
@@ -35,6 +44,17 @@ let package = Package(
                 .product(name: "GRPCCore", package: "grpc-swift-2"),
                 .product(name: "GRPCNIOTransportHTTP2", package: "grpc-swift-nio-transport"),
                 .product(name: "Crypto", package: "swift-crypto"),
+                .product(name: "ServiceLifecycle", package: "swift-service-lifecycle"),
+                .product(
+                    name: "Hummingbird",
+                    package: "hummingbird",
+                    condition: .when(traits: ["HummingbirdWebhookAdapter"])
+                ),
+                .product(
+                    name: "HTTPTypes",
+                    package: "swift-http-types",
+                    condition: .when(traits: ["HummingbirdWebhookAdapter"])
+                ),
             ],
             path: "Sources/Mixi2",
             swiftSettings: [

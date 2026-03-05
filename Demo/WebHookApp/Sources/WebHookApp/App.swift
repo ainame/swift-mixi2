@@ -1,12 +1,6 @@
 import Configuration
-import Crypto
 import Foundation
-import HTTPTypes
-import Hummingbird
 import Mixi2
-
-let signatureField = HTTPField.Name("x-mixi2-application-event-signature")!
-let timestampField = HTTPField.Name("x-mixi2-application-event-timestamp")!
 
 @main
 struct WebHookApp {
@@ -17,8 +11,7 @@ struct WebHookApp {
         let config = ConfigReader(providers: [EnvironmentVariablesProvider(), dotEnvProvider])
 
         let publicKeyBase64 = try config.requiredString(forKey: "mixi2.public.key", isSecret: true)
-        guard let keyData = Data(base64Encoded: publicKeyBase64),
-              let publicKey = try? Curve25519.Signing.PublicKey(rawRepresentation: keyData) else {
+        guard let keyData = Data(base64Encoded: publicKeyBase64) else {
             fputs("Error: MIXI2_PUBLIC_KEY is not a valid base64-encoded Ed25519 public key\n", stderr)
             exit(1)
         }
@@ -26,78 +19,43 @@ struct WebHookApp {
         let apiHost = try config.requiredString(forKey: "mixi2.api.host")
         let webhookPort = config.int(forKey: "mixi2.webhook.port", default: 8080)
 
-        let webhookHandler = WebhookHandler(publicKey: publicKey)
-        let mixi2 = try Mixi2(configuration: .init(
+        let configuration = Mixi2.Configuration(
             apiHost: apiHost,
             streamHost: apiHost,
             port: config.int(forKey: "mixi2.api.port", default: 443),
-            authenticator: ClientCredentialsAuthenticator(
+            authenticator: try ClientCredentialsAuthenticator(
                 clientID: config.requiredString(forKey: "mixi2.client.id"),
                 clientSecret: config.requiredString(forKey: "mixi2.client.secret", isSecret: true),
                 tokenURL: config.requiredString(forKey: "mixi2.token.url", as: URL.self),
             ),
             authKey: config.string(forKey: "mixi2.auth.key", isSecret: true),
-        ))
+            webhookPublicKey: keyData,
+        )
 
-        // MARK: - Routes
+        // MARK: - Event Handlers
 
-        let router = Router()
+        let eventRouter = EventRouter()
 
-        router.get("/healthz") { _, _ in "OK" }
-
-        router.post("/events") { request, _ -> Response in
-            let signature = request.headers[values: signatureField].first ?? ""
-            let timestamp = request.headers[values: timestampField].first ?? ""
-
-            let bodyBuffer = try await request.body.collect(upTo: 4 * 1024 * 1024)
-            let body = Data(bodyBuffer.readableBytesView)
-
-            let events: [Event]
-            do {
-                events = try webhookHandler.handle(
-                    body: body, signature: signature, timestamp: timestamp,
-                )
-            } catch let error as WebhookError {
-                throw HTTPError(.badRequest, message: "\(error)")
+        eventRouter.on(ChatMessageReceivedEvent.self) { context, msg in
+            print("[chat] from=\(msg.issuer.userID)  room=\(msg.message.roomID)  \(msg.message.text)")
+            guard !msg.message.text.isEmpty else {
+                print("[chat] skipping echo — no text (image-only message)")
+                return
             }
+            var reply = SendChatMessageRequest()
+            reply.roomID = msg.message.roomID
+            reply.text = msg.message.text
+            _ = try await context.apiClient.sendChatMessage(reply)
+        }
 
-            for event in events {
-                if let msg = ChatMessageReceivedEvent.extract(from: event) {
-                    print(
-                        "[chat] from=\(msg.issuer.userID)  room=\(msg.message.roomID)  \(msg.message.text)",
-                    )
-                    guard !msg.message.text.isEmpty else {
-                        print("[chat] skipping echo — no text (image-only message)")
-                        continue
-                    }
-                    var reply = SendChatMessageRequest()
-                    reply.roomID = msg.message.roomID
-                    reply.text = msg.message.text
-                    _ = try await mixi2.apiClient.sendChatMessage(reply)
-                } else if let post = PostCreatedEvent.extract(from: event) {
-                    print("[post] from=\(post.issuer.userID)  \(post.post.text)")
-                }
-            }
-
-            return Response(status: .noContent)
+        eventRouter.on(PostCreatedEvent.self) { _, post in
+            print("[post] from=\(post.issuer.userID)  \(post.post.text)")
         }
 
         // MARK: - Run
 
-        let app = Application(
-            router: router,
-            configuration: .init(address: .hostname("0.0.0.0", port: webhookPort)),
-        )
-
+        let bot = try Bot(configuration: configuration, router: eventRouter)
         print("Listening on port \(webhookPort) (Ctrl-C to stop)…")
-
-        try await withThrowingTaskGroup(of: Void.self) { group in
-            group.addTask { try await mixi2.run([.api]) }
-            group.addTask {
-                defer { mixi2.shutdown() }
-                try await app.runService()
-            }
-            try await group.waitForAll()
-        }
+        try await bot.run(with: .webhook(HummingbirdAdapter(port: webhookPort)))
     }
 }

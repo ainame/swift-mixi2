@@ -14,6 +14,8 @@ public final class Mixi2: Sendable {
         public var authenticator: any Authenticator
         public var authKey: String?
         public var useTLS: Bool
+        /// Raw Ed25519 public key bytes used by ``Bot`` in webhook mode.
+        public var webhookPublicKey: Data?
 
         public init(
             apiHost: String,
@@ -22,6 +24,7 @@ public final class Mixi2: Sendable {
             authenticator: any Authenticator,
             authKey: String? = nil,
             useTLS: Bool = true,
+            webhookPublicKey: Data? = nil,
         ) {
             self.apiHost = apiHost
             self.streamHost = streamHost
@@ -29,6 +32,7 @@ public final class Mixi2: Sendable {
             self.authenticator = authenticator
             self.authKey = authKey
             self.useTLS = useTLS
+            self.webhookPublicKey = webhookPublicKey
         }
     }
 
