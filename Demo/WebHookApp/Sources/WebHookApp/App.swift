@@ -91,7 +91,7 @@ struct WebHookApp {
         print("Listening on port \(webhookPort) (Ctrl-C to stop)…")
 
         try await withThrowingTaskGroup(of: Void.self) { group in
-            group.addTask { try await mixi2.run() }
+            group.addTask { try await mixi2.run([.api]) }
             group.addTask {
                 defer { mixi2.shutdown() }
                 try await app.runService()
