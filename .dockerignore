@@ -1,0 +1,8 @@
+# Exclude all SPM build directories (they are large and not needed in the image).
+**/.build
+
+# Git metadata and editor files.
+.git
+.gitignore
+.swiftpm
+**/.DS_Store
