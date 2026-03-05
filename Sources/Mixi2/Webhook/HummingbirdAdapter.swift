@@ -52,7 +52,11 @@ public struct HummingbirdAdapter: WebhookServerAdapter {
             router: router,
             configuration: .init(address: .hostname(hostname, port: port)),
         )
-        try await app.runService()
+        // Use run() rather than runService() to avoid a nested ServiceGroup with competing
+        // signal handlers. Graceful shutdown propagates from the caller's ServiceGroup via
+        // task-local inheritance into app.run()'s internal ServiceGroup. Users who need
+        // standalone signal handling should wrap Bot in a ServiceGroup.
+        try await app.run()
     }
 }
 #endif
