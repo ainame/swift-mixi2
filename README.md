@@ -86,7 +86,7 @@ For unary RPCs without event streaming, use `Mixi2` directly:
 
 ```swift
 let mixi2 = try Mixi2(configuration: config)
-async let running: Void = mixi2.run([.api])
+async let running: Void = mixi2.run([.api])  // starts the NIO event loop in the background
 defer { mixi2.shutdown() }
 
 let response = try await mixi2.apiClient.getUsers(.with {
