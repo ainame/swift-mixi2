@@ -86,7 +86,7 @@ For unary RPCs without event streaming, use `Mixi2` directly:
 
 ```swift
 let mixi2 = try Mixi2(configuration: config)
-Task { try await mixi2.run() }
+async let running: Void = mixi2.run([.api])
 
 let response = try await mixi2.apiClient.getUsers(.with {
     $0.userIDList = ["user-123"]
@@ -94,6 +94,7 @@ let response = try await mixi2.apiClient.getUsers(.with {
 print(response.users)
 
 mixi2.shutdown()
+try await running
 ```
 
 `mixi2.apiClient` exposes all unary RPCs from the ApplicationService:
