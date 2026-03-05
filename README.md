@@ -1,8 +1,6 @@
 # swift-mixi2
 
-A Swift client library for the [mixi2](https://mixi2.com) Application API (gRPC). Provides auth, gRPC streaming, and webhook support on top of generated protobuf stubs.
-
-Official API docs: https://developer.mixi.social/docs
+An unofficial Swift client library for the [mixi2](https://mixi2.com) Application API (gRPC). Provides auth, gRPC streaming, and webhook support on top of generated protobuf stubs.
 
 ## Requirements
 
@@ -161,6 +159,11 @@ for event in events {
 | `.timestampTooOld` | Request is more than 5 minutes old |
 | `.timestampInFuture` | Request timestamp is more than 5 minutes in the future |
 | `.signatureInvalid` | Ed25519 signature does not match |
+
+## Links
+
+- [Official mixi2 API docs](https://developer.mixi.social/docs)
+- [mixi2](https://mixi2.com)
 
 ## License
 
