@@ -27,4 +27,3 @@
 --disable docComments
 --disable wrapMultilineStatementBraces
 --disable unusedArguments
---disable genericExtensions
