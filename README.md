@@ -21,6 +21,14 @@ Then add the `Mixi2` product to your target:
 .product(name: "Mixi2", package: "swift-mixi2"),
 ```
 
+### Optional: Hummingbird webhook adapter
+
+To use the built-in `HummingbirdAdapter` for receiving webhooks, enable the `HummingbirdWebhookAdapter` trait (requires swift-tools-version 6.2+):
+
+```swift
+.package(url: "https://github.com/ainame/swift-mixi2", from: "0.1.0", traits: ["HummingbirdWebhookAdapter"]),
+```
+
 ## Usage
 
 ### Configuration
@@ -38,7 +46,8 @@ let config = Mixi2.Configuration(
     apiHost: "<api-host>",
     streamHost: "<stream-host>",
     authenticator: authenticator,
-    authKey: "your-auth-key"   // optional
+    authKey: "your-auth-key",          // optional
+    webhookPublicKey: yourPublicKeyData // optional, required for webhook mode
 )
 ```
 
@@ -76,6 +85,49 @@ router.on(ChatMessageReceivedEvent.self) { context, event in
     reply.text = "echo: \(event.message.text)"
     _ = try await context.apiClient.sendChatMessage(reply)
 }
+```
+
+### Building a webhook bot
+
+`Bot` also supports receiving events via HTTP webhooks. Enable the `HummingbirdWebhookAdapter` trait (see [Installation](#installation)) and pass a `HummingbirdAdapter` to `run(with:)`:
+
+```swift
+import Mixi2
+
+let config = Mixi2.Configuration(
+    apiHost: "<api-host>",
+    streamHost: "<stream-host>",
+    authenticator: authenticator,
+    webhookPublicKey: Data(base64Encoded: publicKeyBase64)!
+)
+
+let router = EventRouter()
+
+router.on(ChatMessageReceivedEvent.self) { context, event in
+    var reply = SendChatMessageRequest()
+    reply.roomID = event.message.roomID
+    reply.text = "echo: \(event.message.text)"
+    _ = try await context.apiClient.sendChatMessage(reply)
+}
+
+let bot = try Bot(configuration: config, router: router)
+try await bot.run(with: .webhook(HummingbirdAdapter(port: 8080)))
+```
+
+`HummingbirdAdapter` exposes `POST /events` (webhook receiver) and `GET /healthz` (liveness probe).
+
+For custom HTTP frameworks, implement the `WebhookServerAdapter` protocol and pass it to `run(with: .webhook(yourAdapter))`.
+
+### ServiceLifecycle integration
+
+`Bot` conforms to `ServiceLifecycle.Service`, so it works out of the box with a `ServiceGroup` for production-grade lifecycle management (graceful SIGTERM/SIGINT shutdown):
+
+```swift
+import ServiceLifecycle
+
+let bot = try Bot(configuration: config, router: router)
+let serviceGroup = ServiceGroup(services: [bot], logger: logger)
+try await serviceGroup.run()
 ```
 
 ### Making API calls
@@ -131,7 +183,7 @@ PING events are filtered automatically. The stream reconnects on failure with ex
 
 ### Webhook handling
 
-Verify and parse incoming webhook requests from mixi2. `WebhookHandler` validates the Ed25519 signature, checks the timestamp is within ±5 minutes, and deserializes the payload.
+For most use cases, use `Bot` with `HummingbirdAdapter` as shown above. If you need to integrate with a different HTTP framework, use `WebhookHandler` directly — it validates the Ed25519 signature, checks the timestamp is within ±5 minutes, and deserializes the payload.
 
 ```swift
 import Mixi2
