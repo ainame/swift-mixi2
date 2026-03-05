@@ -1,4 +1,5 @@
 # SwiftFormat configuration
+--exclude **/Generated
 --indent 4
 --swiftversion 6.2
 --maxwidth 200

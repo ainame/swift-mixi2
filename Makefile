@@ -19,7 +19,7 @@ test:
 	swift test
 
 format:
-	swift package plugin --allow-writing-to-package-directory swiftformat -- --exclude "**/Generated" Sources Demo/*/Sources Tests
+	swift package plugin --allow-writing-to-package-directory swiftformat -- Sources Demo/*/Sources Tests
 
 clean:
 	rm -rf .build
