@@ -56,7 +56,7 @@ let package = Package(
             checksum: "89b979d56a26b5ef0cffe52508438c8d71f70d8b1594a40dfc94481ce631025f"
         ),
         .plugin(
-            name: "FormatSwift",
+            name: "SwiftFormatPlugin",
             capability: .command(
                 intent: .sourceCodeFormatting(),
                 permissions: [.writeToPackageDirectory(reason: "Format Swift source files")]
