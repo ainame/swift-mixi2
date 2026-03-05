@@ -101,4 +101,34 @@ public final class Mixi2: Sendable {
         apiGRPCClient.beginGracefulShutdown()
         streamGRPCClient.beginGracefulShutdown()
     }
+
+    /// Creates a ``Mixi2`` instance, runs the selected connections for the duration of `body`,
+    /// then shuts down cleanly — even if `body` throws.
+    ///
+    /// ```swift
+    /// try await Mixi2.with(configuration: config) { mixi2 in
+    ///     let response = try await mixi2.apiClient.getUsers(.with {
+    ///         $0.userIDList = ["user-123"]
+    ///     })
+    ///     print(response.users)
+    /// }
+    /// ```
+    public static func with<T>(
+        configuration: Configuration,
+        services: Set<Service> = [.api],
+        _ body: (Mixi2) async throws -> T
+    ) async throws -> T {
+        let mixi2 = try Mixi2(configuration: configuration)
+        async let running: Void = mixi2.run(services)
+        do {
+            let result = try await body(mixi2)
+            mixi2.shutdown()
+            try await running
+            return result
+        } catch {
+            mixi2.shutdown()
+            _ = try? await running
+            throw error
+        }
+    }
 }

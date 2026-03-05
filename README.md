@@ -127,19 +127,15 @@ For custom HTTP frameworks, implement the `WebhookServerAdapter` protocol and pa
 
 ### Making API calls
 
-For unary RPCs without event streaming, use `Mixi2` directly:
+For unary RPCs without event streaming, use `Mixi2.with(configuration:)`. It starts the connection, runs your closure, then shuts down cleanly — even if the closure throws:
 
 ```swift
-let mixi2 = try Mixi2(configuration: config)
-async let running: Void = mixi2.run([.api])  // starts the NIO event loop in the background
-defer { mixi2.shutdown() }
-
-let response = try await mixi2.apiClient.getUsers(.with {
-    $0.userIDList = ["user-123"]
-})
-print(response.users)
-
-try await running
+try await Mixi2.with(configuration: config) { mixi2 in
+    let response = try await mixi2.apiClient.getUsers(.with {
+        $0.userIDList = ["user-123"]
+    })
+    print(response.users)
+}
 ```
 
 `mixi2.apiClient` exposes all unary RPCs from the ApplicationService:
