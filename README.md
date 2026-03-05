@@ -53,7 +53,14 @@ let config = Mixi2.Configuration(
 
 ### Building a bot
 
-`Bot` + `EventRouter` is the recommended way to handle events. `Bot` manages the gRPC connections and drives the event loop; `EventRouter` routes each event to a typed handler registered with `on(_:handler:)`.
+`Bot` + `EventRouter` is the primary way to handle events. `Bot` manages connections and drives the event loop; `EventRouter` routes each event to a typed handler registered with `on(_:handler:)`.
+
+Choose an event reception mode based on your use case:
+
+| Mode | Recommended for |
+|------|----------------|
+| gRPC stream (default) | Local development, prototyping |
+| HTTP Webhook | Production, serverless |
 
 `Bot` conforms to `ServiceLifecycle.Service` — wrap it in a `ServiceGroup` to get graceful SIGTERM/SIGINT shutdown:
 
