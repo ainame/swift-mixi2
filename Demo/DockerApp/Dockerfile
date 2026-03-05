@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # ── Build stage ───────────────────────────────────────────────────────────────
-FROM swift:6.1-jammy AS builder
+FROM swift:6.2.4 AS builder
 
 WORKDIR /build
 
@@ -29,8 +29,8 @@ RUN useradd --system --no-create-home appuser
 USER appuser
 
 # Environment variables — supply real values at runtime via -e or a secret store.
-# ENV MIXI2_API_HOST=api.mixi2.jp
-# ENV MIXI2_STREAM_HOST=stream.mixi2.jp
+# ENV MIXI2_API_HOST=
+# ENV MIXI2_STREAM_HOST=
 # ENV MIXI2_CLIENT_ID=
 # ENV MIXI2_CLIENT_SECRET=
 # ENV MIXI2_TOKEN_URL=
