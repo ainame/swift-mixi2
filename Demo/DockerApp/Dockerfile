@@ -3,12 +3,14 @@
 # ── Build stage ───────────────────────────────────────────────────────────────
 FROM swift:6.2.4 AS builder
 
-WORKDIR /build
+# Use a path ending in "swift-mixi2" so the directory name matches the
+# package identifier used in Demo sub-package manifests (package: "swift-mixi2").
+WORKDIR /workspace/swift-mixi2
 
 # Copy the entire repository so Demo/DockerApp can resolve its local dependency.
 COPY . .
 
-WORKDIR /build/Demo/DockerApp
+WORKDIR /workspace/swift-mixi2/Demo/DockerApp
 
 # Build a release binary with the Swift stdlib statically linked so the
 # runtime image does not need a full Swift installation.
@@ -22,7 +24,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends libssl3 ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --from=builder /build/Demo/DockerApp/.build/release/DockerApp /usr/local/bin/docker-app
+COPY --from=builder /workspace/swift-mixi2/Demo/DockerApp/.build/release/DockerApp /usr/local/bin/docker-app
 
 # Run as non-root for least-privilege deployments.
 RUN useradd --system --no-create-home appuser
