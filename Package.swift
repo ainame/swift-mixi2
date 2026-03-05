@@ -38,7 +38,7 @@ let package = Package(
             ],
             path: "Sources/Mixi2",
             swiftSettings: [
-                .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+                .enableUpcomingFeature("NonisolatedNonsendingByDefault")
             ]
         ),
         .testTarget(
@@ -52,16 +52,22 @@ let package = Package(
         ),
         .binaryTarget(
             name: "swiftformat",
-            url: "https://github.com/nicklockwood/SwiftFormat/releases/download/0.59.1/swiftformat.artifactbundle.zip",
+            url:
+                "https://github.com/nicklockwood/SwiftFormat/releases/download/0.59.1/swiftformat.artifactbundle.zip",
             checksum: "89b979d56a26b5ef0cffe52508438c8d71f70d8b1594a40dfc94481ce631025f"
         ),
         .plugin(
             name: "SwiftFormatPlugin",
             capability: .command(
-                intent: .sourceCodeFormatting(),
-                permissions: [.writeToPackageDirectory(reason: "Format Swift source files")]
+                intent: .custom(
+                    verb: "swiftformat",
+                    description: "Formats Swift source files using SwiftFormat"
+                ),
+                permissions: [
+                    .writeToPackageDirectory(reason: "This command reformats source files")
+                ]
             ),
-            dependencies: [.target(name: "swiftformat")]
+            dependencies: ["swiftformat"]
         ),
     ]
 )

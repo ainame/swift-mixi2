@@ -1,4 +1,4 @@
-.PHONY: generate update-proto build test clean
+.PHONY: generate update-proto build test format clean
 
 generate:
 	git submodule update --init --recursive
@@ -17,6 +17,9 @@ build:
 
 test:
 	swift test
+
+format:
+	swift package plugin --allow-writing-to-package-directory swiftformat -- Sources Demo/*/Sources Tests
 
 clean:
 	rm -rf .build
