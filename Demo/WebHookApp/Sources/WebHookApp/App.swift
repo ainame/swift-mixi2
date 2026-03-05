@@ -54,8 +54,12 @@ struct WebHookApp {
 
         // MARK: - Run
 
-        let bot = try Bot(configuration: configuration, router: eventRouter)
+        let bot = try Bot(
+            configuration: configuration,
+            router: eventRouter,
+            mode: .webhook(HummingbirdAdapter(port: webhookPort)),
+        )
         print("Listening on port \(webhookPort) (Ctrl-C to stop)…")
-        try await bot.run(with: .webhook(HummingbirdAdapter(port: webhookPort)))
+        try await bot.run()
     }
 }

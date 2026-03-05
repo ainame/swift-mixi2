@@ -6,6 +6,9 @@ import ServiceLifecycle
 /// `Bot` owns a ``Mixi2``, connects to the event stream or receives webhook events,
 /// and dispatches each incoming event to the registered ``EventRouter`` handlers.
 ///
+/// Conforms to `ServiceLifecycle.Service` — pass it to a `ServiceGroup` for
+/// production-grade signal handling and graceful shutdown.
+///
 /// **Stream mode** (default):
 /// ```swift
 /// let router = EventRouter()
@@ -14,13 +17,16 @@ import ServiceLifecycle
 /// }
 ///
 /// let bot = try Bot(configuration: config, router: router)
-/// try await bot.run()
+/// let serviceGroup = ServiceGroup(services: [bot], logger: logger)
+/// try await serviceGroup.run()
 /// ```
 ///
-/// **Webhook mode** (requires `HummingbirdWebhookAdapter` trait or a custom adapter):
+/// **Webhook mode** — set `mode:` at init so `ServiceGroup` can call `run()` correctly:
 /// ```swift
-/// let bot = try Bot(configuration: config, router: router)
-/// try await bot.run(with: .webhook(HummingbirdAdapter(port: 8080)))
+/// let bot = try Bot(configuration: config, router: router,
+///                   mode: .webhook(HummingbirdAdapter(port: 8080)))
+/// let serviceGroup = ServiceGroup(services: [bot], logger: logger)
+/// try await serviceGroup.run()
 /// ```
 @available(macOS 15.0, iOS 18.0, *)
 public final class Bot: Sendable, Service {
@@ -42,22 +48,24 @@ public final class Bot: Sendable, Service {
     private let client: Mixi2
     private let router: EventRouter
     private let webhookPublicKey: Data?
+    private let mode: RunMode
 
-    public init(configuration: Mixi2.Configuration, router: EventRouter) throws {
+    public init(
+        configuration: Mixi2.Configuration,
+        router: EventRouter,
+        mode: RunMode = .stream,
+    ) throws {
         client = try Mixi2(configuration: configuration)
         self.router = router
-        webhookPublicKey = configuration.webhookPublicKey
+        self.webhookPublicKey = configuration.webhookPublicKey
+        self.mode = mode
     }
 
-    /// Connects to the mixi2 event stream and runs the router until the stream ends or an error is thrown.
+    /// Runs the bot in the mode configured at initialisation.
     ///
-    /// Equivalent to `run(with: .stream)`. Conforms to `ServiceLifecycle.Service`.
+    /// Called automatically by `ServiceGroup`. Can also be called directly for
+    /// simple scripts that don't need lifecycle management.
     public func run() async throws {
-        try await run(with: .stream)
-    }
-
-    /// Runs the bot in the given mode until cancelled or gracefully shut down.
-    public func run(with mode: RunMode) async throws {
         let context = Context(apiClient: client.apiClient)
         switch mode {
         case .stream:

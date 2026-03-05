@@ -110,8 +110,9 @@ router.on(ChatMessageReceivedEvent.self) { context, event in
     _ = try await context.apiClient.sendChatMessage(reply)
 }
 
-let bot = try Bot(configuration: config, router: router)
-try await bot.run(with: .webhook(HummingbirdAdapter(port: 8080)))
+let bot = try Bot(configuration: config, router: router,
+                  mode: .webhook(HummingbirdAdapter(port: 8080)))
+try await bot.run()
 ```
 
 `HummingbirdAdapter` exposes `POST /events` (webhook receiver) and `GET /healthz` (liveness probe).
@@ -120,12 +121,18 @@ For custom HTTP frameworks, implement the `WebhookServerAdapter` protocol and pa
 
 ### ServiceLifecycle integration
 
-`Bot` conforms to `ServiceLifecycle.Service`, so it works out of the box with a `ServiceGroup` for production-grade lifecycle management (graceful SIGTERM/SIGINT shutdown):
+`Bot` conforms to `ServiceLifecycle.Service`. Pass it to a `ServiceGroup` for production-grade SIGTERM/SIGINT handling and graceful shutdown. The `mode:` parameter (default `.stream`) is set at init time so `ServiceGroup` can call `run()` directly:
 
 ```swift
 import ServiceLifecycle
 
+// Stream mode
 let bot = try Bot(configuration: config, router: router)
+
+// Webhook mode
+let bot = try Bot(configuration: config, router: router,
+                  mode: .webhook(HummingbirdAdapter(port: 8080)))
+
 let serviceGroup = ServiceGroup(services: [bot], logger: logger)
 try await serviceGroup.run()
 ```
