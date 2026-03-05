@@ -1,6 +1,8 @@
 # swift-mixi2
 
-A Swift gRPC client library for the [mixi2](https://mixi2.com) Application API. Provides authentication, event streaming, and webhook verification on top of generated protobuf stubs.
+A Swift client library for the [mixi2](https://mixi2.com) Application API (gRPC). Provides auth, gRPC streaming, and webhook support on top of generated protobuf stubs.
+
+Official API docs: https://developer.mixi.social/docs
 
 ## Requirements
 
@@ -22,6 +24,25 @@ Then add the `Mixi2` product to your target:
 ```
 
 ## Usage
+
+### Configuration
+
+Build a `Mixi2.Configuration` with your credentials:
+
+```swift
+let authenticator = ClientCredentialsAuthenticator(
+    clientID: "your-client-id",
+    clientSecret: "your-client-secret",
+    tokenURL: URL(string: "https://<token-host>/oauth/token")!
+)
+
+let config = Mixi2.Configuration(
+    apiHost: "<api-host>",
+    streamHost: "<stream-host>",
+    authenticator: authenticator,
+    authKey: "your-auth-key"   // optional
+)
+```
 
 ### Building a bot
 
@@ -48,7 +69,7 @@ try await bot.run()
 
 `on(_:handler:)` is generic over any type conforming to `Mixi2EventMessage`, so adding a handler for a new event type requires no changes to `EventRouter` — just pass the type. Multiple handlers for the same type are called in registration order.
 
-Each handler receives a `Bot.Context` as its first argument, which gives access to the API client for making RPCs from within a handler:
+Each handler receives a `Bot.Context` as its first argument. Use `context.apiClient` to make API calls from within a handler:
 
 ```swift
 router.on(ChatMessageReceivedEvent.self) { context, event in
@@ -57,25 +78,6 @@ router.on(ChatMessageReceivedEvent.self) { context, event in
     reply.text = "echo: \(event.message.text)"
     _ = try await context.apiClient.sendChatMessage(reply)
 }
-```
-
-### Configuration
-
-Build a `Mixi2.Configuration` with your credentials:
-
-```swift
-let authenticator = ClientCredentialsAuthenticator(
-    clientID: "your-client-id",
-    clientSecret: "your-client-secret",
-    tokenURL: URL(string: "https://auth.mixi2.com/oauth/token")!
-)
-
-let config = Mixi2.Configuration(
-    apiHost: "api.mixi2.com",
-    streamHost: "stream.mixi2.com",
-    authenticator: authenticator,
-    authKey: "your-auth-key"   // optional
-)
 ```
 
 ### Making API calls
@@ -161,30 +163,6 @@ for event in events {
 | `.timestampTooOld` | Request is more than 5 minutes old |
 | `.timestampInFuture` | Request timestamp is more than 5 minutes in the future |
 | `.signatureInvalid` | Ed25519 signature does not match |
-
-### Custom authentication
-
-Conform to the `Authenticator` protocol to supply tokens from any source:
-
-```swift
-struct MyAuthenticator: Authenticator {
-    func accessToken() async throws -> String {
-        // fetch or return a cached token
-    }
-}
-```
-
-## Using generated stubs directly
-
-The `Mixi2GRPC` product exposes the raw generated Swift types for all proto messages and services, so you can use them independently of the `Mixi2` SDK:
-
-```swift
-import Mixi2GRPC
-
-let request = Social_Mixi_Application_Service_ApplicationApi_V1_GetPostsRequest.with {
-    $0.postIDList = ["post-abc"]
-}
-```
 
 ## License
 
