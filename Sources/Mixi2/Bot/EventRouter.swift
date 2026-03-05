@@ -39,7 +39,7 @@ public final class EventRouter: Sendable {
     /// all other events are silently skipped.
     public func on<T: Mixi2EventMessage>(
         _: T.Type,
-        handler: @Sendable @escaping (Bot.Context, T) async throws -> Void
+        handler: @Sendable @escaping (Bot.Context, T) async throws -> Void,
     ) {
         handlers.withLock {
             $0.append { context, event in

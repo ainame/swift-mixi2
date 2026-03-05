@@ -21,7 +21,7 @@ public final class Mixi2: Sendable {
             port: Int = 443,
             authenticator: any Authenticator,
             authKey: String? = nil,
-            useTLS: Bool = true
+            useTLS: Bool = true,
         ) {
             self.apiHost = apiHost
             self.streamHost = streamHost
@@ -56,24 +56,24 @@ public final class Mixi2: Sendable {
             configuration.useTLS ? .tls : .plaintext
         let interceptor = AuthClientInterceptor(
             authenticator: configuration.authenticator,
-            authKey: configuration.authKey
+            authKey: configuration.authKey,
         )
 
         let apiTransport = try HTTP2ClientTransport.Posix(
             target: .dns(host: configuration.apiHost, port: configuration.port),
-            transportSecurity: transportSecurity
+            transportSecurity: transportSecurity,
         )
         let apiGRPCClient = GRPCClient(transport: apiTransport, interceptors: [interceptor])
         self.apiGRPCClient = apiGRPCClient
-        self.apiClient = .init(wrapping: apiGRPCClient)
+        apiClient = .init(wrapping: apiGRPCClient)
 
         let streamTransport = try HTTP2ClientTransport.Posix(
             target: .dns(host: configuration.streamHost, port: configuration.port),
-            transportSecurity: transportSecurity
+            transportSecurity: transportSecurity,
         )
         let streamGRPCClient = GRPCClient(transport: streamTransport, interceptors: [interceptor])
         self.streamGRPCClient = streamGRPCClient
-        self.streamClient = .init(wrapping: streamGRPCClient)
+        streamClient = .init(wrapping: streamGRPCClient)
     }
 
     /// Runs the selected gRPC transport connections until shutdown.

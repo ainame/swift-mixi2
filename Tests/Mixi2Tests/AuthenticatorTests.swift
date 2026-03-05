@@ -1,7 +1,6 @@
 import Foundation
-import Testing
-
 @testable import Mixi2
+import Testing
 
 @Suite("MockAuthenticator")
 struct AuthenticatorTests {

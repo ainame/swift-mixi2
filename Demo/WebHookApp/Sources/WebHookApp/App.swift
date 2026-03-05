@@ -34,9 +34,9 @@ struct WebHookApp {
             authenticator: ClientCredentialsAuthenticator(
                 clientID: config.requiredString(forKey: "mixi2.client.id"),
                 clientSecret: config.requiredString(forKey: "mixi2.client.secret", isSecret: true),
-                tokenURL: config.requiredString(forKey: "mixi2.token.url", as: URL.self)
+                tokenURL: config.requiredString(forKey: "mixi2.token.url", as: URL.self),
             ),
-            authKey: config.string(forKey: "mixi2.auth.key", isSecret: true)
+            authKey: config.string(forKey: "mixi2.auth.key", isSecret: true),
         ))
 
         // MARK: - Routes
@@ -55,7 +55,8 @@ struct WebHookApp {
             let events: [Event]
             do {
                 events = try webhookHandler.handle(
-                    body: body, signature: signature, timestamp: timestamp)
+                    body: body, signature: signature, timestamp: timestamp,
+                )
             } catch let error as WebhookError {
                 throw HTTPError(.badRequest, message: "\(error)")
             }
@@ -63,7 +64,7 @@ struct WebHookApp {
             for event in events {
                 if let msg = ChatMessageReceivedEvent.extract(from: event) {
                     print(
-                        "[chat] from=\(msg.issuer.userID)  room=\(msg.message.roomID)  \(msg.message.text)"
+                        "[chat] from=\(msg.issuer.userID)  room=\(msg.message.roomID)  \(msg.message.text)",
                     )
                     guard !msg.message.text.isEmpty else {
                         print("[chat] skipping echo — no text (image-only message)")
@@ -85,7 +86,7 @@ struct WebHookApp {
 
         let app = Application(
             router: router,
-            configuration: .init(address: .hostname("0.0.0.0", port: webhookPort))
+            configuration: .init(address: .hostname("0.0.0.0", port: webhookPort)),
         )
 
         print("Listening on port \(webhookPort) (Ctrl-C to stop)…")

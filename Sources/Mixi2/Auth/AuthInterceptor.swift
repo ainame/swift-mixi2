@@ -16,8 +16,8 @@ public struct AuthClientInterceptor: ClientInterceptor {
         context: ClientContext,
         next: @concurrent (
             _ request: StreamingClientRequest<Input>,
-            _ context: ClientContext
-        ) async throws -> StreamingClientResponse<Output>
+            _ context: ClientContext,
+        ) async throws -> StreamingClientResponse<Output>,
     ) async throws -> StreamingClientResponse<Output> {
         var request = request
         let token = try await authenticator.accessToken()

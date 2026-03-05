@@ -25,7 +25,7 @@ public final class Bot: Sendable {
     private let router: EventRouter
 
     public init(configuration: Mixi2.Configuration, router: EventRouter) throws {
-        self.client = try Mixi2(configuration: configuration)
+        client = try Mixi2(configuration: configuration)
         self.router = router
     }
 

@@ -36,7 +36,7 @@ public struct WebhookHandler: Sendable {
     public func handle(
         body: Data,
         signature signatureHeader: String,
-        timestamp timestampHeader: String
+        timestamp timestampHeader: String,
     ) throws -> [Event] {
         // Decode signature
         guard let signatureBytes = Data(base64Encoded: signatureHeader) else {
@@ -63,7 +63,7 @@ public struct WebhookHandler: Sendable {
 
         // Deserialize protobuf
         let request = try SendEventRequest(
-            serializedBytes: body
+            serializedBytes: body,
         )
 
         // Filter out PING events

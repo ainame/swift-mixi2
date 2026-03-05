@@ -22,13 +22,13 @@ public struct EventStream: Sendable {
     /// Returns when the stream ends cleanly, or throws if retries are exhausted or
     /// the parent task is cancelled.
     public func run(
-        _ body: (Event) async throws -> Void
+        _ body: (Event) async throws -> Void,
     ) async throws {
         let (stream, continuation) = AsyncThrowingStream<Event, Error>.makeStream()
         try await withThrowingTaskGroup(of: Void.self) { group in
             // Producer: structured child task — cancelled automatically when group exits.
             group.addTask {
-                await withReconnect(client: self.client, continuation: continuation)
+                await withReconnect(client: client, continuation: continuation)
             }
             // Consumer: runs in the group body on the same structured scope.
             for try await event in stream {
@@ -44,7 +44,7 @@ public struct EventStream: Sendable {
 @concurrent
 private func withReconnect(
     client: StreamApplicationService.ClientProtocol,
-    continuation: AsyncThrowingStream<Event, Error>.Continuation
+    continuation: AsyncThrowingStream<Event, Error>.Continuation,
 ) async {
     let maxRetries = 3
     var attempt = 0
@@ -52,7 +52,7 @@ private func withReconnect(
     while attempt <= maxRetries {
         do {
             try await client.subscribeEvents(
-                StreamSubscribeEventsRequest()
+                StreamSubscribeEventsRequest(),
             ) { response in
                 for try await message in response.messages {
                     for event in message.events {
@@ -74,7 +74,7 @@ private func withReconnect(
             }
             attempt += 1
             do {
-                try await Task.sleep(for: .seconds(1 << (attempt - 1)))  // 1s, 2s, 4s
+                try await Task.sleep(for: .seconds(1 << (attempt - 1))) // 1s, 2s, 4s
             } catch {
                 // Cancelled during backoff — stop retrying cleanly.
                 continuation.finish()

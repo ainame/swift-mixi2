@@ -1,16 +1,17 @@
 import Crypto
 import Foundation
+@testable import Mixi2
 import Mixi2GRPC
 import SwiftProtobuf
 import Testing
-
-@testable import Mixi2
 
 @Suite("WebhookHandler")
 struct WebhookHandlerTests {
     // Ed25519 keypair for tests
     private let privateKey = Curve25519.Signing.PrivateKey()
-    private var publicKey: Curve25519.Signing.PublicKey { privateKey.publicKey }
+    private var publicKey: Curve25519.Signing.PublicKey {
+        privateKey.publicKey
+    }
 
     private func makeHandler() throws -> WebhookHandler {
         try WebhookHandler(publicKey: publicKey)

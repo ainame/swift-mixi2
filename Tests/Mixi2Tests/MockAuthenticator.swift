@@ -8,8 +8,8 @@ actor MockAuthenticator: Authenticator {
     var callCount = 0
 
     init(token: String = "mock-token", error: Error? = nil) {
-        self.tokenToReturn = token
-        self.errorToThrow = error
+        tokenToReturn = token
+        errorToThrow = error
     }
 
     func accessToken() async throws -> String {

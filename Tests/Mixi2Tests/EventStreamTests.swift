@@ -1,8 +1,7 @@
 import GRPCCore
+@testable import Mixi2
 import Mixi2GRPC
 import Testing
-
-@testable import Mixi2
 
 /// A mock stream client that yields pre-configured responses.
 final class MockStreamClient: StreamApplicationService.ClientProtocol, Sendable {
@@ -10,23 +9,23 @@ final class MockStreamClient: StreamApplicationService.ClientProtocol, Sendable 
     let shouldFail: Bool
 
     init(events: [Event], fail: Bool = false) {
-        self.responses = events
-        self.shouldFail = fail
+        responses = events
+        shouldFail = fail
     }
 
-    func subscribeEvents<Result>(
+    func subscribeEvents<Result: Sendable>(
         request: GRPCCore.ClientRequest<StreamSubscribeEventsRequest>,
         serializer: some GRPCCore.MessageSerializer<StreamSubscribeEventsRequest>,
         deserializer: some GRPCCore.MessageDeserializer<StreamSubscribeEventsResponse>,
         options: GRPCCore.CallOptions,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.StreamingClientResponse<StreamSubscribeEventsResponse>) async throws -> Result
-    ) async throws -> Result where Result: Sendable {
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.StreamingClientResponse<StreamSubscribeEventsResponse>) async throws -> Result,
+    ) async throws -> Result {
         if shouldFail {
             throw RPCError(code: .unavailable, message: "mock failure")
         }
 
         typealias BodyPart = StreamingClientResponse<StreamSubscribeEventsResponse>.Contents.BodyPart
-        let eventsToSend = self.responses
+        let eventsToSend = responses
         let bodyParts = RPCAsyncSequence<BodyPart, any Error>(
             wrapping: AsyncThrowingStream<BodyPart, Error> { continuation in
                 var message = StreamSubscribeEventsResponse()
@@ -34,11 +33,11 @@ final class MockStreamClient: StreamApplicationService.ClientProtocol, Sendable 
                 continuation.yield(.message(message))
                 continuation.yield(.trailingMetadata([:]))
                 continuation.finish()
-            }
+            },
         )
         let response = StreamingClientResponse<StreamSubscribeEventsResponse>(
             metadata: [:],
-            bodyParts: bodyParts
+            bodyParts: bodyParts,
         )
         return try await handleResponse(response)
     }
@@ -83,7 +82,7 @@ struct EventStreamTests {
     @Test("Yields multiple events from single response")
     func yieldsMultipleEvents() async throws {
         guard #available(macOS 15.0, iOS 18.0, *) else { return }
-        let events = (1...3).map { i in
+        let events = (1 ... 3).map { i in
             Event.with {
                 $0.eventID = "e\(i)"
                 $0.eventType = .postCreated

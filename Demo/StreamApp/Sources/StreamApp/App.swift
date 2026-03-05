@@ -6,7 +6,8 @@ import Mixi2
 struct StreamApp {
     static func main() async throws {
         let dotEnvProvider = try await EnvironmentVariablesProvider(
-            environmentFilePath: ".env", allowMissing: true)
+            environmentFilePath: ".env", allowMissing: true,
+        )
         let config = ConfigReader(providers: [EnvironmentVariablesProvider(), dotEnvProvider])
 
         let configuration = try Mixi2.Configuration(
@@ -16,16 +17,16 @@ struct StreamApp {
             authenticator: ClientCredentialsAuthenticator(
                 clientID: config.requiredString(forKey: "mixi2.client.id"),
                 clientSecret: config.requiredString(forKey: "mixi2.client.secret", isSecret: true),
-                tokenURL: config.requiredString(forKey: "mixi2.token.url", as: URL.self)
+                tokenURL: config.requiredString(forKey: "mixi2.token.url", as: URL.self),
             ),
-            authKey: config.string(forKey: "mixi2.auth.key", isSecret: true)
+            authKey: config.string(forKey: "mixi2.auth.key", isSecret: true),
         )
 
         let router = EventRouter()
 
         router.on(ChatMessageReceivedEvent.self) { context, event in
             print(
-                "[chat] from=\(event.issuer.userID)  room=\(event.message.roomID)  \(event.message.text)"
+                "[chat] from=\(event.issuer.userID)  room=\(event.message.roomID)  \(event.message.text)",
             )
             guard !event.message.text.isEmpty else {
                 print("[chat] skipping echo — no text (image-only message)")
@@ -42,7 +43,7 @@ struct StreamApp {
         }
 
         print(
-            "Connected to api=\(configuration.apiHost) stream=\(configuration.streamHost) port=\(configuration.port)"
+            "Connected to api=\(configuration.apiHost) stream=\(configuration.streamHost) port=\(configuration.port)",
         )
         print("Listening for events (Ctrl-C to stop)…")
 

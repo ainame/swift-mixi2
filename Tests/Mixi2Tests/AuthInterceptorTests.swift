@@ -1,7 +1,6 @@
 import GRPCCore
-import Testing
-
 @testable import Mixi2
+import Testing
 
 private struct StopError: Error {}
 private struct DummyMessage: Sendable {}
@@ -10,19 +9,19 @@ private struct DummyMessage: Sendable {}
 struct AuthInterceptorTests {
     private func makeContext() -> ClientContext {
         let service = ServiceDescriptor(
-            fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"
+            fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService",
         )
         return ClientContext(
             descriptor: MethodDescriptor(service: service, method: "GetUsers"),
             remotePeer: "localhost",
-            localPeer: "localhost"
+            localPeer: "localhost",
         )
     }
 
     /// Invokes the interceptor and returns the metadata seen by `next`.
     private func captureMetadata(
         interceptor: AuthClientInterceptor,
-        metadata: Metadata = [:]
+        metadata: Metadata = [:],
     ) async throws -> Metadata {
         let request = StreamingClientRequest<DummyMessage>(metadata: metadata) { _ in }
         let context = makeContext()
@@ -30,7 +29,7 @@ struct AuthInterceptorTests {
         do {
             _ = try await interceptor.intercept(
                 request: request,
-                context: context
+                context: context,
             ) { (req: StreamingClientRequest<DummyMessage>, _) -> StreamingClientResponse<DummyMessage> in
                 captured = req.metadata
                 throw StopError()
@@ -78,7 +77,7 @@ struct AuthInterceptorTests {
         await #expect(throws: AuthError.self) {
             _ = try await interceptor.intercept(
                 request: request,
-                context: context
+                context: context,
             ) { (_: StreamingClientRequest<DummyMessage>, _) -> StreamingClientResponse<DummyMessage> in
                 throw StopError()
             }
