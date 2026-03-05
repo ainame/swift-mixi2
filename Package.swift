@@ -50,5 +50,18 @@ let package = Package(
             ],
             path: "Tests/Mixi2Tests"
         ),
+        .binaryTarget(
+            name: "swiftformat",
+            url: "https://github.com/nicklockwood/SwiftFormat/releases/download/0.59.1/swiftformat.artifactbundle.zip",
+            checksum: "89b979d56a26b5ef0cffe52508438c8d71f70d8b1594a40dfc94481ce631025f"
+        ),
+        .plugin(
+            name: "FormatSwift",
+            capability: .command(
+                intent: .sourceCodeFormatting(),
+                permissions: [.writeToPackageDirectory(reason: "Format Swift source files")]
+            ),
+            dependencies: [.target(name: "swiftformat")]
+        ),
     ]
 )
