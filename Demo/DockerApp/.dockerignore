@@ -1,0 +1,14 @@
+# Ignore build artifacts from the root and all Demo sub-packages.
+.build/
+Demo/.build/
+Demo/StreamApp/.build/
+Demo/WebHookApp/.build/
+Demo/DockerApp/.build/
+
+# Git and editor metadata.
+.git/
+.gitignore
+.swiftpm/
+
+# macOS cruft.
+.DS_Store
