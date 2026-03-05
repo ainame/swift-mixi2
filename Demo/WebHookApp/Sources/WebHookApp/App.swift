@@ -1,6 +1,8 @@
 import Configuration
 import Foundation
+import Logging
 import Mixi2
+import ServiceLifecycle
 
 @main
 struct WebHookApp {
@@ -60,6 +62,7 @@ struct WebHookApp {
             mode: .webhook(HummingbirdAdapter(port: webhookPort)),
         )
         print("Listening on port \(webhookPort) (Ctrl-C to stop)…")
-        try await bot.run()
+        let serviceGroup = ServiceGroup(services: [bot], logger: Logger(label: "WebHookApp"))
+        try await serviceGroup.run()
     }
 }

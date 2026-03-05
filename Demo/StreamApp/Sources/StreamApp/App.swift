@@ -1,6 +1,8 @@
 import Configuration
 import Foundation
+import Logging
 import Mixi2
+import ServiceLifecycle
 
 @main
 struct StreamApp {
@@ -48,6 +50,7 @@ struct StreamApp {
         print("Listening for events (Ctrl-C to stop)…")
 
         let bot = try Bot(configuration: configuration, router: router)
-        try await bot.run()
+        let serviceGroup = ServiceGroup(services: [bot], logger: Logger(label: "StreamApp"))
+        try await serviceGroup.run()
     }
 }

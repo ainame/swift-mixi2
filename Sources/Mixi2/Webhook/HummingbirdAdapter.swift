@@ -37,7 +37,9 @@ public struct HummingbirdAdapter: WebhookServerAdapter {
 
             let events: [Event]
             do {
-                events = try webhookHandler.handle(body: body, signature: signature, timestamp: timestamp)
+                events = try webhookHandler.handle(
+                    body: body, signature: signature, timestamp: timestamp,
+                )
             } catch let error as WebhookError {
                 throw HTTPError(.badRequest, message: "\(error)")
             }

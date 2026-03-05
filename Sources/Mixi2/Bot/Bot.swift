@@ -57,7 +57,7 @@ public final class Bot: Sendable, Service {
     ) throws {
         client = try Mixi2(configuration: configuration)
         self.router = router
-        self.webhookPublicKey = configuration.webhookPublicKey
+        webhookPublicKey = configuration.webhookPublicKey
         self.mode = mode
     }
 

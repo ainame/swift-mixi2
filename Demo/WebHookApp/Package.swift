@@ -9,6 +9,8 @@ let package = Package(
     dependencies: [
         .package(path: "../../", traits: ["HummingbirdWebhookAdapter"]),
         .package(url: "https://github.com/apple/swift-configuration", from: "1.1.0"),
+        .package(url: "https://github.com/swift-server/swift-service-lifecycle.git", from: "2.8.0"),
+        .package(url: "https://github.com/apple/swift-log.git", from: "1.0.0"),
     ],
     targets: [
         .executableTarget(
@@ -16,6 +18,8 @@ let package = Package(
             dependencies: [
                 .product(name: "Mixi2", package: "swift-mixi2"),
                 .product(name: "Configuration", package: "swift-configuration"),
+                .product(name: "ServiceLifecycle", package: "swift-service-lifecycle"),
+                .product(name: "Logging", package: "swift-log"),
             ],
             path: "Sources/WebHookApp"
         ),
