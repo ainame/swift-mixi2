@@ -14,6 +14,6 @@
 public protocol WebhookServerAdapter: Sendable {
     func run(
         webhookHandler: WebhookHandler,
-        eventHandler: @Sendable @escaping (Event) async throws -> Void
+        eventHandler: @Sendable @escaping (Event) async throws -> Void,
     ) async throws
 }

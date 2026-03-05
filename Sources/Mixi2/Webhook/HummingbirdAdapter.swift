@@ -22,7 +22,7 @@ public struct HummingbirdAdapter: WebhookServerAdapter {
 
     public func run(
         webhookHandler: WebhookHandler,
-        eventHandler: @Sendable @escaping (Event) async throws -> Void
+        eventHandler: @Sendable @escaping (Event) async throws -> Void,
     ) async throws {
         let signatureField = HTTPField.Name("x-mixi2-application-event-signature")!
         let timestampField = HTTPField.Name("x-mixi2-application-event-timestamp")!
@@ -50,7 +50,7 @@ public struct HummingbirdAdapter: WebhookServerAdapter {
 
         let app = Application(
             router: router,
-            configuration: .init(address: .hostname(hostname, port: port))
+            configuration: .init(address: .hostname(hostname, port: port)),
         )
         try await app.runService()
     }

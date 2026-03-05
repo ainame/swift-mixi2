@@ -62,7 +62,7 @@ public final class Bot: Sendable, Service {
         switch mode {
         case .stream:
             try await runStream(context: context)
-        case .webhook(let adapter):
+        case let .webhook(adapter):
             try await runWebhook(context: context, adapter: adapter)
         }
     }

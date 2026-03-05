@@ -19,11 +19,11 @@ struct WebHookApp {
         let apiHost = try config.requiredString(forKey: "mixi2.api.host")
         let webhookPort = config.int(forKey: "mixi2.webhook.port", default: 8080)
 
-        let configuration = Mixi2.Configuration(
+        let configuration = try Mixi2.Configuration(
             apiHost: apiHost,
             streamHost: apiHost,
             port: config.int(forKey: "mixi2.api.port", default: 443),
-            authenticator: try ClientCredentialsAuthenticator(
+            authenticator: ClientCredentialsAuthenticator(
                 clientID: config.requiredString(forKey: "mixi2.client.id"),
                 clientSecret: config.requiredString(forKey: "mixi2.client.secret", isSecret: true),
                 tokenURL: config.requiredString(forKey: "mixi2.token.url", as: URL.self),
