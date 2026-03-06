@@ -1,4 +1,13 @@
 # syntax=docker/dockerfile:1
+#
+# IMPORTANT: the build context must be the repository root, not this directory.
+# Use the provided helper script or run from the repo root:
+#
+#   ./Demo/DockerApp/build.sh          # from repo root
+#   docker build -f Demo/DockerApp/Dockerfile -t mixi2-bot .  # from repo root
+#
+# The full repository is needed so the local path dependency (path: "../../")
+# inside Demo/DockerApp/Package.swift can be resolved.
 
 # ── Build stage ───────────────────────────────────────────────────────────────
 FROM swift:6.2.4 AS builder
