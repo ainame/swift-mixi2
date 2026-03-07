@@ -5,7 +5,7 @@ An unofficial Swift client library for the [mixi2](https://mixi2.com) Applicatio
 ## Requirements
 
 - Swift 6.2+
-- macOS 15+, iOS 18+
+- macOS 15+, iOS 18+, Linux (via `Demo/DockerApp/Dockerfile`)
 
 ## Installation
 
