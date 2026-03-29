@@ -56,6 +56,18 @@ public enum ApplicationService: Sendable {
                 method: "CreatePost"
             )
         }
+        /// Namespace for "DeletePost" metadata.
+        public enum DeletePost: Sendable {
+            /// Request type for "DeletePost".
+            public typealias Input = DeletePostRequest
+            /// Response type for "DeletePost".
+            public typealias Output = DeletePostResponse
+            /// Descriptor for "DeletePost".
+            public static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
+                method: "DeletePost"
+            )
+        }
         /// Namespace for "InitiatePostMediaUpload" metadata.
         public enum InitiatePostMediaUpload: Sendable {
             /// Request type for "InitiatePostMediaUpload".
@@ -121,6 +133,7 @@ public enum ApplicationService: Sendable {
             GetUsers.descriptor,
             GetPosts.descriptor,
             CreatePost.descriptor,
+            DeletePost.descriptor,
             InitiatePostMediaUpload.descriptor,
             GetPostMediaStatus.descriptor,
             SendChatMessage.descriptor,
@@ -208,6 +221,24 @@ extension ApplicationService {
             request: GRPCCore.StreamingServerRequest<CreatePostRequest>,
             context: GRPCCore.ServerContext
         ) async throws -> GRPCCore.StreamingServerResponse<CreatePostResponse>
+
+        /// Handle the "DeletePost" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したポストを削除します。
+        ///
+        /// - Parameters:
+        ///   - request: A streaming request of `DeletePostRequest` messages.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A streaming response of `DeletePostResponse` messages.
+        func deletePost(
+            request: GRPCCore.StreamingServerRequest<DeletePostRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.StreamingServerResponse<DeletePostResponse>
 
         /// Handle the "InitiatePostMediaUpload" method.
         ///
@@ -366,6 +397,24 @@ extension ApplicationService {
             context: GRPCCore.ServerContext
         ) async throws -> GRPCCore.ServerResponse<CreatePostResponse>
 
+        /// Handle the "DeletePost" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したポストを削除します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `DeletePostRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A response containing a single `DeletePostResponse` message.
+        func deletePost(
+            request: GRPCCore.ServerRequest<DeletePostRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.ServerResponse<DeletePostResponse>
+
         /// Handle the "InitiatePostMediaUpload" method.
         ///
         /// > Source IDL Documentation:
@@ -521,6 +570,24 @@ extension ApplicationService {
             context: GRPCCore.ServerContext
         ) async throws -> CreatePostResponse
 
+        /// Handle the "DeletePost" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したポストを削除します。
+        ///
+        /// - Parameters:
+        ///   - request: A `DeletePostRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A `DeletePostResponse` to respond with.
+        func deletePost(
+            request: DeletePostRequest,
+            context: GRPCCore.ServerContext
+        ) async throws -> DeletePostResponse
+
         /// Handle the "InitiatePostMediaUpload" method.
         ///
         /// > Source IDL Documentation:
@@ -651,6 +718,17 @@ extension ApplicationService.StreamingServiceProtocol {
             }
         )
         router.registerHandler(
+            forMethod: ApplicationService.Method.DeletePost.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<DeletePostRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<DeletePostResponse>(),
+            handler: { request, context in
+                try await self.deletePost(
+                    request: request,
+                    context: context
+                )
+            }
+        )
+        router.registerHandler(
             forMethod: ApplicationService.Method.InitiatePostMediaUpload.descriptor,
             deserializer: GRPCProtobuf.ProtobufDeserializer<InitiatePostMediaUploadRequest>(),
             serializer: GRPCProtobuf.ProtobufSerializer<InitiatePostMediaUploadResponse>(),
@@ -738,6 +816,17 @@ extension ApplicationService.ServiceProtocol {
         context: GRPCCore.ServerContext
     ) async throws -> GRPCCore.StreamingServerResponse<CreatePostResponse> {
         let response = try await self.createPost(
+            request: GRPCCore.ServerRequest(stream: request),
+            context: context
+        )
+        return GRPCCore.StreamingServerResponse(single: response)
+    }
+
+    public func deletePost(
+        request: GRPCCore.StreamingServerRequest<DeletePostRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.StreamingServerResponse<DeletePostResponse> {
+        let response = try await self.deletePost(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
         )
@@ -835,6 +924,19 @@ extension ApplicationService.SimpleServiceProtocol {
     ) async throws -> GRPCCore.ServerResponse<CreatePostResponse> {
         return GRPCCore.ServerResponse<CreatePostResponse>(
             message: try await self.createPost(
+                request: request.message,
+                context: context
+            ),
+            metadata: [:]
+        )
+    }
+
+    public func deletePost(
+        request: GRPCCore.ServerRequest<DeletePostRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.ServerResponse<DeletePostResponse> {
+        return GRPCCore.ServerResponse<DeletePostResponse>(
+            message: try await self.deletePost(
                 request: request.message,
                 context: context
             ),
@@ -988,6 +1090,29 @@ extension ApplicationService {
             deserializer: some GRPCCore.MessageDeserializer<CreatePostResponse>,
             options: GRPCCore.CallOptions,
             onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<CreatePostResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
+        /// Call the "DeletePost" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したポストを削除します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `DeletePostRequest` message.
+        ///   - serializer: A serializer for `DeletePostRequest` messages.
+        ///   - deserializer: A deserializer for `DeletePostResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        func deletePost<Result>(
+            request: GRPCCore.ClientRequest<DeletePostRequest>,
+            serializer: some GRPCCore.MessageSerializer<DeletePostRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<DeletePostResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<DeletePostResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "InitiatePostMediaUpload" method.
@@ -1221,6 +1346,40 @@ extension ApplicationService {
             try await self.client.unary(
                 request: request,
                 descriptor: ApplicationService.Method.CreatePost.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
+        /// Call the "DeletePost" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したポストを削除します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `DeletePostRequest` message.
+        ///   - serializer: A serializer for `DeletePostRequest` messages.
+        ///   - deserializer: A deserializer for `DeletePostResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        public func deletePost<Result>(
+            request: GRPCCore.ClientRequest<DeletePostRequest>,
+            serializer: some GRPCCore.MessageSerializer<DeletePostRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<DeletePostResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<DeletePostResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: ApplicationService.Method.DeletePost.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1490,6 +1649,35 @@ extension ApplicationService.ClientProtocol {
         )
     }
 
+    /// Call the "DeletePost" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > 指定したポストを削除します。
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `DeletePostRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func deletePost<Result>(
+        request: GRPCCore.ClientRequest<DeletePostRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<DeletePostResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.deletePost(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<DeletePostRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<DeletePostResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
     /// Call the "InitiatePostMediaUpload" method.
     ///
     /// > Source IDL Documentation:
@@ -1732,6 +1920,39 @@ extension ApplicationService.ClientProtocol {
             metadata: metadata
         )
         return try await self.createPost(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "DeletePost" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > 指定したポストを削除します。
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func deletePost<Result>(
+        _ message: DeletePostRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<DeletePostResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<DeletePostRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.deletePost(
             request: request,
             options: options,
             onResponse: handleResponse
