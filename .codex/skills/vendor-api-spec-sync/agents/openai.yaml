@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vendor API Spec Sync"
+  short_description: "Sync libraries from vendor API specs"
+  default_prompt: "Use $vendor-api-spec-sync to update this library from the latest vendor API spec revision."
