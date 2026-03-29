@@ -152,6 +152,7 @@ try await Mixi2.with(configuration: config) { mixi2 in
 | `getUsers(_:)` | Fetch users by ID |
 | `getPosts(_:)` | Fetch posts by ID |
 | `createPost(_:)` | Create a post |
+| `deletePost(_:)` | Delete a post |
 | `initiatePostMediaUpload(_:)` | Start a media upload and get an upload URL |
 | `getPostMediaStatus(_:)` | Check media upload/processing status |
 | `sendChatMessage(_:)` | Send a chat message to a room |
