@@ -12,7 +12,7 @@ An unofficial Swift client library for the [mixi2](https://mixi2.com) Applicatio
 Add the package to your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/ainame/swift-mixi2", from: "0.0.1"),
+.package(url: "https://github.com/ainame/swift-mixi2", from: "0.0.2"),
 ```
 
 Then add the `Mixi2` product to your target:
@@ -26,7 +26,7 @@ Then add the `Mixi2` product to your target:
 To use the built-in `HummingbirdAdapter` for receiving webhooks, enable the `HummingbirdWebhookAdapter` trait (requires swift-tools-version 6.2+):
 
 ```swift
-.package(url: "https://github.com/ainame/swift-mixi2", from: "0.0.1", traits: ["HummingbirdWebhookAdapter"]),
+.package(url: "https://github.com/ainame/swift-mixi2", from: "0.0.2", traits: ["HummingbirdWebhookAdapter"]),
 ```
 
 ## Usage
