@@ -2,17 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## 1.2.0 - 2026-06-20
 
 ### Added
 
-- Added generated client support for the `GetCommunities`, `GetCommunityTimeline`, `GetCommunityMemberList`, `RestrictCommunityPost`, `GetCommunitiesUsingApplication`, and `SendDirectMessageToCommunityMember` unary RPCs.
-- Added generated event message extraction for `CommunityMemberChangedEvent` and `CommunityPluginManagedEvent`.
+- Added generated client support for the `GetCommunities`, `GetCommunityTimeline`, `GetCommunityMemberList`, `RestrictCommunityPost`, `GetCommunitiesUsingApplication`, and `SendDirectMessageToCommunityMember` unary RPCs. [#2](https://github.com/ainame/swift-mixi2/pull/2)
+- Added generated event message extraction for `CommunityMemberChangedEvent` and `CommunityPluginManagedEvent`. [#2](https://github.com/ainame/swift-mixi2/pull/2)
 
 ### Changed
 
-- Updated vendored `mixi2-api` to `v1.2.0`.
-- Regenerated gRPC/protobuf Swift sources for the `mixi2-api` `v1.2.0` schema.
+- Aligned the package release version with the upstream `mixi2-api` release starting at `1.2.0`. [#2](https://github.com/ainame/swift-mixi2/pull/2)
+- Updated vendored `mixi2-api` to `v1.2.0`. [#2](https://github.com/ainame/swift-mixi2/pull/2)
+- Regenerated gRPC/protobuf Swift sources for the `mixi2-api` `v1.2.0` schema. [#2](https://github.com/ainame/swift-mixi2/pull/2)
 
 ## 0.0.2 - 2026-03-29
 
