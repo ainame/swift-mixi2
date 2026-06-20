@@ -6,7 +6,6 @@ generate:
 	mkdir -p Sources/Mixi2GRPC/Generated
 	bash scripts/patch_swift_prefix.sh
 	buf generate
-	ruby scripts/patch_grpc_method_descriptor_compat.rb
 	git -C vendor/mixi2-api checkout -- .
 	ruby scripts/generate_event_message_extensions.rb
 

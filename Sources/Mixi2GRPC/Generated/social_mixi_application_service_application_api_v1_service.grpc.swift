@@ -29,7 +29,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "GetUsers".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "GetUsers"
+                method: "GetUsers",
+                type: .unary
             )
         }
         /// Namespace for "GetPosts" metadata.
@@ -41,7 +42,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "GetPosts".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "GetPosts"
+                method: "GetPosts",
+                type: .unary
             )
         }
         /// Namespace for "GetCommunities" metadata.
@@ -53,7 +55,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "GetCommunities".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "GetCommunities"
+                method: "GetCommunities",
+                type: .unary
             )
         }
         /// Namespace for "CreatePost" metadata.
@@ -65,7 +68,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "CreatePost".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "CreatePost"
+                method: "CreatePost",
+                type: .unary
             )
         }
         /// Namespace for "DeletePost" metadata.
@@ -77,7 +81,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "DeletePost".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "DeletePost"
+                method: "DeletePost",
+                type: .unary
             )
         }
         /// Namespace for "InitiatePostMediaUpload" metadata.
@@ -89,7 +94,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "InitiatePostMediaUpload".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "InitiatePostMediaUpload"
+                method: "InitiatePostMediaUpload",
+                type: .unary
             )
         }
         /// Namespace for "GetPostMediaStatus" metadata.
@@ -101,7 +107,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "GetPostMediaStatus".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "GetPostMediaStatus"
+                method: "GetPostMediaStatus",
+                type: .unary
             )
         }
         /// Namespace for "GetCommunityTimeline" metadata.
@@ -113,7 +120,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "GetCommunityTimeline".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "GetCommunityTimeline"
+                method: "GetCommunityTimeline",
+                type: .unary
             )
         }
         /// Namespace for "GetCommunityMemberList" metadata.
@@ -125,7 +133,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "GetCommunityMemberList".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "GetCommunityMemberList"
+                method: "GetCommunityMemberList",
+                type: .unary
             )
         }
         /// Namespace for "RestrictCommunityPost" metadata.
@@ -137,7 +146,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "RestrictCommunityPost".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "RestrictCommunityPost"
+                method: "RestrictCommunityPost",
+                type: .unary
             )
         }
         /// Namespace for "GetCommunitiesUsingApplication" metadata.
@@ -149,7 +159,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "GetCommunitiesUsingApplication".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "GetCommunitiesUsingApplication"
+                method: "GetCommunitiesUsingApplication",
+                type: .unary
             )
         }
         /// Namespace for "SendChatMessage" metadata.
@@ -161,7 +172,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "SendChatMessage".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "SendChatMessage"
+                method: "SendChatMessage",
+                type: .unary
             )
         }
         /// Namespace for "GetStamps" metadata.
@@ -173,7 +185,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "GetStamps".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "GetStamps"
+                method: "GetStamps",
+                type: .unary
             )
         }
         /// Namespace for "AddStampToPost" metadata.
@@ -185,7 +198,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "AddStampToPost".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "AddStampToPost"
+                method: "AddStampToPost",
+                type: .unary
             )
         }
         /// Namespace for "SendDirectMessageToCommunityMember" metadata.
@@ -197,7 +211,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "SendDirectMessageToCommunityMember".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "SendDirectMessageToCommunityMember"
+                method: "SendDirectMessageToCommunityMember",
+                type: .unary
             )
         }
         /// Descriptors for all methods in the "social.mixi.application.service.application_api.v1.ApplicationService" service.
