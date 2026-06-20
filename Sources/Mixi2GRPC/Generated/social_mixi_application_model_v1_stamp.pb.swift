@@ -92,6 +92,43 @@ public struct OfficialStamp: Sendable {
   public init() {}
 }
 
+/// コミュニティスタンプセットを表します。
+public struct CommunityStampSet: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// コミュニティIDです。
+  public var communityID: String = String()
+
+  /// コミュニティ固有スタンプの一覧です。
+  public var stamps: [CommunityStamp] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// コミュニティスタンプを表します。
+public struct CommunityStamp: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// スタンプIDです。
+  public var stampID: String = String()
+
+  /// スタンプの画像のURLです。
+  public var url: String = String()
+
+  /// スタンプの検索用タグの一覧です。
+  public var searchTags: [String] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "social.mixi.application.model.v1"
@@ -200,6 +237,81 @@ extension OfficialStamp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     if lhs.index != rhs.index {return false}
     if lhs.searchTags != rhs.searchTags {return false}
     if lhs.url != rhs.url {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension CommunityStampSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CommunityStampSet"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}community_id\0\u{1}stamps\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.communityID) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.stamps) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.communityID.isEmpty {
+      try visitor.visitSingularStringField(value: self.communityID, fieldNumber: 1)
+    }
+    if !self.stamps.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.stamps, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: CommunityStampSet, rhs: CommunityStampSet) -> Bool {
+    if lhs.communityID != rhs.communityID {return false}
+    if lhs.stamps != rhs.stamps {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension CommunityStamp: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CommunityStamp"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}stamp_id\0\u{1}url\0\u{3}search_tags\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.stampID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.url) }()
+      case 3: try { try decoder.decodeRepeatedStringField(value: &self.searchTags) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.stampID.isEmpty {
+      try visitor.visitSingularStringField(value: self.stampID, fieldNumber: 1)
+    }
+    if !self.url.isEmpty {
+      try visitor.visitSingularStringField(value: self.url, fieldNumber: 2)
+    }
+    if !self.searchTags.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.searchTags, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: CommunityStamp, rhs: CommunityStamp) -> Bool {
+    if lhs.stampID != rhs.stampID {return false}
+    if lhs.url != rhs.url {return false}
+    if lhs.searchTags != rhs.searchTags {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

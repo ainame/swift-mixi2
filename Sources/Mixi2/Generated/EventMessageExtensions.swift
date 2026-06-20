@@ -12,9 +12,25 @@ extension PostCreatedEvent: Mixi2EventMessage {
 }
 
 @available(macOS 15.0, iOS 18.0, *)
+extension CommunityMemberChangedEvent: Mixi2EventMessage {
+    public static func extract(from event: Event) -> Self? {
+        guard case .communityMemberChangedEvent(let e) = event.body else { return nil }
+        return e
+    }
+}
+
+@available(macOS 15.0, iOS 18.0, *)
 extension ChatMessageReceivedEvent: Mixi2EventMessage {
     public static func extract(from event: Event) -> Self? {
         guard case .chatMessageReceivedEvent(let e) = event.body else { return nil }
+        return e
+    }
+}
+
+@available(macOS 15.0, iOS 18.0, *)
+extension CommunityPluginManagedEvent: Mixi2EventMessage {
+    public static func extract(from event: Event) -> Self? {
+        guard case .communityPluginManagedEvent(let e) = event.body else { return nil }
         return e
     }
 }

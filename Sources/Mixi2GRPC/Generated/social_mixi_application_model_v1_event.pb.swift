@@ -53,6 +53,15 @@ public struct Event: Sendable {
     set {body = .postCreatedEvent(newValue)}
   }
 
+  /// event_type が EVENT_TYPE_COMMUNITY_MEMBER_CHANGED の場合に設定されます。
+  public var communityMemberChangedEvent: CommunityMemberChangedEvent {
+    get {
+      if case .communityMemberChangedEvent(let v)? = body {return v}
+      return CommunityMemberChangedEvent()
+    }
+    set {body = .communityMemberChangedEvent(newValue)}
+  }
+
   /// event_type が EVENT_TYPE_CHAT_MESSAGE_RECEIVED の場合に設定されます。
   public var chatMessageReceivedEvent: ChatMessageReceivedEvent {
     get {
@@ -60,6 +69,15 @@ public struct Event: Sendable {
       return ChatMessageReceivedEvent()
     }
     set {body = .chatMessageReceivedEvent(newValue)}
+  }
+
+  /// event_type が EVENT_TYPE_COMMUNITY_PLUGIN_MANAGED の場合に設定されます。
+  public var communityPluginManagedEvent: CommunityPluginManagedEvent {
+    get {
+      if case .communityPluginManagedEvent(let v)? = body {return v}
+      return CommunityPluginManagedEvent()
+    }
+    set {body = .communityPluginManagedEvent(newValue)}
   }
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -70,8 +88,12 @@ public struct Event: Sendable {
     case pingEvent(PingEvent)
     /// event_type が EVENT_TYPE_POST_CREATED の場合に設定されます。
     case postCreatedEvent(PostCreatedEvent)
+    /// event_type が EVENT_TYPE_COMMUNITY_MEMBER_CHANGED の場合に設定されます。
+    case communityMemberChangedEvent(CommunityMemberChangedEvent)
     /// event_type が EVENT_TYPE_CHAT_MESSAGE_RECEIVED の場合に設定されます。
     case chatMessageReceivedEvent(ChatMessageReceivedEvent)
+    /// event_type が EVENT_TYPE_COMMUNITY_PLUGIN_MANAGED の場合に設定されます。
+    case communityPluginManagedEvent(CommunityPluginManagedEvent)
 
   }
 
@@ -121,6 +143,55 @@ public struct PostCreatedEvent: @unchecked Sendable {
   /// Clears the value of `issuer`. Subsequent reads from it will return its default value.
   public mutating func clearIssuer() {_uniqueStorage()._issuer = nil}
 
+  /// コミュニティの情報です。
+  public var postedCommunity: Community {
+    get {_storage._postedCommunity ?? Community()}
+    set {_uniqueStorage()._postedCommunity = newValue}
+  }
+  /// Returns true if `postedCommunity` has been explicitly set.
+  public var hasPostedCommunity: Bool {_storage._postedCommunity != nil}
+  /// Clears the value of `postedCommunity`. Subsequent reads from it will return its default value.
+  public mutating func clearPostedCommunity() {_uniqueStorage()._postedCommunity = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+/// コミュニティメンバーの増減を通知するイベントです。
+public struct CommunityMemberChangedEvent: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// イベントが発生した理由を示します。
+  public var eventReasonList: [EventReason] {
+    get {_storage._eventReasonList}
+    set {_uniqueStorage()._eventReasonList = newValue}
+  }
+
+  /// コミュニティに参加/退出したユーザーの情報です。
+  public var member: User {
+    get {_storage._member ?? User()}
+    set {_uniqueStorage()._member = newValue}
+  }
+  /// Returns true if `member` has been explicitly set.
+  public var hasMember: Bool {_storage._member != nil}
+  /// Clears the value of `member`. Subsequent reads from it will return its default value.
+  public mutating func clearMember() {_uniqueStorage()._member = nil}
+
+  /// コミュニティの情報です。
+  public var community: Community {
+    get {_storage._community ?? Community()}
+    set {_uniqueStorage()._community = newValue}
+  }
+  /// Returns true if `community` has been explicitly set.
+  public var hasCommunity: Bool {_storage._community != nil}
+  /// Clears the value of `community`. Subsequent reads from it will return its default value.
+  public mutating func clearCommunity() {_uniqueStorage()._community = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -167,13 +238,39 @@ public struct ChatMessageReceivedEvent: @unchecked Sendable {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
+/// コミュニティにプラグインがインストール/アンインストールされたことを通知するイベントです。
+public struct CommunityPluginManagedEvent: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// イベントが発生した理由を示します。
+  public var eventReasonList: [EventReason] = []
+
+  /// コミュニティの情報です。
+  public var community: Community {
+    get {_community ?? Community()}
+    set {_community = newValue}
+  }
+  /// Returns true if `community` has been explicitly set.
+  public var hasCommunity: Bool {self._community != nil}
+  /// Clears the value of `community`. Subsequent reads from it will return its default value.
+  public mutating func clearCommunity() {self._community = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _community: Community? = nil
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "social.mixi.application.model.v1"
 
 extension Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Event"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}event_id\0\u{3}event_type\0\u{3}ping_event\0\u{3}post_created_event\0\u{4}\u{2}chat_message_received_event\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}event_id\0\u{3}event_type\0\u{3}ping_event\0\u{3}post_created_event\0\u{3}community_member_changed_event\0\u{3}chat_message_received_event\0\u{3}community_plugin_managed_event\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -209,6 +306,19 @@ extension Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase
           self.body = .postCreatedEvent(v)
         }
       }()
+      case 5: try {
+        var v: CommunityMemberChangedEvent?
+        var hadOneofValue = false
+        if let current = self.body {
+          hadOneofValue = true
+          if case .communityMemberChangedEvent(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.body = .communityMemberChangedEvent(v)
+        }
+      }()
       case 6: try {
         var v: ChatMessageReceivedEvent?
         var hadOneofValue = false
@@ -220,6 +330,19 @@ extension Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase
         if let v = v {
           if hadOneofValue {try decoder.handleConflictingOneOf()}
           self.body = .chatMessageReceivedEvent(v)
+        }
+      }()
+      case 7: try {
+        var v: CommunityPluginManagedEvent?
+        var hadOneofValue = false
+        if let current = self.body {
+          hadOneofValue = true
+          if case .communityPluginManagedEvent(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.body = .communityPluginManagedEvent(v)
         }
       }()
       default: break
@@ -247,9 +370,17 @@ extension Event: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase
       guard case .postCreatedEvent(let v)? = self.body else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
     }()
+    case .communityMemberChangedEvent?: try {
+      guard case .communityMemberChangedEvent(let v)? = self.body else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    }()
     case .chatMessageReceivedEvent?: try {
       guard case .chatMessageReceivedEvent(let v)? = self.body else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+    }()
+    case .communityPluginManagedEvent?: try {
+      guard case .communityPluginManagedEvent(let v)? = self.body else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
     }()
     case nil: break
     }
@@ -286,12 +417,13 @@ extension PingEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
 
 extension PostCreatedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".PostCreatedEvent"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}event_reason_list\0\u{1}post\0\u{1}issuer\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}event_reason_list\0\u{1}post\0\u{1}issuer\0\u{3}posted_community\0")
 
   fileprivate class _StorageClass {
     var _eventReasonList: [EventReason] = []
     var _post: Post? = nil
     var _issuer: User? = nil
+    var _postedCommunity: Community? = nil
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -305,6 +437,7 @@ extension PostCreatedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
       _eventReasonList = source._eventReasonList
       _post = source._post
       _issuer = source._issuer
+      _postedCommunity = source._postedCommunity
     }
   }
 
@@ -326,6 +459,7 @@ extension PostCreatedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
         case 1: try { try decoder.decodeRepeatedEnumField(value: &_storage._eventReasonList) }()
         case 2: try { try decoder.decodeSingularMessageField(value: &_storage._post) }()
         case 3: try { try decoder.decodeSingularMessageField(value: &_storage._issuer) }()
+        case 4: try { try decoder.decodeSingularMessageField(value: &_storage._postedCommunity) }()
         default: break
         }
       }
@@ -347,6 +481,9 @@ extension PostCreatedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
       try { if let v = _storage._issuer {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
       } }()
+      try { if let v = _storage._postedCommunity {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -359,6 +496,91 @@ extension PostCreatedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
         if _storage._eventReasonList != rhs_storage._eventReasonList {return false}
         if _storage._post != rhs_storage._post {return false}
         if _storage._issuer != rhs_storage._issuer {return false}
+        if _storage._postedCommunity != rhs_storage._postedCommunity {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension CommunityMemberChangedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CommunityMemberChangedEvent"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}event_reason_list\0\u{1}member\0\u{1}community\0")
+
+  fileprivate class _StorageClass {
+    var _eventReasonList: [EventReason] = []
+    var _member: User? = nil
+    var _community: Community? = nil
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _eventReasonList = source._eventReasonList
+      _member = source._member
+      _community = source._community
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeRepeatedEnumField(value: &_storage._eventReasonList) }()
+        case 2: try { try decoder.decodeSingularMessageField(value: &_storage._member) }()
+        case 3: try { try decoder.decodeSingularMessageField(value: &_storage._community) }()
+        default: break
+        }
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      if !_storage._eventReasonList.isEmpty {
+        try visitor.visitPackedEnumField(value: _storage._eventReasonList, fieldNumber: 1)
+      }
+      try { if let v = _storage._member {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      } }()
+      try { if let v = _storage._community {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+      } }()
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: CommunityMemberChangedEvent, rhs: CommunityMemberChangedEvent) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._eventReasonList != rhs_storage._eventReasonList {return false}
+        if _storage._member != rhs_storage._member {return false}
+        if _storage._community != rhs_storage._community {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -447,6 +669,45 @@ extension ChatMessageReceivedEvent: SwiftProtobuf.Message, SwiftProtobuf._Messag
       }
       if !storagesAreEqual {return false}
     }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension CommunityPluginManagedEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CommunityPluginManagedEvent"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}event_reason_list\0\u{1}community\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedEnumField(value: &self.eventReasonList) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._community) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.eventReasonList.isEmpty {
+      try visitor.visitPackedEnumField(value: self.eventReasonList, fieldNumber: 1)
+    }
+    try { if let v = self._community {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: CommunityPluginManagedEvent, rhs: CommunityPluginManagedEvent) -> Bool {
+    if lhs.eventReasonList != rhs.eventReasonList {return false}
+    if lhs._community != rhs._community {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

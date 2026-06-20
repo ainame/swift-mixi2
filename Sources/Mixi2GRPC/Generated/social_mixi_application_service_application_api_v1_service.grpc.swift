@@ -29,7 +29,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "GetUsers".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "GetUsers"
+                method: "GetUsers",
+                type: .unary
             )
         }
         /// Namespace for "GetPosts" metadata.
@@ -41,7 +42,21 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "GetPosts".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "GetPosts"
+                method: "GetPosts",
+                type: .unary
+            )
+        }
+        /// Namespace for "GetCommunities" metadata.
+        public enum GetCommunities: Sendable {
+            /// Request type for "GetCommunities".
+            public typealias Input = GetCommunitiesRequest
+            /// Response type for "GetCommunities".
+            public typealias Output = GetCommunitiesResponse
+            /// Descriptor for "GetCommunities".
+            public static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
+                method: "GetCommunities",
+                type: .unary
             )
         }
         /// Namespace for "CreatePost" metadata.
@@ -53,7 +68,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "CreatePost".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "CreatePost"
+                method: "CreatePost",
+                type: .unary
             )
         }
         /// Namespace for "DeletePost" metadata.
@@ -65,7 +81,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "DeletePost".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "DeletePost"
+                method: "DeletePost",
+                type: .unary
             )
         }
         /// Namespace for "InitiatePostMediaUpload" metadata.
@@ -77,7 +94,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "InitiatePostMediaUpload".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "InitiatePostMediaUpload"
+                method: "InitiatePostMediaUpload",
+                type: .unary
             )
         }
         /// Namespace for "GetPostMediaStatus" metadata.
@@ -89,7 +107,60 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "GetPostMediaStatus".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "GetPostMediaStatus"
+                method: "GetPostMediaStatus",
+                type: .unary
+            )
+        }
+        /// Namespace for "GetCommunityTimeline" metadata.
+        public enum GetCommunityTimeline: Sendable {
+            /// Request type for "GetCommunityTimeline".
+            public typealias Input = GetCommunityTimelineRequest
+            /// Response type for "GetCommunityTimeline".
+            public typealias Output = GetCommunityTimelineResponse
+            /// Descriptor for "GetCommunityTimeline".
+            public static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
+                method: "GetCommunityTimeline",
+                type: .unary
+            )
+        }
+        /// Namespace for "GetCommunityMemberList" metadata.
+        public enum GetCommunityMemberList: Sendable {
+            /// Request type for "GetCommunityMemberList".
+            public typealias Input = GetCommunityMemberListRequest
+            /// Response type for "GetCommunityMemberList".
+            public typealias Output = GetCommunityMemberListResponse
+            /// Descriptor for "GetCommunityMemberList".
+            public static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
+                method: "GetCommunityMemberList",
+                type: .unary
+            )
+        }
+        /// Namespace for "RestrictCommunityPost" metadata.
+        public enum RestrictCommunityPost: Sendable {
+            /// Request type for "RestrictCommunityPost".
+            public typealias Input = RestrictCommunityPostRequest
+            /// Response type for "RestrictCommunityPost".
+            public typealias Output = RestrictCommunityPostResponse
+            /// Descriptor for "RestrictCommunityPost".
+            public static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
+                method: "RestrictCommunityPost",
+                type: .unary
+            )
+        }
+        /// Namespace for "GetCommunitiesUsingApplication" metadata.
+        public enum GetCommunitiesUsingApplication: Sendable {
+            /// Request type for "GetCommunitiesUsingApplication".
+            public typealias Input = GetCommunitiesUsingApplicationRequest
+            /// Response type for "GetCommunitiesUsingApplication".
+            public typealias Output = GetCommunitiesUsingApplicationResponse
+            /// Descriptor for "GetCommunitiesUsingApplication".
+            public static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
+                method: "GetCommunitiesUsingApplication",
+                type: .unary
             )
         }
         /// Namespace for "SendChatMessage" metadata.
@@ -101,7 +172,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "SendChatMessage".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "SendChatMessage"
+                method: "SendChatMessage",
+                type: .unary
             )
         }
         /// Namespace for "GetStamps" metadata.
@@ -113,7 +185,8 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "GetStamps".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "GetStamps"
+                method: "GetStamps",
+                type: .unary
             )
         }
         /// Namespace for "AddStampToPost" metadata.
@@ -125,20 +198,40 @@ public enum ApplicationService: Sendable {
             /// Descriptor for "AddStampToPost".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
-                method: "AddStampToPost"
+                method: "AddStampToPost",
+                type: .unary
+            )
+        }
+        /// Namespace for "SendDirectMessageToCommunityMember" metadata.
+        public enum SendDirectMessageToCommunityMember: Sendable {
+            /// Request type for "SendDirectMessageToCommunityMember".
+            public typealias Input = SendDirectMessageToCommunityMemberRequest
+            /// Response type for "SendDirectMessageToCommunityMember".
+            public typealias Output = SendDirectMessageToCommunityMemberResponse
+            /// Descriptor for "SendDirectMessageToCommunityMember".
+            public static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_api.v1.ApplicationService"),
+                method: "SendDirectMessageToCommunityMember",
+                type: .unary
             )
         }
         /// Descriptors for all methods in the "social.mixi.application.service.application_api.v1.ApplicationService" service.
         public static let descriptors: [GRPCCore.MethodDescriptor] = [
             GetUsers.descriptor,
             GetPosts.descriptor,
+            GetCommunities.descriptor,
             CreatePost.descriptor,
             DeletePost.descriptor,
             InitiatePostMediaUpload.descriptor,
             GetPostMediaStatus.descriptor,
+            GetCommunityTimeline.descriptor,
+            GetCommunityMemberList.descriptor,
+            RestrictCommunityPost.descriptor,
+            GetCommunitiesUsingApplication.descriptor,
             SendChatMessage.descriptor,
             GetStamps.descriptor,
-            AddStampToPost.descriptor
+            AddStampToPost.descriptor,
+            SendDirectMessageToCommunityMember.descriptor
         ]
     }
 }
@@ -204,11 +297,29 @@ extension ApplicationService {
             context: GRPCCore.ServerContext
         ) async throws -> GRPCCore.StreamingServerResponse<GetPostsResponse>
 
+        /// Handle the "GetCommunities" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティIDリストに対応するコミュニティ情報を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A streaming request of `GetCommunitiesRequest` messages.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A streaming response of `GetCommunitiesResponse` messages.
+        func getCommunities(
+            request: GRPCCore.StreamingServerRequest<GetCommunitiesRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.StreamingServerResponse<GetCommunitiesResponse>
+
         /// Handle the "CreatePost" method.
         ///
         /// > Source IDL Documentation:
         /// >
-        /// > ポストを作成します（返信/引用/メディア添付等に対応）。
+        /// > ポストを作成します（返信/引用/コミュニティポスト・メディア添付等に対応）。
         ///
         /// - Parameters:
         ///   - request: A streaming request of `CreatePostRequest` messages.
@@ -276,6 +387,78 @@ extension ApplicationService {
             context: GRPCCore.ServerContext
         ) async throws -> GRPCCore.StreamingServerResponse<GetPostMediaStatusResponse>
 
+        /// Handle the "GetCommunityTimeline" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティのタイムライン（ポスト一覧）を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A streaming request of `GetCommunityTimelineRequest` messages.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A streaming response of `GetCommunityTimelineResponse` messages.
+        func getCommunityTimeline(
+            request: GRPCCore.StreamingServerRequest<GetCommunityTimelineRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.StreamingServerResponse<GetCommunityTimelineResponse>
+
+        /// Handle the "GetCommunityMemberList" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティのメンバー一覧をページング付きで取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A streaming request of `GetCommunityMemberListRequest` messages.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A streaming response of `GetCommunityMemberListResponse` messages.
+        func getCommunityMemberList(
+            request: GRPCCore.StreamingServerRequest<GetCommunityMemberListRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.StreamingServerResponse<GetCommunityMemberListResponse>
+
+        /// Handle the "RestrictCommunityPost" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したポストをコミュニティのタイムラインから非表示にします（削除ではありません）。
+        ///
+        /// - Parameters:
+        ///   - request: A streaming request of `RestrictCommunityPostRequest` messages.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A streaming response of `RestrictCommunityPostResponse` messages.
+        func restrictCommunityPost(
+            request: GRPCCore.StreamingServerRequest<RestrictCommunityPostRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.StreamingServerResponse<RestrictCommunityPostResponse>
+
+        /// Handle the "GetCommunitiesUsingApplication" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > アプリケーションが導入されているコミュニティ一覧と、各コミュニティが利用しているアプリケーションバージョン情報を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A streaming request of `GetCommunitiesUsingApplicationRequest` messages.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A streaming response of `GetCommunitiesUsingApplicationResponse` messages.
+        func getCommunitiesUsingApplication(
+            request: GRPCCore.StreamingServerRequest<GetCommunitiesUsingApplicationRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.StreamingServerResponse<GetCommunitiesUsingApplicationResponse>
+
         /// Handle the "SendChatMessage" method.
         ///
         /// > Source IDL Documentation:
@@ -329,6 +512,24 @@ extension ApplicationService {
             request: GRPCCore.StreamingServerRequest<AddStampToPostRequest>,
             context: GRPCCore.ServerContext
         ) async throws -> GRPCCore.StreamingServerResponse<AddStampToPostResponse>
+
+        /// Handle the "SendDirectMessageToCommunityMember" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > コミュニティメンバーにダイレクトメッセージを送信します。
+        ///
+        /// - Parameters:
+        ///   - request: A streaming request of `SendDirectMessageToCommunityMemberRequest` messages.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A streaming response of `SendDirectMessageToCommunityMemberResponse` messages.
+        func sendDirectMessageToCommunityMember(
+            request: GRPCCore.StreamingServerRequest<SendDirectMessageToCommunityMemberRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.StreamingServerResponse<SendDirectMessageToCommunityMemberResponse>
     }
 
     /// Service protocol for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
@@ -379,11 +580,29 @@ extension ApplicationService {
             context: GRPCCore.ServerContext
         ) async throws -> GRPCCore.ServerResponse<GetPostsResponse>
 
+        /// Handle the "GetCommunities" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティIDリストに対応するコミュニティ情報を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `GetCommunitiesRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A response containing a single `GetCommunitiesResponse` message.
+        func getCommunities(
+            request: GRPCCore.ServerRequest<GetCommunitiesRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.ServerResponse<GetCommunitiesResponse>
+
         /// Handle the "CreatePost" method.
         ///
         /// > Source IDL Documentation:
         /// >
-        /// > ポストを作成します（返信/引用/メディア添付等に対応）。
+        /// > ポストを作成します（返信/引用/コミュニティポスト・メディア添付等に対応）。
         ///
         /// - Parameters:
         ///   - request: A request containing a single `CreatePostRequest` message.
@@ -451,6 +670,78 @@ extension ApplicationService {
             context: GRPCCore.ServerContext
         ) async throws -> GRPCCore.ServerResponse<GetPostMediaStatusResponse>
 
+        /// Handle the "GetCommunityTimeline" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティのタイムライン（ポスト一覧）を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `GetCommunityTimelineRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A response containing a single `GetCommunityTimelineResponse` message.
+        func getCommunityTimeline(
+            request: GRPCCore.ServerRequest<GetCommunityTimelineRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.ServerResponse<GetCommunityTimelineResponse>
+
+        /// Handle the "GetCommunityMemberList" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティのメンバー一覧をページング付きで取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `GetCommunityMemberListRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A response containing a single `GetCommunityMemberListResponse` message.
+        func getCommunityMemberList(
+            request: GRPCCore.ServerRequest<GetCommunityMemberListRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.ServerResponse<GetCommunityMemberListResponse>
+
+        /// Handle the "RestrictCommunityPost" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したポストをコミュニティのタイムラインから非表示にします（削除ではありません）。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `RestrictCommunityPostRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A response containing a single `RestrictCommunityPostResponse` message.
+        func restrictCommunityPost(
+            request: GRPCCore.ServerRequest<RestrictCommunityPostRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.ServerResponse<RestrictCommunityPostResponse>
+
+        /// Handle the "GetCommunitiesUsingApplication" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > アプリケーションが導入されているコミュニティ一覧と、各コミュニティが利用しているアプリケーションバージョン情報を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `GetCommunitiesUsingApplicationRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A response containing a single `GetCommunitiesUsingApplicationResponse` message.
+        func getCommunitiesUsingApplication(
+            request: GRPCCore.ServerRequest<GetCommunitiesUsingApplicationRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.ServerResponse<GetCommunitiesUsingApplicationResponse>
+
         /// Handle the "SendChatMessage" method.
         ///
         /// > Source IDL Documentation:
@@ -504,6 +795,24 @@ extension ApplicationService {
             request: GRPCCore.ServerRequest<AddStampToPostRequest>,
             context: GRPCCore.ServerContext
         ) async throws -> GRPCCore.ServerResponse<AddStampToPostResponse>
+
+        /// Handle the "SendDirectMessageToCommunityMember" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > コミュニティメンバーにダイレクトメッセージを送信します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `SendDirectMessageToCommunityMemberRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A response containing a single `SendDirectMessageToCommunityMemberResponse` message.
+        func sendDirectMessageToCommunityMember(
+            request: GRPCCore.ServerRequest<SendDirectMessageToCommunityMemberRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.ServerResponse<SendDirectMessageToCommunityMemberResponse>
     }
 
     /// Simple service protocol for the "social.mixi.application.service.application_api.v1.ApplicationService" service.
@@ -552,11 +861,29 @@ extension ApplicationService {
             context: GRPCCore.ServerContext
         ) async throws -> GetPostsResponse
 
+        /// Handle the "GetCommunities" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティIDリストに対応するコミュニティ情報を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A `GetCommunitiesRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A `GetCommunitiesResponse` to respond with.
+        func getCommunities(
+            request: GetCommunitiesRequest,
+            context: GRPCCore.ServerContext
+        ) async throws -> GetCommunitiesResponse
+
         /// Handle the "CreatePost" method.
         ///
         /// > Source IDL Documentation:
         /// >
-        /// > ポストを作成します（返信/引用/メディア添付等に対応）。
+        /// > ポストを作成します（返信/引用/コミュニティポスト・メディア添付等に対応）。
         ///
         /// - Parameters:
         ///   - request: A `CreatePostRequest` message.
@@ -624,6 +951,78 @@ extension ApplicationService {
             context: GRPCCore.ServerContext
         ) async throws -> GetPostMediaStatusResponse
 
+        /// Handle the "GetCommunityTimeline" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティのタイムライン（ポスト一覧）を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A `GetCommunityTimelineRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A `GetCommunityTimelineResponse` to respond with.
+        func getCommunityTimeline(
+            request: GetCommunityTimelineRequest,
+            context: GRPCCore.ServerContext
+        ) async throws -> GetCommunityTimelineResponse
+
+        /// Handle the "GetCommunityMemberList" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティのメンバー一覧をページング付きで取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A `GetCommunityMemberListRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A `GetCommunityMemberListResponse` to respond with.
+        func getCommunityMemberList(
+            request: GetCommunityMemberListRequest,
+            context: GRPCCore.ServerContext
+        ) async throws -> GetCommunityMemberListResponse
+
+        /// Handle the "RestrictCommunityPost" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したポストをコミュニティのタイムラインから非表示にします（削除ではありません）。
+        ///
+        /// - Parameters:
+        ///   - request: A `RestrictCommunityPostRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A `RestrictCommunityPostResponse` to respond with.
+        func restrictCommunityPost(
+            request: RestrictCommunityPostRequest,
+            context: GRPCCore.ServerContext
+        ) async throws -> RestrictCommunityPostResponse
+
+        /// Handle the "GetCommunitiesUsingApplication" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > アプリケーションが導入されているコミュニティ一覧と、各コミュニティが利用しているアプリケーションバージョン情報を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A `GetCommunitiesUsingApplicationRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A `GetCommunitiesUsingApplicationResponse` to respond with.
+        func getCommunitiesUsingApplication(
+            request: GetCommunitiesUsingApplicationRequest,
+            context: GRPCCore.ServerContext
+        ) async throws -> GetCommunitiesUsingApplicationResponse
+
         /// Handle the "SendChatMessage" method.
         ///
         /// > Source IDL Documentation:
@@ -677,6 +1076,24 @@ extension ApplicationService {
             request: AddStampToPostRequest,
             context: GRPCCore.ServerContext
         ) async throws -> AddStampToPostResponse
+
+        /// Handle the "SendDirectMessageToCommunityMember" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > コミュニティメンバーにダイレクトメッセージを送信します。
+        ///
+        /// - Parameters:
+        ///   - request: A `SendDirectMessageToCommunityMemberRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A `SendDirectMessageToCommunityMemberResponse` to respond with.
+        func sendDirectMessageToCommunityMember(
+            request: SendDirectMessageToCommunityMemberRequest,
+            context: GRPCCore.ServerContext
+        ) async throws -> SendDirectMessageToCommunityMemberResponse
     }
 }
 
@@ -701,6 +1118,17 @@ extension ApplicationService.StreamingServiceProtocol {
             serializer: GRPCProtobuf.ProtobufSerializer<GetPostsResponse>(),
             handler: { request, context in
                 try await self.getPosts(
+                    request: request,
+                    context: context
+                )
+            }
+        )
+        router.registerHandler(
+            forMethod: ApplicationService.Method.GetCommunities.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetCommunitiesRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<GetCommunitiesResponse>(),
+            handler: { request, context in
+                try await self.getCommunities(
                     request: request,
                     context: context
                 )
@@ -751,6 +1179,50 @@ extension ApplicationService.StreamingServiceProtocol {
             }
         )
         router.registerHandler(
+            forMethod: ApplicationService.Method.GetCommunityTimeline.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetCommunityTimelineRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<GetCommunityTimelineResponse>(),
+            handler: { request, context in
+                try await self.getCommunityTimeline(
+                    request: request,
+                    context: context
+                )
+            }
+        )
+        router.registerHandler(
+            forMethod: ApplicationService.Method.GetCommunityMemberList.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetCommunityMemberListRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<GetCommunityMemberListResponse>(),
+            handler: { request, context in
+                try await self.getCommunityMemberList(
+                    request: request,
+                    context: context
+                )
+            }
+        )
+        router.registerHandler(
+            forMethod: ApplicationService.Method.RestrictCommunityPost.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<RestrictCommunityPostRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<RestrictCommunityPostResponse>(),
+            handler: { request, context in
+                try await self.restrictCommunityPost(
+                    request: request,
+                    context: context
+                )
+            }
+        )
+        router.registerHandler(
+            forMethod: ApplicationService.Method.GetCommunitiesUsingApplication.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetCommunitiesUsingApplicationRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<GetCommunitiesUsingApplicationResponse>(),
+            handler: { request, context in
+                try await self.getCommunitiesUsingApplication(
+                    request: request,
+                    context: context
+                )
+            }
+        )
+        router.registerHandler(
             forMethod: ApplicationService.Method.SendChatMessage.descriptor,
             deserializer: GRPCProtobuf.ProtobufDeserializer<SendChatMessageRequest>(),
             serializer: GRPCProtobuf.ProtobufSerializer<SendChatMessageResponse>(),
@@ -783,6 +1255,17 @@ extension ApplicationService.StreamingServiceProtocol {
                 )
             }
         )
+        router.registerHandler(
+            forMethod: ApplicationService.Method.SendDirectMessageToCommunityMember.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<SendDirectMessageToCommunityMemberRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<SendDirectMessageToCommunityMemberResponse>(),
+            handler: { request, context in
+                try await self.sendDirectMessageToCommunityMember(
+                    request: request,
+                    context: context
+                )
+            }
+        )
     }
 }
 
@@ -805,6 +1288,17 @@ extension ApplicationService.ServiceProtocol {
         context: GRPCCore.ServerContext
     ) async throws -> GRPCCore.StreamingServerResponse<GetPostsResponse> {
         let response = try await self.getPosts(
+            request: GRPCCore.ServerRequest(stream: request),
+            context: context
+        )
+        return GRPCCore.StreamingServerResponse(single: response)
+    }
+
+    public func getCommunities(
+        request: GRPCCore.StreamingServerRequest<GetCommunitiesRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.StreamingServerResponse<GetCommunitiesResponse> {
+        let response = try await self.getCommunities(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
         )
@@ -855,6 +1349,50 @@ extension ApplicationService.ServiceProtocol {
         return GRPCCore.StreamingServerResponse(single: response)
     }
 
+    public func getCommunityTimeline(
+        request: GRPCCore.StreamingServerRequest<GetCommunityTimelineRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.StreamingServerResponse<GetCommunityTimelineResponse> {
+        let response = try await self.getCommunityTimeline(
+            request: GRPCCore.ServerRequest(stream: request),
+            context: context
+        )
+        return GRPCCore.StreamingServerResponse(single: response)
+    }
+
+    public func getCommunityMemberList(
+        request: GRPCCore.StreamingServerRequest<GetCommunityMemberListRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.StreamingServerResponse<GetCommunityMemberListResponse> {
+        let response = try await self.getCommunityMemberList(
+            request: GRPCCore.ServerRequest(stream: request),
+            context: context
+        )
+        return GRPCCore.StreamingServerResponse(single: response)
+    }
+
+    public func restrictCommunityPost(
+        request: GRPCCore.StreamingServerRequest<RestrictCommunityPostRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.StreamingServerResponse<RestrictCommunityPostResponse> {
+        let response = try await self.restrictCommunityPost(
+            request: GRPCCore.ServerRequest(stream: request),
+            context: context
+        )
+        return GRPCCore.StreamingServerResponse(single: response)
+    }
+
+    public func getCommunitiesUsingApplication(
+        request: GRPCCore.StreamingServerRequest<GetCommunitiesUsingApplicationRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.StreamingServerResponse<GetCommunitiesUsingApplicationResponse> {
+        let response = try await self.getCommunitiesUsingApplication(
+            request: GRPCCore.ServerRequest(stream: request),
+            context: context
+        )
+        return GRPCCore.StreamingServerResponse(single: response)
+    }
+
     public func sendChatMessage(
         request: GRPCCore.StreamingServerRequest<SendChatMessageRequest>,
         context: GRPCCore.ServerContext
@@ -887,6 +1425,17 @@ extension ApplicationService.ServiceProtocol {
         )
         return GRPCCore.StreamingServerResponse(single: response)
     }
+
+    public func sendDirectMessageToCommunityMember(
+        request: GRPCCore.StreamingServerRequest<SendDirectMessageToCommunityMemberRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.StreamingServerResponse<SendDirectMessageToCommunityMemberResponse> {
+        let response = try await self.sendDirectMessageToCommunityMember(
+            request: GRPCCore.ServerRequest(stream: request),
+            context: context
+        )
+        return GRPCCore.StreamingServerResponse(single: response)
+    }
 }
 
 // Default implementation of methods from 'ServiceProtocol'.
@@ -911,6 +1460,19 @@ extension ApplicationService.SimpleServiceProtocol {
     ) async throws -> GRPCCore.ServerResponse<GetPostsResponse> {
         return GRPCCore.ServerResponse<GetPostsResponse>(
             message: try await self.getPosts(
+                request: request.message,
+                context: context
+            ),
+            metadata: [:]
+        )
+    }
+
+    public func getCommunities(
+        request: GRPCCore.ServerRequest<GetCommunitiesRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.ServerResponse<GetCommunitiesResponse> {
+        return GRPCCore.ServerResponse<GetCommunitiesResponse>(
+            message: try await self.getCommunities(
                 request: request.message,
                 context: context
             ),
@@ -970,6 +1532,58 @@ extension ApplicationService.SimpleServiceProtocol {
         )
     }
 
+    public func getCommunityTimeline(
+        request: GRPCCore.ServerRequest<GetCommunityTimelineRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.ServerResponse<GetCommunityTimelineResponse> {
+        return GRPCCore.ServerResponse<GetCommunityTimelineResponse>(
+            message: try await self.getCommunityTimeline(
+                request: request.message,
+                context: context
+            ),
+            metadata: [:]
+        )
+    }
+
+    public func getCommunityMemberList(
+        request: GRPCCore.ServerRequest<GetCommunityMemberListRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.ServerResponse<GetCommunityMemberListResponse> {
+        return GRPCCore.ServerResponse<GetCommunityMemberListResponse>(
+            message: try await self.getCommunityMemberList(
+                request: request.message,
+                context: context
+            ),
+            metadata: [:]
+        )
+    }
+
+    public func restrictCommunityPost(
+        request: GRPCCore.ServerRequest<RestrictCommunityPostRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.ServerResponse<RestrictCommunityPostResponse> {
+        return GRPCCore.ServerResponse<RestrictCommunityPostResponse>(
+            message: try await self.restrictCommunityPost(
+                request: request.message,
+                context: context
+            ),
+            metadata: [:]
+        )
+    }
+
+    public func getCommunitiesUsingApplication(
+        request: GRPCCore.ServerRequest<GetCommunitiesUsingApplicationRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.ServerResponse<GetCommunitiesUsingApplicationResponse> {
+        return GRPCCore.ServerResponse<GetCommunitiesUsingApplicationResponse>(
+            message: try await self.getCommunitiesUsingApplication(
+                request: request.message,
+                context: context
+            ),
+            metadata: [:]
+        )
+    }
+
     public func sendChatMessage(
         request: GRPCCore.ServerRequest<SendChatMessageRequest>,
         context: GRPCCore.ServerContext
@@ -1002,6 +1616,19 @@ extension ApplicationService.SimpleServiceProtocol {
     ) async throws -> GRPCCore.ServerResponse<AddStampToPostResponse> {
         return GRPCCore.ServerResponse<AddStampToPostResponse>(
             message: try await self.addStampToPost(
+                request: request.message,
+                context: context
+            ),
+            metadata: [:]
+        )
+    }
+
+    public func sendDirectMessageToCommunityMember(
+        request: GRPCCore.ServerRequest<SendDirectMessageToCommunityMemberRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.ServerResponse<SendDirectMessageToCommunityMemberResponse> {
+        return GRPCCore.ServerResponse<SendDirectMessageToCommunityMemberResponse>(
+            message: try await self.sendDirectMessageToCommunityMember(
                 request: request.message,
                 context: context
             ),
@@ -1069,11 +1696,34 @@ extension ApplicationService {
             onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetPostsResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
+        /// Call the "GetCommunities" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティIDリストに対応するコミュニティ情報を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `GetCommunitiesRequest` message.
+        ///   - serializer: A serializer for `GetCommunitiesRequest` messages.
+        ///   - deserializer: A deserializer for `GetCommunitiesResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        func getCommunities<Result>(
+            request: GRPCCore.ClientRequest<GetCommunitiesRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetCommunitiesRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetCommunitiesResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunitiesResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
         /// Call the "CreatePost" method.
         ///
         /// > Source IDL Documentation:
         /// >
-        /// > ポストを作成します（返信/引用/メディア添付等に対応）。
+        /// > ポストを作成します（返信/引用/コミュニティポスト・メディア添付等に対応）。
         ///
         /// - Parameters:
         ///   - request: A request containing a single `CreatePostRequest` message.
@@ -1161,6 +1811,98 @@ extension ApplicationService {
             onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetPostMediaStatusResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
+        /// Call the "GetCommunityTimeline" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティのタイムライン（ポスト一覧）を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `GetCommunityTimelineRequest` message.
+        ///   - serializer: A serializer for `GetCommunityTimelineRequest` messages.
+        ///   - deserializer: A deserializer for `GetCommunityTimelineResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        func getCommunityTimeline<Result>(
+            request: GRPCCore.ClientRequest<GetCommunityTimelineRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetCommunityTimelineRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetCommunityTimelineResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunityTimelineResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
+        /// Call the "GetCommunityMemberList" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティのメンバー一覧をページング付きで取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `GetCommunityMemberListRequest` message.
+        ///   - serializer: A serializer for `GetCommunityMemberListRequest` messages.
+        ///   - deserializer: A deserializer for `GetCommunityMemberListResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        func getCommunityMemberList<Result>(
+            request: GRPCCore.ClientRequest<GetCommunityMemberListRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetCommunityMemberListRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetCommunityMemberListResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunityMemberListResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
+        /// Call the "RestrictCommunityPost" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したポストをコミュニティのタイムラインから非表示にします（削除ではありません）。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `RestrictCommunityPostRequest` message.
+        ///   - serializer: A serializer for `RestrictCommunityPostRequest` messages.
+        ///   - deserializer: A deserializer for `RestrictCommunityPostResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        func restrictCommunityPost<Result>(
+            request: GRPCCore.ClientRequest<RestrictCommunityPostRequest>,
+            serializer: some GRPCCore.MessageSerializer<RestrictCommunityPostRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<RestrictCommunityPostResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<RestrictCommunityPostResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
+        /// Call the "GetCommunitiesUsingApplication" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > アプリケーションが導入されているコミュニティ一覧と、各コミュニティが利用しているアプリケーションバージョン情報を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `GetCommunitiesUsingApplicationRequest` message.
+        ///   - serializer: A serializer for `GetCommunitiesUsingApplicationRequest` messages.
+        ///   - deserializer: A deserializer for `GetCommunitiesUsingApplicationResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        func getCommunitiesUsingApplication<Result>(
+            request: GRPCCore.ClientRequest<GetCommunitiesUsingApplicationRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetCommunitiesUsingApplicationRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetCommunitiesUsingApplicationResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunitiesUsingApplicationResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
         /// Call the "SendChatMessage" method.
         ///
         /// > Source IDL Documentation:
@@ -1228,6 +1970,29 @@ extension ApplicationService {
             deserializer: some GRPCCore.MessageDeserializer<AddStampToPostResponse>,
             options: GRPCCore.CallOptions,
             onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<AddStampToPostResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
+        /// Call the "SendDirectMessageToCommunityMember" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > コミュニティメンバーにダイレクトメッセージを送信します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `SendDirectMessageToCommunityMemberRequest` message.
+        ///   - serializer: A serializer for `SendDirectMessageToCommunityMemberRequest` messages.
+        ///   - deserializer: A deserializer for `SendDirectMessageToCommunityMemberResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        func sendDirectMessageToCommunityMember<Result>(
+            request: GRPCCore.ClientRequest<SendDirectMessageToCommunityMemberRequest>,
+            serializer: some GRPCCore.MessageSerializer<SendDirectMessageToCommunityMemberRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<SendDirectMessageToCommunityMemberResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<SendDirectMessageToCommunityMemberResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
     }
 
@@ -1319,11 +2084,45 @@ extension ApplicationService {
             )
         }
 
+        /// Call the "GetCommunities" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティIDリストに対応するコミュニティ情報を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `GetCommunitiesRequest` message.
+        ///   - serializer: A serializer for `GetCommunitiesRequest` messages.
+        ///   - deserializer: A deserializer for `GetCommunitiesResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        public func getCommunities<Result>(
+            request: GRPCCore.ClientRequest<GetCommunitiesRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetCommunitiesRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetCommunitiesResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunitiesResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: ApplicationService.Method.GetCommunities.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
         /// Call the "CreatePost" method.
         ///
         /// > Source IDL Documentation:
         /// >
-        /// > ポストを作成します（返信/引用/メディア添付等に対応）。
+        /// > ポストを作成します（返信/引用/コミュニティポスト・メディア添付等に対応）。
         ///
         /// - Parameters:
         ///   - request: A request containing a single `CreatePostRequest` message.
@@ -1455,6 +2254,142 @@ extension ApplicationService {
             )
         }
 
+        /// Call the "GetCommunityTimeline" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティのタイムライン（ポスト一覧）を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `GetCommunityTimelineRequest` message.
+        ///   - serializer: A serializer for `GetCommunityTimelineRequest` messages.
+        ///   - deserializer: A deserializer for `GetCommunityTimelineResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        public func getCommunityTimeline<Result>(
+            request: GRPCCore.ClientRequest<GetCommunityTimelineRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetCommunityTimelineRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetCommunityTimelineResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunityTimelineResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: ApplicationService.Method.GetCommunityTimeline.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
+        /// Call the "GetCommunityMemberList" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したコミュニティのメンバー一覧をページング付きで取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `GetCommunityMemberListRequest` message.
+        ///   - serializer: A serializer for `GetCommunityMemberListRequest` messages.
+        ///   - deserializer: A deserializer for `GetCommunityMemberListResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        public func getCommunityMemberList<Result>(
+            request: GRPCCore.ClientRequest<GetCommunityMemberListRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetCommunityMemberListRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetCommunityMemberListResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunityMemberListResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: ApplicationService.Method.GetCommunityMemberList.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
+        /// Call the "RestrictCommunityPost" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > 指定したポストをコミュニティのタイムラインから非表示にします（削除ではありません）。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `RestrictCommunityPostRequest` message.
+        ///   - serializer: A serializer for `RestrictCommunityPostRequest` messages.
+        ///   - deserializer: A deserializer for `RestrictCommunityPostResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        public func restrictCommunityPost<Result>(
+            request: GRPCCore.ClientRequest<RestrictCommunityPostRequest>,
+            serializer: some GRPCCore.MessageSerializer<RestrictCommunityPostRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<RestrictCommunityPostResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<RestrictCommunityPostResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: ApplicationService.Method.RestrictCommunityPost.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
+        /// Call the "GetCommunitiesUsingApplication" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > アプリケーションが導入されているコミュニティ一覧と、各コミュニティが利用しているアプリケーションバージョン情報を取得します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `GetCommunitiesUsingApplicationRequest` message.
+        ///   - serializer: A serializer for `GetCommunitiesUsingApplicationRequest` messages.
+        ///   - deserializer: A deserializer for `GetCommunitiesUsingApplicationResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        public func getCommunitiesUsingApplication<Result>(
+            request: GRPCCore.ClientRequest<GetCommunitiesUsingApplicationRequest>,
+            serializer: some GRPCCore.MessageSerializer<GetCommunitiesUsingApplicationRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<GetCommunitiesUsingApplicationResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunitiesUsingApplicationResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: ApplicationService.Method.GetCommunitiesUsingApplication.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
         /// Call the "SendChatMessage" method.
         ///
         /// > Source IDL Documentation:
@@ -1556,6 +2491,40 @@ extension ApplicationService {
                 onResponse: handleResponse
             )
         }
+
+        /// Call the "SendDirectMessageToCommunityMember" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > コミュニティメンバーにダイレクトメッセージを送信します。
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `SendDirectMessageToCommunityMemberRequest` message.
+        ///   - serializer: A serializer for `SendDirectMessageToCommunityMemberRequest` messages.
+        ///   - deserializer: A deserializer for `SendDirectMessageToCommunityMemberResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        public func sendDirectMessageToCommunityMember<Result>(
+            request: GRPCCore.ClientRequest<SendDirectMessageToCommunityMemberRequest>,
+            serializer: some GRPCCore.MessageSerializer<SendDirectMessageToCommunityMemberRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<SendDirectMessageToCommunityMemberResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<SendDirectMessageToCommunityMemberResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: ApplicationService.Method.SendDirectMessageToCommunityMember.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
     }
 }
 
@@ -1620,11 +2589,40 @@ extension ApplicationService.ClientProtocol {
         )
     }
 
+    /// Call the "GetCommunities" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > 指定したコミュニティIDリストに対応するコミュニティ情報を取得します。
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `GetCommunitiesRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func getCommunities<Result>(
+        request: GRPCCore.ClientRequest<GetCommunitiesRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunitiesResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.getCommunities(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<GetCommunitiesRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetCommunitiesResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
     /// Call the "CreatePost" method.
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > ポストを作成します（返信/引用/メディア添付等に対応）。
+    /// > ポストを作成します（返信/引用/コミュニティポスト・メディア添付等に対応）。
     ///
     /// - Parameters:
     ///   - request: A request containing a single `CreatePostRequest` message.
@@ -1736,6 +2734,122 @@ extension ApplicationService.ClientProtocol {
         )
     }
 
+    /// Call the "GetCommunityTimeline" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > 指定したコミュニティのタイムライン（ポスト一覧）を取得します。
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `GetCommunityTimelineRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func getCommunityTimeline<Result>(
+        request: GRPCCore.ClientRequest<GetCommunityTimelineRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunityTimelineResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.getCommunityTimeline(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<GetCommunityTimelineRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetCommunityTimelineResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "GetCommunityMemberList" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > 指定したコミュニティのメンバー一覧をページング付きで取得します。
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `GetCommunityMemberListRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func getCommunityMemberList<Result>(
+        request: GRPCCore.ClientRequest<GetCommunityMemberListRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunityMemberListResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.getCommunityMemberList(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<GetCommunityMemberListRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetCommunityMemberListResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "RestrictCommunityPost" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > 指定したポストをコミュニティのタイムラインから非表示にします（削除ではありません）。
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `RestrictCommunityPostRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func restrictCommunityPost<Result>(
+        request: GRPCCore.ClientRequest<RestrictCommunityPostRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<RestrictCommunityPostResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.restrictCommunityPost(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<RestrictCommunityPostRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<RestrictCommunityPostResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "GetCommunitiesUsingApplication" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > アプリケーションが導入されているコミュニティ一覧と、各コミュニティが利用しているアプリケーションバージョン情報を取得します。
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `GetCommunitiesUsingApplicationRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func getCommunitiesUsingApplication<Result>(
+        request: GRPCCore.ClientRequest<GetCommunitiesUsingApplicationRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunitiesUsingApplicationResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.getCommunitiesUsingApplication(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<GetCommunitiesUsingApplicationRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<GetCommunitiesUsingApplicationResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
     /// Call the "SendChatMessage" method.
     ///
     /// > Source IDL Documentation:
@@ -1822,6 +2936,35 @@ extension ApplicationService.ClientProtocol {
             onResponse: handleResponse
         )
     }
+
+    /// Call the "SendDirectMessageToCommunityMember" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > コミュニティメンバーにダイレクトメッセージを送信します。
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `SendDirectMessageToCommunityMemberRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func sendDirectMessageToCommunityMember<Result>(
+        request: GRPCCore.ClientRequest<SendDirectMessageToCommunityMemberRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<SendDirectMessageToCommunityMemberResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.sendDirectMessageToCommunityMember(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<SendDirectMessageToCommunityMemberRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<SendDirectMessageToCommunityMemberResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
 }
 
 // Helpers providing sugared APIs for 'ClientProtocol' methods.
@@ -1893,11 +3036,44 @@ extension ApplicationService.ClientProtocol {
         )
     }
 
+    /// Call the "GetCommunities" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > 指定したコミュニティIDリストに対応するコミュニティ情報を取得します。
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func getCommunities<Result>(
+        _ message: GetCommunitiesRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunitiesResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<GetCommunitiesRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.getCommunities(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
     /// Call the "CreatePost" method.
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > ポストを作成します（返信/引用/メディア添付等に対応）。
+    /// > ポストを作成します（返信/引用/コミュニティポスト・メディア添付等に対応）。
     ///
     /// - Parameters:
     ///   - message: request message to send.
@@ -2025,6 +3201,138 @@ extension ApplicationService.ClientProtocol {
         )
     }
 
+    /// Call the "GetCommunityTimeline" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > 指定したコミュニティのタイムライン（ポスト一覧）を取得します。
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func getCommunityTimeline<Result>(
+        _ message: GetCommunityTimelineRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunityTimelineResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<GetCommunityTimelineRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.getCommunityTimeline(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "GetCommunityMemberList" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > 指定したコミュニティのメンバー一覧をページング付きで取得します。
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func getCommunityMemberList<Result>(
+        _ message: GetCommunityMemberListRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunityMemberListResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<GetCommunityMemberListRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.getCommunityMemberList(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "RestrictCommunityPost" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > 指定したポストをコミュニティのタイムラインから非表示にします（削除ではありません）。
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func restrictCommunityPost<Result>(
+        _ message: RestrictCommunityPostRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<RestrictCommunityPostResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<RestrictCommunityPostRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.restrictCommunityPost(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "GetCommunitiesUsingApplication" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > アプリケーションが導入されているコミュニティ一覧と、各コミュニティが利用しているアプリケーションバージョン情報を取得します。
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func getCommunitiesUsingApplication<Result>(
+        _ message: GetCommunitiesUsingApplicationRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<GetCommunitiesUsingApplicationResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<GetCommunitiesUsingApplicationRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.getCommunitiesUsingApplication(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
     /// Call the "SendChatMessage" method.
     ///
     /// > Source IDL Documentation:
@@ -2118,6 +3426,39 @@ extension ApplicationService.ClientProtocol {
             metadata: metadata
         )
         return try await self.addStampToPost(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "SendDirectMessageToCommunityMember" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > コミュニティメンバーにダイレクトメッセージを送信します。
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func sendDirectMessageToCommunityMember<Result>(
+        _ message: SendDirectMessageToCommunityMemberRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<SendDirectMessageToCommunityMemberResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<SendDirectMessageToCommunityMemberRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.sendDirectMessageToCommunityMember(
             request: request,
             options: options,
             onResponse: handleResponse

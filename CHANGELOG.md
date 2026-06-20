@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Added
+
+- Added generated client support for the `GetCommunities`, `GetCommunityTimeline`, `GetCommunityMemberList`, `RestrictCommunityPost`, `GetCommunitiesUsingApplication`, and `SendDirectMessageToCommunityMember` unary RPCs.
+- Added generated event message extraction for `CommunityMemberChangedEvent` and `CommunityPluginManagedEvent`.
+
+### Changed
+
+- Updated vendored `mixi2-api` to `v1.2.0`.
+- Regenerated gRPC/protobuf Swift sources for the `mixi2-api` `v1.2.0` schema.
+
 ## 0.0.2 - 2026-03-29
 
 ### Added

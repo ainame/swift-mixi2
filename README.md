@@ -151,13 +151,19 @@ try await Mixi2.with(configuration: config) { mixi2 in
 |--------|-------------|
 | `getUsers(_:)` | Fetch users by ID |
 | `getPosts(_:)` | Fetch posts by ID |
+| `getCommunities(_:)` | Fetch communities by ID |
 | `createPost(_:)` | Create a post |
 | `deletePost(_:)` | Delete a post |
 | `initiatePostMediaUpload(_:)` | Start a media upload and get an upload URL |
 | `getPostMediaStatus(_:)` | Check media upload/processing status |
+| `getCommunityTimeline(_:)` | Fetch posts from a community timeline |
+| `getCommunityMemberList(_:)` | List members in a community |
+| `restrictCommunityPost(_:)` | Restrict a community post |
+| `getCommunitiesUsingApplication(_:)` | List communities using the application |
 | `sendChatMessage(_:)` | Send a chat message to a room |
 | `getStamps(_:)` | List available stamps |
 | `addStampToPost(_:)` | Add a stamp to a post |
+| `sendDirectMessageToCommunityMember(_:)` | Send a direct message to a community member |
 
 ### Low-level event streaming
 

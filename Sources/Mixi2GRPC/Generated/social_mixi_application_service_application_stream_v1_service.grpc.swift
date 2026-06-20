@@ -29,7 +29,8 @@ public enum StreamApplicationService: Sendable {
             /// Descriptor for "SubscribeEvents".
             public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "social.mixi.application.service.application_stream.v1.ApplicationService"),
-                method: "SubscribeEvents"
+                method: "SubscribeEvents",
+                type: .serverStreaming
             )
         }
         /// Descriptors for all methods in the "social.mixi.application.service.application_stream.v1.ApplicationService" service.

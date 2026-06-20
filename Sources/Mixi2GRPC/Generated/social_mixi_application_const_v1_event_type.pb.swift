@@ -39,8 +39,23 @@ public enum EventReason: SwiftProtobuf.Enum, Swift.CaseIterable {
   /// ポストが引用された
   case postQuoted // = 4
 
+  /// コミュニティに新しいポストが投稿された
+  case postCommunity // = 5
+
+  /// コミュニティにメンバーが参加した
+  case communityMemberJoined // = 6
+
+  /// コミュニティにメンバーが退出した
+  case communityMemberLeft // = 7
+
   /// チャット/ダイレクトメッセージを受信した
   case directMessageReceived // = 8
+
+  /// コミュニティにプラグインが導入された
+  case communityPluginInstalled // = 9
+
+  /// コミュニティからプラグインが削除された
+  case communityPluginUninstalled // = 10
   case UNRECOGNIZED(Int)
 
   public init() {
@@ -54,7 +69,12 @@ public enum EventReason: SwiftProtobuf.Enum, Swift.CaseIterable {
     case 2: self = .postReply
     case 3: self = .postMentioned
     case 4: self = .postQuoted
+    case 5: self = .postCommunity
+    case 6: self = .communityMemberJoined
+    case 7: self = .communityMemberLeft
     case 8: self = .directMessageReceived
+    case 9: self = .communityPluginInstalled
+    case 10: self = .communityPluginUninstalled
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -66,7 +86,12 @@ public enum EventReason: SwiftProtobuf.Enum, Swift.CaseIterable {
     case .postReply: return 2
     case .postMentioned: return 3
     case .postQuoted: return 4
+    case .postCommunity: return 5
+    case .communityMemberJoined: return 6
+    case .communityMemberLeft: return 7
     case .directMessageReceived: return 8
+    case .communityPluginInstalled: return 9
+    case .communityPluginUninstalled: return 10
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -78,7 +103,12 @@ public enum EventReason: SwiftProtobuf.Enum, Swift.CaseIterable {
     .postReply,
     .postMentioned,
     .postQuoted,
+    .postCommunity,
+    .communityMemberJoined,
+    .communityMemberLeft,
     .directMessageReceived,
+    .communityPluginInstalled,
+    .communityPluginUninstalled,
   ]
 
 }
@@ -96,8 +126,14 @@ public enum EventType: SwiftProtobuf.Enum, Swift.CaseIterable {
   /// ポスト作成
   case postCreated // = 2
 
+  /// コミュニティメンバー変更（参加/退出）
+  case communityMemberChanged // = 3
+
   /// メッセージ受信（チャット/ダイレクトメッセージ）
   case chatMessageReceived // = 4
+
+  /// コミュニティプラグイン管理（導入/削除）
+  case communityPluginManaged // = 5
   case UNRECOGNIZED(Int)
 
   public init() {
@@ -109,7 +145,9 @@ public enum EventType: SwiftProtobuf.Enum, Swift.CaseIterable {
     case 0: self = .unspecified
     case 1: self = .ping
     case 2: self = .postCreated
+    case 3: self = .communityMemberChanged
     case 4: self = .chatMessageReceived
+    case 5: self = .communityPluginManaged
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -119,7 +157,9 @@ public enum EventType: SwiftProtobuf.Enum, Swift.CaseIterable {
     case .unspecified: return 0
     case .ping: return 1
     case .postCreated: return 2
+    case .communityMemberChanged: return 3
     case .chatMessageReceived: return 4
+    case .communityPluginManaged: return 5
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -129,7 +169,9 @@ public enum EventType: SwiftProtobuf.Enum, Swift.CaseIterable {
     .unspecified,
     .ping,
     .postCreated,
+    .communityMemberChanged,
     .chatMessageReceived,
+    .communityPluginManaged,
   ]
 
 }
@@ -137,9 +179,9 @@ public enum EventType: SwiftProtobuf.Enum, Swift.CaseIterable {
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 extension EventReason: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EVENT_REASON_UNSPECIFIED\0\u{1}EVENT_REASON_PING\0\u{1}EVENT_REASON_POST_REPLY\0\u{1}EVENT_REASON_POST_MENTIONED\0\u{1}EVENT_REASON_POST_QUOTED\0\u{2}\u{4}EVENT_REASON_DIRECT_MESSAGE_RECEIVED\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EVENT_REASON_UNSPECIFIED\0\u{1}EVENT_REASON_PING\0\u{1}EVENT_REASON_POST_REPLY\0\u{1}EVENT_REASON_POST_MENTIONED\0\u{1}EVENT_REASON_POST_QUOTED\0\u{1}EVENT_REASON_POST_COMMUNITY\0\u{1}EVENT_REASON_COMMUNITY_MEMBER_JOINED\0\u{1}EVENT_REASON_COMMUNITY_MEMBER_LEFT\0\u{1}EVENT_REASON_DIRECT_MESSAGE_RECEIVED\0\u{1}EVENT_REASON_COMMUNITY_PLUGIN_INSTALLED\0\u{1}EVENT_REASON_COMMUNITY_PLUGIN_UNINSTALLED\0")
 }
 
 extension EventType: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EVENT_TYPE_UNSPECIFIED\0\u{1}EVENT_TYPE_PING\0\u{1}EVENT_TYPE_POST_CREATED\0\u{2}\u{2}EVENT_TYPE_CHAT_MESSAGE_RECEIVED\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0EVENT_TYPE_UNSPECIFIED\0\u{1}EVENT_TYPE_PING\0\u{1}EVENT_TYPE_POST_CREATED\0\u{1}EVENT_TYPE_COMMUNITY_MEMBER_CHANGED\0\u{1}EVENT_TYPE_CHAT_MESSAGE_RECEIVED\0\u{1}EVENT_TYPE_COMMUNITY_PLUGIN_MANAGED\0")
 }
