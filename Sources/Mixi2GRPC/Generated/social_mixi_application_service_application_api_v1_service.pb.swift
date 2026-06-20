@@ -76,6 +76,34 @@ public struct GetPostsResponse: Sendable {
   public init() {}
 }
 
+/// コミュニティ情報取得リクエストです。
+public struct GetCommunitiesRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// 取得対象のコミュニティIDを指定してください。
+  public var communityIDList: [String] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// コミュニティ情報取得レスポンスです。
+public struct GetCommunitiesResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// コミュニティの一覧です。
+  public var communities: [Community] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 /// メディアアップロード開始リクエストです。
 public struct InitiatePostMediaUploadRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
@@ -255,6 +283,7 @@ public struct GetPostMediaStatusResponse: Sendable {
   public init() {}
 }
 
+/// ポスト作成リクエストです。
 /// in_reply_to_post_id と quoted_post_id は同時に指定できません。
 public struct CreatePostRequest: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
@@ -283,6 +312,16 @@ public struct CreatePostRequest: Sendable {
   public var hasQuotedPostID: Bool {self._quotedPostID != nil}
   /// Clears the value of `quotedPostID`. Subsequent reads from it will return its default value.
   public mutating func clearQuotedPostID() {self._quotedPostID = nil}
+
+  /// 投稿先コミュニティIDを指定してください（任意）。
+  public var communityID: String {
+    get {_communityID ?? String()}
+    set {_communityID = newValue}
+  }
+  /// Returns true if `communityID` has been explicitly set.
+  public var hasCommunityID: Bool {self._communityID != nil}
+  /// Clears the value of `communityID`. Subsequent reads from it will return its default value.
+  public mutating func clearCommunityID() {self._communityID = nil}
 
   /// 添付するメディアID一覧を指定してください（最大4件）。
   public var mediaIDList: [String] = []
@@ -313,6 +352,7 @@ public struct CreatePostRequest: Sendable {
 
   fileprivate var _inReplyToPostID: String? = nil
   fileprivate var _quotedPostID: String? = nil
+  fileprivate var _communityID: String? = nil
   fileprivate var _postMask: PostMask? = nil
   fileprivate var _publishingType: PostPublishingType? = nil
 }
@@ -366,6 +406,193 @@ public struct DeletePostResponse: Sendable {
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
+}
+
+/// コミュニティのタイムライン取得リクエストです。
+/// カーソルにはポストIDを指定してください。
+/// 未指定の場合は最新のポストから取得します。
+public struct GetCommunityTimelineRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// タイムラインを取得する対象のコミュニティIDを指定してください。
+  public var communityID: String = String()
+
+  /// ページング用カーソルを指定してください（任意）。
+  /// 指定したポストより古いポストを返します（指定したポスト自体は含まれません）。
+  public var untilCursor: String {
+    get {_untilCursor ?? String()}
+    set {_untilCursor = newValue}
+  }
+  /// Returns true if `untilCursor` has been explicitly set.
+  public var hasUntilCursor: Bool {self._untilCursor != nil}
+  /// Clears the value of `untilCursor`. Subsequent reads from it will return its default value.
+  public mutating func clearUntilCursor() {self._untilCursor = nil}
+
+  /// ページング用カーソルを指定してください（任意）。
+  /// 指定したポストより新しいポストを返します（指定したポスト自体は含まれません）。
+  public var sinceCursor: String {
+    get {_sinceCursor ?? String()}
+    set {_sinceCursor = newValue}
+  }
+  /// Returns true if `sinceCursor` has been explicitly set.
+  public var hasSinceCursor: Bool {self._sinceCursor != nil}
+  /// Clears the value of `sinceCursor`. Subsequent reads from it will return its default value.
+  public mutating func clearSinceCursor() {self._sinceCursor = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _untilCursor: String? = nil
+  fileprivate var _sinceCursor: String? = nil
+}
+
+/// コミュニティのタイムライン取得レスポンスです。
+public struct GetCommunityTimelineResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// コミュニティのタイムライン上のポスト一覧です。
+  public var posts: [Post] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// コミュニティのメンバー一覧取得リクエストです。
+public struct GetCommunityMemberListRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// メンバー一覧を取得する対象のコミュニティIDを指定してください。
+  public var communityID: String = String()
+
+  /// ページング用カーソルを指定してください（任意）。
+  /// 指定したカーソルの次のページを取得します。
+  /// カーソルには next_pagination_cursor を使用します。
+  public var paginationCursor: String {
+    get {_paginationCursor ?? String()}
+    set {_paginationCursor = newValue}
+  }
+  /// Returns true if `paginationCursor` has been explicitly set.
+  public var hasPaginationCursor: Bool {self._paginationCursor != nil}
+  /// Clears the value of `paginationCursor`. Subsequent reads from it will return its default value.
+  public mutating func clearPaginationCursor() {self._paginationCursor = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _paginationCursor: String? = nil
+}
+
+/// コミュニティのメンバー一覧取得レスポンスです。
+public struct GetCommunityMemberListResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// コミュニティメンバーの一覧です。
+  public var members: [User] = []
+
+  /// 次ページ取得用のページングカーソルです。
+  public var nextPaginationCursor: String {
+    get {_nextPaginationCursor ?? String()}
+    set {_nextPaginationCursor = newValue}
+  }
+  /// Returns true if `nextPaginationCursor` has been explicitly set.
+  public var hasNextPaginationCursor: Bool {self._nextPaginationCursor != nil}
+  /// Clears the value of `nextPaginationCursor`. Subsequent reads from it will return its default value.
+  public mutating func clearNextPaginationCursor() {self._nextPaginationCursor = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _nextPaginationCursor: String? = nil
+}
+
+/// コミュニティポスト制限リクエストです。
+/// 指定したポストをコミュニティのタイムラインから非表示にします。ポストが削除されるわけではありません。
+public struct RestrictCommunityPostRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// 制限対象のポストIDを指定してください。
+  public var postID: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// コミュニティポスト制限レスポンスです。
+public struct RestrictCommunityPostResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// プラグインがインストールされているコミュニティ一覧取得リクエストです。
+public struct GetCommunitiesUsingApplicationRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// ページング用カーソルを指定してください（任意）。
+  public var cursor: String {
+    get {_cursor ?? String()}
+    set {_cursor = newValue}
+  }
+  /// Returns true if `cursor` has been explicitly set.
+  public var hasCursor: Bool {self._cursor != nil}
+  /// Clears the value of `cursor`. Subsequent reads from it will return its default value.
+  public mutating func clearCursor() {self._cursor = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _cursor: String? = nil
+}
+
+/// プラグインがインストールされているコミュニティ一覧取得レスポンスです。
+public struct GetCommunitiesUsingApplicationResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// アプリケーションが導入されているコミュニティ一覧です。
+  public var communitiesUsingApplication: [CommunityUsingApplication] = []
+
+  /// 各コミュニティのバージョン一覧です。
+  public var applicationVersions: [ApplicationVersion] = []
+
+  /// 次ページ取得用のページングカーソルです。
+  public var nextCursor: String {
+    get {_nextCursor ?? String()}
+    set {_nextCursor = newValue}
+  }
+  /// Returns true if `nextCursor` has been explicitly set.
+  public var hasNextCursor: Bool {self._nextCursor != nil}
+  /// Clears the value of `nextCursor`. Subsequent reads from it will return its default value.
+  public mutating func clearNextCursor() {self._nextCursor = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _nextCursor: String? = nil
 }
 
 /// text または media_id のいずれかは必須です。
@@ -445,6 +672,10 @@ public struct GetStampsRequest: Sendable {
   /// Clears the value of `officialStampLanguage`. Subsequent reads from it will return its default value.
   public mutating func clearOfficialStampLanguage() {self._officialStampLanguage = nil}
 
+  /// コミュニティ固有スタンプを取得する場合、コミュニティIDを指定してください。
+  /// 指定するコミュニティIDは、アプリケーションが導入されている必要があります。
+  public var communityIds: [String] = []
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -461,6 +692,9 @@ public struct GetStampsResponse: Sendable {
   /// 指定言語の公式スタンプセット一覧です。
   public var officialStampSets: [OfficialStampSet] = []
 
+  /// コミュニティ固有スタンプセット一覧です。
+  public var communityStampSets: [CommunityStampSet] = []
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -473,11 +707,13 @@ public struct AddStampToPostRequest: Sendable {
   // methods supported on all messages.
 
   /// スタンプを付与する対象のポストIDを指定してください。指定可能なポストIDは次の通りです。
+  /// - アプリケーションが導入されているコミュニティ内のポストID
   /// - アプリケーションにメンションしているポストID
   public var postID: String = String()
 
   /// 付与するスタンプIDを指定してください。指定可能なスタンプIDは次の通りです。
   /// - 公式スタンプID
+  /// - コミュニティスタンプID（コミュニティポストの場合のみ利用可能）
   public var stampID: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -506,6 +742,74 @@ public struct AddStampToPostResponse: Sendable {
   public init() {}
 
   fileprivate var _post: Post? = nil
+}
+
+/// コミュニティメンバーへのダイレクトメッセージ送信リクエストです。
+/// text または media_ids のいずれかは必須です。
+public struct SendDirectMessageToCommunityMemberRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// 受信者ユーザーIDを指定してください。
+  public var receiverID: String = String()
+
+  /// 受信者が所属するコミュニティIDを指定してください。
+  /// 対象コミュニティにはアプリケーションが導入されている必要があります。
+  public var communityID: String = String()
+
+  /// 本文テキストを指定してください（任意）。
+  public var text: String {
+    get {_text ?? String()}
+    set {_text = newValue}
+  }
+  /// Returns true if `text` has been explicitly set.
+  public var hasText: Bool {self._text != nil}
+  /// Clears the value of `text`. Subsequent reads from it will return its default value.
+  public mutating func clearText() {self._text = nil}
+
+  /// 添付するメディアID一覧を指定してください（最大4件）。
+  public var mediaIds: [String] = []
+
+  /// ポストを引用してDMを送信する場合、ポストIDを指定してください（任意）。
+  public var postID: String {
+    get {_postID ?? String()}
+    set {_postID = newValue}
+  }
+  /// Returns true if `postID` has been explicitly set.
+  public var hasPostID: Bool {self._postID != nil}
+  /// Clears the value of `postID`. Subsequent reads from it will return its default value.
+  public mutating func clearPostID() {self._postID = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _text: String? = nil
+  fileprivate var _postID: String? = nil
+}
+
+/// コミュニティメンバーへのダイレクトメッセージ送信レスポンスです。
+public struct SendDirectMessageToCommunityMemberResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// 送信されたメッセージです。
+  public var message: ChatMessage {
+    get {_message ?? ChatMessage()}
+    set {_message = newValue}
+  }
+  /// Returns true if `message` has been explicitly set.
+  public var hasMessage: Bool {self._message != nil}
+  /// Clears the value of `message`. Subsequent reads from it will return its default value.
+  public mutating func clearMessage() {self._message = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _message: ChatMessage? = nil
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -627,6 +931,66 @@ extension GetPostsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
 
   public static func ==(lhs: GetPostsResponse, rhs: GetPostsResponse) -> Bool {
     if lhs.posts != rhs.posts {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension GetCommunitiesRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetCommunitiesRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}community_id_list\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedStringField(value: &self.communityIDList) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.communityIDList.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.communityIDList, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: GetCommunitiesRequest, rhs: GetCommunitiesRequest) -> Bool {
+    if lhs.communityIDList != rhs.communityIDList {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension GetCommunitiesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetCommunitiesResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}communities\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.communities) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.communities.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.communities, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: GetCommunitiesResponse, rhs: GetCommunitiesResponse) -> Bool {
+    if lhs.communities != rhs.communities {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -786,7 +1150,7 @@ extension GetPostMediaStatusResponse.Status: SwiftProtobuf._ProtoNameProviding {
 
 extension CreatePostRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".CreatePostRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}text\0\u{3}in_reply_to_post_id\0\u{3}quoted_post_id\0\u{4}\u{2}media_id_list\0\u{3}post_mask\0\u{3}publishing_type\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}text\0\u{3}in_reply_to_post_id\0\u{3}quoted_post_id\0\u{3}community_id\0\u{3}media_id_list\0\u{3}post_mask\0\u{3}publishing_type\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -797,6 +1161,7 @@ extension CreatePostRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
       case 1: try { try decoder.decodeSingularStringField(value: &self.text) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self._inReplyToPostID) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self._quotedPostID) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self._communityID) }()
       case 5: try { try decoder.decodeRepeatedStringField(value: &self.mediaIDList) }()
       case 6: try { try decoder.decodeSingularMessageField(value: &self._postMask) }()
       case 7: try { try decoder.decodeSingularEnumField(value: &self._publishingType) }()
@@ -819,6 +1184,9 @@ extension CreatePostRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     try { if let v = self._quotedPostID {
       try visitor.visitSingularStringField(value: v, fieldNumber: 3)
     } }()
+    try { if let v = self._communityID {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 4)
+    } }()
     if !self.mediaIDList.isEmpty {
       try visitor.visitRepeatedStringField(value: self.mediaIDList, fieldNumber: 5)
     }
@@ -835,6 +1203,7 @@ extension CreatePostRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     if lhs.text != rhs.text {return false}
     if lhs._inReplyToPostID != rhs._inReplyToPostID {return false}
     if lhs._quotedPostID != rhs._quotedPostID {return false}
+    if lhs._communityID != rhs._communityID {return false}
     if lhs.mediaIDList != rhs.mediaIDList {return false}
     if lhs._postMask != rhs._postMask {return false}
     if lhs._publishingType != rhs._publishingType {return false}
@@ -937,6 +1306,285 @@ extension DeletePostResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
+extension GetCommunityTimelineRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetCommunityTimelineRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}community_id\0\u{3}until_cursor\0\u{3}since_cursor\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.communityID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self._untilCursor) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._sinceCursor) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.communityID.isEmpty {
+      try visitor.visitSingularStringField(value: self.communityID, fieldNumber: 1)
+    }
+    try { if let v = self._untilCursor {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+    } }()
+    try { if let v = self._sinceCursor {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: GetCommunityTimelineRequest, rhs: GetCommunityTimelineRequest) -> Bool {
+    if lhs.communityID != rhs.communityID {return false}
+    if lhs._untilCursor != rhs._untilCursor {return false}
+    if lhs._sinceCursor != rhs._sinceCursor {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension GetCommunityTimelineResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetCommunityTimelineResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}posts\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.posts) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.posts.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.posts, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: GetCommunityTimelineResponse, rhs: GetCommunityTimelineResponse) -> Bool {
+    if lhs.posts != rhs.posts {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension GetCommunityMemberListRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetCommunityMemberListRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}community_id\0\u{3}pagination_cursor\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.communityID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self._paginationCursor) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.communityID.isEmpty {
+      try visitor.visitSingularStringField(value: self.communityID, fieldNumber: 1)
+    }
+    try { if let v = self._paginationCursor {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: GetCommunityMemberListRequest, rhs: GetCommunityMemberListRequest) -> Bool {
+    if lhs.communityID != rhs.communityID {return false}
+    if lhs._paginationCursor != rhs._paginationCursor {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension GetCommunityMemberListResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetCommunityMemberListResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}members\0\u{3}next_pagination_cursor\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.members) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self._nextPaginationCursor) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.members.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.members, fieldNumber: 1)
+    }
+    try { if let v = self._nextPaginationCursor {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: GetCommunityMemberListResponse, rhs: GetCommunityMemberListResponse) -> Bool {
+    if lhs.members != rhs.members {return false}
+    if lhs._nextPaginationCursor != rhs._nextPaginationCursor {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension RestrictCommunityPostRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RestrictCommunityPostRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}post_id\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.postID) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.postID.isEmpty {
+      try visitor.visitSingularStringField(value: self.postID, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: RestrictCommunityPostRequest, rhs: RestrictCommunityPostRequest) -> Bool {
+    if lhs.postID != rhs.postID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension RestrictCommunityPostResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RestrictCommunityPostResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: RestrictCommunityPostResponse, rhs: RestrictCommunityPostResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension GetCommunitiesUsingApplicationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetCommunitiesUsingApplicationRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}cursor\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self._cursor) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._cursor {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: GetCommunitiesUsingApplicationRequest, rhs: GetCommunitiesUsingApplicationRequest) -> Bool {
+    if lhs._cursor != rhs._cursor {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension GetCommunitiesUsingApplicationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetCommunitiesUsingApplicationResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}communities_using_application\0\u{3}application_versions\0\u{3}next_cursor\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.communitiesUsingApplication) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.applicationVersions) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._nextCursor) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.communitiesUsingApplication.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.communitiesUsingApplication, fieldNumber: 1)
+    }
+    if !self.applicationVersions.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.applicationVersions, fieldNumber: 2)
+    }
+    try { if let v = self._nextCursor {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: GetCommunitiesUsingApplicationResponse, rhs: GetCommunitiesUsingApplicationResponse) -> Bool {
+    if lhs.communitiesUsingApplication != rhs.communitiesUsingApplication {return false}
+    if lhs.applicationVersions != rhs.applicationVersions {return false}
+    if lhs._nextCursor != rhs._nextCursor {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension SendChatMessageRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".SendChatMessageRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}room_id\0\u{1}text\0\u{3}media_id\0")
@@ -1017,7 +1665,7 @@ extension SendChatMessageResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
 
 extension GetStampsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetStampsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}official_stamp_language\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}official_stamp_language\0\u{3}community_ids\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -1026,6 +1674,7 @@ extension GetStampsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularEnumField(value: &self._officialStampLanguage) }()
+      case 2: try { try decoder.decodeRepeatedStringField(value: &self.communityIds) }()
       default: break
       }
     }
@@ -1039,11 +1688,15 @@ extension GetStampsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     try { if let v = self._officialStampLanguage {
       try visitor.visitSingularEnumField(value: v, fieldNumber: 1)
     } }()
+    if !self.communityIds.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.communityIds, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: GetStampsRequest, rhs: GetStampsRequest) -> Bool {
     if lhs._officialStampLanguage != rhs._officialStampLanguage {return false}
+    if lhs.communityIds != rhs.communityIds {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1051,7 +1704,7 @@ extension GetStampsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
 
 extension GetStampsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetStampsResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}official_stamp_sets\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}official_stamp_sets\0\u{3}community_stamp_sets\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -1060,6 +1713,7 @@ extension GetStampsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeRepeatedMessageField(value: &self.officialStampSets) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.communityStampSets) }()
       default: break
       }
     }
@@ -1069,11 +1723,15 @@ extension GetStampsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     if !self.officialStampSets.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.officialStampSets, fieldNumber: 1)
     }
+    if !self.communityStampSets.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.communityStampSets, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: GetStampsResponse, rhs: GetStampsResponse) -> Bool {
     if lhs.officialStampSets != rhs.officialStampSets {return false}
+    if lhs.communityStampSets != rhs.communityStampSets {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1143,6 +1801,94 @@ extension AddStampToPostResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageI
 
   public static func ==(lhs: AddStampToPostResponse, rhs: AddStampToPostResponse) -> Bool {
     if lhs._post != rhs._post {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension SendDirectMessageToCommunityMemberRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SendDirectMessageToCommunityMemberRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}receiver_id\0\u{3}community_id\0\u{1}text\0\u{3}media_ids\0\u{3}post_id\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.receiverID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.communityID) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self._text) }()
+      case 4: try { try decoder.decodeRepeatedStringField(value: &self.mediaIds) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self._postID) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.receiverID.isEmpty {
+      try visitor.visitSingularStringField(value: self.receiverID, fieldNumber: 1)
+    }
+    if !self.communityID.isEmpty {
+      try visitor.visitSingularStringField(value: self.communityID, fieldNumber: 2)
+    }
+    try { if let v = self._text {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+    } }()
+    if !self.mediaIds.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.mediaIds, fieldNumber: 4)
+    }
+    try { if let v = self._postID {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 5)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: SendDirectMessageToCommunityMemberRequest, rhs: SendDirectMessageToCommunityMemberRequest) -> Bool {
+    if lhs.receiverID != rhs.receiverID {return false}
+    if lhs.communityID != rhs.communityID {return false}
+    if lhs._text != rhs._text {return false}
+    if lhs.mediaIds != rhs.mediaIds {return false}
+    if lhs._postID != rhs._postID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension SendDirectMessageToCommunityMemberResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SendDirectMessageToCommunityMemberResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}message\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._message) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._message {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: SendDirectMessageToCommunityMemberResponse, rhs: SendDirectMessageToCommunityMemberResponse) -> Bool {
+    if lhs._message != rhs._message {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

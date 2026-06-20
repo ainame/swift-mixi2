@@ -71,6 +71,16 @@ public struct Post: Sendable {
   /// Clears the value of `postMask`. Subsequent reads from it will return its default value.
   public mutating func clearPostMask() {self._postMask = nil}
 
+  /// ポストが投稿されたコミュニティIDです。
+  public var communityID: String {
+    get {_communityID ?? String()}
+    set {_communityID = newValue}
+  }
+  /// Returns true if `communityID` has been explicitly set.
+  public var hasCommunityID: Bool {self._communityID != nil}
+  /// Clears the value of `communityID`. Subsequent reads from it will return its default value.
+  public mutating func clearCommunityID() {self._communityID = nil}
+
   /// ポストを閲覧可能かどうかを示します。
   public var visibility: PostVisibility = .unspecified
 
@@ -97,6 +107,7 @@ public struct Post: Sendable {
   fileprivate var _createdAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
   fileprivate var _inReplyToPostID: String? = nil
   fileprivate var _postMask: PostMask? = nil
+  fileprivate var _communityID: String? = nil
   fileprivate var _readerStampID: String? = nil
 }
 
@@ -266,7 +277,7 @@ fileprivate let _protobuf_package = "social.mixi.application.model.v1"
 
 extension Post: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Post"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}post_id\0\u{3}is_deleted\0\u{3}creator_id\0\u{1}text\0\u{3}created_at\0\u{3}post_media_list\0\u{3}in_reply_to_post_id\0\u{3}post_mask\0\u{2}\u{2}visibility\0\u{3}access_level\0\u{1}stamps\0\u{3}reader_stamp_id\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}post_id\0\u{3}is_deleted\0\u{3}creator_id\0\u{1}text\0\u{3}created_at\0\u{3}post_media_list\0\u{3}in_reply_to_post_id\0\u{3}post_mask\0\u{3}community_id\0\u{1}visibility\0\u{3}access_level\0\u{1}stamps\0\u{3}reader_stamp_id\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -282,6 +293,7 @@ extension Post: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase,
       case 6: try { try decoder.decodeRepeatedMessageField(value: &self.postMediaList) }()
       case 7: try { try decoder.decodeSingularStringField(value: &self._inReplyToPostID) }()
       case 8: try { try decoder.decodeSingularMessageField(value: &self._postMask) }()
+      case 9: try { try decoder.decodeSingularStringField(value: &self._communityID) }()
       case 10: try { try decoder.decodeSingularEnumField(value: &self.visibility) }()
       case 11: try { try decoder.decodeSingularEnumField(value: &self.accessLevel) }()
       case 12: try { try decoder.decodeRepeatedMessageField(value: &self.stamps) }()
@@ -320,6 +332,9 @@ extension Post: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase,
     try { if let v = self._postMask {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
     } }()
+    try { if let v = self._communityID {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 9)
+    } }()
     if self.visibility != .unspecified {
       try visitor.visitSingularEnumField(value: self.visibility, fieldNumber: 10)
     }
@@ -344,6 +359,7 @@ extension Post: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase,
     if lhs.postMediaList != rhs.postMediaList {return false}
     if lhs._inReplyToPostID != rhs._inReplyToPostID {return false}
     if lhs._postMask != rhs._postMask {return false}
+    if lhs._communityID != rhs._communityID {return false}
     if lhs.visibility != rhs.visibility {return false}
     if lhs.accessLevel != rhs.accessLevel {return false}
     if lhs.stamps != rhs.stamps {return false}
